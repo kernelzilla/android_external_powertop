@@ -489,6 +489,9 @@ int main(int argc, char **argv)
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0, 
 			"Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 			"The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed.");
+		suggest_kernel_config("CONFIG_ACPI_DEBUG", 0, 
+			"Suggestion: Disable the CONFIG_ACPI_DEBUG kernel configuration option.\n"
+			"ACPI debug can make the bios wake you up a lot more than needed.");
 
 		sleep(3); /* quiet down the effects of any IO to xterms */
 	
