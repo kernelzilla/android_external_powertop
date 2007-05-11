@@ -476,6 +476,8 @@ int main(int argc, char **argv)
 		suggestioncount = 0;
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1, 
 			"Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power.");
+		suggest_kernel_config("CONFIG_NO_HZ", 1, 
+			"Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU.");
 		suggest_kernel_config("CONFIG_HPET", 1, 
 			"Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 			"Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
@@ -484,6 +486,9 @@ int main(int argc, char **argv)
 			"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 			"The 'ondemand' CPU speed governer will minimize the CPU power usage while\n"
 			"giving you performance when it is needed.");
+		suggest_kernel_config("CONFIG_IRQBALANCE", 0, 
+			"Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
+			"The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed.");
 
 		sleep(3); /* quiet down the effects of any IO to xterms */
 	
