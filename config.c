@@ -62,7 +62,11 @@ static void read_kernel_config(void)
       if (c) *c=0;
       sprintf(filename,"/boot/config-%s",version);
       file = fopen(filename,"r");
-      if (!file)
+	if (!file) {
+		sprintf(filename, "/lib/modules/%s/build/.config", version);
+		file = fopen(filename, "r");
+	}
+      if (!file) 
           return;
         while (!feof(file)) {
           char line[100];
