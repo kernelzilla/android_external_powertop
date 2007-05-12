@@ -40,6 +40,8 @@ int ticktime = 5;
 
 int suggestioncount = 0;
 
+static int maxcstate = 0;
+
 #define IRQCOUNT 100
 
 struct irqdata {
@@ -202,6 +204,8 @@ static void read_data(uint64_t *usage, uint64_t *duration)
 			duration[clevel] += strtoull(c, NULL, 10);
 	
 			clevel++;
+			if (clevel > maxcstate)
+				maxcstate = clevel;
 		
 		}
 		fclose(file);
@@ -364,7 +368,10 @@ int main(int argc, char **argv)
 		normal();
 		printf("\n");
 		if (totalevents == 0) {
-			printf("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n");
+			if (maxcstate<=1)
+				printf("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n");
+			else
+				printf("< CPU was 100%% busy; no C-states were entered >\n");
 		} else {
 			c0 = sysconf(_SC_NPROCESSORS_ONLN)*ticktime * 1000 * FREQ - totalticks;
 			if (c0<0) c0 = 0; /* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
