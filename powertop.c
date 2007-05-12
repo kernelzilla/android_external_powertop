@@ -459,7 +459,10 @@ int main(int argc, char **argv)
 							lines[i]);
 			fflush(stdout);
 		} else {
-			printf("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n");
+			if (getuid()==0)
+				printf("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n");
+			else
+				printf("No detailed statistics available; PowerTOP needs root privileges for that\n");
 		}
 		if (maxsleep < 5.0)
 			ticktime = 5;
