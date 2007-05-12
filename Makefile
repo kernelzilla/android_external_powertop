@@ -1,7 +1,9 @@
 BINDIR=/usr/bin
 
+CFLAGS=-O2 -g
+WARNFLAGS=-Wall
 powertop: powertop.c config.c Makefile
-	gcc -Wall -O2 -g powertop.c config.c -o powertop
+	gcc ${CFLAGS} ${WARNFLAGS}  powertop.c config.c -o powertop
 
 install: powertop
 	cp powertop ${DESTDIR}${BINDIR}
