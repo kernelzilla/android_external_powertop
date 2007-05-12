@@ -84,21 +84,27 @@ static void read_kernel_config(void)
 void suggest_kernel_config(char *string, int onoff, char *comment)
 {
 	int i;
-	char searchfor[100];
+	char searchon[100];
+	char searchoff[100];
+	int found = 0;
 
 	if (suggestioncount > 0)
 		return;
 	read_kernel_config();
-	if (onoff)
-		sprintf(searchfor, "%s=", string);
-	else
-		sprintf(searchfor, "# %s is not set", string);
+
+	sprintf(searchon, "%s=", string);
+	sprintf(searchoff, "# %s is not set", string);
 
 	for (i = 0; i < configcount; i++) {
-		if (strstr(configlines[i], searchfor))
+		if (onoff && strstr(configlines[i], searchon))
 			return;
+		if (onoff==0 && strstr(configlines[i], searchoff))
+			return;
+		if (onoff==0 && strstr(configlines[i], searchon))
+			found = 1;
 	}
-	printf("%s\n", comment);
+	if (onoff || found)
+		printf("%s\n", comment);
 	fflush(stdout);
 	suggestioncount++;
 }
