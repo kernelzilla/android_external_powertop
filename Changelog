@@ -13,6 +13,7 @@
 	* Don't show "please turn CONFIG_FOO off" if the kernel you have
 	  doesn't even support CONFIG_FOO (yet)
 	* Show absolute per-second wakeup counts too (multiple requestors)
+	* Add capability to suggest disabling daemons and the like
 	
 
 1.0 -- May 11th, 2007
