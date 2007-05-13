@@ -56,30 +56,39 @@ struct irqdata interrupts[IRQCOUNT];
 
 int nostats;
 
-#define LINECOUNT 250+IRQCOUNT
-char lines[LINECOUNT][256];
-int linec[LINECOUNT];
-int linehead;
-int linectotal;
+struct line {
+	char	*string;
+	int	count;
+};
+
+struct line	*lines;
+int		linehead;
+int		linesize;
+int		linectotal;
 
 void push_line(char *string, int count)
 {
 	int i;
 	for (i = 0; i < linehead; i++)
-		if (strcmp(string, lines[i]) == 0) {
-			linec[i] += count;
+		if (strcmp(string, lines[i].string) == 0) {
+			lines[i].count += count;
 			return;
 		}
-	strcpy(lines[linehead], string);
-	linec[linehead] = count;
+	if (linehead == linesize)
+		lines = realloc (lines, (linesize ? (linesize *= 2) : (linesize = 64)) * sizeof (struct line));
+	lines[linehead].string = strdup (string);
+	lines[linehead].count = count;
 	linehead++;
 }
 
 void clear_lines(void)
 {
-	memset(lines, 0, sizeof(lines));
-	memset(linec, 0, sizeof(linec));
-	linehead = 0;
+	int i;
+	for (i = 0; i < linehead; i++)
+		free (lines[i].string);
+	free (lines);
+	linehead = linesize = 0;
+	lines = NULL;
 }
 
 void count_lines(void)
@@ -87,7 +96,7 @@ void count_lines(void)
 	uint64_t q = 0;
 	int i;
 	for (i = 0; i < linehead; i++)
-		q += linec[i];
+		q += lines[i].count;
 	linectotal = q;
 }
 
@@ -256,25 +265,15 @@ void normal(void)
 	fflush(stdout);
 }
 
+int line_compare (const void *av, const void *bv)
+{
+	const struct line	*a = av, *b = bv;
+	return b->count - a->count;
+}
+
 void sort_lines(void)
 {
-	int swaps = 1;
-	while (swaps) {
-		int i;
-		uint64_t c;
-		char line[1024];
-		swaps = 0;
-		for (i = 0; i < LINECOUNT - 1; i++)
-			if (linec[i] < linec[i + 1]) {
-				swaps++;
-				strcpy(line, lines[i]);
-				c = linec[i];
-				linec[i] = linec[i + 1];
-				linec[i + 1] = c;
-				strcpy(lines[i], lines[i + 1]);
-				strcpy(lines[i + 1], line);
-			}
-	}
+	qsort (lines, linehead, sizeof (struct line), line_compare);
 }
 
 void print_battery(void)
@@ -400,11 +399,10 @@ int main(int argc, char **argv)
 		memset(line, 0, sizeof(line));
 		clear_lines();
 		do_proc_irq();
-		i = 0;
 		totalticks = 0;
 		if (!nostats)
-			file = popen("cat /proc/timer_stats | sort -n | tail -190", "r");
-		while (file && !feof(file) && i < 190) {
+			file = fopen("/proc/timer_stats", "r");
+		while (file && !feof(file)) {
 			char *count, *pid, *process, *func;
 			int cnt;
 			fgets(line, 1024, file);
@@ -449,7 +447,6 @@ int main(int argc, char **argv)
 			cnt = strtoull(count, NULL, 10);
 			sprintf(line, "%15s : %s", process, func);
 			push_line(line, cnt);
-			i++;
 		}
 		if (file)
 			pclose(file);
@@ -474,9 +471,9 @@ int main(int argc, char **argv)
 			int counter = 0;
 			sort_lines();
 			printf("\nTop causes for wakeups:\n");
-			for (i = 0; i < LINECOUNT; i++)
-				if (linec[i] > 0 && counter++ < 10)
-					printf(" %5.1f%%    %s \n", linec[i] * 100.0 / linectotal, lines[i]);
+			for (i = 0; i < linehead; i++)
+				if (lines[i].count > 0 && counter++ < 10)
+					printf(" %5.1f%%    %s \n", lines[i].count * 100.0 / linectotal, lines[i].string);
 			fflush(stdout);
 		} else {
 			if (getuid() == 0)
