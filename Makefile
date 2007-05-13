@@ -11,4 +11,3 @@ install: powertop
 	
 clean:
 	rm -f *~ powertop
-		
