@@ -30,6 +30,8 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+#include "powertop.h"
+
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
 
@@ -56,10 +58,6 @@ struct irqdata interrupts[IRQCOUNT];
 
 int nostats;
 
-struct line {
-	char	*string;
-	int	count;
-};
 
 struct line	*lines;
 int		linehead;
