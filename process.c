@@ -22,26 +22,30 @@
  * 	Arjan van de Ven <arjan@linux.intel.com>
  */
 
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <sys/types.h>
+#include <dirent.h>
 
-#ifndef __INCLUDE_GUARD_POWERTOP_H_
-#define __INCLUDE_GUARD_POWERTOP_H_
+#include "powertop.h"
 
-struct line {
-	char	*string;
-	int	count;
-};
+void suggest_process_death(char *process, struct line *lines, int linecount, char *comment)
+{
+	int i;
+	int found = 0;
+	if (suggestioncount > 0)
+		return;
 
-void suggest_process_death(char *process, struct line *lines, int linecount, char *comment);
-void suggest_kernel_config(char *string, int onoff, char *comment);
-
-extern int suggestioncount;
-
-/* min definition borrowed from the Linux kernel */
-#define min(x,y) ({ \
-        typeof(x) _x = (x);     \
-        typeof(y) _y = (y);     \
-        (void) (&_x == &_y);            \
-        _x < _y ? _x : _y; })
-
-
-#endif
+	for (i = 0; i < linecount; i++) {
+		if (strstr(lines[i].string, process)) {
+			found++;
+			printf("%s\n", comment);
+			break;
+		}
+	}
+	fflush(stdout);
+	suggestioncount += found;
+}

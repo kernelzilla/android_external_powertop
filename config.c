@@ -30,11 +30,11 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+#include "powertop.h"
+
 /* static arrays are not nice programming.. but they're easy */
 static char configlines[5000][100];
 static int configcount;
-
-extern int suggestioncount;
 
 static void read_kernel_config(void)
 {

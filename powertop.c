@@ -35,7 +35,6 @@
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
 
-void suggest_kernel_config(char *string, int onoff, char *comment);
 
 int ticktime = 5;
 
@@ -494,6 +493,10 @@ int main(int argc, char **argv)
 
 		printf("\n");
 		suggestioncount = 0;
+		suggest_process_death("beagled : schedule_timeout", lines, min(linehead,20), 
+				      "Suggestion: Disable or remove 'beagle' from your system. \n"
+				      "Beagle is the program that indexes for easy desktop search, however it's \n"
+				      "not very efficient and costs a significant amount of battery life.");
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				      "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power.");
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
