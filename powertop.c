@@ -473,7 +473,9 @@ int main(int argc, char **argv)
 			printf("\nTop causes for wakeups:\n");
 			for (i = 0; i < linehead; i++)
 				if (lines[i].count > 0 && counter++ < 10)
-					printf(" %5.1f%%    %s \n", lines[i].count * 100.0 / linectotal, lines[i].string);
+					printf(" %5.1f%% (%4.1f)   %s \n", lines[i].count * 100.0 / linectotal,
+							lines[i].count * 1.0 / ticktime, 
+							lines[i].string);
 			fflush(stdout);
 		} else {
 			if (getuid() == 0)

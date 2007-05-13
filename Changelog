@@ -12,6 +12,7 @@
 	* Make a better effort at locating the kernel .config file
 	* Don't show "please turn CONFIG_FOO off" if the kernel you have
 	  doesn't even support CONFIG_FOO (yet)
+	* Show absolute per-second wakeup counts too (multiple requestors)
 	
 
 1.0 -- May 11th, 2007
