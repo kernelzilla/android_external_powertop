@@ -1,0 +1,18 @@
+1.1 --
+	* Fix bug that shows "you don't have C-states" on mobile CPUs when 
+	  the cpu is 100% busy as reported by Friedrich
+	* Cosmetic code cleanups (Lindent) as suggested by David Brownell
+	* Get rid of popen() and the static sized events array 
+	  (Keith Packard)
+	* Add some more tips for kernel config options based on various
+	  reports/feedback
+	* Improve "you are not root so can't get timerstats" message to say 
+	  that you need to be root rather than that you need to change your
+	  kernel config
+	* Make a better effort at locating the kernel .config file
+	* Don't show "please turn CONFIG_FOO off" if the kernel you have
+	  doesn't even support CONFIG_FOO (yet)
+	
+
+1.0 -- May 11th, 2007
+	* Initial Release
