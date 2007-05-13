@@ -340,7 +340,7 @@ int main(int argc, char **argv)
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
-	printf("PowerTOP 1.0    (C) 2007 Intel Corporation \n\n");
+	printf("PowerTOP 1.1    (C) 2007 Intel Corporation \n\n");
 	if (getuid() != 0)
 		printf("PowerTOP needs to be run as root to collect enough information\n");
 	printf("Collecting data for %i seconds \n", ticktime);
@@ -366,7 +366,7 @@ int main(int argc, char **argv)
 				totalevents += cur_usage[i] - last_usage[i];
 			}
 
-		printf("\33[H\33[J\33[47m\33[30m    PowerTOP version 1.0       (C) 2007 Intel Corporation                       \n");
+		printf("\33[H\33[J\33[47m\33[30m    PowerTOP version 1.1       (C) 2007 Intel Corporation                       \n");
 		normal();
 		printf("\n");
 		if (totalevents == 0) {
@@ -496,17 +496,15 @@ int main(int argc, char **argv)
 		suggestioncount = 0;
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				      "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power.");
+		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
+				      "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
+				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed.");
 		suggest_kernel_config("CONFIG_NO_HZ", 1, "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU.");
 		suggest_kernel_config("CONFIG_HPET", 1,
 				      "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks.");
-		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
-				      "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
-				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed.");
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
 				      "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed.");
-		suggest_kernel_config("CONFIG_ACPI_DEBUG", 0,
-				      "Suggestion: Disable the CONFIG_ACPI_DEBUG kernel configuration option.\n" "ACPI debug can make the bios wake you up a lot more than needed.");
 
 		sleep(3);	/* quiet down the effects of any IO to xterms */
 
