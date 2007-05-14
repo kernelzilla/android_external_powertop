@@ -1,5 +1,7 @@
 1.2 --
 	* Manpage contributed by Carlo Segre from the Debian project
+	* Fix "shows power usage even on AC" bug, spotted by Steinar
+ 	  Gunderson
 
 1.1 -- May 13th, 2007
 	* Fix bug that shows "you don't have C-states" on mobile CPUs when 

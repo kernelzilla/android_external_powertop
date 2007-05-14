@@ -288,6 +288,7 @@ void print_battery(void)
 		return;
 
 	while ((dirent = readdir(dir))) {
+		int dontcount = 0;
 		sprintf(filename, "/proc/acpi/battery/%s/state", dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
@@ -295,7 +296,6 @@ void print_battery(void)
 		while (!feof(file)) {
 			char line[1024];
 			char *c;
-			int dontcount = 0;
 			fgets(line, 1024, file);
 			if (strstr(line, "present:") && strstr(line, "no"))
 				break;
