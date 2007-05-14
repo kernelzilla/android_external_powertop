@@ -475,9 +475,11 @@ int main(int argc, char **argv)
 							lines[i].string);
 			fflush(stdout);
 		} else {
-			if (getuid() == 0)
+			if (getuid() == 0) {
 				printf("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n");
-			else
+				printf("This option is located in the Kernel Debugging section of menuconfig\n");
+				printf("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n");
+			} else
 				printf("No detailed statistics available; PowerTOP needs root privileges for that\n");
 		}
 		if (maxsleep < 5.0)

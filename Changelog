@@ -1,4 +1,7 @@
-1.1 --
+1.2 --
+	* Manpage contributed by Carlo Segre from the Debian project
+
+1.1 -- May 13th, 2007
 	* Fix bug that shows "you don't have C-states" on mobile CPUs when 
 	  the cpu is 100% busy as reported by Friedrich
 	* Cosmetic code cleanups (Lindent) as suggested by David Brownell
