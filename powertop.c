@@ -316,16 +316,16 @@ void print_battery(void)
 				voltage = strtoull(c, NULL, 10) / 1000.0;
 		
 			if (strstr(line, "remaining capacity") && strstr(c, "mW"))
-				watts_left = strtoull(c, NULL, 10);
+				watts_left = strtoull(c, NULL, 10) / 1000.0;
 
 			if (strstr(line, "remaining capacity") && strstr(c, "mAh"))
-				amperes_left = strtoull(c, NULL, 10);
+				amperes_left = strtoull(c, NULL, 10) / 1000.0; 
 
 			if (strstr(line, "present rate") && strstr(c, "mW"))
-				watts_drawn = strtoull(c, NULL, 10);
+				watts_drawn = strtoull(c, NULL, 10) / 1000.0 ;
 
 			if (strstr(line, "present rate") && strstr(c, "mA"))
-				amperes_drawn = strtoull(c, NULL, 10);
+				amperes_drawn = strtoull(c, NULL, 10) / 1000.0;
 
 		}
 		fclose(file);
@@ -338,7 +338,7 @@ void print_battery(void)
 	}
 	closedir(dir);
 	if (rate > 0)
-		printf("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n", rate / 1000.0, cap * 1.0 / rate);
+		printf("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n", rate, cap * 1.0 / rate);
 }
 
 int main(int argc, char **argv)
