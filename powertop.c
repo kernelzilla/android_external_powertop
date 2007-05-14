@@ -278,8 +278,8 @@ void print_battery(void)
 	DIR *dir;
 	struct dirent *dirent;
 	FILE *file;
-	unsigned long rate = 0;
-	unsigned long cap = 0;
+	double rate = 0;
+	double cap = 0;
 
 	char filename[256];
 
@@ -289,34 +289,52 @@ void print_battery(void)
 
 	while ((dirent = readdir(dir))) {
 		int dontcount = 0;
+		double voltage = 0.0;
+		double amperes_drawn = 0.0;
+		double watts_drawn = 0.0;
+		double amperes_left = 0.0;
+		double watts_left = 0.0;
 		sprintf(filename, "/proc/acpi/battery/%s/state", dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
 			continue;
-		while (!feof(file)) {
-			char line[1024];
+		char line[1024];
+		while (fgets(line, 1024, file) != NULL) {
 			char *c;
-			fgets(line, 1024, file);
 			if (strstr(line, "present:") && strstr(line, "no"))
 				break;
 
 			if (strstr(line, "charging state:")
 			    && !strstr(line, "discharging"))
 				dontcount = 1;
-			if (!strstr(line, "present rate")
-			    && !strstr(line, "remaining capacity"))
-				continue;
 			c = strchr(line, ':');
 			if (!c)
 				continue;
 			c++;
-			if (strstr(line, "capaci"))
-				cap += strtoull(c, NULL, 10);
-			else if (!dontcount)
-				rate += strtoull(c, NULL, 10);
+
+			if (strstr(line, "present voltage")) 
+				voltage = strtoull(c, NULL, 10) / 1000.0;
+		
+			if (strstr(line, "remaining capacity") && strstr(c, "mW"))
+				watts_left = strtoull(c, NULL, 10);
+
+			if (strstr(line, "remaining capacity") && strstr(c, "mAh"))
+				amperes_left = strtoull(c, NULL, 10);
+
+			if (strstr(line, "present rate") && strstr(c, "mW"))
+				watts_drawn = strtoull(c, NULL, 10);
+
+			if (strstr(line, "present rate") && strstr(c, "mA"))
+				amperes_drawn = strtoull(c, NULL, 10);
 
 		}
 		fclose(file);
+	
+		if (!dontcount) {
+			rate += watts_drawn + voltage * amperes_drawn;
+		}
+		cap += watts_left + voltage * amperes_left;
+
 	}
 	closedir(dir);
 	if (rate > 0)
