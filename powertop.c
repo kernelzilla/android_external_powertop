@@ -161,8 +161,8 @@ static void do_proc_irq(void)
 		name = c;
 		delta = update_irq(nr, count, name);
 		c = strchr(name, '\n');
-		if (strlen(name) > 50)
-			name[50] = 0;
+		if (strlen(name) > 60)
+			name[60] = 0;
 		if (c)
 			*c = 0;
 		sprintf(line, "    <interrupt> : %s", name);
@@ -443,6 +443,8 @@ int main(int argc, char **argv)
 				*c = 0;
 			cnt = strtoull(count, NULL, 10);
 			sprintf(line, "%15s : %s", process, func);
+			if (strlen(line)>60)
+				line[60]=0;
 			push_line(line, cnt);
 		}
 		if (file)
