@@ -153,9 +153,13 @@ static void do_proc_irq(void)
 			c = newc;
 		}
 		c = strchr(c, ' ');
+		if (!c) 
+			continue;
 		while (c && *c == ' ')
 			c++;
 		c = strchr(c, ' ');
+		if (!c) 
+			continue;
 		while (c && *c == ' ')
 			c++;
 		name = c;
