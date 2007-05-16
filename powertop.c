@@ -525,6 +525,10 @@ int main(int argc, char **argv)
 				      "not very efficient and costs a significant amount of battery life.");
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				      "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power.");
+		suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
+				      "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
+				      "This option will automatically power down your sound codec when not in use,\n"
+				      "and can save approximately half a Watt of power.");
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				      "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed.");
