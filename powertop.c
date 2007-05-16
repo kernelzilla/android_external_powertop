@@ -135,7 +135,8 @@ static void do_proc_irq(void)
 		int nr = -1;
 		uint64_t count = 0;
 		memset(line, 0, sizeof(line));
-		fgets(line, 1024, file);
+		if (fgets(line, 1024, file) == NULL)
+			break;
 		c = strchr(line, ':');
 		if (!c)
 			continue;
@@ -203,7 +204,8 @@ static void read_data(uint64_t * usage, uint64_t * duration)
 
 		while (!feof(file)) {
 			memset(line, 0, 4096);
-			fgets(line, 4096, file);
+			if (fgets(line, 4096, file) == NULL)
+				break;
 			c = strstr(line, "age[");
 			if (!c)
 				continue;
@@ -259,6 +261,10 @@ void yellow(void)
 void red(void)
 {
 	printf("\33[41m\33[1m");
+}
+void bold(void)
+{
+	printf("\33[1m");
 }
 void normal(void)
 {
@@ -428,7 +434,8 @@ int main(int argc, char **argv)
 		while (file && !feof(file)) {
 			char *count, *pid, *process, *func;
 			int cnt;
-			fgets(line, 1024, file);
+			if (fgets(line, 1024, file) == NULL)
+				break;
 			if (strstr(line, "total events"))
 				break;
 			c = count = &line[0];
@@ -497,11 +504,15 @@ int main(int argc, char **argv)
 			sort_lines();
 			printf("\nTop causes for wakeups:\n");
 			for (i = 0; i < linehead; i++)
-				if (lines[i].count > 0 && counter++ < 10)
+				if (lines[i].count > 0 && counter++ < 10) {
+					if ((lines[i].count * 1.0 / ticktime) >= 10.0)
+						bold();
+					else
+						normal();
 					printf(" %5.1f%% (%4.1f)   %s \n", lines[i].count * 100.0 / linectotal,
 							lines[i].count * 1.0 / ticktime, 
 							lines[i].string);
-			fflush(stdout);
+					}
 		} else {
 			if (getuid() == 0) {
 				printf("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n");
@@ -510,6 +521,7 @@ int main(int argc, char **argv)
 			} else
 				printf("No detailed statistics available; PowerTOP needs root privileges for that\n");
 		}
+		normal();
 		if (maxsleep < 5.0)
 			ticktime = 5;
 		else if (maxsleep < 30.0)
@@ -543,6 +555,7 @@ int main(int argc, char **argv)
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
 				      "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed.");
 
+		fflush(stdout);
 		sleep(3);	/* quiet down the effects of any IO to xterms */
 
 		read_data(&cur_usage[0], &cur_duration[0]);

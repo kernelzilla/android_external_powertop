@@ -47,7 +47,8 @@ static void read_kernel_config(void)
 		file = popen("zcat /proc/config.gz", "r");
 		while (file && !feof(file)) {
 			char line[100];
-			fgets(line, 100, file);
+			if (fgets(line, 100, file) == NULL)
+				break;
 			strcpy(configlines[configcount++], line);
 		}
 		pclose(file);
@@ -56,7 +57,10 @@ static void read_kernel_config(void)
 	file = fopen("/proc/sys/kernel/osrelease", "r");
 	if (!file)
 		return;
-	fgets(version, 100, file);
+	if (fgets(version, 100, file) == NULL) {
+		fclose(file);
+		return;
+	}
 	fclose(file);
 	c = strchr(version, '\n');
 	if (c)
@@ -71,7 +75,8 @@ static void read_kernel_config(void)
 		return;
 	while (!feof(file)) {
 		char line[100];
-		fgets(line, 100, file);
+		if (fgets(line, 100, file) == NULL)
+			break;
 		strcpy(configlines[configcount++], line);
 	}
 	fclose(file);
