@@ -298,6 +298,10 @@ void print_battery(void)
 		double watts_drawn = 0.0;
 		double amperes_left = 0.0;
 		double watts_left = 0.0;
+
+		if (strlen(dirent->d_name) < 3)
+			continue;
+
 		sprintf(filename, "/proc/acpi/battery/%s/state", dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
