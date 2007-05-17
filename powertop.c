@@ -304,6 +304,7 @@ void print_battery(void)
 		double watts_drawn = 0.0;
 		double amperes_left = 0.0;
 		double watts_left = 0.0;
+		char line[1024];
 
 		if (strlen(dirent->d_name) < 3)
 			continue;
@@ -312,7 +313,7 @@ void print_battery(void)
 		file = fopen(filename, "r");
 		if (!file)
 			continue;
-		char line[1024];
+
 		while (fgets(line, 1024, file) != NULL) {
 			char *c;
 			if (strstr(line, "present:") && strstr(line, "no"))
