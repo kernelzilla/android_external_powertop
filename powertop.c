@@ -519,6 +519,7 @@ int main(int argc, char **argv)
 				printf("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n");
 				printf("This option is located in the Kernel Debugging section of menuconfig\n");
 				printf("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n");
+				printf("Note: this is only available in 2.6.21 and later kernels\n");
 			} else
 				printf("No detailed statistics available; PowerTOP needs root privileges for that\n");
 		}
