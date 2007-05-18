@@ -3,6 +3,7 @@
 	* Fix inefficient code for readdir (Vince Pinter)
 	* Highlight the worst offenders in bold (Vince Pinter)
 	* Fix crash when running on 2.4 kernels (Harald Fernengel)
+	* Check fgets() return values (Timom Hoenig @ SuSE)
 
 1.2 -- May 14th, 2007
 	* Manpage contributed by Carlo Segre from the Debian project
