@@ -210,7 +210,7 @@ static void read_data(uint64_t * usage, uint64_t * duration)
 			if (!c)
 				continue;
 			c += 4;
-			usage[clevel] += strtoull(c, NULL, 10);
+			usage[clevel] += 1+strtoull(c, NULL, 10);
 			c = strstr(line, "ation[");
 			if (!c)
 				continue;
