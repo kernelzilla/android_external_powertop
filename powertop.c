@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006, Intel Corporation
+ * Copyright 2007, Intel Corporation
  *
  * This file is part of PowerTOP
  *
