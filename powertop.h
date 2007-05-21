@@ -34,6 +34,7 @@ struct line {
 void suggest_process_death(char *process, struct line *lines, int linecount, char *comment);
 void suggest_kernel_config(char *string, int onoff, char *comment);
 void suggest_laptop_mode(void);
+void suggest_bluetooth_off(void);
 
 extern int suggestioncount;
 

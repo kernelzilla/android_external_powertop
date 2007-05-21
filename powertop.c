@@ -543,6 +543,7 @@ int main(int argc, char **argv)
 				      "Suggestion: Disable or remove 'beagle' from your system. \n"
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
 				      "not very efficient and costs a significant amount of battery life.");
+		suggest_bluetooth_off();
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				      "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed.");

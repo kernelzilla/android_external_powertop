@@ -4,6 +4,8 @@
 	* Highlight the worst offenders in bold (Vince Pinter)
 	* Fix crash when running on 2.4 kernels (Harald Fernengel)
 	* Check fgets() return values (Timom Hoenig @ SuSE)
+	* add suggestion to enable laptop mode (when disabled)
+	* add suggestion to disable bluetooth when unused
 
 1.2 -- May 14th, 2007
 	* Manpage contributed by Carlo Segre from the Debian project
