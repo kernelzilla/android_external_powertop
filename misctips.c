@@ -22,27 +22,37 @@
  * 	Arjan van de Ven <arjan@linux.intel.com>
  */
 
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <sys/types.h>
+#include <dirent.h>
 
-#ifndef __INCLUDE_GUARD_POWERTOP_H_
-#define __INCLUDE_GUARD_POWERTOP_H_
+#include "powertop.h"
 
-struct line {
-	char	*string;
-	int	count;
-};
-
-void suggest_process_death(char *process, struct line *lines, int linecount, char *comment);
-void suggest_kernel_config(char *string, int onoff, char *comment);
-void suggest_laptop_mode(void);
-
-extern int suggestioncount;
-
-/* min definition borrowed from the Linux kernel */
-#define min(x,y) ({ \
-        typeof(x) _x = (x);     \
-        typeof(y) _y = (y);     \
-        (void) (&_x == &_y);            \
-        _x < _y ? _x : _y; })
-
-
-#endif
+void suggest_laptop_mode(void)
+{
+	FILE *file;
+	int i;
+	char buffer[1024];
+	if (suggestioncount > 0)
+		return;
+	file = fopen("/proc/sys/vm/laptop_mode", "r");
+	if (!file)
+		return;
+	memset(buffer, 0, 1024);
+	if (!fgets(buffer, 1023, file)) {
+		fclose(file);
+		return;
+	}
+	i = strtoul(buffer, NULL, 10);
+	if (i<1) {
+		printf( "Suggestion: Enable laptop-mode by executing the following command:\n"
+		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"
+			"and/or putting this command into /etc/rc.local\n");
+		suggestioncount++;
+	}
+	fclose(file);
+}
