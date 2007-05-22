@@ -116,7 +116,7 @@ void suggest_bluetooth_off(void)
 
 	if (thisbytes == previous_bytes) {
 		printf( "Suggestion: Disable the unused bluetooth interface with the following command:\n"
-			"  hciconfig hci0 down \n"
+			"  hciconfig hci0 down ; rmmod hci_usb\n"
 			"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n");
 		suggestioncount++;
 	}
