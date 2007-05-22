@@ -26,6 +26,8 @@
 #ifndef __INCLUDE_GUARD_POWERTOP_H_
 #define __INCLUDE_GUARD_POWERTOP_H_
 
+#include <libintl.h>
+
 struct line {
 	char	*string;
 	int	count;
