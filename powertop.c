@@ -365,7 +365,7 @@ int main(int argc, char **argv)
 	read_data(&start_usage[0], &start_duration[0]);
 
 	setlocale (LC_ALL, "");
-	bindtextdomain ("powertop", "/usr/share/locale/powertop");
+	bindtextdomain ("powertop", "/usr/share/locale");
 	textdomain ("powertop");
 
 	memcpy(last_usage, start_usage, sizeof(last_usage));
