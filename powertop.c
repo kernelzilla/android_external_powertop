@@ -251,28 +251,6 @@ void start_timerstats(void)
 	fclose(file);
 }
 
-void green(void)
-{
-	printf("\33[42m\33[1m");
-}
-void yellow(void)
-{
-	printf("\33[43m\33[1m");
-}
-void red(void)
-{
-	printf("\33[41m\33[1m");
-}
-void bold(void)
-{
-	printf("\33[1m");
-}
-void normal(void)
-{
-	printf("\33[0m");
-	fflush(stdout);
-}
-
 int line_compare (const void *av, const void *bv)
 {
 	const struct line	*a = av, *b = bv;
@@ -520,7 +498,9 @@ int main(int argc, char **argv)
 		else
 			ticktime = 45;
 
-		printf("\n");
+
+		show_suggestion(""); /* clear suggestion area if there's no others */		
+
 		suggestioncount = 0;
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."));
