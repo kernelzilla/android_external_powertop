@@ -98,6 +98,12 @@ void suggest_bluetooth_off(void)
 	if (suggestioncount > 0)
 		return;
 
+	/* first check if /sys/modules/bluetooth exists, if not, don't probe bluetooth because
+	   it would trigger an autoload */
+
+	if (access("/sys/module/bluetooth",F_OK))
+		return;
+
 	fd = socket(AF_BLUETOOTH, SOCK_RAW, BTPROTO_HCI);
 	if (fd < 0)
 		return;
@@ -108,7 +114,8 @@ void suggest_bluetooth_off(void)
 	if (ret < 0)
 		goto out;
 
-	if ( (devinfo.flags & 1) == 0) /* interface down already */
+	if ( (devinfo.flags & 1) == 0 && 
+		access("/sys/module/hci_usb",F_OK)) /* interface down already */
 		goto out;
 
 	thisbytes += devinfo.stat.byte_rx;

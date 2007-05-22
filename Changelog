@@ -1,5 +1,7 @@
 1.4 --
 	* use gettext to allow translation
+	* fix bluethooth-checks-cause-autload-of-bluetooth bug
+
 
 1.3 -- May 21st, 2007
 	* Add suggestion for CONFIG_SND_AC97_POWER_SAVE
