@@ -364,6 +364,10 @@ int main(int argc, char **argv)
 	uint64_t cur_usage[8], cur_duration[8];
 	read_data(&start_usage[0], &start_duration[0]);
 
+	setlocale (LC_ALL, "");
+	bindtextdomain ("powertop", "/usr/share/locale/powertop");
+	textdomain ("powertop");
+
 	memcpy(last_usage, start_usage, sizeof(last_usage));
 	memcpy(last_duration, start_duration, sizeof(last_duration));
 
