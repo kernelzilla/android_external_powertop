@@ -117,8 +117,8 @@ int update_irq(int irq, uint64_t count, char *name)
 	interrupts[firstfree].count = count;
 	interrupts[firstfree].number = irq;
 	strcpy(interrupts[firstfree].description, name);
-	if (strlen(name) > 40)
-		interrupts[firstfree].description[40] = 0;
+	if (strlen(name) > maxwidth)
+		interrupts[firstfree].description[maxwidth] = 0;
 	return count;
 }
 
@@ -167,11 +167,11 @@ static void do_proc_irq(void)
 		name = c;
 		delta = update_irq(nr, count, name);
 		c = strchr(name, '\n');
-		if (strlen(name) > 60)
-			name[60] = 0;
 		if (c)
 			*c = 0;
 		sprintf(line, "    <interrupt> : %s", name);
+		if (strlen(line) > maxwidth)
+			line[maxwidth] = 0;
 		if (nr > 0 && delta > 0)
 			push_line(line, delta);
 	}
@@ -353,13 +353,15 @@ void print_battery(void)
 
 	}
 	closedir(dir);
-	if (rate > 0)
-		printf( _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n"), rate, cap * 1.0 / rate);
+	show_acpi_power_line(rate, cap);
 }
+
+char cstate_lines[6][200];
 
 int main(int argc, char **argv)
 {
 	char line[1024];
+	int ncursesinited=0;
 	FILE *file = NULL;
 	uint64_t cur_usage[8], cur_duration[8];
 	read_data(&start_usage[0], &start_duration[0]);
@@ -380,6 +382,7 @@ int main(int argc, char **argv)
 		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
 	printf(_("Collecting data for %i seconds \n"), ticktime);
 	stop_timerstats();
+
 	while (1) {
 		double maxsleep = 0.0;
 		int64_t totalticks;
@@ -401,27 +404,32 @@ int main(int argc, char **argv)
 				totalevents += cur_usage[i] - last_usage[i];
 			}
 
-		printf("\33[H\33[J\33[47m\33[30m    PowerTOP version 1.3       (C) 2007 Intel Corporation                       \n");
-		normal();
-		printf("\n");
+		if (!ncursesinited) {
+			initialize_curses();  
+			ncursesinited++;
+		}
+		setup_windows();
+		show_title_bar();
+
+		memset(&cstate_lines, 0, sizeof(cstate_lines));
 		if (totalevents == 0) {
 			if (maxcstate <= 1)
-				printf(_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
+				sprintf(cstate_lines[0],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
 			else
-				printf(_("< CPU was 100%% busy; no C-states were entered >\n"));
+				sprintf(cstate_lines[0],_("< CPU was 100%% busy; no C-states were entered >\n"));
 		} else {
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
-			printf(_("Cn\t    Avg residency (%is)\tLong term residency avg\n"), ticktime);
-			printf(_("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
-			for (i = 0; i < 8; i++)
+			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\tLong term residency avg\n"), ticktime);
+			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
+			for (i = 0; i < 4; i++)
 				if (cur_usage[i]) {
 					double sleep;
 					sleep = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
-					printf
-					    (_("C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"),
+					sprintf
+					    (cstate_lines[2+i], _("C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"),
 					     i + 1, sleep,
 					     (cur_duration[i] -
 					      last_duration[i]) * 100 /
@@ -430,6 +438,7 @@ int main(int argc, char **argv)
 						maxsleep = sleep;
 				}
 		}
+		show_cstates();
 		/* now the timer_stats info */
 		memset(line, 0, sizeof(line));
 		clear_lines();
@@ -482,53 +491,24 @@ int main(int argc, char **argv)
 				*c = 0;
 			cnt = strtoull(count, NULL, 10);
 			sprintf(line, "%15s : %s", process, func);
-			if (strlen(line)>60)
-				line[60]=0;
+			if (strlen(line)>maxwidth)
+				line[maxwidth]=0;
 			push_line(line, cnt);
 		}
 		if (file)
 			pclose(file);
-		printf("\n");
-		if (!nostats && totalevents) {
-			int d;
+
+	
+		if (totalevents && ticktime) {
+			double d;
 			d = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
-			printf(_("Wakeups-from-idle per second : "));
-			if (d < 3)
-				green();
-			else if (d < 10)
-				yellow();
-			else
-				red();
-			printf(" %4.1f ", totalevents * 1.0 / ticktime);
-			normal();
-			printf("\n");
+			show_wakeups(d);
 		}
 		print_battery();
 		count_lines();
-		if (!nostats) {
-			int counter = 0;
-			sort_lines();
-			printf(_("\nTop causes for wakeups:\n"));
-			for (i = 0; i < linehead; i++)
-				if (lines[i].count > 0 && counter++ < 10) {
-					if ((lines[i].count * 1.0 / ticktime) >= 10.0)
-						bold();
-					else
-						normal();
-					printf(" %5.1f%% (%4.1f)   %s \n", lines[i].count * 100.0 / linectotal,
-							lines[i].count * 1.0 / ticktime, 
-							lines[i].string);
-					}
-		} else {
-			if (getuid() == 0) {
-				printf(_("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"));
-				printf(_("This option is located in the Kernel Debugging section of menuconfig\n"));
-				printf(_("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"));
-				printf(_("Note: this is only available in 2.6.21 and later kernels\n"));
-			} else
-				printf(_("No detailed statistics available; PowerTOP needs root privileges for that\n"));
-		}
-		normal();
+		sort_lines();
+		show_timerstats(nostats, ticktime);
+
 		if (maxsleep < 5.0)
 			ticktime = 5;
 		else if (maxsleep < 30.0)

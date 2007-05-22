@@ -33,6 +33,11 @@ struct line {
 	int	count;
 };
 
+extern struct line     *lines;  
+extern int             linehead;
+extern int             linesize;
+extern int             linectotal;
+
 void suggest_process_death(char *process, struct line *lines, int linecount, char *comment);
 void suggest_kernel_config(char *string, int onoff, char *comment);
 void suggest_laptop_mode(void);
@@ -40,6 +45,9 @@ void suggest_bluetooth_off(void);
 void suggest_nmi_watchdog(void);
 
 extern int suggestioncount;
+
+extern char cstate_lines[6][200];
+
 
 /* min definition borrowed from the Linux kernel */
 #define min(x,y) ({ \
@@ -50,5 +58,24 @@ extern int suggestioncount;
 
 
 #define _(STRING)    gettext(STRING)
+
+
+#define PT_COLOR_DEFAULT    1
+#define PT_COLOR_HEADER_BAR 2
+#define PT_COLOR_ERROR      3
+#define PT_COLOR_RED        4
+#define PT_COLOR_YELLOW     5
+#define PT_COLOR_GREEN      6
+
+extern int maxwidth;
+
+void show_title_bar(void);
+void setup_windows(void);
+void initialize_curses(void);
+void show_acpi_power_line(double rate, double cap);
+void show_cstates(void);
+void show_wakeups(double d);
+void show_timerstats(int nostats, int ticktime);
+void show_suggestion(char *sug);
 
 #endif

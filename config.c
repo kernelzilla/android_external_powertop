@@ -109,7 +109,7 @@ void suggest_kernel_config(char *string, int onoff, char *comment)
 			found = 1;
 	}
 	if (onoff || found)
-		printf("%s\n", comment);
+		show_suggestion(comment);
 	fflush(stdout);
 	suggestioncount++;
 }
