@@ -55,3 +55,28 @@ void suggest_laptop_mode(void)
 	}
 	fclose(file);
 }
+
+void suggest_nmi_watchdog(void)
+{
+	FILE *file;
+	int i;
+	char buffer[1024];
+	if (suggestioncount > 0)
+		return;
+	file = fopen("/proc/sys/kernel/nmi_watchdog", "r");
+	if (!file)
+		return;
+	memset(buffer, 0, 1024);
+	if (!fgets(buffer, 1023, file)) {
+		fclose(file);
+		return;
+	}
+	i = strtoul(buffer, NULL, 10);
+	if (i!=0) {
+		printf( _("Suggestion: disable the NMI watchdog by executing the following command:\n"
+		 	"   echo 5 > /proc/sys/kernel/nmi_watchdog \n"
+			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"));
+		suggestioncount++;
+	}
+	fclose(file);
+}

@@ -37,6 +37,7 @@ void suggest_process_death(char *process, struct line *lines, int linecount, cha
 void suggest_kernel_config(char *string, int onoff, char *comment);
 void suggest_laptop_mode(void);
 void suggest_bluetooth_off(void);
+void suggest_nmi_watchdog(void);
 
 extern int suggestioncount;
 
