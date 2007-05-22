@@ -1,4 +1,7 @@
-1.3 --
+1.4 --
+	* use gettext to allow translation
+
+1.3 -- May 21st, 2007
 	* Add suggestion for CONFIG_SND_AC97_POWER_SAVE
 	* Fix inefficient code for readdir (Vince Pinter)
 	* Highlight the worst offenders in bold (Vince Pinter)

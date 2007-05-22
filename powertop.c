@@ -29,6 +29,7 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <libintl.h>
 
 #include "powertop.h"
 
@@ -353,7 +354,7 @@ void print_battery(void)
 	}
 	closedir(dir);
 	if (rate > 0)
-		printf("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n", rate, cap * 1.0 / rate);
+		printf( _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n"), rate, cap * 1.0 / rate);
 }
 
 int main(int argc, char **argv)
@@ -370,10 +371,10 @@ int main(int argc, char **argv)
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
-	printf("PowerTOP 1.3    (C) 2007 Intel Corporation \n\n");
+	printf(_("PowerTOP 1.3    (C) 2007 Intel Corporation \n\n"));
 	if (getuid() != 0)
-		printf("PowerTOP needs to be run as root to collect enough information\n");
-	printf("Collecting data for %i seconds \n", ticktime);
+		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
+	printf(_("Collecting data for %i seconds \n"), ticktime);
 	stop_timerstats();
 	while (1) {
 		double maxsleep = 0.0;
@@ -401,22 +402,22 @@ int main(int argc, char **argv)
 		printf("\n");
 		if (totalevents == 0) {
 			if (maxcstate <= 1)
-				printf("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n");
+				printf(_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
 			else
-				printf("< CPU was 100%% busy; no C-states were entered >\n");
+				printf(_("< CPU was 100%% busy; no C-states were entered >\n"));
 		} else {
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
-			printf("Cn\t    Avg residency (%is)\tLong term residency avg\n", ticktime);
-			printf("C0 (cpu running)        (%4.1f%%)\n", c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
+			printf(_("Cn\t    Avg residency (%is)\tLong term residency avg\n"), ticktime);
+			printf(_("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
 			for (i = 0; i < 8; i++)
 				if (cur_usage[i]) {
 					double sleep;
 					sleep = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
 					printf
-					    ("C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n",
+					    (_("C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"),
 					     i + 1, sleep,
 					     (cur_duration[i] -
 					      last_duration[i]) * 100 /
@@ -487,7 +488,7 @@ int main(int argc, char **argv)
 		if (!nostats && totalevents) {
 			int d;
 			d = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
-			printf("Wakeups-from-idle per second : ");
+			printf(_("Wakeups-from-idle per second : "));
 			if (d < 3)
 				green();
 			else if (d < 10)
@@ -503,7 +504,7 @@ int main(int argc, char **argv)
 		if (!nostats) {
 			int counter = 0;
 			sort_lines();
-			printf("\nTop causes for wakeups:\n");
+			printf(_("\nTop causes for wakeups:\n"));
 			for (i = 0; i < linehead; i++)
 				if (lines[i].count > 0 && counter++ < 10) {
 					if ((lines[i].count * 1.0 / ticktime) >= 10.0)
@@ -516,12 +517,12 @@ int main(int argc, char **argv)
 					}
 		} else {
 			if (getuid() == 0) {
-				printf("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n");
-				printf("This option is located in the Kernel Debugging section of menuconfig\n");
-				printf("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n");
-				printf("Note: this is only available in 2.6.21 and later kernels\n");
+				printf(_("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"));
+				printf(_("This option is located in the Kernel Debugging section of menuconfig\n"));
+				printf(_("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"));
+				printf(_("Note: this is only available in 2.6.21 and later kernels\n"));
 			} else
-				printf("No detailed statistics available; PowerTOP needs root privileges for that\n");
+				printf(_("No detailed statistics available; PowerTOP needs root privileges for that\n"));
 		}
 		normal();
 		if (maxsleep < 5.0)
@@ -538,26 +539,26 @@ int main(int argc, char **argv)
 		printf("\n");
 		suggestioncount = 0;
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
-				      "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power.");
+				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."));
 		suggest_process_death("beagled : schedule_timeout", lines, min(linehead,20), 
-				      "Suggestion: Disable or remove 'beagle' from your system. \n"
+				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
-				      "not very efficient and costs a significant amount of battery life.");
+				      "not very efficient and costs a significant amount of battery life."));
 		suggest_bluetooth_off();
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
-				      "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
-				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed.");
-		suggest_kernel_config("CONFIG_NO_HZ", 1, "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU.");
+				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
+				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed."));
+		suggest_kernel_config("CONFIG_NO_HZ", 1, _("Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU."));
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
-				      "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
-				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks.");
+				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
+				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."));
 		suggest_laptop_mode();
 		suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
-				      "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
+				    _("Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 				      "This option will automatically power down your sound codec when not in use,\n"
-				      "and can save approximately half a Watt of power.");
+				      "and can save approximately half a Watt of power."));
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
-				      "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed.");
+				      _("Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."));
 
 		fflush(stdout);
 		sleep(3);	/* quiet down the effects of any IO to xterms */

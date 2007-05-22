@@ -46,4 +46,6 @@ extern int suggestioncount;
         _x < _y ? _x : _y; })
 
 
+#define _(STRING)    gettext(STRING)
+
 #endif
