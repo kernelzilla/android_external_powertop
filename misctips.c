@@ -74,7 +74,7 @@ void suggest_nmi_watchdog(void)
 	i = strtoul(buffer, NULL, 10);
 	if (i!=0) {
 		printf( _("Suggestion: disable the NMI watchdog by executing the following command:\n"
-		 	"   echo 5 > /proc/sys/kernel/nmi_watchdog \n"
+		 	"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"));
 		suggestioncount++;
 	}
