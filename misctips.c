@@ -50,8 +50,7 @@ void suggest_laptop_mode(void)
 	i = strtoul(buffer, NULL, 10);
 	if (i<1) {
 		printf( _("Suggestion: Enable laptop-mode by executing the following command:\n"
-		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"
-			"and/or putting this command into /etc/rc.local\n"));
+		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"));
 		suggestioncount++;
 	}
 	fclose(file);
