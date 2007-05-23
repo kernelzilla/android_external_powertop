@@ -134,8 +134,13 @@ void show_cstates(void)
 	int i;
 	werase(cstate_window);
 
-	for (i=0; i<6; i++)
+	for (i=0; i<6; i++) {
+		if (i == topcstate+1)
+			wattron(cstate_window, A_BOLD);
+		else
+			wattroff(cstate_window, A_BOLD);			
 		mvwprintw(cstate_window, i, 0, "%s", cstate_lines[i]);
+	}
 
 	wrefresh(cstate_window);
 }

@@ -47,7 +47,7 @@ void suggest_nmi_watchdog(void);
 extern int suggestioncount;
 
 extern char cstate_lines[6][200];
-
+extern int topcstate;
 
 /* min definition borrowed from the Linux kernel */
 #define min(x,y) ({ \

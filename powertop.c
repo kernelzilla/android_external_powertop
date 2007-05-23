@@ -43,6 +43,7 @@ int suggestioncount = 0;
 int interrupt_0;
 
 static int maxcstate = 0;
+int topcstate = 0;
 
 #define IRQCOUNT 100
 
@@ -396,6 +397,7 @@ int main(int argc, char **argv)
 		show_title_bar();
 
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
+		topcstate = -4;
 		if (totalevents == 0) {
 			if (maxcstate <= 1)
 				sprintf(cstate_lines[0],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
@@ -409,17 +411,21 @@ int main(int argc, char **argv)
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
 			for (i = 0; i < 4; i++)
 				if (cur_usage[i]) {
-					double sleep;
+					double sleep, percentage;;
 					sleep = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
+					percentage = (cur_duration[i] -
+					      last_duration[i]) * 100 /
+					     (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ);
 					sprintf
 					    (cstate_lines[2+i], _("C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"),
-					     i + 1, sleep,
-					     (cur_duration[i] -
-					      last_duration[i]) * 100 /
-					     (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ), (cur_duration[i] - start_duration[i]) / (cur_usage[i] - start_usage[i] + 0.1) / FREQ);
+					     i + 1, sleep, percentage, 
+						(cur_duration[i] - start_duration[i]) / (cur_usage[i] - start_usage[i] + 0.1) / FREQ);
 					if (maxsleep < sleep)
 						maxsleep = sleep;
+					if (percentage > 50)
+						topcstate = i+1;
+					
 				}
 		}
 		show_cstates();
