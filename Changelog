@@ -1,6 +1,7 @@
 1.4 --
 	* use gettext to allow translation
 	* fix bluethooth-checks-cause-autload-of-bluetooth bug
+	* use ncurses (Sebastian Kuzminsky)
 
 
 1.3 -- May 21st, 2007
