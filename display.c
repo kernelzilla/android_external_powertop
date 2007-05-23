@@ -87,9 +87,9 @@ void setup_windows(void)
 	zap_windows();	
 
 	title_bar_window = subwin(stdscr, 1, maxx, 0, 0);
-	cstate_window = subwin(stdscr, 6, maxx, 2, 0);
+	cstate_window = subwin(stdscr, 7, maxx, 2, 0);
 	wakeup_window = subwin(stdscr, 1, maxx, 9, 0);
-	acpi_power_window = subwin(stdscr, 1, maxx, 10, 0);
+	acpi_power_window = subwin(stdscr, 2, maxx, 10, 0);
 	timerstat_window = subwin(stdscr, maxy-15, maxx, 12, 0);
 	maxtimerstats = maxy-15  -2;
 	maxwidth = maxx - 18;
