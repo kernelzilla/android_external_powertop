@@ -131,8 +131,7 @@ void show_title_bar(void)
 void show_cstates(void) 
 {
 	int i;
-	wattrset(cstate_window, COLOR_PAIR(PT_COLOR_DEFAULT));
-	wbkgd(cstate_window, COLOR_PAIR(PT_COLOR_DEFAULT) );   
+	wattrset(cstate_window, A_NORMAL);
 	werase(cstate_window);
 
 	for (i=0; i<6; i++)
@@ -144,8 +143,7 @@ void show_cstates(void)
 
 void show_acpi_power_line(double rate, double cap)
 {
-	wattrset(acpi_power_window, COLOR_PAIR(PT_COLOR_DEFAULT)| A_NORMAL);
-	wbkgd(acpi_power_window, COLOR_PAIR(PT_COLOR_DEFAULT) | A_NORMAL);   
+	wattrset(acpi_power_window, A_NORMAL);
 	werase(acpi_power_window);
 	if (rate > 0) {
 		mvwprintw(acpi_power_window, 0, 0, "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)", rate, cap/rate);
@@ -157,8 +155,7 @@ void show_acpi_power_line(double rate, double cap)
 
 void show_wakeups(double d)
 {
-	wattrset(wakeup_window, COLOR_PAIR(PT_COLOR_DEFAULT));
-	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_DEFAULT));   
+	wattrset(wakeup_window, A_NORMAL);
 	werase(wakeup_window);
 
 	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));   
@@ -175,8 +172,7 @@ void show_wakeups(double d)
 void show_timerstats(int nostats, int ticktime)
 {
 	int i;
-	wattrset(timerstat_window, COLOR_PAIR(PT_COLOR_DEFAULT));
-	wbkgd(timerstat_window, COLOR_PAIR(PT_COLOR_DEFAULT));   
+	wattrset(timerstat_window, A_NORMAL);
 	werase(timerstat_window);
 
 	if (!nostats) {
@@ -186,9 +182,7 @@ void show_timerstats(int nostats, int ticktime)
 			if (lines[i].count > 0 && counter++ < maxtimerstats) {
 				if ((lines[i].count * 1.0 / ticktime) >= 10.0)
 					wattron(timerstat_window, A_BOLD);
-//					wattrset(timerstat_window, COLOR_PAIR(PT_COLOR_BRIGHT));
 				else
-//					wattrset(timerstat_window, COLOR_PAIR(PT_COLOR_DEFAULT));
 					wattroff(timerstat_window, A_BOLD);
 				mvwprintw(timerstat_window, i+1, 0," %5.1f%% (%4.1f)   %s ", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, 
@@ -210,8 +204,7 @@ void show_timerstats(int nostats, int ticktime)
 
 void show_suggestion(char *sug)
 {
-	wattrset(suggestion_window, COLOR_PAIR(PT_COLOR_DEFAULT));
-	wbkgd(suggestion_window, COLOR_PAIR(PT_COLOR_DEFAULT));   
+	wattrset(suggestion_window, A_NORMAL);
 	werase(suggestion_window);
 	mvwprintw(suggestion_window, 0, 0, "%s", sug);
 	wrefresh(suggestion_window);
