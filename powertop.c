@@ -40,6 +40,7 @@ uint64_t last_usage[8], last_duration[8];
 int ticktime = 5;
 
 int suggestioncount = 0;
+int interrupt_0;
 
 static int maxcstate = 0;
 
@@ -128,6 +129,9 @@ static void do_proc_irq(void)
 	char line[1024];
 	char *name;
 	uint64_t delta;
+	
+	interrupt_0 = 0;
+
 	file = fopen("/proc/interrupts", "r");
 	if (!file)
 		return;
@@ -174,6 +178,8 @@ static void do_proc_irq(void)
 			line[maxwidth] = 0;
 		if (nr > 0 && delta > 0)
 			push_line(line, delta);
+		if (nr==0)
+			interrupt_0 = delta;
 	}
 	fclose(file);
 }
@@ -475,6 +481,13 @@ int main(int argc, char **argv)
 		}
 		if (file)
 			pclose(file);
+
+		if (strstr(line, "total events")) {
+			int d;
+			d = strtoull(line, NULL, 10);
+			if (d>0 && d < interrupt_0)
+				push_line("    <interrupt> : extra timer interrupt", interrupt_0 - d);
+		}
 
 	
 		if (totalevents && ticktime) {
