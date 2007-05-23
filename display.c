@@ -99,23 +99,21 @@ void setup_windows(void)
 void initialize_curses(void) 
 {
 	initscr();
+	start_color();
 	keypad(stdscr, TRUE);	/* enable keyboard mapping */
 	nonl();			/* tell curses not to do NL->CR/NL on output */
 	cbreak();		/* take input chars one at a time, no wait for \n */
 	noecho();		/* dont echo input */
 	curs_set(0);		/* turn off cursor */
-	start_color();
 
 	init_pair(PT_COLOR_DEFAULT, COLOR_WHITE, COLOR_BLACK);
 	init_pair(PT_COLOR_HEADER_BAR, COLOR_BLACK, COLOR_WHITE);
 	init_pair(PT_COLOR_ERROR, COLOR_BLACK, COLOR_RED);
-	init_pair(PT_COLOR_RED, COLOR_BLACK, COLOR_RED);
-	init_pair(PT_COLOR_YELLOW, COLOR_BLACK, COLOR_YELLOW);
-	init_pair(PT_COLOR_GREEN, COLOR_BLACK, COLOR_GREEN);
+	init_pair(PT_COLOR_RED, COLOR_WHITE, COLOR_RED);
+	init_pair(PT_COLOR_YELLOW, COLOR_WHITE, COLOR_YELLOW);
+	init_pair(PT_COLOR_GREEN, COLOR_WHITE, COLOR_GREEN);
 	init_pair(PT_COLOR_BRIGHT, COLOR_WHITE, COLOR_BLACK);
 	
-	bkgd(COLOR_PAIR(PT_COLOR_DEFAULT));
-
 	atexit(cleanup_curses);
 }
 
@@ -134,7 +132,7 @@ void show_cstates(void)
 {
 	int i;
 	wattrset(cstate_window, COLOR_PAIR(PT_COLOR_DEFAULT));
-	wbkgd(cstate_window, COLOR_PAIR(PT_COLOR_DEFAULT));   
+	wbkgd(cstate_window, COLOR_PAIR(PT_COLOR_DEFAULT) );   
 	werase(cstate_window);
 
 	for (i=0; i<6; i++)
@@ -146,8 +144,8 @@ void show_cstates(void)
 
 void show_acpi_power_line(double rate, double cap)
 {
-	wattrset(acpi_power_window, COLOR_PAIR(PT_COLOR_DEFAULT));
-	wbkgd(acpi_power_window, COLOR_PAIR(PT_COLOR_DEFAULT));   
+	wattrset(acpi_power_window, COLOR_PAIR(PT_COLOR_DEFAULT)| A_NORMAL);
+	wbkgd(acpi_power_window, COLOR_PAIR(PT_COLOR_DEFAULT) | A_NORMAL);   
 	werase(acpi_power_window);
 	if (rate > 0) {
 		mvwprintw(acpi_power_window, 0, 0, "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)", rate, cap/rate);
@@ -169,6 +167,7 @@ void show_wakeups(double d)
 	if (d <= 3.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
 		
+	wattron(wakeup_window, A_BOLD);
 	mvwprintw(wakeup_window, 0, 0, "Wakeups-from-idle per second : %4.1f", d);
 	wrefresh(wakeup_window);
 }
@@ -186,9 +185,11 @@ void show_timerstats(int nostats, int ticktime)
 		for (i = 0; i < linehead; i++)
 			if (lines[i].count > 0 && counter++ < maxtimerstats) {
 				if ((lines[i].count * 1.0 / ticktime) >= 10.0)
-					wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_BRIGHT));
+					wattron(timerstat_window, A_BOLD);
+//					wattrset(timerstat_window, COLOR_PAIR(PT_COLOR_BRIGHT));
 				else
-					wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_DEFAULT));
+//					wattrset(timerstat_window, COLOR_PAIR(PT_COLOR_DEFAULT));
+					wattroff(timerstat_window, A_BOLD);
 				mvwprintw(timerstat_window, i+1, 0," %5.1f%% (%4.1f)   %s ", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, 
 						lines[i].string);
