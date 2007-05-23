@@ -104,13 +104,15 @@ void initialize_curses(void)
 	cbreak();		/* take input chars one at a time, no wait for \n */
 	noecho();		/* dont echo input */
 	curs_set(0);		/* turn off cursor */
+	start_color();
 
-	init_pair(PT_COLOR_DEFAULT, COLOR_BLACK, COLOR_WHITE);
+	init_pair(PT_COLOR_DEFAULT, COLOR_WHITE, COLOR_BLACK);
 	init_pair(PT_COLOR_HEADER_BAR, COLOR_BLACK, COLOR_WHITE);
 	init_pair(PT_COLOR_ERROR, COLOR_BLACK, COLOR_RED);
 	init_pair(PT_COLOR_RED, COLOR_BLACK, COLOR_RED);
 	init_pair(PT_COLOR_YELLOW, COLOR_BLACK, COLOR_YELLOW);
 	init_pair(PT_COLOR_GREEN, COLOR_BLACK, COLOR_GREEN);
+	init_pair(PT_COLOR_BRIGHT, COLOR_WHITE, COLOR_BLACK);
 	
 	bkgd(COLOR_PAIR(PT_COLOR_DEFAULT));
 
@@ -160,6 +162,13 @@ void show_wakeups(double d)
 	wattrset(wakeup_window, COLOR_PAIR(PT_COLOR_DEFAULT));
 	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_DEFAULT));   
 	werase(wakeup_window);
+
+	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));   
+	if (d <= 10.0)
+		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));   
+	if (d <= 3.0)
+		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
+		
 	mvwprintw(wakeup_window, 0, 0, "Wakeups-from-idle per second : %4.1f", d);
 	wrefresh(wakeup_window);
 }
@@ -177,7 +186,7 @@ void show_timerstats(int nostats, int ticktime)
 		for (i = 0; i < linehead; i++)
 			if (lines[i].count > 0 && counter++ < maxtimerstats) {
 				if ((lines[i].count * 1.0 / ticktime) >= 10.0)
-					wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
+					wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_BRIGHT));
 				else
 					wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_DEFAULT));
 				mvwprintw(timerstat_window, i+1, 0," %5.1f%% (%4.1f)   %s ", lines[i].count * 100.0 / linectotal,

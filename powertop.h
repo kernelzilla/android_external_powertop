@@ -66,7 +66,7 @@ extern char cstate_lines[6][200];
 #define PT_COLOR_RED        4
 #define PT_COLOR_YELLOW     5
 #define PT_COLOR_GREEN      6
-
+#define PT_COLOR_BRIGHT     7
 extern int maxwidth;
 
 void show_title_bar(void);
