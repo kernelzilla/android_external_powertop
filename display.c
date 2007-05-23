@@ -105,6 +105,7 @@ void initialize_curses(void)
 	cbreak();		/* take input chars one at a time, no wait for \n */
 	noecho();		/* dont echo input */
 	curs_set(0);		/* turn off cursor */
+	use_default_colors();
 
 	init_pair(PT_COLOR_DEFAULT, COLOR_WHITE, COLOR_BLACK);
 	init_pair(PT_COLOR_HEADER_BAR, COLOR_BLACK, COLOR_WHITE);
