@@ -490,7 +490,7 @@ int main(int argc, char **argv)
 
 		if (strstr(line, "total events")) {
 			int d;
-			d = strtoull(line, NULL, 10);
+			d = strtoull(line, NULL, 10) / sysconf(_SC_NPROCESSORS_ONLN);
 			if (d>0 && d < interrupt_0)
 				push_line("    <interrupt> : extra timer interrupt", interrupt_0 - d);
 		}
