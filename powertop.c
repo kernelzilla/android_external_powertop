@@ -537,7 +537,8 @@ int main(int argc, char **argv)
 				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."));
 		suggest_laptop_mode();
-		suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
+		if (access("/sys/module/snd_ac97_codec", F_OK))
+			suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
 				    _("Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 				      "This option will automatically power down your sound codec when not in use,\n"
 				      "and can save approximately half a Watt of power."));
