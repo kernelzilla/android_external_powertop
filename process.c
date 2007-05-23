@@ -42,7 +42,7 @@ void suggest_process_death(char *process, struct line *lines, int linecount, cha
 	for (i = 0; i < linecount; i++) {
 		if (strstr(lines[i].string, process)) {
 			found++;
-			printf("%s\n", comment);
+			show_suggestion(comment);
 			break;
 		}
 	}
