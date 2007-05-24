@@ -526,16 +526,13 @@ int main(int argc, char **argv)
 				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
 				      "not very efficient and costs a significant amount of battery life."), 30);
-		suggest_bluetooth_off();
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
 		suggest_kernel_config("CONFIG_NO_HZ", 1, _("Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU."), 50);
-		suggest_nmi_watchdog();
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
 				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."), 10);
-		suggest_laptop_mode();
 		if (access("/sys/module/snd_ac97_codec", F_OK))
 			suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
 				    _("Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
@@ -543,6 +540,12 @@ int main(int argc, char **argv)
 				      "and can save approximately half a Watt of power."), 20);
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
 				      _("Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."), 3);
+		
+		suggest_bluetooth_off();
+		suggest_nmi_watchdog();
+		suggest_laptop_mode();
+		suggest_hpet();
+
 
 		pick_suggestion();
 

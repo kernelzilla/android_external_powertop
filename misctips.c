@@ -74,3 +74,27 @@ void suggest_nmi_watchdog(void)
 	}
 	fclose(file);
 }
+
+void suggest_hpet(void)
+{
+	FILE *file;
+	char buffer[1024];
+	file = fopen("/proc/timer_list", "r");
+	if (!file)
+		return;
+	memset(buffer, 0, 1024);
+	while (!feof(file)) {
+		if (!fgets(buffer, 1023, file)) {
+			fclose(file);
+			return;
+		}
+		if (strstr(buffer, "Clock Event Device: hpet")) {
+			fclose(file);
+			return;
+		}
+	}
+
+	add_suggestion( _("Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
+		          "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
+			  "have much longer sleep intervals."), 7, 0, NULL);
+}

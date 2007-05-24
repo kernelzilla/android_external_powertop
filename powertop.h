@@ -43,6 +43,8 @@ void suggest_kernel_config(char *string, int onoff, char *comment, int weight);
 void suggest_laptop_mode(void);
 void suggest_bluetooth_off(void);
 void suggest_nmi_watchdog(void);
+void suggest_hpet(void);
+
 
 
 extern char cstate_lines[6][200];
