@@ -31,6 +31,7 @@
 #include <dirent.h>
 #include <libintl.h>
 #include <ctype.h>
+#include <assert.h>
 
 #include "powertop.h"
 
@@ -69,6 +70,8 @@ int		linectotal;
 void push_line(char *string, int count)
 {
 	int i;
+
+	assert(string != NULL);
 	for (i = 0; i < linehead; i++)
 		if (strcmp(string, lines[i].string) == 0) {
 			lines[i].count += count;
