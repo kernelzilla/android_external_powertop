@@ -18,6 +18,10 @@ install: powertop powertop.1.gz
 	mkdir -p ${DESTDIR}${MANDIR}
 	cp powertop.1.gz ${DESTDIR}${MANDIR}
 	@(cd po/ && env LOCALESDIR=$(LOCALESDIR) DESTDIR=$(DESTDIR) $(MAKE) $@)
+	
+retranslate:
+	xgettext -C -s -k_ -o powertop.pot *.c *.h
+		
 
 clean:
 	rm -f *~ powertop powertop.1.gz

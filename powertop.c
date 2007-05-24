@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <libintl.h>
+#include <ctype.h>
 
 #include "powertop.h"
 
@@ -372,12 +373,25 @@ int main(int argc, char **argv)
 		double maxsleep = 0.0;
 		int64_t totalticks;
 		int64_t totalevents;
+		fd_set rfds;
+		struct timeval tv;
+		int key;
+
 		int i = 0;
 		double c0 = 0;
 		char *c;
+
+
+		FD_ZERO(&rfds);
+		FD_SET(0, &rfds);
+		tv.tv_sec = ticktime;
+		tv.tv_usec = 0;
 		do_proc_irq();
 		start_timerstats();
-		sleep(ticktime);
+
+
+		key = select(1, &rfds, NULL, NULL, &tv);
+
 		stop_timerstats();
 		clear_lines();
 		do_proc_irq();
@@ -550,11 +564,23 @@ int main(int argc, char **argv)
 		pick_suggestion();
 
 		fflush(stdout);
-		sleep(3);	/* quiet down the effects of any IO to xterms */
+		if (!key) sleep(3);	/* quiet down the effects of any IO to xterms */
 
 		read_data(&cur_usage[0], &cur_duration[0]);
 		memcpy(last_usage, cur_usage, sizeof(last_usage));
 		memcpy(last_duration, cur_duration, sizeof(last_duration));
+
+		if (key) {
+			char keychar;
+
+			keychar = toupper(fgetc(stdin));
+			if (keychar == 'Q')
+				exit(EXIT_SUCCESS);
+			if (keychar == 'R')
+				ticktime = 3;
+		}
+
+		
 	}
 	return 0;
 }

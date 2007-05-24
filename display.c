@@ -39,6 +39,10 @@ static WINDOW *wakeup_window;
 static WINDOW *acpi_power_window;
 static WINDOW *timerstat_window;
 static WINDOW *suggestion_window;
+static WINDOW *status_bar_window;
+
+
+char status_bar_slots[10][40];
 
 static void cleanup_curses(void) {
 	werase(stdscr);
@@ -72,6 +76,10 @@ static void zap_windows(void)
 		delwin(suggestion_window);
 		suggestion_window = NULL;
 	}
+	if (status_bar_window) {
+		delwin(status_bar_window);
+		status_bar_window = NULL;
+	}
 }
 
 
@@ -90,10 +98,14 @@ void setup_windows(void)
 	cstate_window = subwin(stdscr, 7, maxx, 2, 0);
 	wakeup_window = subwin(stdscr, 1, maxx, 9, 0);
 	acpi_power_window = subwin(stdscr, 2, maxx, 10, 0);
-	timerstat_window = subwin(stdscr, maxy-15, maxx, 12, 0);
-	maxtimerstats = maxy-15  -2;
+	timerstat_window = subwin(stdscr, maxy-16, maxx, 12, 0);
+	maxtimerstats = maxy-16  -2;
 	maxwidth = maxx - 18;
-	suggestion_window = subwin(stdscr, 3, maxx, maxy-3, 0);	
+	suggestion_window = subwin(stdscr, 3, maxx, maxy-4, 0);	
+	status_bar_window = subwin(stdscr, 1, maxx, maxy-1, 0);
+
+	strcpy(status_bar_slots[0], " Q - Quit ");
+	strcpy(status_bar_slots[1], " R - Refresh ");
 }
 
 void initialize_curses(void) 
@@ -120,13 +132,28 @@ void initialize_curses(void)
 
 void show_title_bar(void) 
 {
+	int i;
+	int x;
 	wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
 	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));   
 	werase(title_bar_window);
 
-	mvwprintw(title_bar_window, 0, 0,  "PowerTOP version 1.3       (C) 2007 Intel Corporation");
+	mvwprintw(title_bar_window, 0, 0,  "     PowerTOP version 1.3       (C) 2007 Intel Corporation");
 
 	wrefresh(title_bar_window);
+
+	werase(status_bar_window);
+
+	x = 0;
+	for (i=0; i<10; i++) {
+		if (strlen(status_bar_slots[i])==0)
+			continue;
+		wattron(status_bar_window, A_REVERSE);
+		mvwprintw(status_bar_window, 0, x, status_bar_slots[i]);
+		wattroff(status_bar_window, A_REVERSE);			
+		x+= strlen(status_bar_slots[i])+1;
+	}
+	wrefresh(status_bar_window);
 }
 
 void show_cstates(void) 
