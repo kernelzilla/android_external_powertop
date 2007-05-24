@@ -588,8 +588,10 @@ int main(int argc, char **argv)
 				exit(EXIT_SUCCESS);
 			if (keychar == 'R')
 				ticktime = 3;
-			if (keychar == suggestion_key && suggestion_activate)
+			if (keychar == suggestion_key && suggestion_activate) {
 				suggestion_activate();
+				ticktime = 2;
+			}
 		}
 
 		
