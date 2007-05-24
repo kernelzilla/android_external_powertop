@@ -77,6 +77,9 @@ void add_suggestion(char *text, int weight, char key, char *keystring, suggestio
 {
 	struct suggestion *new;
 
+	if (!text)
+		return;
+
 	new = malloc(sizeof(struct suggestion));
 	if (!new)
 		return;
@@ -112,7 +115,8 @@ void pick_suggestion(void)
 	while (ptr) {
 		running += ptr->weight;
 		if (running > value) {
-			strcpy(status_bar_slots[9],ptr->keystring);
+			if (ptr->keystring)
+				strcpy(status_bar_slots[9],ptr->keystring);
 			suggestion_key = ptr->key;
 			suggestion_activate = ptr->func;
 			show_suggestion(ptr->string);
