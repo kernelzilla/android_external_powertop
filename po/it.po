@@ -29,7 +29,7 @@ msgstr ""
 "Suggerimento: Disabilitare l'interfaccia bluetooth inutilizzata con "
 "il seguente comando:\n"
 "  hciconfig hci0 down \n"
-"Bluetooth è un radiotrasmettitore, quindi consuma energia. E tiene anche impegnata l'USB"
+"Bluetooth è un radiotrasmettitore, quindi consuma energia. E tiene anche impegnata l'USB\n"
 
 #: misctips.c:52
 #, c-format
@@ -185,7 +185,7 @@ msgid ""
 "some housekeeping tasks."
 msgstr ""
 "Suggerimento: Abilitare CONFIG_HPET nel kernel.\n"
-"Senza il supporto per HPET support il kernel deve fare alcune operazioni ogni 20ms\n"
+"Senza il supporto per HPET support il kernel deve fare alcune operazioni ogni 20ms"
 
 #: powertop.c:561
 msgid ""
