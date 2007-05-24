@@ -11,6 +11,8 @@
 	  lack of NO_HZ)
 	* check for HPET being present; if not suggest user to toggle in
    	  BIOS or apply the patch
+	* Some suggestions have become "active", you can press a key to
+	  tune it right away.
 
 
 1.3 -- May 21st, 2007
