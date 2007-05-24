@@ -379,6 +379,8 @@ int main(int argc, char **argv)
 		start_timerstats();
 		sleep(ticktime);
 		stop_timerstats();
+		clear_lines();
+		do_proc_irq();
 		read_data(&cur_usage[0], &cur_duration[0]);
 
 		totalticks = 0;
@@ -431,8 +433,6 @@ int main(int argc, char **argv)
 		show_cstates();
 		/* now the timer_stats info */
 		memset(line, 0, sizeof(line));
-		clear_lines();
-		do_proc_irq();
 		totalticks = 0;
 		if (!nostats)
 			file = fopen("/proc/timer_stats", "r");
