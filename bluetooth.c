@@ -88,6 +88,12 @@ struct hci_dev_info {
 
 static int previous_bytes = -1;
 
+void turn_bluetooth_off(void)
+{
+	system("hciconfig hci0 down");
+	system("rmmod hci_usb");
+}
+
 void suggest_bluetooth_off(void)
 {
 	struct hci_dev_info devinfo;
@@ -121,7 +127,7 @@ void suggest_bluetooth_off(void)
 	if (thisbytes == previous_bytes) {
 		add_suggestion( _("Suggestion: Disable the unused bluetooth interface with the following command:\n"
 			"  hciconfig hci0 down ; rmmod hci_usb\n"
-			"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"), 40, 0, NULL);
+			"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"), 40, 'B' , " B - Turn Bluetooth off ", turn_bluetooth_off);
 	}
 	previous_bytes = thisbytes;
 

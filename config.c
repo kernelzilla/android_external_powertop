@@ -107,6 +107,6 @@ void suggest_kernel_config(char *string, int onoff, char *comment, int weight)
 			found = 1;
 	}
 	if (onoff || found)
-		add_suggestion(comment, weight, 0, NULL);
+		add_suggestion(comment, weight, 0, NULL, NULL);
 	fflush(stdout);
 }

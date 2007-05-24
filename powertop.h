@@ -33,6 +33,8 @@ struct line {
 	int	count;
 };
 
+typedef void (suggestion_func)(void);
+
 extern struct line     *lines;  
 extern int             linehead;
 extern int             linesize;
@@ -49,6 +51,11 @@ void suggest_hpet(void);
 
 extern char cstate_lines[6][200];
 extern int topcstate;
+
+extern char status_bar_slots[10][40];
+extern char suggestion_key;
+extern suggestion_func *suggestion_activate; 
+
 
 /* min definition borrowed from the Linux kernel */
 #define min(x,y) ({ \
@@ -80,7 +87,7 @@ void show_timerstats(int nostats, int ticktime);
 void show_suggestion(char *sug);
 
 void pick_suggestion(void);
-void add_suggestion(char *text, int weight, char key, void *func);
+void add_suggestion(char *text, int weight, char key, char *keystring, suggestion_func *func);
 void reset_suggestions(void);
 
 

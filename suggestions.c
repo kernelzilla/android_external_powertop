@@ -34,6 +34,9 @@
 
 
 
+char suggestion_key;
+suggestion_func *suggestion_activate; 
+
 struct suggestion;
 
 struct suggestion {
@@ -42,7 +45,10 @@ struct suggestion {
 	char *string;
 	int weight;
 
-	char key;	
+	char key;
+	char *keystring;	
+
+	suggestion_func *func;
 };
 
 
@@ -59,6 +65,7 @@ void reset_suggestions(void)
 		struct suggestion *next;
 		next = ptr->next;
 		free(ptr->string);
+		free(ptr->keystring);
 		free(ptr);
 		ptr = next;
 	}
@@ -66,7 +73,7 @@ void reset_suggestions(void)
 	total_weight = 0;
 }
 
-void add_suggestion(char *text, int weight, char key, void *func)
+void add_suggestion(char *text, int weight, char key, char *keystring, suggestion_func *func)
 {
 	struct suggestion *new;
 
@@ -77,7 +84,9 @@ void add_suggestion(char *text, int weight, char key, void *func)
 	new->string = strdup(text);
 	new->weight = weight;
 	new->key = key;
+	new->keystring = strdup(keystring);
 	new->next = suggestions;
+	new->func = func;
 	suggestions = new;
 	total_weight += weight;
 }
@@ -86,6 +95,10 @@ void pick_suggestion(void)
 {
 	int value, running = 0;
 	struct suggestion *ptr;
+
+	strcpy(status_bar_slots[9],"");
+	suggestion_key = 255;
+	suggestion_activate = NULL;
 
 	if (total_weight==0 || suggestions==NULL) {
 		/* zero suggestions */
@@ -98,6 +111,9 @@ void pick_suggestion(void)
 	while (ptr) {
 		running += ptr->weight;
 		if (running > value) {
+			strcpy(status_bar_slots[9],ptr->keystring);
+			suggestion_key = ptr->key;
+			suggestion_activate = ptr->func;
 			show_suggestion(ptr->string);
 			return;
 		}

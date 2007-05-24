@@ -392,6 +392,8 @@ int main(int argc, char **argv)
 
 		key = select(1, &rfds, NULL, NULL, &tv);
 
+		if (key && tv.tv_sec) ticktime = tv.tv_sec;
+
 		stop_timerstats();
 		clear_lines();
 		do_proc_irq();
@@ -562,6 +564,7 @@ int main(int argc, char **argv)
 
 
 		pick_suggestion();
+		show_title_bar();
 
 		fflush(stdout);
 		if (!key) sleep(3);	/* quiet down the effects of any IO to xterms */
@@ -578,6 +581,8 @@ int main(int argc, char **argv)
 				exit(EXIT_SUCCESS);
 			if (keychar == 'R')
 				ticktime = 3;
+			if (keychar == suggestion_key && suggestion_activate)
+				suggestion_activate();
 		}
 
 		

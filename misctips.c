@@ -48,7 +48,7 @@ void suggest_laptop_mode(void)
 	i = strtoul(buffer, NULL, 10);
 	if (i<1) {
 		add_suggestion( _("Suggestion: Enable laptop-mode by executing the following command:\n"
-		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"), 15, 0, NULL);
+		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"), 15, 0, NULL, NULL);
 	}
 	fclose(file);
 }
@@ -70,7 +70,7 @@ void suggest_nmi_watchdog(void)
 	if (i!=0) {
 		add_suggestion( _("Suggestion: disable the NMI watchdog by executing the following command:\n"
 		 	"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
-			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"), 25, 0, NULL);
+			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"), 25, 0, NULL, NULL);
 	}
 	fclose(file);
 }
@@ -96,5 +96,5 @@ void suggest_hpet(void)
 
 	add_suggestion( _("Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
 		          "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
-			  "have much longer sleep intervals."), 7, 0, NULL);
+			  "have much longer sleep intervals."), 7, 0, NULL, NULL);
 }
