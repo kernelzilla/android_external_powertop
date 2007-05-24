@@ -32,6 +32,7 @@
 #include <libintl.h>
 #include <ctype.h>
 #include <assert.h>
+#include <locale.h>
 
 #include "powertop.h"
 
@@ -126,8 +127,6 @@ int update_irq(int irq, uint64_t count, char *name)
 	interrupts[firstfree].count = count;
 	interrupts[firstfree].number = irq;
 	strcpy(interrupts[firstfree].description, name);
-	if (strlen(name) > maxwidth)
-		interrupts[firstfree].description[maxwidth] = 0;
 	return count;
 }
 
@@ -182,8 +181,6 @@ static void do_proc_irq(void)
 		if (c)
 			*c = 0;
 		sprintf(line, "    <interrupt> : %s", name);
-		if (strlen(line) > maxwidth)
-			line[maxwidth] = 0;
 		if (nr > 0 && delta > 0)
 			push_line(line, delta);
 		if (nr==0)
@@ -306,7 +303,7 @@ void print_battery(void)
 		file = fopen(filename, "r");
 		if (!file)
 			continue;
-
+		memset(line, 0, 1024);
 		while (fgets(line, 1024, file) != NULL) {
 			char *c;
 			if (strstr(line, "present:") && strstr(line, "no"))
@@ -462,6 +459,7 @@ int main(int argc, char **argv)
 		while (file && !feof(file)) {
 			char *count, *pid, *process, *func;
 			int cnt;
+			memset(line, 0, 1024);
 			if (fgets(line, 1024, file) == NULL)
 				break;
 			if (strstr(line, "total events"))
@@ -504,8 +502,6 @@ int main(int argc, char **argv)
 				*c = 0;
 			cnt = strtoull(count, NULL, 10);
 			sprintf(line, "%15s : %s", process, func);
-			if (strlen(line)>maxwidth)
-				line[maxwidth]=0;
 			push_line(line, cnt);
 		}
 		if (file)
