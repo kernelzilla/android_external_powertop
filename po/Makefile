@@ -5,7 +5,7 @@ INST= $(SRC:.po=.inst)
 translations: $(OBJ)
 	
 %.mo: %.po
-	-@msgfmt -o $@ -v $<
+	-@msgfmt -o $@  $<
 
 clean:
 	rm -f *.mo
@@ -16,5 +16,5 @@ install: $(OBJ) $(INST)
 
 %.inst: %.mo
 	mkdir -p $(DESTDIR)$(LOCALESDIR)/$*/LC_MESSAGES/
-	cp -f $< $(DESTDIR)$(LOCALESDIR)/$*/LC_MESSAGES/powertop.mo
+	-cp -f $< $(DESTDIR)$(LOCALESDIR)/$*/LC_MESSAGES/powertop.mo
 
