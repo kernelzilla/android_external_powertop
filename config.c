@@ -86,15 +86,13 @@ static void read_kernel_config(void)
  * Suggest the user to turn on/off a kernel config option.
  * "comment" gets displayed if it's not already set to the right value 
  */
-void suggest_kernel_config(char *string, int onoff, char *comment)
+void suggest_kernel_config(char *string, int onoff, char *comment, int weight)
 {
 	int i;
 	char searchon[100];
 	char searchoff[100];
 	int found = 0;
 
-	if (suggestioncount > 0)
-		return;
 	read_kernel_config();
 
 	sprintf(searchon, "%s=", string);
@@ -109,7 +107,6 @@ void suggest_kernel_config(char *string, int onoff, char *comment)
 			found = 1;
 	}
 	if (onoff || found)
-		show_suggestion(comment);
+		add_suggestion(comment, weight, 0, NULL);
 	fflush(stdout);
-	suggestioncount++;
 }

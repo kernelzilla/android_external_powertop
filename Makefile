@@ -5,8 +5,8 @@ WARNFLAGS=-Wall
 CFLAGS?=-O2 -g ${WARNFLAGS}
 CC?=gcc
 
-powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c Makefile powertop.h
-	$(CC) ${CFLAGS}  powertop.c config.c process.c misctips.c bluetooth.c display.c -lncurses -o powertop
+powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c Makefile powertop.h
+	$(CC) ${CFLAGS}  powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c -lncurses -o powertop
 	@(cd po/ && $(MAKE))
 
 powertop.1.gz: powertop.1

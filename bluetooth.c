@@ -95,9 +95,6 @@ void suggest_bluetooth_off(void)
 	int ret;
 	int thisbytes = 0;
 
-	if (suggestioncount > 0)
-		return;
-
 	/* first check if /sys/modules/bluetooth exists, if not, don't probe bluetooth because
 	   it would trigger an autoload */
 
@@ -122,10 +119,9 @@ void suggest_bluetooth_off(void)
 	thisbytes += devinfo.stat.byte_tx;
 
 	if (thisbytes == previous_bytes) {
-		show_suggestion( "Suggestion: Disable the unused bluetooth interface with the following command:\n"
+		add_suggestion( _("Suggestion: Disable the unused bluetooth interface with the following command:\n"
 			"  hciconfig hci0 down ; rmmod hci_usb\n"
-			"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n");
-		suggestioncount++;
+			"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"), 40, 0, NULL);
 	}
 	previous_bytes = thisbytes;
 

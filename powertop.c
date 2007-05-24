@@ -39,7 +39,6 @@ uint64_t last_usage[8], last_duration[8];
 
 int ticktime = 5;
 
-int suggestioncount = 0;
 int interrupt_0;
 
 static int maxcstate = 0;
@@ -359,6 +358,7 @@ int main(int argc, char **argv)
 	memcpy(last_duration, start_duration, sizeof(last_duration));
 
 	do_proc_irq();
+	do_proc_irq();
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
@@ -518,32 +518,33 @@ int main(int argc, char **argv)
 			ticktime = 45;
 
 
-		show_suggestion(""); /* clear suggestion area if there's no others */		
+		reset_suggestions();
 
-		suggestioncount = 0;
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
-				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."));
+				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."), 20);
 		suggest_process_death("beagled : schedule_timeout", lines, min(linehead,20), 
 				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
-				      "not very efficient and costs a significant amount of battery life."));
+				      "not very efficient and costs a significant amount of battery life."), 30);
 		suggest_bluetooth_off();
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
-				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed."));
-		suggest_kernel_config("CONFIG_NO_HZ", 1, _("Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU."));
+				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
+		suggest_kernel_config("CONFIG_NO_HZ", 1, _("Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU."), 50);
 		suggest_nmi_watchdog();
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
 				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
-				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."));
+				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."), 10);
 		suggest_laptop_mode();
 		if (access("/sys/module/snd_ac97_codec", F_OK))
 			suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
 				    _("Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 				      "This option will automatically power down your sound codec when not in use,\n"
-				      "and can save approximately half a Watt of power."));
+				      "and can save approximately half a Watt of power."), 20);
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
-				      _("Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."));
+				      _("Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."), 3);
+
+		pick_suggestion();
 
 		fflush(stdout);
 		sleep(3);	/* quiet down the effects of any IO to xterms */

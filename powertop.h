@@ -38,13 +38,12 @@ extern int             linehead;
 extern int             linesize;
 extern int             linectotal;
 
-void suggest_process_death(char *process, struct line *lines, int linecount, char *comment);
-void suggest_kernel_config(char *string, int onoff, char *comment);
+void suggest_process_death(char *process, struct line *lines, int linecount, char *comment, int weight);
+void suggest_kernel_config(char *string, int onoff, char *comment, int weight);
 void suggest_laptop_mode(void);
 void suggest_bluetooth_off(void);
 void suggest_nmi_watchdog(void);
 
-extern int suggestioncount;
 
 extern char cstate_lines[6][200];
 extern int topcstate;
@@ -77,5 +76,10 @@ void show_cstates(void);
 void show_wakeups(double d);
 void show_timerstats(int nostats, int ticktime);
 void show_suggestion(char *sug);
+
+void pick_suggestion(void);
+void add_suggestion(char *text, int weight, char key, void *func);
+void reset_suggestions(void);
+
 
 #endif
