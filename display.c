@@ -104,8 +104,8 @@ void setup_windows(void)
 	suggestion_window = subwin(stdscr, 3, maxx, maxy-4, 0);	
 	status_bar_window = subwin(stdscr, 1, maxx, maxy-1, 0);
 
-	strcpy(status_bar_slots[0], " Q - Quit ");
-	strcpy(status_bar_slots[1], " R - Refresh ");
+	strcpy(status_bar_slots[0], _(" Q - Quit "));
+	strcpy(status_bar_slots[1], _(" R - Refresh "));
 }
 
 void initialize_curses(void) 
