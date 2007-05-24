@@ -84,7 +84,8 @@ void add_suggestion(char *text, int weight, char key, char *keystring, suggestio
 	new->string = strdup(text);
 	new->weight = weight;
 	new->key = key;
-	new->keystring = strdup(keystring);
+	if (keystring)
+		new->keystring = strdup(keystring);
 	new->next = suggestions;
 	new->func = func;
 	suggestions = new;
