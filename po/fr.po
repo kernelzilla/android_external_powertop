@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-23 18:09+0200\n"
-"PO-Revision-Date: 2007-05-23 18:25+0100\n"
+"POT-Creation-Date: 2007-05-24 10:46+0200\n"
+"PO-Revision-Date: 2007-05-24 12:47+0100\n"
 "Last-Translator: Benjamin Pineau <ben@zouh.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,55 +15,60 @@ msgstr ""
 "X-Poedit-Language: French\n"
 "X-Poedit-Country: FRANCE\n"
 
-#: display.c:192
+#: display.c:197
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(CONFIG_DEBUG_KERNEL=y dans le fichier de configuration)\n"
 
-#: powertop.c:403
+#: powertop.c:405
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
-msgstr "< La CPU Ã©tait occupÃ©e Ã  100%% ; elle n'est entrÃ©e dans aucun C-state >\n"
+msgstr "< La CPU était occupée à 100%% ; elle n'est entrée dans aucun C-state >\n"
 
-#: powertop.c:401
+#: powertop.c:403
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
-msgstr "< Les informations dÃ©taillÃ©es sur les C-states ne sont disponible qu'avec des CPU mobiles (pour ordinateurs portables) >\n"
+msgstr "< Les informations détaillées sur les C-states ne sont disponible qu'avec des CPU mobiles (pour ordinateurs portables) >\n"
 
-#: powertop.c:416
+#: powertop.c:421
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
 msgstr "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
 
-#: powertop.c:409
+#: powertop.c:411
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
-msgstr "C0 (CPU en activitÃ©)  (%4.1f%%)\n"
+msgstr "C0 (CPU en activité)   (%4.1f%%)\n"
 
-#: powertop.c:408
+#: powertop.c:410
 #, c-format
 msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
-msgstr "Cn\t    RÃ©sidence moy (%is)\tRÃ©sidence Ã  long terme moy\n"
+msgstr "Cn\t    Résidence moy (%is)\tRésidence à long terme moy\n"
 
-#: powertop.c:367
+#: powertop.c:368
 #, c-format
 msgid "Collecting data for %i seconds \n"
-msgstr "Collecte des donnÃ©es pendant %i secondes \n"
+msgstr "Collecte des données pendant %i secondes \n"
+
+#: display.c:200
+msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
+msgstr "Les statistiques détaillées ne sont pas disponibles sans les privilèges root\n"
 
 #: display.c:195
-msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
-msgstr "Les statistiques dÃ©taillÃ©es ne sont pas disponibles sans les privilÃšges root\n"
-
-#: display.c:190
 msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
 msgstr ""
-"Les statistiques dÃ©taillÃ©es ne sont pas disponibles ; veuillez activer \n"
+"Les statistiques détaillées ne sont pas disponibles ; veuillez activer \n"
 "l'option de configuration du noyau CONFIG_TIMER_STATS\n"
 
-#: display.c:193
+#: display.c:198
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
-msgstr "Note : ceci n'est disponible qu'avec les noyaux 2.6.21 et ultÃ©rieurs\n"
+msgstr "Note : ceci n'est disponible qu'avec les noyaux 2.6.21 et ultérieurs\n"
 
-#: powertop.c:364
+#: display.c:153
+#, c-format
+msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
+msgstr "Consommation électrique (estimation ACPI) : %5.1f W (%3.1f heures restantes)"
+
+#: powertop.c:365
 #, c-format
 msgid ""
 "PowerTOP 1.3    (C) 2007 Intel Corporation \n"
@@ -72,41 +77,41 @@ msgstr ""
 "PowerTOP 1.3    (C) 2007 Intel Corporation \n"
 "\n"
 
-#: powertop.c:366
+#: powertop.c:367
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr "PowerTOP doit Ãªtre lancÃ© en root pour collecter suffisamment d'information\n"
+msgstr "PowerTOP doit être lancé en root pour collecter suffisamment d'information\n"
 
-#: powertop.c:521
+#: powertop.c:527
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
 msgstr ""
-"Suggestion : dÃ©sactivez ou enlevez 'beagle' de votre systÃšme. \n"
+"Suggestion : désactivez ou enlevez 'beagle' de votre système. \n"
 "Beagle est un logiciel qui maintient des indexes pour faciliter la recherche\n"
-"sur le bureau, mais il n'est pas trÃšs efficace et il rÃ©duit significativement\n"
-" la durÃ©e de vie de la batterie."
+"sur le bureau, mais il n'est pas très efficace et il réduit significativement\n"
+" la durée de vie de la batterie."
 
-#: powertop.c:539
+#: powertop.c:546
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
 msgstr ""
-"Suggestion : dÃ©sactivez l'option de configuration du noyau CONFIG_IRQBALANCE.\n"
-"Le rÃ©partiteur d'IRQ du noyau est obsolÃšte et rÃ©veille la CPU beaucoup plus \n"
-"que nÃ©cessaire."
+"Suggestion : désactivez l'option de configuration du noyau CONFIG_IRQBALANCE.\n"
+"Le répartiteur d'IRQ du noyau est obsolète et réveille la CPU beaucoup plus \n"
+"que nécessaire."
 
 #: misctips.c:52
 msgid ""
 "Suggestion: Enable laptop-mode by executing the following command:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 msgstr ""
-"Suggestion : activez le mode ordinateur portable Ã  l'aide de la commande \n"
+"Suggestion : activez le mode ordinateur portable à l'aide de la commande \n"
 "suivante :\n"
 "  echo 5 > /proc/sys/vm/laptop_mode \n"
 
-#: powertop.c:526
+#: powertop.c:532
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n"
@@ -114,28 +119,28 @@ msgid ""
 msgstr ""
 "Suggestion : activez l'option de configuration du noyau \n"
 "CONFIG_CPU_FREQ_GOV_ONDEMAND.\n"
-"La politique CPU 'ondemand' rÃ©duit la consommation Ã©lectrique de la CPU \n"
+"La politique CPU 'ondemand' réduit la consommation électrique de la CPU \n"
 "tout en donnant des performances lorsque c'est utile."
 
-#: powertop.c:531
+#: powertop.c:537
 msgid ""
 "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
 "Suggestion : activez l'option de configuration du noyau CONFIG_HPET.\n"
-"Sans le support HPET le noyau doit se rÃ©veiller toute les 20 milisecondes \n"
+"Sans le support HPET le noyau doit se réveiller toute les 20 milisecondes \n"
 "pour certaines taches de maintenance."
 
-#: powertop.c:528
+#: powertop.c:534
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
 "Suggestion : activez l'option de configuration du noyau CONFIG_NO_HZ.\n"
-"Cette option est nÃ©cessaire pour obtenir de plus longues mises en veille de la CPU."
+"Cette option est nécessaire pour obtenir de plus longues mises en veille de la CPU."
 
-#: powertop.c:535
+#: powertop.c:542
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
@@ -143,18 +148,18 @@ msgid ""
 msgstr ""
 "Suggestion : activez l'option de configuration du noyau \n"
 "CONFIG_SND_AC97_POWER_SAVE.\n"
-"Cette option Ã©teints automatiquement votre codec audio lorsqu'il n'est pas \n"
-"utilisÃ©, et peut permettre d'Ã©conomiser environ un demi Watt."
+"Cette option éteints automatiquement votre codec audio lorsqu'il n'est pas \n"
+"utilisé, et peut permettre d'économiser environ un demi Watt."
 
-#: powertop.c:519
+#: powertop.c:525
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
 "save approximately 1 Watt of power."
 msgstr ""
 "Suggestion : activez l'option de configuration du noyau CONFIG_USB_SUSPEND.\n"
-"Cette option va automatiquement dÃ©sactiver l'UHCI USB lorsqu'il n'est pas utilisÃ©, \n"
-"et peut Ã©conomiser environ 1 Watt."
+"Cette option va automatiquement désactiver l'UHCI USB lorsqu'il n'est pas utilisé, \n"
+"et peut économiser environ 1 Watt."
 
 #: misctips.c:76
 msgid ""
@@ -162,18 +167,27 @@ msgid ""
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 "The NMI watchdog is a kernel debug mechanism to detect deadlocks"
 msgstr ""
-"Suggestion : dÃ©sactivez le NMI watchdog en exÃ©cutant la commande suivante :\n"
+"Suggestion : désactivez le NMI watchdog en exécutant la commande suivante :\n"
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
-"Le NMI watchdog est un mÃ©canisme de dÃ©bogguage du noyau pour dÃ©tecter les \n"
+"Le NMI watchdog est un mécanisme de débogguage du noyau pour détecter les \n"
 "deadlocks"
 
-#: display.c:191
+#: display.c:196
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr "Cette option se trouve dans la section Kernel debugging de menuconfig\n"
 
-#: display.c:177
+#: display.c:182
 msgid "Top causes for wakeups:"
-msgstr "Principales causes de rÃ©veils :"
+msgstr "Principales causes de réveils :"
+
+#: display.c:171
+#, c-format
+msgid "Wakeups-from-idle per second : %4.1f"
+msgstr "Réveils par seconde depuis l'état de repos :  %4.1f"
+
+#: display.c:155
+msgid "no ACPI power usage estimate available"
+msgstr "Pas d'estimations ACPI de la consommation électrique disponible"
 
 #~ msgid ""
 #~ "Suggestion: Disable the unused bluetooth interface with the following "
@@ -182,23 +196,16 @@ msgstr "Principales causes de rÃ©veils :"
 #~ "Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
 #~ "well.\n"
 #~ msgstr ""
-#~ "Suggestion : dÃ©sactivez l'interface bluetooth non utilisÃ©e avec la "
+#~ "Suggestion : désactivez l'interface bluetooth non utilisée avec la "
 #~ "commande \n"
 #~ "suivante :\n"
 #~ "  hciconfig hci0 down \n"
-#~ "Le bluetooth est une radio et consomme beaucoup d'Ã©nergie ; de plus il\n"
-#~ "maintient l'USB occupÃ©.\n"
-#~ msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n"
-#~ msgstr ""
-#~ "Consommation Ã©lectrique (estimation ACPI) : %5.1f W (%3.1f heures "
-#~ "restantes)\n"
+#~ "Le bluetooth est une radio et consomme beaucoup d'énergie ; de plus il\n"
+#~ "maintient l'USB occupé.\n"
 #~ msgid "total events"
-#~ msgstr "total des Ã©vÃšnements"
+#~ msgstr "total des évènements"
 #~ msgid "<kernel module>"
 #~ msgstr "<module du noyau> "
 #~ msgid "<kernel core>"
 #~ msgstr "<coeur du noyau>"
-#~ msgid "Wakeups-from-idle per second : "
-#~ msgstr "RÃ©veils depuis l'Ã©tat de repos par seconde :"
-
 
