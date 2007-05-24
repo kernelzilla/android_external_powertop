@@ -150,9 +150,9 @@ void show_acpi_power_line(double rate, double cap)
 {
 	werase(acpi_power_window);
 	if (rate > 0) {
-		mvwprintw(acpi_power_window, 0, 0, "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)", rate, cap/rate);
+		mvwprintw(acpi_power_window, 0, 0, _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"), rate, cap/rate);
 	} else {
-		mvwprintw(acpi_power_window, 0, 0, "no ACPI power usage estimate available");
+		mvwprintw(acpi_power_window, 0, 0, _("no ACPI power usage estimate available"));
 	}
 	wrefresh(acpi_power_window);
 }
@@ -168,7 +168,7 @@ void show_wakeups(double d)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
 		
 	wattron(wakeup_window, A_BOLD);
-	mvwprintw(wakeup_window, 0, 0, "Wakeups-from-idle per second : %4.1f", d);
+	mvwprintw(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f"), d);
 	wrefresh(wakeup_window);
 }
 
