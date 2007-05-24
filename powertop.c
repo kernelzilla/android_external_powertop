@@ -104,6 +104,10 @@ int update_irq(int irq, uint64_t count, char *name)
 {
 	int i;
 	int firstfree = IRQCOUNT;
+
+	if (!name)
+		return 0;
+
 	for (i = 0; i < IRQCOUNT; i++) {
 		if (interrupts[i].active && interrupts[i].number == irq) {
 			uint64_t oldcount;

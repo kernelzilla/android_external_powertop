@@ -1,7 +1,7 @@
 BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
 MANDIR=/usr/share/man/man1
-WARNFLAGS=-Wall
+WARNFLAGS=-Wall 
 CFLAGS?=-O2 -g ${WARNFLAGS}
 CC?=gcc
 
