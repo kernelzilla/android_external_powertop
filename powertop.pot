@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-24 12:51-0700\n"
+"POT-Creation-Date: 2007-05-24 14:24-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,88 +16,108 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: display.c:211
+#: bluetooth.c:130
+msgid " B - Turn Bluetooth off "
+msgstr ""
+
+#: misctips.c:61
+msgid " L - enable Laptop mode "
+msgstr ""
+
+#: misctips.c:92
+msgid " N - Turn NMI watchdog off "
+msgstr ""
+
+#: display.c:107
+msgid " Q - Quit "
+msgstr ""
+
+#: display.c:108
+msgid " R - Refresh "
+msgstr ""
+
+#: display.c:224
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr ""
 
-#: powertop.c:407
+#: powertop.c:430
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
 msgstr ""
 
-#: powertop.c:405
+#: powertop.c:428
 #, c-format
 msgid ""
 "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
 msgstr ""
 
-#: powertop.c:423
+#: powertop.c:446
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
 msgstr ""
 
-#: powertop.c:413
+#: powertop.c:436
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr ""
 
-#: powertop.c:412
+#: powertop.c:435
 #, c-format
 msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
 msgstr ""
 
-#: powertop.c:368
+#: powertop.c:376
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr ""
 
-#: display.c:214
+#: display.c:227
 msgid ""
 "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr ""
 
-#: display.c:209
+#: display.c:222
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
 msgstr ""
 
-#: display.c:212
+#: display.c:225
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr ""
 
-#: display.c:167
+#: display.c:180
 #, c-format
 msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
 msgstr ""
 
-#: powertop.c:365
+#: powertop.c:373
 #, c-format
 msgid ""
 "PowerTOP 1.3    (C) 2007 Intel Corporation \n"
 "\n"
 msgstr ""
 
-#: powertop.c:367
+#: powertop.c:375
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr ""
 
-#: powertop.c:526
+#: powertop.c:549
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
 msgstr ""
 
-#: powertop.c:542
+#: powertop.c:565
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
 "needed."
 msgstr ""
 
-#: bluetooth.c:122
+#: bluetooth.c:128
 msgid ""
 "Suggestion: Disable the unused bluetooth interface with the following "
 "command:\n"
@@ -106,13 +126,13 @@ msgid ""
 "well.\n"
 msgstr ""
 
-#: misctips.c:50
+#: misctips.c:60
 msgid ""
 "Suggestion: Enable laptop-mode by executing the following command:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 msgstr ""
 
-#: powertop.c:530
+#: powertop.c:553
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -120,20 +140,20 @@ msgid ""
 "giving you performance when it is needed."
 msgstr ""
 
-#: powertop.c:534
+#: powertop.c:557
 msgid ""
 "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
 
-#: powertop.c:532
+#: powertop.c:555
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
 
-#: powertop.c:538
+#: powertop.c:561
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -141,40 +161,40 @@ msgid ""
 "and can save approximately half a Watt of power."
 msgstr ""
 
-#: powertop.c:524
+#: powertop.c:547
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
 "save approximately 1 Watt of power."
 msgstr ""
 
-#: misctips.c:71
+#: misctips.c:90
 msgid ""
 "Suggestion: disable the NMI watchdog by executing the following command:\n"
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 "The NMI watchdog is a kernel debug mechanism to detect deadlocks"
 msgstr ""
 
-#: misctips.c:97
+#: misctips.c:116
 msgid ""
 "Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
 "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
 "have much longer sleep intervals."
 msgstr ""
 
-#: display.c:210
+#: display.c:223
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr ""
 
-#: display.c:196
+#: display.c:209
 msgid "Top causes for wakeups:"
 msgstr ""
 
-#: display.c:185
+#: display.c:198
 #, c-format
 msgid "Wakeups-from-idle per second : %4.1f"
 msgstr ""
 
-#: display.c:169
+#: display.c:182
 msgid "no ACPI power usage estimate available"
 msgstr ""
