@@ -9,6 +9,8 @@
 	* Fix the CONFIG_SND_AC97_POWER_SAVE check to only report on ac97 hw
 	* report "hidden but suprious" timer ticks (due to missing hpet or
 	  lack of NO_HZ)
+	* check for HPET being present; if not suggest user to toggle in
+   	  BIOS or apply the patch
 
 
 1.3 -- May 21st, 2007
