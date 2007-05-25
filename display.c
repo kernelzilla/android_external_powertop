@@ -213,7 +213,7 @@ void show_timerstats(int nostats, int ticktime)
 					wattron(timerstat_window, A_BOLD);
 				else
 					wattroff(timerstat_window, A_BOLD);
-				mvwprintw(timerstat_window, i+1, 0," %5.1f%% (%4.1f)   %s ", lines[i].count * 100.0 / linectotal,
+				mvwprintw(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   %s ", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, 
 						lines[i].string);
 				}

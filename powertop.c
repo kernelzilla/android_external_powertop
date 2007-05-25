@@ -491,6 +491,8 @@ int main(int argc, char **argv)
 			func = c;
 			if (strcmp(process, "insmod") == 0)
 				process = "<kernel module>";
+			if (strcmp(process, "modprobe") == 0)
+				process = "<kernel module>";
 			if (strcmp(process, "swapper") == 0)
 				process = "<kernel core>";
 			c = strchr(c, '\n');
