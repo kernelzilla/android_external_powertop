@@ -42,7 +42,7 @@ static int need_wireless_suggest(char *iface)
 	char line[1024];
 	int ret = 0;
 
-	sprintf(line, "/sbin/iwpriv %s get_power", iface);
+	sprintf(line, "/sbin/iwpriv %s get_power 2> /dev/null", iface);
 	file = popen(line, "r");
 	if (!file)
 		return 0;
