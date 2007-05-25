@@ -458,6 +458,7 @@ int main(int argc, char **argv)
 			file = fopen("/proc/timer_stats", "r");
 		while (file && !feof(file)) {
 			char *count, *pid, *process, *func;
+			char line2[1024];
 			int cnt;
 			memset(line, 0, 1024);
 			if (fgets(line, 1024, file) == NULL)
@@ -503,8 +504,8 @@ int main(int argc, char **argv)
 			if (c)
 				*c = 0;
 			cnt = strtoull(count, NULL, 10);
-			sprintf(line, "%15s : %s", process, func);
-			push_line(line, cnt);
+			sprintf(line2, "%15s : %s", process, func);
+			push_line(line2, cnt);
 		}
 		if (file)
 			pclose(file);

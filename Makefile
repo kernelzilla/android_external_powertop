@@ -2,7 +2,7 @@ BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
 MANDIR=/usr/share/man/man1
 WARNFLAGS=-Wall 
-CFLAGS?=-O2 -g ${WARNFLAGS}
+CFLAGS?= -g ${WARNFLAGS}
 CC?=gcc
 
 powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c Makefile powertop.h
