@@ -3,114 +3,97 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: powertop.c:367
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-22 10:14-0700\n"
-"PO-Revision-Date: 2007-05-22 16:10-0700\n"
+"POT-Creation-Date: 2007-05-25 14:37-0700\n"
+"PO-Revision-Date: 2007-05-25 14:52-0700\n"
 "Last-Translator: Inaky Perez-Gonzalez <inaky.perez-gonzalez@intel.com>\n"
 "Language-Team:  Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: bluetooth.c:118
-#, c-format
-msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following "
-"command:\n"
-"  hciconfig hci0 down \n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
-"well.\n"
+#: misctips.c:151
+msgid " A - Turn AC97 powersave on "
+msgstr " A - Activar ahorro de energía en AC97"
+
+#: bluetooth.c:130
+msgid " B - Turn Bluetooth off "
+msgstr " B - Apagar Bluetooth "
+
+#: misctips.c:61
+msgid " L - enable Laptop mode "
+msgstr " L - Encender modo portátil "
+
+#: misctips.c:92
+msgid " N - Turn NMI watchdog off "
+msgstr " N - Apagar el vigilante de NMI "
+
+#: cpufreq.c:118
+msgid " O - enable Ondemand governer "
+msgstr " O - Encender el goverando basado en demanda "
+
+#: display.c:107
+msgid " Q - Quit "
+msgstr " Q - Salir "
+
+#: display.c:108
+msgid " R - Refresh "
+msgstr "R - Redibujar "
+
+#: wireless.c:100
+msgid " W - Enable wireless power saving "
+msgstr " W - Activar el ahorro de energía para red inalámbrica "
+
+#: display.c:224
+msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr ""
-"Sugerencia: desactive el controlador bluetooth que no está siendo utilizado\n"
-"con el siguiente comando:\n"
-"  hciconfig hci0 down\n"
-"Bluetooth es una radio y como tal consume bastante electricidad,\n"
-"además de mantener USB activo.\n"
+"(que corresponde a CONFIG_DEBUG_KERNEL=y en el fichero de configuración)\n"
 
-#: misctips.c:52
-#, c-format
-msgid ""
-"Suggestion: Enable laptop-mode by executing the following command:\n"
-"   echo 5 > /proc/sys/vm/laptop_mode \n"
-"and/or putting this command into /etc/rc.local\n"
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
-#: powertop.c:357
-#, c-format
-msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n"
-msgstr "Uso de electicidad (estimación de ACPI) : %5.1f W (%3.1f horas disponibles)\n"
-
-#: powertop.c:380
-#, c-format
-msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr "PowerTOP necesita ser ejecutado como usuario root para poder recolectar información suficiente.\n"
-
-#: powertop.c:381
-#, c-format
-msgid "Collecting data for %i seconds \n"
-msgstr "Recolectando datos durante %i segundos\n"
-
-#: powertop.c:409
-#, c-format
-msgid ""
-"< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
-msgstr "< La información detallada sobre estados-C está sólo disponible en CPUs Móbiles (portátiles/latops) >\n"
-
-#: powertop.c:411
+#: powertop.c:427
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
 msgstr "< La CPU estuvo ocupada al 100%; no se entró en ningún estado-C >\n"
 
-#: powertop.c:416
+#: powertop.c:425
 #, c-format
-msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
-msgstr "Cn\t    Residencia media (%is)\tResidencia media a largo plazo\n"
+msgid ""
+"< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
+msgstr ""
+"< La información detallada sobre estados-C está sólo disponible en CPUs "
+"Móbiles (portátiles/latops) >\n"
 
-#: powertop.c:417
-#, c-format
-msgid "C0 (cpu running)        (%4.1f%%)\n"
-msgstr "C0 (cpu ejecutando)        (%4.1f%%)\n"
-
-#: powertop.c:424
+#: powertop.c:443
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
 msgstr ""
 
-#: powertop.c:445
-msgid "total events"
-msgstr "eventos totales"
-
-#: powertop.c:473
-msgid "<kernel module>"
-msgstr "<módulo de núcleo>"
-
-#: powertop.c:475
-msgid "<kernel core>"
-msgstr "<núcleo>"
-
-#: powertop.c:495
+#: powertop.c:433
 #, c-format
-msgid "Wakeups-from-idle per second : "
-msgstr "Activaciones-desde-inactivo por segundo : "
+msgid "C0 (cpu running)        (%4.1f%%)\n"
+msgstr "C0 (cpu ejecutando)        (%4.1f%%)\n"
 
-#: powertop.c:511
+#: powertop.c:432
 #, c-format
+msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
+msgstr "Cn\t    Residencia media (%is)\tResidencia media a largo plazo\n"
+
+#: powertop.c:373
+#, c-format
+msgid "Collecting data for %i seconds \n"
+msgstr "Recolectando datos durante %i segundos\n"
+
+#: display.c:227
 msgid ""
-"\n"
-"Top causes for wakeups:\n"
-msgstr "\nCausas principales de activación:\n"
+"No detailed statistics available; PowerTOP needs root privileges for that\n"
+msgstr ""
+"No hay estadísticas detalladas; PowerTOP necesita privilegios de root para "
+"ello\n"
 
-#: powertop.c:524
-#, c-format
+#: display.c:222
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
@@ -118,38 +101,31 @@ msgstr ""
 "No hay estadísticas detalladas; por favor, active la opción del núcleo\n"
 "CONFIG_TIMER_STATS\n"
 
-#: powertop.c:525
-#, c-format
-msgid "This option is located in the Kernel Debugging section of menuconfig\n"
-msgstr "Esta opción se encuentra en la seción Kernel Debugging de menuconfig\n"
-
-#: powertop.c:526
-#, c-format
-msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
-msgstr "(que corresponde a CONFIG_DEBUG_KERNEL=y en el fichero de configuración)\n"
-
-#: powertop.c:527
-#, c-format
+#: display.c:225
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "Nota: sólo disponible en versiones 2.6.21 y posteriores del núcleo\n"
 
-#: powertop.c:529
+#: display.c:180
+#, fuzzy, c-format
+msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
+msgstr ""
+"Uso de electicidad (estimación de ACPI) : %5.1f W (%3.1f horas disponibles)\n"
+
+#: powertop.c:370
 #, c-format
 msgid ""
-"No detailed statistics available; PowerTOP needs root privileges for that\n"
-msgstr "No hay estadísticas detalladas; PowerTOP necesita privilegios de root para ello\n"
-
-#: powertop.c:546
-msgid ""
-"Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
-"This option will automatically disable UHCI USB when not in use, and may\n"
-"save approximately 1 Watt of power."
+"PowerTOP 1.4    (C) 2007 Intel Corporation \n"
+"\n"
 msgstr ""
-"Sugerencia: Active la opción del núcleo CONFIG_USB_SUSPEND. Esta\n"
-"opción desactivará el soporte UHCI de USB cuando no sea usado y puede\n"
-"ahorrar aproximadamente 1 Watio de electricidad."
 
-#: powertop.c:548
+#: powertop.c:372
+#, c-format
+msgid "PowerTOP needs to be run as root to collect enough information\n"
+msgstr ""
+"PowerTOP necesita ser ejecutado como usuario root para poder recolectar "
+"información suficiente.\n"
+
+#: powertop.c:562
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -160,7 +136,43 @@ msgstr ""
 "ficheros en su escritorio, pero no es muy eficiente y tiene un alto\n"
 "coste en términos de consumo eléctrico."
 
-#: powertop.c:553
+#: powertop.c:578
+msgid ""
+"Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
+"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
+"needed."
+msgstr ""
+"Sugerencia: Desactive la opción del núcleo CONFIG_IRQBALANCE.\n"
+"El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
+"CPU más veces de las necesarias."
+
+#: bluetooth.c:128
+#, fuzzy
+msgid ""
+"Suggestion: Disable the unused bluetooth interface with the following "
+"command:\n"
+"  hciconfig hci0 down ; rmmod hci_usb\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
+"well.\n"
+msgstr ""
+"Sugerencia: desactive el controlador bluetooth que no está siendo utilizado\n"
+"con el siguiente comando:\n"
+"  hciconfig hci0 down\n"
+"Bluetooth es una radio y como tal consume bastante electricidad,\n"
+"además de mantener USB activo.\n"
+
+#: misctips.c:60
+#, fuzzy
+msgid ""
+"Suggestion: Enable laptop-mode by executing the following command:\n"
+"   echo 5 > /proc/sys/vm/laptop_mode \n"
+msgstr ""
+"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
+"comando: \n"
+"   echo 5 > /proc/sys/vm/laptop_mode\n"
+"y/o incorpore esta invocación de comando en /etc/rc.local\n"
+
+#: powertop.c:566
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -168,20 +180,11 @@ msgid ""
 "giving you performance when it is needed."
 msgstr ""
 "Sugerencia: Active la opción del núcleo CONFIG_CPU_FREQ_GOV_ONDEMAND.\n"
-"El gobernador de velocidad de CPU 'ondemand' minimiza el uso de\n"
+"El gobernador de velocidad de CPU en demanda minimiza el uso de\n"
 "electricidad de la CPU, proveyendo de capacidad de proceso cuando se\n"
 "necesita."
 
-#: powertop.c:555
-msgid ""
-"Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
-"This option is required to get any kind of longer sleep times in the CPU."
-msgstr ""
-"Sugerencia: Active la opción del núcleo CONFIG_NO_HZ.\n"
-"Esta opción se necesita para poder beneficiarse de periodos de\n"
-"suspensión más largos en la CPU. "
-
-#: powertop.c:557
+#: powertop.c:570
 msgid ""
 "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
@@ -191,7 +194,16 @@ msgstr ""
 "Si no hay soporte HPET, el núcleo necesita activarse cada 20\n"
 "milisegundos para realizar tareas de mantenimiento."
 
-#: powertop.c:561
+#: powertop.c:568
+msgid ""
+"Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
+"This option is required to get any kind of longer sleep times in the CPU."
+msgstr ""
+"Sugerencia: Active la opción del núcleo CONFIG_NO_HZ.\n"
+"Esta opción se necesita para poder beneficiarse de periodos de\n"
+"suspensión más largos en la CPU. "
+
+#: powertop.c:574
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -202,12 +214,98 @@ msgstr ""
 "Esta opción apagará automaticamente el codificador de audio cuando no\n"
 "se necesite, y le ahorrará aproximadamente medio watio de electricidad."
 
-#: powertop.c:565
+#: powertop.c:560
 msgid ""
-"Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
-"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
-"needed."
+"Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
+"This option will automatically disable UHCI USB when not in use, and may\n"
+"save approximately 1 Watt of power."
 msgstr ""
-"Sugerencia: Desactive la opción del núcleo CONFIG_IRQBALANCE.\n"
-"El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
-"CPU más veces de las necesarias."
+"Sugerencia: Active la opción del núcleo CONFIG_USB_SUSPEND. Esta\n"
+"opción desactivará el soporte UHCI de USB cuando no sea usado y puede\n"
+"ahorrar aproximadamente 1 Watio de electricidad."
+
+#: cpufreq.c:116
+msgid ""
+"Suggestion: Enable the ondemand cpu speed governer for all processors via: \n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
+msgstr ""
+"Sugerencia: Active el gobernador de velocidad de CPU en demanda en\n"
+"todos los procesadores ejecutando:\n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
+
+#: wireless.c:97
+#, c-format
+msgid ""
+"Suggestion: Enable wireless power saving mode by executing the following "
+"command:\n"
+"  iwpriv %s set_power 5 \n"
+"This will sacrifice network performance slightly to save power."
+msgstr ""
+"Sugerencia: active el modo de ahorro de energía para redes\n"
+"inalámbricas ejecutando: \n"
+"  iwpriv %s set_power 5 \n"
+"Este modo sacrifica algo de velocidad a favor de ahorro de consumo\n"
+"eléctrico."
+
+#: misctips.c:90
+#, fuzzy
+msgid ""
+"Suggestion: disable the NMI watchdog by executing the following command:\n"
+"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
+"The NMI watchdog is a kernel debug mechanism to detect deadlocks"
+msgstr ""
+"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
+"comando: \n"
+"   echo 5 > /proc/sys/vm/laptop_mode\n"
+"y/o incorpore esta invocación de comando en /etc/rc.local\n"
+
+#: misctips.c:149
+#, fuzzy
+msgid ""
+"Suggestion: enable AC97 powersave mode by executing the following command:\n"
+"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"or by passing power_save=1 as module parameter."
+msgstr ""
+"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
+"comando: \n"
+"   echo 5 > /proc/sys/vm/laptop_mode\n"
+"y/o incorpore esta invocación de comando en /etc/rc.local\n"
+
+#: misctips.c:116
+msgid ""
+"Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
+"the kernel patch to force-enable HPET. HPET support allows Linux to \n"
+"have much longer sleep intervals."
+msgstr ""
+"Sugerencia: active HPET (Temporizador Multimedia) en su BIOS o añada\n"
+"al núcleo los parches que fuerzan la activación de HPET. El soporte de\n"
+"HPET permite a Linux suspenderse durante más tiempo."
+
+#: display.c:223
+msgid "This option is located in the Kernel Debugging section of menuconfig\n"
+msgstr "Esta opción se encuentra en la seción Kernel Debugging de menuconfig\n"
+
+#: display.c:209
+#, fuzzy
+msgid "Top causes for wakeups:"
+msgstr ""
+"\n"
+"Causas principales de activación:\n"
+
+#: display.c:198
+#, fuzzy, c-format
+msgid "Wakeups-from-idle per second : %4.1f"
+msgstr "Activaciones-desde-inactivo por segundo : "
+
+#: display.c:182
+msgid "no ACPI power usage estimate available"
+msgstr "las estimaciones de ACPI sobre el uso de corriente no están disponibles"
+
+#~ msgid "total events"
+#~ msgstr "eventos totales"
+
+#~ msgid "<kernel module>"
+#~ msgstr "<módulo de núcleo>"
+
+#~ msgid "<kernel core>"
+#~ msgstr "<núcleo>"
