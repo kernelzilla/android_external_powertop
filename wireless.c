@@ -85,7 +85,7 @@ void find_wireless_nic(void)
 void activate_wireless_suggestion(void)
 {
 	char line[1024];
-	sprintf(line, "/sbin/iwpriv %s set_power 5", wireless_nic);
+	sprintf(line, "/sbin/iwpriv %s set_power 5 2> /dev/null", wireless_nic);
 	system(line);
 }
 void suggest_wireless_powersave(void)
