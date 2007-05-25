@@ -1,182 +1,282 @@
+# Niklas Laxström <niklas.laxstrom+powertop@gmail.com>, 2007.
 # translation of PowerTOP to Finnish
 # This file is distributed under the same license as the PowerTOP package.
-# Niklas Laxström <niklas.laxstrom+powertop@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-22 10:14-0700\n"
-"PO-Revision-Date: 2007-05-22 21:19+0300\n"
+"POT-Creation-Date: 2007-05-26 00:12+0300\n"
+"PO-Revision-Date: 2007-05-26 00:12+0300\n"
 "Last-Translator: Niklas Laxström <niklas.laxstrom+powertop@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: bluetooth.c:118
-#, c-format
-msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following "
-"command:\n"
-"  hciconfig hci0 down \n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
-"well.\n"
-msgstr ""
-"Ehdotus: Käyttämättömän Bluetooth-liitännän voi poistaa käytöstä seuraavalla komennolla:\n"
-"\thciconfig hci0 down \n"
-"Bluetooth on radiolähetin, joka kuluttaa virtaa.\n"
+#: misctips.c:151
+msgid " A - Turn AC97 powersave on "
+msgstr " A - Aseta AC97-virransäästö päälle "
 
-#: misctips.c:52
-#, c-format
-msgid ""
-"Suggestion: Enable laptop-mode by executing the following command:\n"
-"   echo 5 > /proc/sys/vm/laptop_mode \n"
-"and/or putting this command into /etc/rc.local\n"
-msgstr ""
-"Ehdotus: Ytimen saa laptop-modeen seuraavalla komennolla:\n"
-"\techo 5 > /proc/sys/vm/laptop_mode\n"
-"Sen voi myös laittaa tiedostoon /etc/rc.local.\n"
+#: bluetooth.c:130
+msgid " B - Turn Bluetooth off "
+msgstr " B - Aseta Bluetooth pois päältä "
 
-#: powertop.c:357
-#, c-format
-msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)\n"
-msgstr "Virrankäyttö (ACPI-arvio): %5.1f W (%3.1f tuntia jäljellä)\n"
+#: misctips.c:61
+msgid " L - enable Laptop mode "
+msgstr " L - Aseta Laptop mode "
 
-#: powertop.c:380
-#, c-format
-msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr "PowerTOP ei voi kerätä kaikkia tarpeellisia tietoja ilman pääkäyttäjän oikeuksia\n\n"
+#: misctips.c:92
+msgid " N - Turn NMI watchdog off "
+msgstr " N - Sulje NMI-valvoja "
 
-#: powertop.c:381
-#, c-format
-msgid "Collecting data for %i seconds \n"
-msgstr "Kerätään dataa %i sekunnin ajan\n"
+#: cpufreq.c:118
+msgid " O - enable Ondemand governer "
+msgstr " O - Käytä ondemand-suorituskykyprofiilia "
 
-#: powertop.c:409
-#, c-format
-msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
-msgstr "< Yksityiskohtaisia C-tilatietoja saa vain tietyillä prosessoreilla (yleensä kannettavissa) >\n"
+#: display.c:107
+msgid " Q - Quit "
+msgstr " Q - Poistu "
 
-#: powertop.c:411
+#: display.c:108
+msgid " R - Refresh "
+msgstr " R - Päivitä "
+
+#: wireless.c:100
+msgid " W - Enable wireless power saving "
+msgstr " W - Aseta langaton verkko virransäästötilaan "
+
+#: display.c:224
+msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
+msgstr "(joka on CONFIG_DEBUG_KERNEL=y asetustiedostossa)\n"
+
+#: powertop.c:427
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
-msgstr "< Prosessori oli 100%% käyössä. C-tiloihin ei ollut siirtymiä. >\n"
+msgstr "< Suoritin oli 100%% käytössä. C-tiloja ei käytetty. >\n"
 
-#: powertop.c:416
+#: powertop.c:425
 #, c-format
-msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
-msgstr "C#\t      Keskim. kesto (%is)\t   Pitkän ajan keskiarvo\n"
+msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
+msgstr ""
+"< Yksityiskohtaisia C-tilatietoja saa vain tietyillä suorittimilla (yleensä "
+"kannettavissa) >\n"
 
-#: powertop.c:417
-#, c-format
-msgid "C0 (cpu running)        (%4.1f%%)\n"
-msgstr "C0 (suoritustila)        (%4.1f%%)\n"
-
-#: powertop.c:424
+#: powertop.c:443
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
 msgstr "C%i\t\t%5.1f ms (%4.1f%%)\t\t\t%5.1f ms\n"
 
-#: powertop.c:445
-msgid "total events"
-msgstr ""
-
-#: powertop.c:473
-msgid "<kernel module>"
-msgstr ""
-
-#: powertop.c:475
-msgid "<kernel core>"
-msgstr ""
-
-#: powertop.c:495
+#: powertop.c:433
 #, c-format
-msgid "Wakeups-from-idle per second : "
-msgstr "Virransäästötilasta heräämisiä sekunnissa: "
+msgid "C0 (cpu running)        (%4.1f%%)\n"
+msgstr "C0 (suoritustila)        (%4.1f%%)\n"
 
-#: powertop.c:511
+#: powertop.c:432
 #, c-format
-msgid ""
+msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
+msgstr "C#\t   Keskim. kesto (%is)\t\t   Pitkän ajan keskiarvo\n"
+
+#: powertop.c:373
+#, c-format
+msgid "Collecting data for %i seconds \n"
+msgstr "Kerätään dataa %i sekunnin ajan\n"
+
+#: display.c:227
+msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
+msgstr ""
+"PowerTOP ei voi kerätä kaikkia tarpeellisia tietoja ilman pääkäyttäjän "
+"oikeuksia\n"
 "\n"
-"Top causes for wakeups:\n"
-msgstr ""
-"\n"
-"Suurimmat keskeytysten aiheuttajat:\n"
 
-#: powertop.c:524
-#, c-format
+#: display.c:222
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
-msgstr "Yksityiskohtaisia tietoja ei ole, koska ytimestä puuttuu CONFIG_TIMER_STATS-asetus.\n"
+msgstr ""
+"Yksityiskohtaisia tietoja ei ole, koska ytimestä puuttuu CONFIG_TIMER_STATS-"
+"asetus.\n"
 
-#: powertop.c:525
-#, c-format
-msgid "This option is located in the Kernel Debugging section of menuconfig\n"
-msgstr "Tämä asetus on ”Kernel Debugging” -valikon alla\n"
-
-#: powertop.c:526
-#, c-format
-msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
-msgstr "(joka on CONFIG_DEBUG_KERNEL=y asetustiedostossa)\n"
-
-#: powertop.c:527
-#, c-format
+#: display.c:225
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
-msgstr "Tämä ominaisuus on saatavilla vain ytimen versiosta 2.6.12 eteenpäin.\n"
+msgstr "Tämä ominaisuus on saatavilla vain ytimen versiosta 2.6.21 eteenpäin.\n"
 
-#: powertop.c:529
+#: display.c:180
 #, c-format
-msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
-msgstr "PowerTOP ei voi kerätä kaikkia tarpeellisia tietoja ilman pääkäyttäjän oikeuksia\n\n"
+msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
+msgstr "Virrankäyttö (ACPI-arvio): %5.1f W (%3.1f tuntia jäljellä)"
 
-#: powertop.c:546
+#: powertop.c:370
+#, c-format
 msgid ""
-"Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
-"This option will automatically disable UHCI USB when not in use, and may\n"
-"save approximately 1 Watt of power."
-msgstr "Ehdotus: Käytä ytimen CONFIG_USB_SUSPEND-asetusta. Tämä asetus lopettaa USB:n käytön, kun sitä ei tarvita ja ajureiden niin salliessa. Tällä asetuksella voi säästää yhden watin."
+"PowerTOP 1.4    (C) 2007 Intel Corporation \n"
+"\n"
+msgstr ""
+"PowerTOP 1.4    (C) 2007 Intel Corporation \n"
+"\n"
+
+#: powertop.c:372
+#, c-format
+msgid "PowerTOP needs to be run as root to collect enough information\n"
+msgstr ""
+"PowerTOP ei voi kerätä kaikkia tarpeellisia tietoja ilman pääkäyttäjän "
+"oikeuksia\n"
+"\n"
 
 #: powertop.c:548
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
-msgstr "Ehdotus: Poista beagle käytöstä tai kokonaan. Beagle on ohjelma, joka indeksoi tiedostoja työpöytähakua varten. Se ei kuitenkaan ole kovin tehokas ja aiheuttaa merkittävää virrankulutusta."
+msgstr ""
+"Ehdotus: Poista Beagle käytöstä tai kokonaan. Beagle on ohjelma, joka "
+"indeksoi tiedostoja työpöytähakua varten. Se ei kuitenkaan ole kovin tehokas "
+"ja aiheuttaa merkittävää virrankulutusta."
 
-#: powertop.c:553
+#: powertop.c:564
+msgid ""
+"Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
+"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
+"needed."
+msgstr ""
+"Ehdotus: Poista ytimestä CONFIG_IRQBALANCE-asetus. Ytimen oma IRQ-"
+"tasapainotin on vanhentunut ja aiheuttaa keskeytyksiä useammin kuin "
+"olisi tarpeen."
+
+#: bluetooth.c:128
+msgid ""
+"Suggestion: Disable the unused bluetooth interface with the following "
+"command:\n"
+"  hciconfig hci0 down ; rmmod hci_usb\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
+"well.\n"
+msgstr ""
+"Ehdotus: Käyttämättömän Bluetooth-liitännän voi poistaa käytöstä seuraavalla "
+"komennolla:\n"
+"\thciconfig hci0 down; rmmod hci_usb\n"
+"Bluetooth on radiolähetin, joka kuluttaa virtaa.\n"
+
+#: misctips.c:60
+msgid ""
+"Suggestion: Enable laptop-mode by executing the following command:\n"
+"   echo 5 > /proc/sys/vm/laptop_mode \n"
+msgstr ""
+"Ehdotus: Ytimen saa laptop-modeen seuraavalla komennolla:\n"
+"\techo 5 > /proc/sys/vm/laptop_mode\n"
+
+#: powertop.c:552
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
 "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
-msgstr "Ehdotus: Käytä ytimen CONFIG_CPU_FREQ_GOV_ONDEMAND-asetusta. ”ondemand”-suorituskykyprofiili minimoi prosessorin käytön (ainakin Intelin prosessoreilla) samalla antaen kaiken tehon, kun sitä tarvitaan."
+msgstr ""
+"Ehdotus: Käytä ytimen CONFIG_CPU_FREQ_GOV_ONDEMAND-asetusta. ”ondemand”-"
+"suorituskykyprofiili minimoi suorittimen energiankäytön (ainakin Intelin "
+"suorittimilla) samalla antaen kaiken tehon, kun sitä tarvitaan."
 
-#: powertop.c:555
-msgid ""
-"Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
-"This option is required to get any kind of longer sleep times in the CPU."
-msgstr "Ehdotus: Käytä ytimen CONFIG_NO_HZ-asetusta. Tämä asetus on välttämätön, jotta prosessori voisi viettää pitempiä aikoja virransäästötilassa."
-
-#: powertop.c:557
+#: powertop.c:556
 msgid ""
 "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
 "some housekeeping tasks."
-msgstr "Ehdotus: Käytä ytimen CONFIG_HPET-asetusta. Ilman tätä asetusta ytimen täytyy herätä 20 millisekunnin välein tekemään ylläpitotöitä."
+msgstr ""
+"Ehdotus: Käytä ytimen CONFIG_HPET-asetusta. Ilman tätä asetusta ytimen "
+"täytyy herätä 20 millisekunnin välein tekemään ylläpitotöitä."
 
-#: powertop.c:561
+#: powertop.c:554
+msgid ""
+"Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
+"This option is required to get any kind of longer sleep times in the CPU."
+msgstr ""
+"Ehdotus: Käytä ytimen CONFIG_NO_HZ-asetusta. Tämä asetus on välttämätön, "
+"jotta suoritin voisi viettää pitempiä aikoja virransäästötilassa."
+
+#: powertop.c:560
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
-msgstr "Ehdotus: Käytä ytimen CONFIG_SND_AC97_POWER_SAVE-asetusta. Tämä asetus poistaa äänikoodekin käytöstä, kun sitä ei tarvita. Tämä asetus voi säästää noin puoli wattia energiaa."
+msgstr ""
+"Ehdotus: Käytä ytimen CONFIG_SND_AC97_POWER_SAVE-asetusta. Tämä asetus "
+"poistaa äänikoodekin käytöstä, kun sitä ei tarvita. Tämä asetus voi säästää "
+"noin puoli wattia energiaa."
 
-#: powertop.c:565
+#: powertop.c:546
 msgid ""
-"Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
-"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
-"needed."
-msgstr "Ehdotus: Poista ytimestä CONFIG_IRQBALANCE-asetus. Ytimen oma IRQ-tasapainotin on käytöstä poistettu ja aiheuttaa keskeytyksiä useammin kuin olisi tarpeen."
+"Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
+"This option will automatically disable UHCI USB when not in use, and may\n"
+"save approximately 1 Watt of power."
+msgstr ""
+"Ehdotus: Käytä ytimen CONFIG_USB_SUSPEND-asetusta. Tämä asetus lopettaa USB:"
+"n käytön, kun sitä ei tarvita ja ajureiden niin salliessa. Tällä asetuksella "
+"voi säästää noin yhden watin."
+
+#: cpufreq.c:116
+msgid ""
+"Suggestion: Enable the ondemand cpu speed governer for all processors via: \n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
+msgstr ""
+"Ehdotus: Aseta ondemand-suorituskykyprofiili kaikille suorittimille "
+"komennolla:\n"
+"\techo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor\n"
+
+#: wireless.c:97
+#, c-format
+msgid ""
+"Suggestion: Enable wireless power saving mode by executing the following "
+"command:\n"
+"  iwpriv %s set_power 5 \n"
+"This will sacrifice network performance slightly to save power."
+msgstr ""
+"Ehdotus: Aseta langaton verkko virransäästötilaan seuraavalla komennolla:\n"
+"\tiwpriv %s set_power 5\n"
+"Tämä asetus säästää virtaa suorituskyvyn kustannuksella."
+
+#: misctips.c:90
+msgid ""
+"Suggestion: disable the NMI watchdog by executing the following command:\n"
+"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
+"The NMI watchdog is a kernel debug mechanism to detect deadlocks"
+msgstr ""
+"Ehdotus: Poista NMI-valvoja seuraavalla komennolla:\n"
+"\techo 0 > /proc/sys/kernel/nmi_watchdog \n"
+"NMI-valvoja on ytimen vianjäljitysmekanismi lukkiutumisten havaitsemiseen."
+
+#: misctips.c:149
+msgid ""
+"Suggestion: enable AC97 powersave mode by executing the following command:\n"
+"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"or by passing power_save=1 as module parameter."
+msgstr ""
+"Ehdotus: Ytimen saa laptop-modeen seuraavalla komennolla:\n"
+"\techo 5 > /proc/sys/vm/laptop_mode\n"
+"tai antamalla moduulin parametriksi power_save=1."
+
+#: misctips.c:116
+msgid ""
+"Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
+"the kernel patch to force-enable HPET. HPET support allows Linux to \n"
+"have much longer sleep intervals."
+msgstr ""
+"Ehdotus: Aseta HPET (Multimedia-ajastin) päälle Biosista tai käytä ytimen "
+"paikkaustiedostoa, jolla sen saa pakotettua käyttöön. HPET sallii ytimen "
+"viettää paljon pidempiä aikoja virransäästötilassa."
+
+#: display.c:223
+msgid "This option is located in the Kernel Debugging section of menuconfig\n"
+msgstr "Tämä asetus on ”Kernel Debugging”-valikon alla\n"
+
+#: display.c:209
+msgid "Top causes for wakeups:"
+msgstr "Keskeytysten aiheuttajat:"
+
+#: display.c:198
+#, c-format
+msgid "Wakeups-from-idle per second : %4.1f"
+msgstr "Virransäästötilasta heräämisiä sekunnissa: %4.1f"
+
+#: display.c:182
+msgid "no ACPI power usage estimate available"
+msgstr "ACPI-virrankäyttöarviota ei ole saatavilla."
 
