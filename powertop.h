@@ -46,6 +46,7 @@ void suggest_laptop_mode(void);
 void suggest_bluetooth_off(void);
 void suggest_nmi_watchdog(void);
 void suggest_hpet(void);
+void suggest_ac97_powersave(void);
 
 
 

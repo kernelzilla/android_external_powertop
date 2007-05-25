@@ -567,7 +567,7 @@ int main(int argc, char **argv)
 		suggest_nmi_watchdog();
 		suggest_laptop_mode();
 		suggest_hpet();
-
+		suggest_ac97_powersave();
 
 		pick_suggestion();
 		show_title_bar();
