@@ -58,7 +58,7 @@ void suggest_laptop_mode(void)
 	i = strtoul(buffer, NULL, 10);
 	if (i<1) {
 		add_suggestion( _("Suggestion: Enable laptop-mode by executing the following command:\n"
-		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"), 15, 0, _(" L - enable Laptop mode "), set_laptop_mode);
+		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"), 15, 'L', _(" L - enable Laptop mode "), set_laptop_mode);
 	}
 	fclose(file);
 }
@@ -89,7 +89,7 @@ void suggest_nmi_watchdog(void)
 	if (i!=0) {
 		add_suggestion( _("Suggestion: disable the NMI watchdog by executing the following command:\n"
 		 	"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
-			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"), 25, 0, _(" N - Turn NMI watchdog off "), nmi_watchdog_off);
+			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"), 25, 'N', _(" N - Turn NMI watchdog off "), nmi_watchdog_off);
 	}
 	fclose(file);
 }
