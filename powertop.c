@@ -513,6 +513,8 @@ int main(int argc, char **argv)
 		if (strstr(line, "total events")) {
 			int d;
 			d = strtoull(line, NULL, 10) / sysconf(_SC_NPROCESSORS_ONLN);
+			if (totalevents == 0) /* No c-state info available, use timerstats instead */
+				totalevents = d * sysconf(_SC_NPROCESSORS_ONLN);
 			if (d>0 && d < interrupt_0)
 				push_line("    <interrupt> : extra timer interrupt", interrupt_0 - d);
 		}
