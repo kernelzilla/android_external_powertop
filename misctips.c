@@ -35,7 +35,7 @@
 void set_laptop_mode(void)
 {
 	FILE *file;
-	file = fopen("/proc/sys/vm/laptop_mode", "r");
+	file = fopen("/proc/sys/vm/laptop_mode", "w");
 	if (!file)
 		return;
 	fprintf(file,"5\n");
