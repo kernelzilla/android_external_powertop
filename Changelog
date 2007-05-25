@@ -14,6 +14,7 @@
 	* Some suggestions have become "active", you can press a key to
 	  tune it right away.
 	* Add active suggestion to enable AC97 powersave mode at runtime
+	* Add active suggestion to enable wireless powersave mode at runtime
 
 
 1.3 -- May 21st, 2007
