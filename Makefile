@@ -29,3 +29,6 @@ clean:
 	rm -f *~ powertop powertop.1.gz po/powertop.pot
 	@(cd po/ && $(MAKE) $@)
 
+
+dist:
+	rm -rf .svn po/.svn DEADJOE po/DEADJOE todo.txt Lindent svn-commit.*

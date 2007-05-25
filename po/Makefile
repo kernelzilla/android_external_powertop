@@ -8,7 +8,7 @@ translations: $(OBJ)
 	-@msgfmt -o $@  $<
 
 clean:
-	rm -f *.mo
+	rm -f *.mo *~
 
 # hack to automate installation dynamicaly, without previous knowledge of 
 # the po/mo file list (we fool make by pretending the need for .inst files).
