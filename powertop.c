@@ -539,6 +539,20 @@ int main(int argc, char **argv)
 		else
 			ticktime = 45;
 
+		if (key) {
+			char keychar;
+
+			keychar = toupper(fgetc(stdin));
+			if (keychar == 'Q')
+				exit(EXIT_SUCCESS);
+			if (keychar == 'R')
+				ticktime = 3;
+			if (keychar == suggestion_key && suggestion_activate) {
+				suggestion_activate();
+				ticktime = 2;
+			}
+		}
+
 
 		reset_suggestions();
 
@@ -582,19 +596,6 @@ int main(int argc, char **argv)
 		memcpy(last_usage, cur_usage, sizeof(last_usage));
 		memcpy(last_duration, cur_duration, sizeof(last_duration));
 
-		if (key) {
-			char keychar;
-
-			keychar = toupper(fgetc(stdin));
-			if (keychar == 'Q')
-				exit(EXIT_SUCCESS);
-			if (keychar == 'R')
-				ticktime = 3;
-			if (keychar == suggestion_key && suggestion_activate) {
-				suggestion_activate();
-				ticktime = 2;
-			}
-		}
 
 		
 	}
