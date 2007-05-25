@@ -18,12 +18,14 @@ install: powertop powertop.1.gz
 	mkdir -p ${DESTDIR}${MANDIR}
 	cp powertop.1.gz ${DESTDIR}${MANDIR}
 	@(cd po/ && env LOCALESDIR=$(LOCALESDIR) DESTDIR=$(DESTDIR) $(MAKE) $@)
-	
-retranslate:
-	xgettext -C -s -k_ -o powertop.pot *.c *.h
-		
+
+# This is for translators. To update your po with new strings, do :
+# svn up ; make uptrans LG=fr # or de, ru, hu, it, ...
+uptrans:
+	xgettext -C -s -k_ -o po/powertop.pot *.c *.h
+	@(cd po/ && env LG=$(LG) $(MAKE) $@)
 
 clean:
-	rm -f *~ powertop powertop.1.gz
+	rm -f *~ powertop powertop.1.gz po/powertop.pot
 	@(cd po/ && $(MAKE) $@)
 
