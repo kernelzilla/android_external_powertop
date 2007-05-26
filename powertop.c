@@ -186,7 +186,8 @@ static void do_proc_irq(void)
 			push_line(line, delta);
 		if (nr==0)
 			interrupt_0 = delta;
-		total_interrupt += delta;
+		else
+			total_interrupt += delta;
 	}
 	fclose(file);
 }
