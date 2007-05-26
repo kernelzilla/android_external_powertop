@@ -609,7 +609,7 @@ int main(int argc, char **argv)
 				      "not very efficient and costs a significant amount of battery life."), 30);
 
 		/* suggest to stop gnome-power-manager if it shows up in the top 10 and wakes up more than 10 times in the measurement */
-		suggest_process_death(" gnome-power-man : schedule_timeout (process_timeout)", "gnome-power-manager", lines, min(linehead,10), 10.0,
+		suggest_process_death("gnome-power-man : schedule_timeout (process_timeout)", "gnome-power-manager", lines, min(linehead,10), 10.0,
 				    _("Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 				      "Despite its name, some versions of gnome-power-manager end up costing more power \n"
 				      "than it'll ever save."), 5);
