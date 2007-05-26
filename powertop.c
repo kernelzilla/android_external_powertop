@@ -354,7 +354,7 @@ void print_battery(void)
 			last_bat_time = prev_bat_time = time(NULL);
 			last_bat_cap = prev_bat_cap = cap;
 		}
-		if (time(NULL) - last_bat_time >= 300) {
+		if (time(NULL) - last_bat_time >= 200) {
 			prev_bat_cap = last_bat_cap;
 			prev_bat_time = last_bat_time;
 			last_bat_time = time(NULL);
@@ -363,7 +363,7 @@ void print_battery(void)
 
 	}
 	closedir(dir);
-	show_acpi_power_line(rate, cap, prev_bat_cap - last_bat_cap, last_bat_time - prev_bat_time);
+	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
 }
 
 char cstate_lines[6][200];
