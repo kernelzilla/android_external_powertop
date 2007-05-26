@@ -45,8 +45,6 @@ void suggest_process_death(char *process_match, char *tokill, struct line *lines
 {
 	int i;
 
-	process_to_kill[0] = 0;
-
 	for (i = 0; i < linecount; i++) {
 		if (strstr(lines[i].string, process_match)) {
 			char hotkey_string[300];
