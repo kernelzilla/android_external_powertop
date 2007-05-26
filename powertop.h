@@ -40,7 +40,7 @@ extern int             linehead;
 extern int             linesize;
 extern int             linectotal;
 
-void suggest_process_death(char *process, struct line *lines, int linecount, char *comment, int weight);
+void suggest_process_death(char *process_match, char *process_name, struct line *lines, int linecount, double minwakeups, char *comment, int weight);
 void suggest_kernel_config(char *string, int onoff, char *comment, int weight);
 void suggest_laptop_mode(void);
 void suggest_bluetooth_off(void);

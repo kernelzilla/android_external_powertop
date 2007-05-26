@@ -374,6 +374,8 @@ int main(int argc, char **argv)
 	int ncursesinited=0;
 	FILE *file = NULL;
 	uint64_t cur_usage[8], cur_duration[8];
+	double wakeups_per_second = 0;
+
 	read_data(&start_usage[0], &start_duration[0]);
 
 	setlocale (LC_ALL, "");
@@ -545,9 +547,8 @@ int main(int argc, char **argv)
 
 	
 		if (totalevents && ticktime) {
-			double d;
-			d = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
-			show_wakeups(d);
+			wakeups_per_second = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
+			show_wakeups(wakeups_per_second);
 		}
 		print_battery();
 		count_lines();
@@ -584,10 +585,6 @@ int main(int argc, char **argv)
 
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."), 20);
-		suggest_process_death("beagled : schedule_timeout", lines, min(linehead,20), 
-				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
-				      "Beagle is the program that indexes for easy desktop search, however it's \n"
-				      "not very efficient and costs a significant amount of battery life."), 30);
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 				      "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
@@ -604,6 +601,26 @@ int main(int argc, char **argv)
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
 				      _("Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."), 3);
 		
+
+		/* suggest to stop beagle if it shows up in the top 20 and wakes up more than 10 times in the measurement */
+		suggest_process_death("beagled : schedule_timeout", "beagled", lines, min(linehead,20), 10.0,
+				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
+				      "Beagle is the program that indexes for easy desktop search, however it's \n"
+				      "not very efficient and costs a significant amount of battery life."), 30);
+
+		/* suggest to stop gnome-power-manager if it shows up in the top 10 and wakes up more than 10 times in the measurement */
+		suggest_process_death(" gnome-power-man : schedule_timeout (process_timeout)", "gnome-power-manager", lines, min(linehead,10), 10.0,
+				    _("Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
+				      "Despite its name, some versions of gnome-power-manager end up costing more power \n"
+				      "than it'll ever save."), 5);
+
+		/* suggest to stop pcscd if it shows up in the top 50 and wakes up at all*/
+		suggest_process_death("pcscd : do_nanosleep (hrtimer_wakeup)", "pcscd", lines, min(linehead,50), 1.0,
+				    _("Suggestion: Disable or remove 'pcscd' from your system. \n"
+				      "pcscd tends to keep the USB subsystem out of power save mode\n"
+				      "and your processor out of deeper powersave states."), 30);
+
+
 		suggest_bluetooth_off();
 		suggest_nmi_watchdog();
 		suggest_laptop_mode();
@@ -613,7 +630,8 @@ int main(int argc, char **argv)
 		suggest_ondemand_governor();
 
 
-		pick_suggestion();
+		if (!key)
+			pick_suggestion();
 		show_title_bar();
 
 		fflush(stdout);

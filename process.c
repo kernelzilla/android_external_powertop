@@ -32,15 +32,28 @@
 
 #include "powertop.h"
 
-void suggest_process_death(char *process, struct line *lines, int linecount, char *comment, int weight)
+char process_to_kill[1024];
+
+void do_kill(void)
+{
+	char line[2048];
+	sprintf(line, "killall %s", process_to_kill);
+	system(line);
+}
+
+void suggest_process_death(char *process_match, char *tokill, struct line *lines, int linecount, double minwakeups, char *comment, int weight)
 {
 	int i;
-	int found = 0;
+
+	process_to_kill[0] = 0;
 
 	for (i = 0; i < linecount; i++) {
-		if (strstr(lines[i].string, process)) {
-			found++;
-			add_suggestion(comment, weight, 0, NULL, NULL);
+		if (strstr(lines[i].string, process_match)) {
+			char hotkey_string[300];
+			sprintf(hotkey_string, " K - kill %s ", tokill);
+			strcpy(process_to_kill, tokill);
+			if (minwakeups < lines[i].count)
+				add_suggestion(comment, weight, 'K' , hotkey_string, do_kill);
 			break;
 		}
 	}
