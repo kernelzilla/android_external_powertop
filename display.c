@@ -178,8 +178,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 {
 	char buffer[1024];
 
-	if (ti==0 && rate <=0)
-		sprintf(buffer,  _("no ACPI power usage estimate available") );
+	sprintf(buffer,  _("no ACPI power usage estimate available") );
 
 	werase(acpi_power_window);
 	if (rate > 0) {
