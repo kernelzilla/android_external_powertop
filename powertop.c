@@ -350,19 +350,19 @@ void print_battery(void)
 		}
 		cap += watts_left + voltage * amperes_left;
 		
-		if (!last_bat_time) {
-			last_bat_time = prev_bat_time = time(NULL);
-			last_bat_cap = prev_bat_cap = cap;
-		}
-		if (time(NULL) - last_bat_time >= 200) {
-			prev_bat_cap = last_bat_cap;
-			prev_bat_time = last_bat_time;
-			last_bat_time = time(NULL);
-			last_bat_cap = cap;
-		}
 
 	}
 	closedir(dir);
+	if (!last_bat_time) {
+		last_bat_time = prev_bat_time = time(NULL);
+		last_bat_cap = prev_bat_cap = cap;
+	}
+	if (time(NULL) - last_bat_time >= 200) {
+		prev_bat_cap = last_bat_cap;
+		prev_bat_time = last_bat_time;
+		last_bat_time = time(NULL);
+		last_bat_cap = cap;
+	}
 	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
 }
 
