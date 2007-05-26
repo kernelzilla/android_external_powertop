@@ -83,7 +83,7 @@ extern int maxwidth;
 void show_title_bar(void);
 void setup_windows(void);
 void initialize_curses(void);
-void show_acpi_power_line(double rate, double cap);
+void show_acpi_power_line(double rate, double cap, double capdelta, time_t time);
 void show_cstates(void);
 void show_wakeups(double d);
 void show_timerstats(int nostats, int ticktime);

@@ -33,6 +33,7 @@
 #include <ctype.h>
 #include <assert.h>
 #include <locale.h>
+#include <time.h>
 
 #include "powertop.h"
 
@@ -67,6 +68,12 @@ struct line	*lines;
 int		linehead;
 int		linesize;
 int		linectotal;
+
+
+double last_bat_cap = 0;
+double prev_bat_cap = 0;
+time_t last_bat_time = 0;
+time_t prev_bat_time = 0;
 
 void push_line(char *string, int count)
 {
@@ -342,10 +349,21 @@ void print_battery(void)
 			rate += watts_drawn + voltage * amperes_drawn;
 		}
 		cap += watts_left + voltage * amperes_left;
+		
+		if (!last_bat_time) {
+			last_bat_time = prev_bat_time = time(NULL);
+			last_bat_cap = prev_bat_cap = cap;
+		}
+		if (time(NULL) - last_bat_time >= 300) {
+			prev_bat_cap = last_bat_cap;
+			prev_bat_time = last_bat_time;
+			last_bat_time = time(NULL);
+			last_bat_cap = cap;
+		}
 
 	}
 	closedir(dir);
-	show_acpi_power_line(rate, cap);
+	show_acpi_power_line(rate, cap, prev_bat_cap - last_bat_cap, last_bat_time - prev_bat_time);
 }
 
 char cstate_lines[6][200];

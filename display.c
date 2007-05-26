@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <ncurses.h>
+#include <time.h>
 
 #include "powertop.h"
 
@@ -173,14 +174,26 @@ void show_cstates(void)
 }
 
 
-void show_acpi_power_line(double rate, double cap)
+void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 {
+	char buffer[1024];
+
+	if (ti==0 && rate <=0)
+		sprintf(buffer,  _("no ACPI power usage estimate available") );
+
 	werase(acpi_power_window);
 	if (rate > 0) {
-		mvwprintw(acpi_power_window, 0, 0, _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"), rate, cap/rate);
-	} else {
-		mvwprintw(acpi_power_window, 0, 0, _("no ACPI power usage estimate available"));
-	}
+		char *c;
+		sprintf(buffer, _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"), rate, cap/rate);
+		strcat(buffer, " ");
+		c = &buffer[strlen(buffer)];
+		if (ti>0 && capdelta > 0)
+			sprintf(c, _("(long term:  %5.1f W, %3.1f hours)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
+	} 
+	else if (ti>0 && capdelta > 0)
+		sprintf(buffer, _("Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
+
+	mvwprintw(acpi_power_window, 0, 0, buffer);	
 	wrefresh(acpi_power_window);
 }
 
