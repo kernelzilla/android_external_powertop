@@ -572,7 +572,7 @@ int main(int argc, char **argv)
 				      "not very efficient and costs a significant amount of battery life."), 30);
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
-				      "The 'ondemand' CPU speed governer will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
+				      "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
 		suggest_kernel_config("CONFIG_NO_HZ", 1, _("Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU."), 50);
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
 				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
@@ -592,7 +592,7 @@ int main(int argc, char **argv)
 		suggest_hpet();
 		suggest_ac97_powersave();
 		suggest_wireless_powersave();
-		suggest_ondemand_governer();
+		suggest_ondemand_governor();
 
 
 		pick_suggestion();

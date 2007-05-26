@@ -33,7 +33,7 @@ msgid " N - Turn NMI watchdog off "
 msgstr " N - Apagar el vigilante de NMI "
 
 #: cpufreq.c:118
-msgid " O - enable Ondemand governer "
+msgid " O - enable Ondemand governor "
 msgstr " O - Encender el goverando basado en demanda "
 
 #: display.c:107
@@ -176,7 +176,7 @@ msgstr ""
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
-"The 'ondemand' CPU speed governer will minimize the CPU power usage while\n"
+"The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
 "Sugerencia: Active la opción del núcleo CONFIG_CPU_FREQ_GOV_ONDEMAND.\n"
@@ -226,7 +226,7 @@ msgstr ""
 
 #: cpufreq.c:116
 msgid ""
-"Suggestion: Enable the ondemand cpu speed governer for all processors via: \n"
+"Suggestion: Enable the ondemand cpu speed governor for all processors via: \n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
 msgstr ""
 "Sugerencia: Active el gobernador de velocidad de CPU en demanda en\n"

@@ -60,7 +60,7 @@ static void activate_ondemand(void)
 	closedir(dir);
 }
 
-void suggest_ondemand_governer(void)
+void suggest_ondemand_governor(void)
 {
 	DIR *dir;
 	struct dirent *dirent;
@@ -94,7 +94,7 @@ void suggest_ondemand_governer(void)
 		if (strlen(gov)==0)
 			strcpy(gov, line);
 		else
-			/* if the governers are inconsistent, warn */
+			/* if the governors are inconsistent, warn */
 			if (strcmp(gov, line))
 				ret = 1;
 		fclose(file);
@@ -102,19 +102,19 @@ void suggest_ondemand_governer(void)
 
 	closedir(dir);
 
-	/* if the governer is set to userspace, also warn */
+	/* if the governor is set to userspace, also warn */
 	if (strstr(gov, "userspace"))
 		ret = 1;
 
-	/* if the governer is set to performance, also warn */
+	/* if the governor is set to performance, also warn */
 	/* FIXME: check if this is fair on all cpus */
 	if (strstr(gov, "performance"))
 		ret = 1;
 
 
 	if (ret) {
-		add_suggestion(_("Suggestion: Enable the ondemand cpu speed governer for all processors via: \n"
+		add_suggestion(_("Suggestion: Enable the ondemand cpu speed governor for all processors via: \n"
 				 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"),
-				15, 'O', _(" O - enable Ondemand governer "), activate_ondemand);
+				15, 'O', _(" O - enable Ondemand governor "), activate_ondemand);
 	}
 }
