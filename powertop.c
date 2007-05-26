@@ -42,7 +42,7 @@ uint64_t last_usage[8], last_duration[8];
 
 int ticktime = 5;
 
-int interrupt_0;
+int interrupt_0, total_interrupt;
 
 static int maxcstate = 0;
 int topcstate = 0;
@@ -138,6 +138,7 @@ static void do_proc_irq(void)
 	uint64_t delta;
 	
 	interrupt_0 = 0;
+	total_interrupt  = 0;
 
 	file = fopen("/proc/interrupts", "r");
 	if (!file)
@@ -185,6 +186,7 @@ static void do_proc_irq(void)
 			push_line(line, delta);
 		if (nr==0)
 			interrupt_0 = delta;
+		total_interrupt += delta;
 	}
 	fclose(file);
 }
@@ -514,7 +516,7 @@ int main(int argc, char **argv)
 			int d;
 			d = strtoull(line, NULL, 10) / sysconf(_SC_NPROCESSORS_ONLN);
 			if (totalevents == 0) /* No c-state info available, use timerstats instead */
-				totalevents = d * sysconf(_SC_NPROCESSORS_ONLN);
+				totalevents = d * sysconf(_SC_NPROCESSORS_ONLN) + total_interrupt;
 			if (d>0 && d < interrupt_0)
 				push_line("    <interrupt> : extra timer interrupt", interrupt_0 - d);
 		}
