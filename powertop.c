@@ -357,7 +357,7 @@ void print_battery(void)
 		last_bat_time = prev_bat_time = time(NULL);
 		last_bat_cap = prev_bat_cap = cap;
 	}
-	if (time(NULL) - last_bat_time >= 200) {
+	if (time(NULL) - last_bat_time >= 400) {
 		prev_bat_cap = last_bat_cap;
 		prev_bat_time = last_bat_time;
 		last_bat_time = time(NULL);
