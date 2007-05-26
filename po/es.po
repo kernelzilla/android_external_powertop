@@ -227,11 +227,11 @@ msgstr ""
 #: cpufreq.c:116
 msgid ""
 "Suggestion: Enable the ondemand cpu speed governor for all processors via: \n"
-" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 msgstr ""
 "Sugerencia: Active el gobernador de velocidad de CPU en demanda en\n"
 "todos los procesadores ejecutando:\n"
-" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 
 #: wireless.c:97
 #, c-format
