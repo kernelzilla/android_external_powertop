@@ -31,6 +31,7 @@
 #include <dirent.h>
 #include <ncurses.h>
 #include <time.h>
+#include <wchar.h>
 
 #include "powertop.h"
 
@@ -107,6 +108,9 @@ void setup_windows(void)
 
 	strcpy(status_bar_slots[0], _(" Q - Quit "));
 	strcpy(status_bar_slots[1], _(" R - Refresh "));
+
+	werase(stdscr);
+	refresh();
 }
 
 void initialize_curses(void) 
