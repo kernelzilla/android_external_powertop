@@ -70,6 +70,9 @@ void reset_suggestions(void)
 		ptr = next;
 	}
 	suggestions = NULL;
+	strcpy(status_bar_slots[9],"");
+	suggestion_key = 255;
+	suggestion_activate = NULL;
 	total_weight = 0;
 }
 
