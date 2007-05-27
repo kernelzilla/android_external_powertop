@@ -185,7 +185,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	sprintf(buffer,  _("no ACPI power usage estimate available") );
 
 	werase(acpi_power_window);
-	if (rate > 0) {
+	if (rate > 0.001) {
 		char *c;
 		sprintf(buffer, _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"), rate, cap/rate);
 		strcat(buffer, " ");
