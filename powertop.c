@@ -624,6 +624,13 @@ int main(int argc, char **argv)
 				      "and your processor out of deeper powersave states."), 30);
 
 
+		/* suggest to stop hal polilng if it shows up in the top 50 and wakes up too much*/
+		suggest_process_death("hald-addon-stor : do_nanosleep (hrtimer_wakeup)", "hald-addon-storage", lines, min(linehead,50), 2.0,
+				    _("Suggestion: Disable 'hal' from polling your cdrom with: hal-stop-polling /dev/scd0\n"
+				      "'hal' is the component that auto-opens a file browser when you plug in a CD\n"
+				      "but disables SATA power saving from kicking in."), 30);
+
+
 		suggest_bluetooth_off();
 		suggest_nmi_watchdog();
 		suggest_laptop_mode();
