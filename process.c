@@ -37,7 +37,7 @@ char process_to_kill[1024];
 void do_kill(void)
 {
 	char line[2048];
-	sprintf(line, "killall %s", process_to_kill);
+	sprintf(line, "killall %s &> /dev/null", process_to_kill);
 	system(line);
 }
 

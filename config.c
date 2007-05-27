@@ -44,7 +44,7 @@ static void read_kernel_config(void)
 	if (configcount)
 		return;
 	if (access("/proc/config.gz", R_OK) == 0) {
-		file = popen("zcat /proc/config.gz", "r");
+		file = popen("zcat /proc/config.gz 2> /dev/null", "r");
 		while (file && !feof(file)) {
 			char line[100];
 			if (fgets(line, 100, file) == NULL)

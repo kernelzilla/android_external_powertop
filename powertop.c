@@ -611,6 +611,10 @@ int main(int argc, char **argv)
 				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
 				      "not very efficient and costs a significant amount of battery life."), 30);
+		suggest_process_death("beagled : futex_wait (hrtimer_wakeup)", "beagled", lines, min(linehead,20), 10.0,
+				    _("Suggestion: Disable or remove 'beagle' from your system. \n"
+				      "Beagle is the program that indexes for easy desktop search, however it's \n"
+				      "not very efficient and costs a significant amount of battery life."), 30);
 
 		/* suggest to stop gnome-power-manager if it shows up in the top 10 and wakes up more than 10 times in the measurement */
 		suggest_process_death("gnome-power-man : schedule_timeout (process_timeout)", "gnome-power-manager", lines, min(linehead,10), 10.0,
