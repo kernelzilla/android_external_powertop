@@ -141,6 +141,7 @@ static void do_proc_irq(void)
 {
 	FILE *file;
 	char line[1024];
+	char line2[1024];
 	char *name;
 	uint64_t delta;
 	
@@ -188,9 +189,9 @@ static void do_proc_irq(void)
 		c = strchr(name, '\n');
 		if (c)
 			*c = 0;
-		sprintf(line, "    <interrupt> : %s", name);
+		sprintf(line2, "    <interrupt> : %s", name);
 		if (nr > 0 && delta > 0)
-			push_line(line, delta);
+			push_line(line2, delta);
 		if (nr==0)
 			interrupt_0 = delta;
 		else
