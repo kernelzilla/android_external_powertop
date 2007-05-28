@@ -26,7 +26,7 @@ msgid ""
 "Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
 "well.\n"
 msgstr ""
-"Tanács: Kakpcsold ki a nem használt bluetooth interfészt az alábbi paranccsal:\n"
+"Tanács: Kapcsold ki a nem használt bluetooth interfészt az alábbi paranccsal:\n"
 "\thciconfig hci0 down \n"
 "A bluetooth egy rádióadó, mely némi energiát fogyaszt, valamint az USB-t lefoglalja.\n"
 
@@ -37,9 +37,9 @@ msgid ""
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 "and/or putting this command into /etc/rc.local\n"
 msgstr ""
-"Tanács: Kapcsold be a laptop módot az alábbi parancs lefutottatásával:\n"
+"Tanács: Kapcsold be a laptop módot az alábbi parancs lefuttatásával:\n"
 "\techo 5 > /proc/sys/vm/laptop_mode\n"
-"és/vagy helyezd el ezd a parancsot a /etc/rc.local fájlban.\n"
+"és/vagy helyezd el ezt a parancsot a /etc/rc.local fájlban.\n"
 
 #: powertop.c:357
 #, c-format
@@ -69,7 +69,7 @@ msgstr "< A processzor kihasználtsága 100%%-os volt, így egyetlen C-státusz 
 #: powertop.c:416
 #, c-format
 msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
-msgstr "C#\t    Átlagos kesto (%is)\t   Hosszú távú átlagos keskiarvo\n"
+msgstr "C#\t Átlagos tartózk. (%is)\t   Hosszú távú átlagos tartózkodás\n"
 
 #: powertop.c:417
 #, c-format
@@ -122,7 +122,7 @@ msgstr "Ez az opció a menuconfig Kernel Debugging szekciójában található me
 #: powertop.c:526
 #, c-format
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
-msgstr "(amely a CONFIG_DEBUG_KERNEL=y a konfigurációs fájlban)\n"
+msgstr "(amely CONFIG_DEBUG_KERNEL=y a konfigurációs fájlban)\n"
 
 #: powertop.c:527
 #, c-format
@@ -142,7 +142,7 @@ msgid ""
 msgstr ""
 "Tanács: Engedélyezd a CONFIG_USB_SUSPEND kernel konfigurációs opciót.\n"
 "Ez az opció automatikusan kikapcsolja az USB-t ha nincs használatban, \n"
-"ezzel körübelül 1 Watt energiát takarít meg."
+"ezzel körülbelül 1 Watt energiát takarít meg."
 
 #: powertop.c:548
 msgid ""
@@ -152,7 +152,7 @@ msgid ""
 msgstr ""
 "Tanács: Kapcsold ki vagy távolítsd el a 'beagle'-t a rendszerből.\n"
 "A beagle az a program amely indexel az egyszerű desktop kereséshez, \n"
-"mindemellet nem teljesen hatékony és jelentős akkumulátor élettartamba kerül."
+"mindemellett nem teljesen hatékony és jelentős akkumulátor élettartamba kerül."
 
 #: powertop.c:553
 msgid ""
@@ -161,7 +161,7 @@ msgid ""
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
-"Tanács: Endedélyezd a CONFIG_CPU_FREQ_GOV_ONDEMAND kernel konfigurációs opciót.\n"
+"Tanács: Engedélyezd a CONFIG_CPU_FREQ_GOV_ONDEMAND kernel konfigurációs opciót.\n"
 "Az ”ondemand” processzor sebességszabályozás minimalizálja az energia használatot mindemellett \n"
 "teljesítményt és nagyobb sebességet biztosít amennyiben szükséges."
 
@@ -171,7 +171,7 @@ msgid ""
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
 "Tanács: Engedélyezd a CONFIG_NO_HZ kernel konfigurációs opciót.\n"
-"Ez az opció szükségs a processzor bármilyen hosszabb idejű alvásához."
+"Ez az opció szükséges a processzor bármilyen hosszabb idejű alvásához."
 
 #: powertop.c:557
 msgid ""
@@ -180,7 +180,7 @@ msgid ""
 "some housekeeping tasks."
 msgstr ""
 "Tanács: Engedélyezd a CONFIG_HPET kernel konfigurációs opciót.\n"
-"HPET támogatás nélkül a kernelnek 20 miliszekundumonkén fel kell ébrednie néhány feladat miatt."
+"HPET támogatás nélkül a kernelnek 20 milliszekundumonként fel kell ébrednie néhány feladat miatt."
 
 #: powertop.c:561
 msgid ""
@@ -191,7 +191,7 @@ msgid ""
 msgstr ""
 "Tanács: Engedélyezd a CONFIG_SND_AC97_POWER_SAVE kernel konfigurációs opciót.\n"
 "Ez az opció automatikusan kikapcsolja a hang kodeket ha nincs használatban,\n"
-"ezzel körübelül fél Watt energiát takarít meg."
+"ezzel körülbelül fél Watt energiát takarít meg."
 
 #: powertop.c:565
 msgid ""
@@ -200,5 +200,5 @@ msgid ""
 "needed."
 msgstr ""
 "Tanács: Kapcsold ki a CONFIG_IRQBALANCE kernel konfigurációs opciót.\n"
-"A belső kernel irq balancer elavult és többször használja a processszort, mint amennyire szükséges."
+"A belső kernel irq balancer elavult és többször használja a processzort, mint ahányszor szükséges."
 
