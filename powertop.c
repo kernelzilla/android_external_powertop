@@ -41,7 +41,7 @@ uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
 
 
-int ticktime = 5;
+double ticktime = 5.0;
 
 int interrupt_0, total_interrupt;
 
@@ -397,7 +397,7 @@ int main(int argc, char **argv)
 	printf("PowerTOP 1.5    (C) 2007 Intel Corporation \n\n");
 	if (getuid() != 0)
 		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
-	printf(_("Collecting data for %i seconds \n"), ticktime);
+	printf(_("Collecting data for %i seconds \n"), (int)ticktime);
 	stop_timerstats();
 
 	while (1) {
@@ -416,14 +416,14 @@ int main(int argc, char **argv)
 		FD_ZERO(&rfds);
 		FD_SET(0, &rfds);
 		tv.tv_sec = ticktime;
-		tv.tv_usec = 0;
+		tv.tv_usec = (ticktime - tv.tv_sec) * 1000000;;
 		do_proc_irq();
 		start_timerstats();
 
 
 		key = select(1, &rfds, NULL, NULL, &tv);
 
-		if (key && tv.tv_sec) ticktime = tv.tv_sec;
+		if (key && tv.tv_sec) ticktime = ticktime - tv.tv_sec - tv.tv_usec/1000000.0;
 
 		stop_timerstats();
 		clear_lines();
@@ -456,7 +456,7 @@ int main(int argc, char **argv)
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
-			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\tLong term residency avg\n"), ticktime);
+			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\tLong term residency avg\n"), (int)ticktime);
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
 			for (i = 0; i < 4; i++)
 				if (cur_usage[i]) {

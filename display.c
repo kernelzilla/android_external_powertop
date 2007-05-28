@@ -47,8 +47,6 @@ static WINDOW *status_bar_window;
 char status_bar_slots[10][40];
 
 static void cleanup_curses(void) {
-	werase(stdscr);
-	refresh();
 	endwin();
 }
 
