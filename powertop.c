@@ -162,9 +162,9 @@ static void do_proc_irq(void)
 		if (!c)
 			continue;
 		/* deal with NMI and the like */
-		nr = strtoull(line, NULL, 10);
 		if (line[0] != ' ' && (line[0] < '0' || line[0] > '9'))
 			continue;
+		nr = strtoull(line, NULL, 10);
 		*c = 0;
 		c++;
 		while (c && strlen(c)) {
