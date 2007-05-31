@@ -1,10 +1,19 @@
 BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
 MANDIR=/usr/share/man/man1
-WARNFLAGS=-Wall 
+WARNFLAGS=-Wall  -W -Wshadow
 CFLAGS?=-O2 -g ${WARNFLAGS}
 CC?=gcc
 
+
+# 
+# The w in -lncursesw is not a typo; it is the wide-character version
+# of the ncurses library, needed for multi-byte character languages
+# such as Japanese and Chinese etc.
+#
+# On Debian/Ubuntu distros, this can be found in the
+# libncursesw5-dev package. 
+#
 powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c Makefile powertop.h
 	$(CC) ${CFLAGS}  powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c -lncursesw -o powertop
 	@(cd po/ && $(MAKE))
@@ -31,4 +40,4 @@ clean:
 
 
 dist:
-	rm -rf .svn po/.svn DEADJOE po/DEADJOE todo.txt Lindent svn-commit.*
+	rm -rf .svn po/.svn DEADJOE po/DEADJOE todo.txt Lindent svn-commit.* dogit.sh
