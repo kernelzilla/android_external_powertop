@@ -281,7 +281,7 @@ msgstr ""
 
 #: display.c:237
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
-msgstr "Essa opção está localizada na seção Kernel Debugging do menuconfig."
+msgstr "Essa opção está localizada na seção Kernel Debugging do menuconfig.\n"
 
 #: display.c:223
 msgid "Top causes for wakeups:"
