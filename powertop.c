@@ -623,7 +623,7 @@ int main(int argc, char **argv)
 				      "than it'll ever save."), 5);
 
 		/* suggest to stop pcscd if it shows up in the top 50 and wakes up at all*/
-		suggest_process_death("pcscd : do_nanosleep (hrtimer_wakeup)", "pcscd", lines, min(linehead,50), 1.0,
+		suggest_process_death("pcscd : ", "pcscd", lines, min(linehead,50), 1.0,
 				    _("Suggestion: Disable or remove 'pcscd' from your system. \n"
 				      "pcscd tends to keep the USB subsystem out of power save mode\n"
 				      "and your processor out of deeper powersave states."), 30);
