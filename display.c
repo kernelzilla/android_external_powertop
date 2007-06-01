@@ -185,11 +185,11 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	werase(acpi_power_window);
 	if (rate > 0.001) {
 		char *c;
-		sprintf(buffer, _("Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"), rate, cap/rate);
+		sprintf(buffer, _("Power usage (ACPI estimate) : %3.1f W (%3.1f hours)"), rate, cap/rate);
 		strcat(buffer, " ");
 		c = &buffer[strlen(buffer)];
 		if (ti>180 && capdelta > 0)
-			sprintf(c, _("(long term:  %5.1f W, %3.1f hours)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
+			sprintf(c, _("(long term: %3.1fW,/%3.1fh)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
 	} 
 	else if (ti>120 && capdelta > 0.001)
 		sprintf(buffer, _("Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
