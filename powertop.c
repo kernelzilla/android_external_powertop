@@ -593,6 +593,8 @@ int main(int argc, char **argv)
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 				      "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
 		suggest_kernel_config("CONFIG_NO_HZ", 1, _("Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\nThis option is required to get any kind of longer sleep times in the CPU."), 50);
+		suggest_kernel_config("CONFIG_ACPI_BATTERY", 1, _("Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n "
+				      "This option is required to get power estimages from PowerTOP"), 5);
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
 				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."), 10);
