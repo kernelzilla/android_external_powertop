@@ -205,7 +205,7 @@ void suggest_wireless_powersave(void)
 	if (check_unused_wiresless_up()) {
 		sprintf(sug, _("Suggestion: Disable the unused WIFI radio by executing the following command:\n "
 			       " echo 1 > %s \n"), rfkill_path);
-		add_suggestion(sug, 60, 'R', _(" R - disable WIFI Radio "), activate_rfkill_suggestion);
+		add_suggestion(sug, 60, 'I', _(" I - disable WIFI Radio "), activate_rfkill_suggestion);
 
 	}
 }
