@@ -1,3 +1,6 @@
+1.6 --
+	* Add suggestion to rf_kill unused wireless interfaces
+
 1.5 -- May 27th, 2007
 	* fix resize-corrupts-screen-content bug
 	* add interrupts to the wakeups/second data in the emulated

@@ -41,16 +41,16 @@ void do_kill(void)
 	system(line);
 }
 
-void suggest_process_death(char *process_match, char *tokill, struct line *lines, int linecount, double minwakeups, char *comment, int weight)
+void suggest_process_death(char *process_match, char *tokill, struct line *slines, int linecount, double minwakeups, char *comment, int weight)
 {
 	int i;
 
 	for (i = 0; i < linecount; i++) {
-		if (strstr(lines[i].string, process_match)) {
+		if (strstr(slines[i].string, process_match)) {
 			char hotkey_string[300];
 			sprintf(hotkey_string, " K - kill %s ", tokill);
 			strcpy(process_to_kill, tokill);
-			if (minwakeups < lines[i].count)
+			if (minwakeups < slines[i].count)
 				add_suggestion(comment, weight, 'K' , hotkey_string, do_kill);
 			break;
 		}
