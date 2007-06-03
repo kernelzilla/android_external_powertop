@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-29 19:50+0200\n"
-"PO-Revision-Date: 2007-05-29 19:58+0200\n"
+"POT-Creation-Date: 2007-06-02 09:39+0200\n"
+"PO-Revision-Date: 2007-06-02 10:14+0200\n"
 "Last-Translator: Martin Kortmann <email@kortmann.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr " N - NMI Wächter ausschalten"
 
 #: cpufreq.c:118
 msgid " O - enable Ondemand governor "
-msgstr " O - Ondemand Regler aktivieren"
+msgstr " O - \"Ondemand governor\" aktivieren"
 
 #: display.c:107
 msgid " Q - Quit "
@@ -52,8 +52,8 @@ msgstr " W - WLAN Stromsparfunktionen aktivieren "
 
 #: display.c:192
 #, c-format
-msgid "(long term:  %5.1f W, %3.1f hours)"
-msgstr "(Langzeit: %5.1f W, %3.1f Stunden)"
+msgid "(long term: %3.1fW,/%3.1fh)"
+msgstr "(Langzeit: %3.1fW, %3.1f Std.)"
 
 #: display.c:238
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
@@ -62,16 +62,12 @@ msgstr "(verfügbar über CONFIG_DEBUG_KERNEL=y in der .config Datei)\n"
 #: powertop.c:454
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
-msgstr ""
-"< Der Prozessor war zu 100%% ausgelastet, hat also keinen C-Status erreicht "
-">\n"
+msgstr "< Der Prozessor war zu 100%% ausgelastet und hat keinen C-Status erreicht >\n"
 
 #: powertop.c:452
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
-msgstr ""
-"< Detailllierte Informationen über den C-Status sind nur für "
-"Mobilprozessoren verfügbar. >\n"
+msgstr "<Detaillierte C-Status Informationen sind nur für Mobilprozessoren verfügbar.>\n"
 
 #: powertop.c:470
 #, c-format
@@ -97,7 +93,7 @@ msgstr "Sammle Daten für %i Sekunden \n"
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr ""
 "Keine detaillierte Statistik verfügbar; PowerTOP benötigt root-Rechte um "
-"diese anzuzeigen\n"
+"diese anzeigen zu können\n"
 
 #: display.c:236
 msgid ""
@@ -114,45 +110,40 @@ msgstr "Achtung: Das funktioniert erst ab Kernel 2.6.21\n"
 #: display.c:195
 #, c-format
 msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr ""
-"Stromverbrauch (5 Minuten ACPI-Schätzung): %5.1f W (%3.1f Stunden "
-"verbleibend)"
+msgstr "Stromverbrauch (5 Min. ACPI-Schätzung): %5.1fW (%3.1f Stunden verbleibend)"
 
 #: display.c:188
 #, c-format
-msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr ""
-"Stromverbrauch (ACPI Schätzung): %5.1f W (%3.1f Stunden "
-"verbleibend)"
+msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
+msgstr "Stromverbrauch (nach ACPI): %3.1fW (%3.1f Std.)"
 
 #: powertop.c:399
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr "Sie müssen PowerTOP als root ausführen, um alle Daten sehen zu können\n"
 
-#: powertop.c:634
+#: powertop.c:636
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with: hal-stop-polling /"
 "dev/scd0\n"
 "'hal' is the component that auto-opens a file browser when you plug in a CD\n"
 "but disables SATA power saving from kicking in."
 msgstr ""
-"Vorschlag: Hindern sie durch Ausführen von: \"hal_stop_polling /dev/scd0\" "
-"hal daran ständig das CD-Laufwerk abzufragen. hal ist eine Komponente, die "
-"nach dem einlegen einer CD automatisch einen Dateimanager startet. Dies "
-"Abfragen verhindert den SATA Energiesparmodus."
+"Vorschlag: Hindern sie durch Ausführen von: \"hal_stop_polling /dev/scd0\"\n"
+"hal daran das CD-Laufwerk abzufragen. hal startet nach dem einlegen einer CD\n"
+"autom. einen Dateimanager. Die Abfragen verhindert den SATA Energiesparmodus."
 
-#: powertop.c:611 powertop.c:615
+#: powertop.c:613 powertop.c:617
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
 msgstr ""
 "Vorschlag: Deaktivieren oder entfernen Sie 'beagle'.\n"
-"Beagle indiziert die Dateien Ihres Computers für die Suche, reduziert dafür "
+"Beagle indiziert die Dateien Ihres Computers für die Suche, reduziert dafür\n "
 "aber signifikant Ihre Akkulaufzeit."
 
-#: powertop.c:621
+#: powertop.c:623
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Despite its name, some versions of gnome-power-manager end up costing more "
@@ -160,23 +151,20 @@ msgid ""
 "than it'll ever save."
 msgstr ""
 "Vorschlag: Deaktivieren oder entfernen Sie den 'gnome-power-manager'.\n"
-"Entgegen ihrer Bezeichnung verbrauchen einige Versionen des gnome-power-"
-"manager mehr Energie\n"
-"als sie einsparen."
+"Entgegen ihrer Bezeichnung verbrauchen einige Versionen des\n"
+"gnome-power-manager mehr Energie als sie einsparen."
 
-#: powertop.c:627
+#: powertop.c:629
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
 "and your processor out of deeper powersave states."
 msgstr ""
-"Vorschlag: Deaktivieren oder entfernen Sie 'pcscd'.\n"
-"pcscd tendiert dazu, zu verhindern, das das USB-Subsystem in den "
-"Energiesparmodus\n"
-"wechseln kann. Damit kann auch die CPU in keinen tieferen Energiesparmodus "
-"schalten."
+"Vorschlag: Deaktivieren oder entfernen Sie 'pcscd'. pcscd tendiert dazu,\n"
+"zu verhindern, das das USB-Subsystem in den Energiesparmodus wechseln\n"
+"kann. Damit kann auch die CPU in keinen tieferen Energiesparmodus schalten."
 
-#: powertop.c:606
+#: powertop.c:608
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
@@ -193,11 +181,9 @@ msgid ""
 "Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
 "well.\n"
 msgstr ""
-"Vorschlag: Deaktivieren Sie die ungenutzte Bluetooth-Schnittstelle mit "
-"folgendem Befehl:\n"
-"  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth ist eine Funktechnologie, die zum einen Strom verbraucht und zum "
-"anderen auch die USB-Schnittstelle belastet.\n"
+"Vorschlag: Deaktivieren Sie die ungenutzte Bluetooth-Schnittstelle mit\n"
+"folgendem Befehl: hciconfig hci0 down ; rmmod hci_usb\n"
+"Bluetooth verbraucht zum senden Strom und belastet die USB-Schnittstelle.\n"
 
 #: misctips.c:60
 msgid ""
@@ -207,6 +193,14 @@ msgstr ""
 "Vorschlag: Aktivieren Sie den Laptop-Modus mit folgendem Befehl:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 
+#: powertop.c:596
+msgid ""
+"Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
+" This option is required to get power estimages from PowerTOP"
+msgstr ""
+"Vorschlag: Aktivieren Sie die Option CONFIG_ACPI_BATTERY Ihres Kernels.\n"
+"Ohne diese Option kann PowerTOP keinen Stromverbrauch ermitteln."
+
 #: powertop.c:593
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
@@ -214,12 +208,11 @@ msgid ""
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
-"Vorschlag: Aktivieren Sie die Option CONFIG_CPU_FREQ_GOV_ONDEMAND Ihres "
-"Kernels.\n"
-"Dieser Regler minimiert den Stromverbrauch des Prozessors,\n"
+"Vorschlag: Aktivieren im Kernel die Option CONFIG_CPU_FREQ_GOV_ONDEMAND.\n"
+"Der \"Ondemand Governor\" minimiert den Stromverbrauch des Prozessors,\n"
 "wenn er nicht ausgelastet ist."
 
-#: powertop.c:597
+#: powertop.c:599
 msgid ""
 "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
@@ -234,17 +227,16 @@ msgid ""
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
 "Vorschlag: Aktivieren Sie die Option CONFIG_NO_HZ Ihres Kernels.\n"
-"Das ist nötig, um überaupt längere Ruhezeiten des Prozessors zu erzielen."
+"Das ist nötig, um überhaupt längere Ruhezeiten des Prozessors zu erzielen."
 
-#: powertop.c:602
+#: powertop.c:604
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
 msgstr ""
-"Vorschlag: Aktivieren Sie die Option CONFIG_SND_AC97_POWER_SAVE Ihres "
-"Kernels.\n"
+"Vorschlag: Aktivieren Sie die Option CONFIG_SND_AC97_POWER_SAVE Ihres Kernels.\n"
 "Das deaktiviert den Sound-Codec, wenn er nicht benötigt wird\n"
 "und spart ca. 0,5 Watt Leistung."
 
@@ -255,7 +247,7 @@ msgid ""
 "save approximately 1 Watt of power."
 msgstr ""
 "Vorschlag: Aktivieren Sie die Option CONFIG_USB_SUSPEND in Ihrem Kernel.\n"
-"Diese deaktiviert automatisch UHCI USB, sobald es nicht benutzt wird\n"
+"Dies deaktiviert automatisch UHCI USB sobald es nicht benutzt wird\n"
 "und kann bis zu 1 Watt Leistung sparen."
 
 #: cpufreq.c:116
@@ -263,7 +255,7 @@ msgid ""
 "Suggestion: Enable the ondemand cpu speed governor for all processors via: \n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 msgstr ""
-"Vorschlag: Aktivieren Sie den Ondemand Regler durch: \n"
+"Vorschlag: Aktivieren Sie den \"ondemand governor\" durch: \n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 
 #: wireless.c:97
@@ -274,11 +266,9 @@ msgid ""
 "  iwpriv %s set_power 5 \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
-"Vorschlag: Aktivieren Sie die WLAN Stromsparfunktionen indem Sie folgenden "
-"Befehl ausführen:\n"
+"Vorschlag: Aktivieren Sie folgendem Befehl die WLAN Stromsparfunktionen:\n"
 "  iwpriv %s set_power 5 \n"
-"Dadurch entstehen Einbußen in der Netzwerk-Geschwindigkeit um Strom zu "
-"sparen."
+"Dadurch verringert sich die WLAN-Geschwindigkeit etwas, spart aber Strom."
 
 #: misctips.c:90
 msgid ""
@@ -286,8 +276,7 @@ msgid ""
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 "The NMI watchdog is a kernel debug mechanism to detect deadlocks"
 msgstr ""
-"Vorschlag: Deaktivieren Sie den NMI Wächter indem Sie folgenden Befehl "
-"ausführen:\n"
+"Vorschlag: Deaktivieren Sie mit folgendem Befehl den NMI Wächter:\n"
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 "Der NMI Wächter ist ein Kernel Debug-Mechanismus um Deadlocks aufzuspüren"
 
@@ -297,10 +286,9 @@ msgid ""
 "   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
-"Vorschlag: Aktivieren Sie die AC97 Stromsparfunktionen indem Sie folgenden "
-"Befehl ausführen:\n"
+"Vorschlag: Aktivieren Sie mit folgendem Befehl die AC97 Stromsparfunktionen:\n"
 "   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
-"oder indem Sie power_save=1 dem Modul als Parameter übergeben."
+"oder übergeben Sie dem AC97 Modul den Parameter: power_save=1."
 
 #: misctips.c:118
 msgid ""
@@ -308,11 +296,9 @@ msgid ""
 "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
 "have much longer sleep intervals."
 msgstr ""
-"Vorschlag: Aktivieren Sie HPET (Multimedia Timer) in Ihrem BIOS oder "
-"benutzen \n"
-"Sie den Kernel-Patch um HPET zu erzwingen. HPET Unterstützung erlaubt "
-"Linux \n"
-"längere Ruhepausen einzulegen."
+"Vorschlag: Aktivieren Sie HPET (Multimedia Timer) in Ihrem BIOS oder benutzen\n"
+"Sie den Kernel-Patch um HPET zu erzwingen. HPET Unterstützung erlaubt es dem\n"
+"Linux Kernel längere Ruhepausen einzulegen."
 
 #: display.c:237
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
