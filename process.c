@@ -29,16 +29,49 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <sys/types.h>
+#include <signal.h>
 
 #include "powertop.h"
 
 char process_to_kill[1024];
 
+static void fancy_kill(void)
+{
+	FILE *file;
+	char line[2048];
+	char *tokill;
+	int pid = 0;
+	tokill = &process_to_kill[1];
+
+	file = popen(" ps -A -o pid,command", "r");
+	if (!file)
+		return;
+	while (!feof(file)) {
+		memset(line, 0, 2048);
+		if (fgets(line, 2047, file)==NULL)
+			break;
+		if (!strstr(line, tokill))
+			continue;
+		pid = strtoul(line, NULL, 10);
+		
+	}
+	pclose(file);
+	if (pid<2)
+		return;
+	kill(pid, SIGTERM);
+}
+
 void do_kill(void)
 {
 	char line[2048];
-	sprintf(line, "killall %s &> /dev/null", process_to_kill);
-	system(line);
+
+	if (process_to_kill[0] == '-') {
+		fancy_kill();
+	} else {
+		sprintf(line, "killall %s &> /dev/null", process_to_kill);
+		system(line);
+	}
 }
 
 void suggest_process_death(char *process_match, char *tokill, struct line *slines, int linecount, double minwakeups, char *comment, int weight)

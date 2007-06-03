@@ -1,5 +1,7 @@
 1.6 --
 	* Add suggestion to rf_kill unused wireless interfaces
+	* Propose killing "sealert"; this is a new thing in F7 that wakes up
+	  10 times per second for no reason
 
 1.5 -- May 27th, 2007
 	* fix resize-corrupts-screen-content bug

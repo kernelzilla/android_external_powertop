@@ -637,6 +637,12 @@ int main(int argc, char **argv)
 				      "'hal' is the component that auto-opens a file browser when you plug in a CD\n"
 				      "but disables SATA power saving from kicking in."), 30);
 
+		/* suggest to kill sealert; it wakes up 10 times/second on a default F7 install*/
+		suggest_process_death("/usr/bin/sealer : schedule_timeout (process_timeout)", "-/usr/bin/sealert", lines, min(linehead,20), 20.0,
+				    _("Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
+				      "SE-Alert alerts you about SELinux policy violations, but also\n"
+				      "has a bug that wakes it up 10 times per second."), 20);
+
 
 		suggest_bluetooth_off();
 		suggest_nmi_watchdog();
