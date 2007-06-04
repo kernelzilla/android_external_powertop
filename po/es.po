@@ -187,7 +187,7 @@ msgstr ""
 #: powertop.c:570
 msgid ""
 "Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
-"Without HPET support the kernel needs to wake up every 20 miliseconds for \n"
+"Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
 "Sugerencia: Active la opción del núcleo CONFIG_HPET.\n"

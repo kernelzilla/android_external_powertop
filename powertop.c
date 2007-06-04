@@ -597,7 +597,7 @@ int main(int argc, char **argv)
 				      "This option is required to get power estimages from PowerTOP"), 5);
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
 				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
-				      "Without HPET support the kernel needs to wake up every 20 miliseconds for \n" "some housekeeping tasks."), 10);
+				      "Without HPET support the kernel needs to wake up every 20 milliseconds for \n" "some housekeeping tasks."), 10);
 		if (!access("/sys/module/snd_ac97_codec", F_OK) &&
 			access("/sys/module/snd_ac97_codec/parameters/power_save", F_OK))
 			suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
