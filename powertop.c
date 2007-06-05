@@ -584,6 +584,9 @@ int main(int argc, char **argv)
 			}
 		}
 
+		if (wakeups_per_second < 0)
+			ticktime = 2;
+
 
 		reset_suggestions();
 
@@ -659,7 +662,7 @@ int main(int argc, char **argv)
 		show_title_bar();
 
 		fflush(stdout);
-		if (!key) sleep(3);	/* quiet down the effects of any IO to xterms */
+		if (!key && ticktime >= 4.8) sleep(3);	/* quiet down the effects of any IO to xterms */
 
 		read_data(&cur_usage[0], &cur_duration[0]);
 		memcpy(last_usage, cur_usage, sizeof(last_usage));
