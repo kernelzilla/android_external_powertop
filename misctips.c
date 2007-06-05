@@ -47,6 +47,25 @@ void suggest_laptop_mode(void)
 	FILE *file;
 	int i;
 	char buffer[1024];
+	/*
+	 * Check to see if we are on AC - lots of distros have
+	 * annoying scripts to turn laptop mode off when on AC, which
+	 * results in annoying distracting return of set laptop mode
+	 * hint.
+	 */
+	file = fopen("/proc/acpi/ac_adapter/AC/state", "r");
+	if (!file)
+		return;
+	memset(buffer, 0, 1024);
+	if (!fgets(buffer, 1023, file)) {
+		fclose(file);
+		return;
+	}
+	fclose(file);
+	if (strstr(buffer, "on-line") != NULL)
+		return;
+
+	/* Now check for laptop mode */
 	file = fopen("/proc/sys/vm/laptop_mode", "r");
 	if (!file)
 		return;
