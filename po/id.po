@@ -25,7 +25,7 @@ msgstr " B - Matikan Bluetooth "
 
 #: misctips.c:61
 msgid " L - enable Laptop mode "
-msgstr " L - Fungsikan mode Laptop"
+msgstr " L - Fungsikan mode Laptop "
 
 #: misctips.c:92
 msgid " N - Turn NMI watchdog off "
@@ -37,11 +37,11 @@ msgstr " O - Fungsikan governor Ondemand "
 
 #: display.c:107
 msgid " Q - Quit "
-msgstr " Q - Quit "
+msgstr " Q - Keluar "
 
 #: display.c:108
 msgid " R - Refresh "
-msgstr " R - Refresh "
+msgstr " R - Segarkan "
 
 #: wireless.c:100
 msgid " W - Enable wireless power saving "
@@ -64,7 +64,7 @@ msgstr "< CPU 100%% sibuk; tidak pernah masuk C-state >\n"
 #: powertop.c:452
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
-msgstr "< Informasi C-state terinci hanya tersedia pada Mobile CPU (laptop) >\n"
+msgstr "< Informasi C-state terinci hanya tersedia pada CPU Mobile (laptop) >\n"
 
 #: powertop.c:470
 #, c-format
@@ -79,7 +79,7 @@ msgstr "C0 (cpu bekerja)        (%4.1f%%)\n"
 #: powertop.c:459
 #, c-format
 msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
-msgstr "Cn\t    Avg residency (%is)\tLong term residency avg\n"
+msgstr "Cn\t    Residensi rata2 (%is)\tResidensi jangka panjang rata2\n"
 
 #: powertop.c:400
 #, c-format
@@ -92,7 +92,7 @@ msgstr "Tidak tersedia statistik rinci; PowerTOP perlu privilese root untuk itu\
 
 #: display.c:236
 msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
-msgstr "Tidak tersedia statistik detil; silahkan hidupkan opsi kernel CONFIG_TIMER_STATS\n"
+msgstr "Tidak tersedia statistik rinci; silahkan hidupkan opsi kernel CONFIG_TIMER_STATS\n"
 
 #: display.c:239
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
@@ -106,7 +106,7 @@ msgstr "Penggunaan daya (perkiraan ACPI 5 menit) : %5.1f W (%3.1f jam tersisa)"
 #: display.c:188
 #, c-format
 msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr "Penggunaan daya (perikiraan ACPI) : %5.1f W (%3.1 jam tersisa)"
+msgstr "Penggunaan daya (perkiraan ACPI) : %5.1f W (%3.1f jam tersisa)"
 
 #: powertop.c:399
 #, c-format
@@ -275,7 +275,7 @@ msgstr "Penyebab utama bangun:"
 #: display.c:212
 #, c-format
 msgid "Wakeups-from-idle per second : %4.1f"
-msgstr "Bangun dari menganggur per detik : %4.1f"
+msgstr "Bangun dari menganggur per detik  : %4.1f"
 
 #: display.c:183
 #, c-format
