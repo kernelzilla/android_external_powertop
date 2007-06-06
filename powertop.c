@@ -354,6 +354,8 @@ void print_battery(void)
 
 	}
 	closedir(dir);
+	if (prev_bat_cap - cap < 0.001 && rate < 0.001)
+		last_bat_time = 0;
 	if (!last_bat_time) {
 		last_bat_time = prev_bat_time = time(NULL);
 		last_bat_cap = prev_bat_cap = cap;
@@ -365,8 +367,6 @@ void print_battery(void)
 		last_bat_cap = cap;
 	}
 
-	if (prev_bat_cap - cap < 0.001 && rate < 0.001)
-		last_bat_time = 0;
 	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
 }
 
