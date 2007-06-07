@@ -560,9 +560,9 @@ int main(int argc, char **argv)
 		show_timerstats(nostats, ticktime);
 
 		if (maxsleep < 5.0)
-			ticktime = 5;
-		else if (maxsleep < 30.0)
 			ticktime = 10;
+		else if (maxsleep < 30.0)
+			ticktime = 15;
 		else if (maxsleep < 100.0)
 			ticktime = 20;
 		else if (maxsleep < 400.0)
