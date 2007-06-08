@@ -4,6 +4,8 @@
 	  10 times per second for no reason
 	* avoid showing the laptop mode hint when on AC - Val Henson
 	* suggest enabling noatime to save disk IO's
+	* suggest enabling SATA AHCI Link powermanagement
+	* suggest enabling the SMP Power Aware Scheduler
 
 1.5 -- May 27th, 2007
 	* fix resize-corrupts-screen-content bug

@@ -50,6 +50,8 @@ void suggest_ac97_powersave(void);
 void suggest_wireless_powersave(void);
 void suggest_ondemand_governor(void);
 void suggest_noatime(void);
+void suggest_sata_alpm(void);
+void suggest_powersched(void);
 
 
 

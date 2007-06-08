@@ -14,8 +14,8 @@ CC?=gcc
 # On Debian/Ubuntu distros, this can be found in the
 # libncursesw5-dev package. 
 #
-powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c Makefile powertop.h
-	$(CC) ${CFLAGS}  powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c -lncursesw -o powertop
+powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c sata.c Makefile powertop.h
+	$(CC) ${CFLAGS}  powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c sata.c -lncursesw -o powertop
 	@(cd po/ && $(MAKE))
 
 powertop.1.gz: powertop.1
@@ -35,9 +35,9 @@ uptrans:
 	@(cd po/ && env LG=$(LG) $(MAKE) $@)
 
 clean:
-	rm -f *~ powertop powertop.1.gz po/powertop.pot
+	rm -f *~ powertop powertop.1.gz po/powertop.pot DEADJOE svn-commit*
 	@(cd po/ && $(MAKE) $@)
 
 
 dist:
-	rm -rf .svn po/.svn DEADJOE po/DEADJOE todo.txt Lindent svn-commit.* dogit.sh
+	rm -rf .svn po/.svn DEADJOE po/DEADJOE todo.txt Lindent svn-commit.* dogit.sh git/ *.rej *.orig

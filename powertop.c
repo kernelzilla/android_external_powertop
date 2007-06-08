@@ -656,6 +656,9 @@ int main(int argc, char **argv)
 		suggest_wireless_powersave();
 		suggest_ondemand_governor();
 		suggest_noatime();
+		suggest_sata_alpm();
+		suggest_powersched();
+
 
 
 		if (!key)
