@@ -599,7 +599,7 @@ int main(int argc, char **argv)
 		suggest_kernel_config("CONFIG_ACPI_BATTERY", 1, _("Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n "
 				      "This option is required to get power estimages from PowerTOP"), 5);
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
-				    _("Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
+				    _("Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 				      "Without HPET support the kernel needs to wake up every 20 milliseconds for \n" "some housekeeping tasks."), 10);
 		if (!access("/sys/module/snd_ac97_codec", F_OK) &&
 			access("/sys/module/snd_ac97_codec/parameters/power_save", F_OK))
