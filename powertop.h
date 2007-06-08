@@ -40,7 +40,7 @@ extern int             linehead;
 extern int             linesize;
 extern int             linectotal;
 
-void suggest_process_death(char *process_match, char *process_name, struct line *lines, int linecount, double minwakeups, char *comment, int weight);
+void suggest_process_death(char *process_match, char *process_name, struct line *slines, int linecount, double minwakeups, char *comment, int weight);
 void suggest_kernel_config(char *string, int onoff, char *comment, int weight);
 void suggest_laptop_mode(void);
 void suggest_bluetooth_off(void);
@@ -49,6 +49,8 @@ void suggest_hpet(void);
 void suggest_ac97_powersave(void);
 void suggest_wireless_powersave(void);
 void suggest_ondemand_governor(void);
+void suggest_noatime(void);
+
 
 
 

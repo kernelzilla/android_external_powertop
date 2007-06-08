@@ -655,6 +655,7 @@ int main(int argc, char **argv)
 		suggest_ac97_powersave();
 		suggest_wireless_powersave();
 		suggest_ondemand_governor();
+		suggest_noatime();
 
 
 		if (!key)

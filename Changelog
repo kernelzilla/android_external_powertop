@@ -3,6 +3,7 @@
 	* Propose killing "sealert"; this is a new thing in F7 that wakes up
 	  10 times per second for no reason
 	* avoid showing the laptop mode hint when on AC - Val Henson
+	* suggest enabling noatime to save disk IO's
 
 1.5 -- May 27th, 2007
 	* fix resize-corrupts-screen-content bug

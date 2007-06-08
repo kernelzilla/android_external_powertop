@@ -173,3 +173,32 @@ void suggest_ac97_powersave(void)
 	}
 	fclose(file);
 }
+
+void noatime_on(void)
+{
+	system("/bin/mount -o remount,noatime /");
+}
+
+void suggest_noatime(void)
+{
+	FILE *file;
+	char buffer[1024];
+	int suggest = 0;
+	file = fopen("/proc/mounts","r");
+	if (!file)
+		return;
+	while (!feof(file)) {
+		memset(buffer, 0, 1024);
+		if (!fgets(buffer, 1023, file))
+			break;
+		if (strstr(buffer, " / ext3") && !strstr(buffer, "noatime"))
+			suggest = 1;
+
+	}
+	if (suggest) {
+		add_suggestion( _("Suggestion: enable the noatime filesystem option by executing the following command:\n"
+		 	"   mount -o remount,noatime /          or by pressing the T key \n"
+			"noatime disables persistent access time of file accesses, which causes lots of disk IO."), 5, 'T', _(" T - enable noatime "), noatime_on);
+	}
+	fclose(file);
+}
