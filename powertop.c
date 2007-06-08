@@ -636,9 +636,9 @@ int main(int argc, char **argv)
 
 		/* suggest to stop hal polilng if it shows up in the top 50 and wakes up too much*/
 		suggest_process_death("hald-addon-stor : ", "hald-addon-storage", lines, min(linehead,50), 2.0,
-				    _("Suggestion: Disable 'hal' from polling your cdrom with: hal-stop-polling /dev/scd0\n"
-				      "'hal' is the component that auto-opens a file browser when you plug in a CD\n"
-				      "but disables SATA power saving from kicking in."), 30);
+				    _( "Suggestion: Disable 'hal' from polling your cdrom with:  \n" 
+				       "hal-disable-polling /dev/scd0        'hal' is the component that auto-opens a\n"
+				       "you plug in a CD but disables SATA power saving from kicking in."), 30);
 
 		/* suggest to kill sealert; it wakes up 10 times/second on a default F7 install*/
 		suggest_process_death("/usr/bin/sealer : schedule_timeout (process_timeout)", "-/usr/bin/sealert", lines, min(linehead,20), 20.0,
