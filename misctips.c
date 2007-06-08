@@ -262,5 +262,4 @@ void suggest_powersched(void)
 		 	"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 			"or by pressing the C key."), 5, 'C', _(" C - Power aware CPU scheduler "), powersched_on);
 	}
-	fclose(file);
 }
