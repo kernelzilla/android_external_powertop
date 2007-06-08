@@ -163,11 +163,11 @@ msgstr ""
 
 #: powertop.c:556
 msgid ""
-"Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
-"建議: 啟用 CONFIG_HPET 核心選項.\n"
+"建議: 啟用 CONFIG_HPET_TIMER 核心選項.\n"
 "不使用 HPET 核心支援將造成核心每 20ms\n"
 "需離開閒置狀態來做整理的工作."
 

@@ -186,11 +186,11 @@ msgstr ""
 
 #: powertop.c:570
 msgid ""
-"Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
-"Sugerencia: Active la opción del núcleo CONFIG_HPET.\n"
+"Sugerencia: Active la opción del núcleo CONFIG_HPET_TIMER.\n"
 "Si no hay soporte HPET, el núcleo necesita activarse cada 20\n"
 "milisegundos para realizar tareas de mantenimiento."
 

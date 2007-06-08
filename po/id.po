@@ -188,10 +188,10 @@ msgstr "Saran: Fungsikan opsi konfigurasi kernel CONFIG_CPU_FREQ_GOV_ONDEMAND.\n
 
 #: powertop.c:597
 msgid ""
-"Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
-msgstr "Saran: Fungsikan opsi konfigurasi kernel CONFIG_HPET.\n"
+msgstr "Saran: Fungsikan opsi konfigurasi kernel CONFIG_HPET_TIMER.\n"
 "Tanpa dukungan HPET kernel perlu bangun setiap 20 milidetik untuk \n"
 "melakukan tugas-tugas housekeeping."
 

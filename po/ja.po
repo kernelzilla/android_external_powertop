@@ -208,11 +208,11 @@ msgstr ""
 
 #: powertop.c:597
 msgid ""
-"Suggestion: Enable the CONFIG_HPET kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
-"提案: カーネル設定でCONFIG_HPETを有効にしてください。\n"
+"提案: カーネル設定でCONFIG_HPET_TIMERを有効にしてください。\n"
 "HPETが有効でない場合、タスク処理において20ミリ秒毎に割り込みが\n"
 "発生します。"
 
