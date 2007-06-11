@@ -526,6 +526,8 @@ int main(int argc, char **argv)
 			c = strchr(c, '\n');
 			if (strncmp(func, "tick_nohz_", 10) == 0)
 				continue;
+			if (strncmp(func, "tick_setup_sched_timer", 20) == 0)
+				continue;
 			if (strcmp(process, "powertop") == 0)
 				continue;
 			if (c)
