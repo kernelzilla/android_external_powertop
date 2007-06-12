@@ -91,7 +91,7 @@ static int previous_bytes = -1;
 void turn_bluetooth_off(void)
 {
 	system("hciconfig hci0 down &> /dev/null");
-	system("rmmod hci_usb &> /dev/null");
+	system("/sbin/rmmod hci_usb &> /dev/null");
 }
 
 void suggest_bluetooth_off(void)
