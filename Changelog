@@ -1,3 +1,6 @@
+1.7 -- 
+	* add suggestion to disable TV out
+
 1.6 --	Jun 8th, 2007
 	* Add suggestion to rf_kill unused wireless interfaces
 	* Propose killing "sealert"; this is a new thing in F7 that wakes up
