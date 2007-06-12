@@ -660,6 +660,7 @@ int main(int argc, char **argv)
 		suggest_noatime();
 		suggest_sata_alpm();
 		suggest_powersched();
+		suggest_xrandr_TV_off();
 
 
 
