@@ -14,8 +14,10 @@ CC?=gcc
 # On Debian/Ubuntu distros, this can be found in the
 # libncursesw5-dev package. 
 #
-powertop: powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c sata.c xrandr.c Makefile powertop.h
-	$(CC) ${CFLAGS}  powertop.c config.c process.c misctips.c bluetooth.c display.c suggestions.c wireless.c cpufreq.c sata.c xrandr.c -lncursesw -o powertop
+
+OBJS = powertop.o config.o process.o misctips.o bluetooth.o display.o suggestions.o wireless.o cpufreq.o sata.o xrandr.o 
+powertop: $(OBJS) Makefile powertop.h
+	$(CC) ${CFLAGS}  $(OBJS) -lncursesw -o powertop
 	@(cd po/ && $(MAKE))
 
 powertop.1.gz: powertop.1
