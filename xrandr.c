@@ -36,8 +36,8 @@ int has_no_xrandr;
 
 static void activate_noTV(void)
 {
-	system("xrandr --auto");
-	system("xrandr --output TV --off");
+	system("xrandr --auto &> /dev/null");
+	system("xrandr --output TV --off &> /dev/null");
 }
 
 void suggest_xrandr_TV_off(void)
@@ -51,7 +51,7 @@ void suggest_xrandr_TV_off(void)
 		return;
 
 	memset(line, 0, 1024);
-	file = popen("xrandr", "r");
+	file = popen("xrandr 2> /dev/null", "r");
 	if (!file || feof(file)) {
 		has_no_xrandr = 1;
 		return;
