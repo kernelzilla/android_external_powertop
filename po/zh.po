@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PowerTOP\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-26 16:05+0200\n"
-"PO-Revision-Date: 2007-05-28 12:06+0100\n"
+"PO-Revision-Date: 2007-06-13 22:42+0100\n"
 "Last-Translator: Yuan CHAO <yuanchao@gmail.com>\n"
 "Language-Team: Yuan CHAO <yuanchao@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: \n"
 "X-Poedit-Language: Chinese\n"
 
-#: misctips.c:151
+#: misctips.c:172
 msgid " A - Turn AC97 powersave on "
 msgstr " A - 開啟 AC97 省電功能"
 
@@ -26,16 +26,24 @@ msgstr " A - 開啟 AC97 省電功能"
 msgid " B - Turn Bluetooth off "
 msgstr " B - 關閉藍牙介面"
 
-#: misctips.c:61
+#: misctips.c:263
+msgid " C - Power aware CPU scheduler "
+msgstr " C - 省電型 CPU 排程器 "
+
+#: wireless.c:208
+msgid " I - disable WIFI Radio "
+msgstr " I - 關閉 WIFI 信號"
+
+#: misctips.c:80
 msgid " L - enable Laptop mode "
 msgstr " L - 啟動 Laptop mode"
 
-#: misctips.c:92
+#: misctips.c:111
 msgid " N - Turn NMI watchdog off "
 msgstr " N - 關閉  NMI watchdog 監控"
 
 #: cpufreq.c:118
-msgid " O - enable Ondemand governer "
+msgid " O - enable Ondemand governor "
 msgstr " O - 啟用 CPU Ondemand 時脈管理模式"
 
 #: display.c:107
@@ -46,60 +54,89 @@ msgstr " Q - 離開"
 msgid " R - Refresh "
 msgstr " R - 重繪畫面"
 
-#: wireless.c:100
+#: sata.c:98
+msgid " S - SATA Link Power Management "
+msgstr " S - SATA Link 電源管理 "
+
+#: misctips.c:201
+msgid " T - enable noatime "
+msgstr " T - 啟動 noatime "
+
+#: wireless.c:203
 msgid " W - Enable wireless power saving "
 msgstr " W - 開啟無線網路省電功能 "
 
-#: display.c:224
+#: display.c:192
+#, c-format
+msgid "(long term: %3.1fW,/%3.1fh)"
+msgstr "(長時間: %3.1f瓦, %3.1f小時)"
+
+#: display.c:238
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(於 .config 檔案中設定 CONFIG_DEBUG_KERNEL=y)\n"
 
-#: powertop.c:427
+#: powertop.c:454
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
 msgstr "< CPU 100%% 忙碌中，沒有進入 C-states 閒置狀態 >\n"
 
-#: powertop.c:425
+#: powertop.c:452
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
 msgstr "< 詳細的 C-state 資訊，只有行動運算型 CPU 有提供 (筆記型電腦)\n"
 
-#: powertop.c:443
+#: powertop.c:470
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
 msgstr "C%i\t\t%5.1f毫秒 (%4.1f%%)\t\t%5.1f毫秒\n"
 
-#: powertop.c:433
+#: powertop.c:460
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (cpu 執行中)    (%4.1f%%)\n"
 
-#: powertop.c:432
+#: powertop.c:459
 #, c-format
 msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
 msgstr "Cn\t          平均停留 (%i 秒) \t\t長時間平均停留\n"
 
-#: powertop.c:373
+#: powertop.c:400
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr "正在收集資料中，請稍等 %i 秒 \n"
 
-#: display.c:227
+#: powertop.c:645
+msgid ""
+"Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
+"SE-Alert alerts you about SELinux policy violations, but also\n"
+"has a bug that wakes it up 10 times per second."
+msgstr ""
+"移除 \"setroubleshoot-server\" 套件並關閉 \"SE-Alert\" 軟體\n"
+"SE-Alert 會提醒您關於 SELinux 策略上的牴觸問題, 但也存在一個臭蟲\n"
+"使得系統每秒被喚醒的次數增加十次."
+
+#: display.c:241
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr "無法取得詳細統計資料; PowerTOP 需要 root 權限\n"
 
-#: display.c:222
-msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
-msgstr "無法取得詳細統計資料; 需開啟 CONFIG_TIMER_STATS 核心選項\n"
+#: display.c:236
+msgid ""
+"No detailed statistics available; please enable the CONFIG_TIMER_STATS "
+"kernel option\n"
+msgstr ""
+"無法取得詳細統計資料; 需開啟 CONFIG_TIMER_STATS 核心選項\n"
 
-#: display.c:225
+#: display.c:239
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "請注意: 此功能需要 2.6.21 或更新的系統核心\n"
 
-#: display.c:180
+msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
+msgstr "電源使用量 (5 分鐘 ACPI 估計): %5.1f 瓦 (%3.1f 小時剩餘)"
+
+#: display.c:195
 #, c-format
-msgid "Power usage (ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr "系統耗電量 (ACPI 估計): %5.1f W (%3.1f 小時剩餘)"
+msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
+msgstr "系統耗電量 (ACPI 估計): %3.1f 瓦 (%3.1f 小時)"
 
 #: powertop.c:370
 #, c-format
@@ -110,12 +147,24 @@ msgstr ""
 "PowerTOP 1.5    (C) 2007 英特爾公司 \n"
 "\n"
 
-#: powertop.c:372
+#: powertop.c:399
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr "PowerTOP 需要以 root 的身份執行，以取得足夠的資訊\n"
 
-#: powertop.c:548
+#: powertop.c:639
+msgid ""
+"Suggestion: Disable 'hal' from polling your cdrom with:  \n"
+"hal-disable-polling /dev/scd0        'hal' is the component that auto-opens "
+"a\n"
+"window if you plug in a CD but disables SATA power saving from kicking in."
+msgstr ""
+"建議: 使用下列指令取消 'hal' 檢查光碟狀態: \n"
+"hal-disable-polling /dev/scd0        'hal' 會在插入光碟時自動開啟檔案總管 "
+"\n"
+"但是會使得 SATA 脫離省電模式."
+
+#: powertop.c:616
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -125,25 +174,69 @@ msgstr ""
 "Beagle  套件會在系統閒置時製做索引來加速桌面搜尋，\n"
 "但也會因此而縮短電池可用時間"
 
+#: powertop.c:632
+msgid ""
+"Suggestion: Disable or remove 'pcscd' from your system. \n"
+"pcscd tends to keep the USB subsystem out of power save mode\n"
+"and your processor out of deeper powersave states."
+msgstr ""
+"建議: 停用或移除 'pcscd' 套件. \n"
+"pcscd 會使得 USB 子系統脫離省電模式\n"
+"並且使中央處理器離開深度省電模式."
+
+#: powertop.c:626
+msgid ""
+"Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
+"Despite its name, some versions of gnome-power-manager end up costing more "
+"power \n"
+"than it'll ever save."
+msgstr ""
+"建議: 停用或移除 'gnome 電源管理程式'. \n"
+"雖然該程式用來設定電源管理模式，但某些版本存在一個臭蟲使得 \n"
+"電源消耗更加嚴重."
+
 #: powertop.c:564
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
-"The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
+"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
+"needed."
 msgstr ""
 "建議: 取消 CONFIG_IRQBALANCE 核心選項\n"
 "核心中 IRQ 負載平衡是過時的，而且會造成 CPU 過多離開閒置狀態的頻率"
 
+#: wireless.c:206
+#, c-format
+msgid ""
+"Suggestion: Disable the unused WIFI radio by executing the following "
+"command:\n"
+"  echo 1 > %s \n"
+msgstr ""
+"建議: 當不使用 WIFI 時, 以下列指令關閉 WIFI 信號:\n"
+"  echo 1 > %s \n"
+
 #: bluetooth.c:128
 msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following command:\n"
+"Suggestion: Disable the unused bluetooth interface with the following "
+"command:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
+"well.\n"
 msgstr ""
-"建議: 使用下列指令取消藍牙介面功能:\n"
+"建議: 不使用藍牙功能時, 以下列指令關閉藍牙信號:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
 "藍牙是一種無線通訊介面，會有相當大的耗電量，同時使得 USB 持續忙碌\n"
 
-#: misctips.c:60
+#: sata.c:95
+msgid ""
+"Suggestion: Enable SATA ALPM link power management via: \n"
+"  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
+"or press the S key."
+msgstr ""
+"建議: 使用下列指令啟動 SATA ALPM 電源管理功能: "
+"  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
+"或按下 S 鍵"
+
+#: misctips.c:79
 msgid ""
 "Suggestion: Enable laptop-mode by executing the following command:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
@@ -151,17 +244,26 @@ msgstr ""
 "建議: 使用下列指令啟動 laptop-mode 功能:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 
-#: powertop.c:552
+#: powertop.c:599
 msgid ""
-"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
-"The 'ondemand' CPU speed governer will minimize the CPU power usage while\n"
+"Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
+" This option is required to get power estimages from PowerTOP"
+msgstr ""
+"建議: 啟用 CONFIG_ACPI_BATTERY 核心選項.\n"
+"PowerTOP 需要此功能以得知剩餘電池電量."
+
+#: powertop.c:596
+msgid ""
+"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
+"option.\n"
+"The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
 "建議: 啟用 CONFIG_CPU_FREQ_GOV_ONDEMAND 核心選項.\n"
 "'ondemand' CPU 時脈管理模式可減少 CPU 功率的消耗\n"
 "同時能在必要時提供所需的效能."
 
-#: powertop.c:556
+#: powertop.c:602
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
@@ -171,7 +273,7 @@ msgstr ""
 "不使用 HPET 核心支援將造成核心每 20ms\n"
 "需離開閒置狀態來做整理的工作."
 
-#: powertop.c:554
+#: powertop.c:598
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
@@ -179,9 +281,10 @@ msgstr ""
 "建議: 啟用 CONFIG_NO_HZ 核心選項.\n"
 "需啟用此功能來使用各種維持 CPU 閒置狀態的功能"
 
-#: powertop.c:560
+#: powertop.c:607
 msgid ""
-"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
+"option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
 msgstr ""
@@ -189,7 +292,7 @@ msgstr ""
 "此選項可以使音效卡於閒置時自動關閉電源\n"
 "大約可以節省 0.5 瓦的耗電量."
 
-#: powertop.c:546
+#: powertop.c:594
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -201,16 +304,17 @@ msgstr ""
 
 #: cpufreq.c:116
 msgid ""
-"Suggestion: Enable the ondemand cpu speed governer for all processors via: \n"
-" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
+"Suggestion: Enable the ondemand cpu speed governor for all processors via: \n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 msgstr ""
 "建議: 使用下列指令對所有 CPU 啟用 Ondemand 時脈管理模式: \n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq_scaling_governor \n"
 
-#: wireless.c:97
+#: wireless.c:200
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following "
+"command:\n"
 "  iwpriv %s set_power 5 \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -218,7 +322,7 @@ msgstr ""
 "  iwpriv %s set_power 5 \n"
 "這會犧牲一點網路效能來節省電源的消耗"
 
-#: misctips.c:90
+#: misctips.c:109
 msgid ""
 "Suggestion: disable the NMI watchdog by executing the following command:\n"
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
@@ -228,17 +332,17 @@ msgstr ""
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 "NMI watchdog 監控是用於替核心除蟲，以及偵測系統死結之用"
 
-#: misctips.c:149
+#: misctips.c:170
 msgid ""
 "Suggestion: enable AC97 powersave mode by executing the following command:\n"
 "   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
-"建議: 使用下列指令啟用 AC97 S省電功能:\n"
+"建議: 使用下列指令啟用 AC97 省電功能:\n"
 "   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
 "或是設定 power_save=1 模組參數"
 
-#: misctips.c:116
+#: misctips.c:137
 msgid ""
 "Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
 "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
@@ -248,20 +352,43 @@ msgstr ""
 "或是使用核心補綴來強制啟用 HPET 。啟用 HPET 可以讓 Linux\n"
 "維持更長的閒置時間."
 
-#: display.c:223
+#: misctips.c:199
+msgid ""
+"Suggestion: enable the noatime filesystem option by executing the following "
+"command:\n"
+"   mount -o remount,noatime /          or by pressing the T key \n"
+"noatime disables persistent access time of file accesses, which causes lots "
+"of disk IO."
+msgstr ""
+"建議: 以下列指令啟用 noatime 使檔案系統停止紀錄存取時間 \n"
+"  mount -o remount,noatime /               或按下 T 鍵.\n"
+"noatime 將會關閉檔案系統紀錄存取時間, 以減少磁碟 I/O 次數."
+
+#: misctips.c:261
+msgid ""
+"Suggestion: enable the power aware CPU scheduler with the following "
+"command:\n"
+"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
+"or by pressing the C key."
+msgstr ""
+"建議: 以下列指令啟用省電型 CPU 排成器:\n"
+"   echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
+"或按下 C 鍵."
+
+#: display.c:237
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr "這個選項在核心編譯選項中的 \"Kernel Debugging\" 項目\n"
 
-#: display.c:209
+#: display.c:223
 msgid "Top causes for wakeups:"
 msgstr "首要造成 CPU 脫離閒置狀態的程緒:"
 
-#: display.c:198
+#: display.c:212
 #, c-format
 msgid "Wakeups-from-idle per second : %4.1f"
 msgstr "每秒 CPU 脫離閒置狀態次數 : %4.1f"
 
-#: display.c:182
+#: display.c:183
 msgid "no ACPI power usage estimate available"
 msgstr "沒有 ACPI 耗電量資訊 (正在使用 AC 電源)"
 
