@@ -15,7 +15,9 @@ CC?=gcc
 # libncursesw5-dev package. 
 #
 
-OBJS = powertop.o config.o process.o misctips.o bluetooth.o display.o suggestions.o wireless.o cpufreq.o sata.o xrandr.o 
+OBJS = powertop.o config.o process.o misctips.o bluetooth.o display.o suggestions.o wireless.o cpufreq.o sata.o xrandr.o ethernet.o
+
+
 powertop: $(OBJS) Makefile powertop.h
 	$(CC) ${CFLAGS}  $(OBJS) -lncursesw -o powertop
 	@(cd po/ && $(MAKE))

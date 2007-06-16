@@ -53,6 +53,7 @@ void suggest_noatime(void);
 void suggest_sata_alpm(void);
 void suggest_powersched(void);
 void suggest_xrandr_TV_off(void);
+void suggest_WOL_off(void);
 
 
 

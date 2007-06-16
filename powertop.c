@@ -661,7 +661,7 @@ int main(int argc, char **argv)
 		suggest_sata_alpm();
 		suggest_powersched();
 		suggest_xrandr_TV_off();
-
+		suggest_WOL_off();
 
 
 		if (!key)
