@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-09 22:58+0400\n"
-"PO-Revision-Date: 2007-06-10 00:28+0400\n"
+"POT-Creation-Date: 2007-06-17 12:13+0400\n"
+"PO-Revision-Date: 2007-06-17 12:45+0400\n"
 "Last-Translator: Andrey Melentyev <andrey.melentyev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,11 @@ msgstr " C - Энергосберегательный планировщик Ц�
 msgid " I - disable WIFI Radio "
 msgstr " I - Отключить Wi-Fi радио"
 
+#: process.c:84
+#, c-format
+msgid " K - kill %s "
+msgstr " K - Убить %s "
+
 #: misctips.c:80
 msgid " L - enable Laptop mode "
 msgstr " L - Включить Laptop mode"
@@ -54,7 +59,7 @@ msgstr " Q - Выйти"
 msgid " R - Refresh "
 msgstr " R - Обновить"
 
-#: sata.c:98
+#: sata.c:104
 msgid " S - SATA Link Power Management "
 msgstr " S - Управление питанием SATA"
 
@@ -62,50 +67,85 @@ msgstr " S - Управление питанием SATA"
 msgid " T - enable noatime "
 msgstr " T - Включить noatime"
 
+#: xrandr.c:78
+msgid " V - Disable TV out "
+msgstr " V - Отключить TV out"
+
 #: wireless.c:203
 msgid " W - Enable wireless power saving "
 msgstr " W - Включить режим энергосбережения Wi-Fi"
 
-#: display.c:192
+#: ethernet.c:128
+msgid " W - disable Wake-On-Lan "
+msgstr " W - Отключить Wake-On-Lan"
+
+#: cpufreqstats.c:80
+#, c-format
+msgid "%6.2f Ghz"
+msgstr "%6.2f ГГц"
+
+#: cpufreqstats.c:77
+#, c-format
+msgid "%6lli Mhz"
+msgstr "%lli МГц"
+
+#: cpufreqstats.c:74
+#, c-format
+msgid "%9lli"
+msgstr ""
+
+#: display.c:200
 #, c-format
 msgid "(long term: %3.1fW,/%3.1fh)"
 msgstr "(Долгосрочный: %3.1fВт,/%3.1fчас)"
 
-#: display.c:238
+#: display.c:246
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(которая называется CONFIG_DEBUG_KERNEL=y в конфиге)\n"
 
-#: powertop.c:454
+#: powertop.c:456
 #, c-format
 msgid "< CPU was 100%% busy; no C-states were entered >\n"
 msgstr "< Процессор был загружен на 100%%, не был затронут ни один C-state >\n"
 
-#: powertop.c:452
+#: powertop.c:454
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
-msgstr "< Детальная информация о С-states доступна только для мобильных процессоров >\n"
+msgstr ""
+"< Детальная информация о С-states доступна только для мобильных процессоров "
+">\n"
 
-#: powertop.c:470
+#: powertop.c:472
 #, c-format
-msgid "C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"
-msgstr "C%i\t\t%5.1fмс (%4.1f%%)\t\t\t%5.1fмс\n"
+msgid "C%i\t\t%5.1fms (%4.1f%%)\n"
+msgstr "C%i\t\t%5.1fмс (%4.1f%%)\n"
 
-#: powertop.c:460
+#: powertop.c:462
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (ЦП работает)        (%4.1f%%)\n"
 
-#: powertop.c:459
+#: powertop.c:461
 #, c-format
-msgid "Cn\t    Avg residency (%is)\tLong term residency avg\n"
-msgstr "Cn  Среднее пребывание (за %2iс)\t\tЗа долгий период\n"
+msgid "Cn\t    Avg residency (%is)\t\tP-states (frequencies)\n"
+msgstr "Cn  Среднее пребывание (за %2iс)\t\tP-states (частоты)\n"
 
-#: powertop.c:400
+#: powertop.c:402
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr "Собираем данные %i секунд \n"
 
-#: powertop.c:645
+#: ethernet.c:125
+msgid ""
+"Disable Ethernet Wake-On-Lan with the following command:\n"
+"  ethtool -s eth0 wol d \n"
+"Wake-on-Lan keeps the phy active, this costs power."
+msgstr ""
+"Отключите ф-цию Wake-On-Lan следующей командой:\n"
+"  ethtool -s eth0 wol d \n"
+"Wake-on-Lan держит физический интерфейс занятым."
+
+#: powertop.c:653
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
@@ -115,11 +155,11 @@ msgstr ""
 "SE-Alert предупреждает Вас о нарушениях политики SELinux, но также\n"
 "в программе имеется баг, который вызывает около 10 пробуждений в секунду."
 
-#: display.c:241
+#: display.c:249
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr "Детальная статистика недоступна; PowerTOP нужны привилегии root для этого\n"
 
-#: display.c:236
+#: display.c:244
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
@@ -127,28 +167,30 @@ msgstr ""
 "Детальная статистика недоступна, пожалуйста, включите опцию "
 "CONFIG_TIMER_STATS в ядре\n"
 
-#: display.c:239
+#: display.c:247
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "Примечание: доступно только для ядра 2.6.21 и более поздних версий\n"
 
-#: display.c:195
+#: display.c:203
 #, c-format
 msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr "Потребление энергии (по оценке ACPI за 5 минут) : %5.1f Вт (%3.1f часов осталось)"
+msgstr ""
+"Потребление энергии (по оценке ACPI за 5 минут) : %5.1f Вт (%3.1f часов "
+"осталось)"
 
-#: display.c:188
-#, fuzzy, c-format
+#: display.c:196
+#, c-format
 msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
-msgstr "Потребление энергии (по оценке ACPI) : %5.1f Вт (%3.1f часов осталось)\n"
+msgstr "Энергопотребление (по оценке ACPI): %3.1f Вт (%3.1f часов осталось)"
 
-#: powertop.c:399
+#: powertop.c:401
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr ""
 "PowerTOP должен быть запущен с привилегиями суперпользователя root для сбора "
 "необходимой информации\n"
 
-#: powertop.c:639
+#: powertop.c:647
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 "hal-disable-polling /dev/scd0        'hal' is the component that auto-opens "
@@ -159,7 +201,7 @@ msgstr ""
 "hal-disable-polling /dev/scd0  'hal'автоматически открывает окно, когда \n"
 "Вы вставляете CD, но он мешает нормальной работе энергосбережения SATA."
 
-#: powertop.c:616 powertop.c:620
+#: powertop.c:624 powertop.c:628
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -170,7 +212,7 @@ msgstr ""
 "поиска, но она не очень эффективна и сильно уменьшает время работы \n"
 "от батареи."
 
-#: powertop.c:626
+#: powertop.c:634
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Despite its name, some versions of gnome-power-manager end up costing more "
@@ -181,18 +223,18 @@ msgstr ""
 "Не смотря на название, некоторые версии gnome-power-manager стоят больше\n"
 "чем могут помочь сохранить."
 
-#: powertop.c:632
+#: powertop.c:640
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
 "and your processor out of deeper powersave states."
 msgstr ""
-"Совет:  отключите или удалите 'pcscd' из Вашей системыn "
-"pcscd мешает подсистеме USB входить в режим энергосбережения\n"
+"Совет:  отключите или удалите 'pcscd' из Вашей системыn pcscd мешает "
+"подсистеме USB входить в режим энергосбережения\n"
 "тем самым не давая процессору возможность использовать некоторые\n"
 "режимы сбережения энергии."
 
-#: powertop.c:611
+#: powertop.c:616
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
@@ -225,7 +267,7 @@ msgstr ""
 "Bluetooth это радио, а значит потребляет энергию, кроме того загружает "
 "работой USB.\n"
 
-#: sata.c:95
+#: sata.c:101
 msgid ""
 "Suggestion: Enable SATA ALPM link power management via: \n"
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
@@ -243,7 +285,7 @@ msgstr ""
 "Совет: включите laptop-mode следующей командой:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode\n"
 
-#: powertop.c:599
+#: powertop.c:604
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
@@ -251,7 +293,7 @@ msgstr ""
 "Совет: включите опцию CONFIG_ACPI_BATTERY в конфигурации ядра.\n"
 " Эта опция необходима для вычисления потребления энергии в PowerTOP"
 
-#: powertop.c:596
+#: powertop.c:601
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -259,10 +301,21 @@ msgid ""
 "giving you performance when it is needed."
 msgstr ""
 "Совет: включите опцию CONFIG_CPU_FREQ_GOV_ONDEMAND в конфигурации ядра.\n"
-"'ondemand' cpufreq governor минимизирует потребление энергии процессором, наращивая\n"
+"'ondemand' cpufreq governor минимизирует потребление энергии процессором, "
+"наращивая\n"
 "производительность при необходимости."
 
-#: powertop.c:602
+#: powertop.c:618
+msgid ""
+"Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
+"This option allows PowerTOP to show P-state percentages \n"
+"P-states correspond to CPU frequencies."
+msgstr ""
+"Совет: включите опцию CONFIG_CPU_FREQ_STAT в конфигурации ядра.\n"
+"Это позволит PowerTOP показывать статистику P-states в процентах \n"
+"P-states соответствуют частотам ЦП."
+
+#: powertop.c:607
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
@@ -272,7 +325,7 @@ msgstr ""
 "Без поддержки HPET ядру необходимо пробуждаться каждые 20мс для \n"
 "выполнения служебных заданий."
 
-#: powertop.c:598
+#: powertop.c:603
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
@@ -281,7 +334,7 @@ msgstr ""
 "Эта опция необходима для достижения более долгого времени \n"
 "бездействия процессора."
 
-#: powertop.c:607
+#: powertop.c:612
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -293,7 +346,7 @@ msgstr ""
 "используется, \n"
 "и поможет сохранить приблизительно 1Вт энергии."
 
-#: powertop.c:594
+#: powertop.c:599
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -323,6 +376,16 @@ msgstr ""
 "  iwpriv %s set_power 5\n"
 "Тем самым Вы пожертвуете производительностью сети для того, чтобы заметно\n"
 "уменьшить расход энергии."
+
+#: xrandr.c:75
+msgid ""
+"Suggestion: disable TV out via: \n"
+"  xrandr --output TV --off \n"
+"or press the V key."
+msgstr ""
+"Совет: отключите TV-out командой: \n"
+"  xrandr --output TV --off \n"
+"или нажмите клавишу V."
 
 #: misctips.c:109
 msgid ""
@@ -378,20 +441,20 @@ msgstr ""
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "или нажатием клавиши C."
 
-#: display.c:237
+#: display.c:245
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr "Эта опция находится в разделе \"Kernel Debugging\" menuconfig\n"
 
-#: display.c:223
+#: display.c:231
 msgid "Top causes for wakeups:"
 msgstr "Причины пробуждений:"
 
-#: display.c:212
+#: display.c:220
 #, c-format
 msgid "Wakeups-from-idle per second : %4.1f"
 msgstr "Пробуждений из режима бездействия за секунду : %4.1f"
 
-#: display.c:183
+#: display.c:191
 #, c-format
 msgid "no ACPI power usage estimate available"
 msgstr "Оценка потребления энергии через ACPI недоступна"
