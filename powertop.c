@@ -483,6 +483,7 @@ int main(int argc, char **argv)
 		/* now the timer_stats info */
 		memset(line, 0, sizeof(line));
 		totalticks = 0;
+		file = NULL;
 		if (!nostats)
 			file = fopen("/proc/timer_stats", "r");
 		while (file && !feof(file)) {
