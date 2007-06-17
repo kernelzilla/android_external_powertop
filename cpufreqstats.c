@@ -77,7 +77,7 @@ static char *HzToHuman(unsigned long hz)
 		sprintf(buffer, _("%6lli Mhz"), (Hz+500)/1000);
 
 	if (Hz>1500000)
-		sprintf(buffer, _("%6.2f Ghz"), (Hz+50000.0)/1000000);
+		sprintf(buffer, _("%6.2f Ghz"), (Hz+5000.0)/1000000);
 
 
 	return buffer;
