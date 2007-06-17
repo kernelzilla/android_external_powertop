@@ -393,6 +393,7 @@ int main(int argc, char **argv)
 
 	do_proc_irq();
 	do_proc_irq();
+	do_cpufreq_stats();
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
