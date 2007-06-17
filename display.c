@@ -172,6 +172,14 @@ void show_cstates(void)
 		mvwprintw(cstate_window, i, 0, "%s", cstate_lines[i]);
 	}
 
+	for (i=0; i<4; i++) {
+		if (i == topfreq)
+			wattron(cstate_window, A_BOLD);
+		else
+			wattroff(cstate_window, A_BOLD);			
+		mvwprintw(cstate_window, i+2, 38, "%s", cpufreqstrings[i]);
+	}
+
 	wrefresh(cstate_window);
 }
 

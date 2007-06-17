@@ -59,7 +59,10 @@ void suggest_WOL_off(void);
 
 
 extern char cstate_lines[6][200];
+extern char cpufreqstrings[4][80];
+
 extern int topcstate;
+extern int topfreq;  
 
 extern char status_bar_slots[10][40];
 extern char suggestion_key;
@@ -98,6 +101,9 @@ void show_suggestion(char *sug);
 void pick_suggestion(void);
 void add_suggestion(char *text, int weight, char key, char *keystring, suggestion_func *func);
 void reset_suggestions(void);
+
+void  do_cpufreq_stats(void);
+
 
 
 #endif

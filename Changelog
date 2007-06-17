@@ -1,6 +1,7 @@
 1.7 -- 
 	* add suggestion to disable TV out
 	* add suggestion to disable Wake-On-Lan for unused ethernet
+	* Show P-states (frequencies)
 
 1.6 --	Jun 8th, 2007
 	* Add suggestion to rf_kill unused wireless interfaces

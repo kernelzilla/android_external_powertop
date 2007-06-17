@@ -382,6 +382,8 @@ int main(int argc, char **argv)
 
 	read_data(&start_usage[0], &start_duration[0]);
 
+	system("modprobe cpufreq_stats &> /dev/null");
+
 	setlocale (LC_ALL, "");
 	bindtextdomain ("powertop", "/usr/share/locale");
 	textdomain ("powertop");
@@ -456,7 +458,7 @@ int main(int argc, char **argv)
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
-			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\tLong term residency avg\n"), (int)ticktime);
+			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\t\tP-states (frequencies)\n"), (int)ticktime);
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
 			for (i = 0; i < 4; i++)
 				if (cur_usage[i]) {
@@ -467,9 +469,8 @@ int main(int argc, char **argv)
 					      last_duration[i]) * 100 /
 					     (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ);
 					sprintf
-					    (cstate_lines[2+i], _("C%i\t\t%5.1fms (%4.1f%%)\t\t\t%5.1fms\n"),
-					     i + 1, sleept, percentage, 
-						(cur_duration[i] - start_duration[i]) / (cur_usage[i] - start_usage[i] + 0.1) / FREQ);
+					    (cstate_lines[2+i], _("C%i\t\t%5.1fms (%4.1f%%)\n"),
+					     i + 1, sleept, percentage);
 					if (maxsleep < sleept)
 						maxsleep = sleept;
 					if (percentage > 50)
@@ -477,6 +478,7 @@ int main(int argc, char **argv)
 					
 				}
 		}
+		do_cpufreq_stats();
 		show_cstates();
 		/* now the timer_stats info */
 		memset(line, 0, sizeof(line));
@@ -559,6 +561,7 @@ int main(int argc, char **argv)
 		print_battery();
 		count_lines();
 		sort_lines();
+
 		show_timerstats(nostats, ticktime);
 
 		if (maxsleep < 5.0)
