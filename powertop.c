@@ -614,7 +614,10 @@ int main(int argc, char **argv)
 				      "and can save approximately half a Watt of power."), 20);
 		suggest_kernel_config("CONFIG_IRQBALANCE", 0,
 				      _("Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n" "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."), 3);
-		
+		suggest_kernel_config("CONFIG_CPU_FREQ_STAT", 1,
+				    _("Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
+				      "This option allows PowerTOP to show P-state percentages \n" "P-states correspond to CPU frequencies."), 1);
+
 
 		/* suggest to stop beagle if it shows up in the top 20 and wakes up more than 10 times in the measurement */
 		suggest_process_death("beagled : schedule_timeout", "beagled", lines, min(linehead,20), 10.0,
