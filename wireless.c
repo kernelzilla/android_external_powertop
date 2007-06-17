@@ -68,7 +68,7 @@ static int check_unused_wiresless_up(void)
 		return 0;
 	val = fgetc(file);
 	fclose(file);
-	if (val == '1') /* already rfkill'd */
+	if (val != '0') /* already rfkill'd */
 		return 0;
 	
 	sprintf(line,"iwconfig %s 2> /dev/null", wireless_nic);
