@@ -250,6 +250,7 @@ void suggest_powersched(void)
 			c = strchr(buffer, ':');
 			if (!c) 
 				continue;
+			c++;
 			if (strtoll(c, NULL, 10) >= cpu)
 				suggest = 0;
 		}
