@@ -141,7 +141,7 @@ void show_title_bar(void)
 	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));   
 	werase(title_bar_window);
 
-	mvwprintw(title_bar_window, 0, 0,  "     PowerTOP version 1.6       (C) 2007 Intel Corporation");
+	mvwprintw(title_bar_window, 0, 0,  "     PowerTOP version 1.7       (C) 2007 Intel Corporation");
 
 	wrefresh(title_bar_window);
 
