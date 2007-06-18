@@ -90,7 +90,6 @@ void activate_WOL_suggestion(void)
 
 void suggest_WOL_off(void) 
 {
-	FILE *file;
 	int sock;
 	struct ifreq ifr;
 	struct ethtool_wolinfo wol;
