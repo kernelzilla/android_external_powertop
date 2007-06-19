@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-06-19 22:55+0200\n"
-"PO-Revision-Date: 2007-06-19 22:55+0200\n"
+"PO-Revision-Date: 2007-06-19 23:33+0200\n"
 "Last-Translator: Piotr Drąg <raven@pmail.pl>, Bartosz Nowicki <barteqpl@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgstr " V - Wyłącz wyjście TV "
 
 #: wireless.c:203
 msgid " W - Enable wireless power saving "
-msgstr " W - Włącz oszczędzanie energii urządzeń bezprzewodowych "
+msgstr " W - Włącz oszczędzanie energii WiFi "
 
 #: ethernet.c:127
 msgid " W - disable Wake-On-Lan "
