@@ -264,3 +264,39 @@ void suggest_powersched(void)
 			"or by pressing the C key."), 5, 'C', _(" C - Power aware CPU scheduler "), powersched_on);
 	}
 }
+
+
+void writeback_long(void)
+{
+	FILE *file;
+	file = fopen("/proc/sys/vm/dirty_writeback_centisecs", "w");
+	if (!file)
+		return;
+	fprintf(file,"1500");
+	fclose(file);
+}
+
+void suggest_writeback_time(void)
+{
+	FILE *file;
+	char buffer[1024];
+	int i;
+	file = fopen("/proc/sys/vm/dirty_writeback_centisecs", "r");
+	if (!file)
+		return;
+	memset(buffer, 0, 1024);
+	if (!fgets(buffer, 1023, file)) {
+		fclose(file);
+		return;
+	}
+	i = strtoull(buffer, NULL, 10);
+	if (i<1400) {
+		char line[1024];
+		sprintf(line,_("Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
+			 	"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
+				"This wakes the disk up less frequenty for background VM activity"),
+			i/100.0);
+		add_suggestion(line, 15, 'W', _(" W - Increase Writeback time "), writeback_long);
+	}
+	fclose(file);
+}

@@ -670,7 +670,7 @@ int main(int argc, char **argv)
 		suggest_powersched();
 		suggest_xrandr_TV_off();
 		suggest_WOL_off();
-
+		suggest_writeback_time();
 
 		if (!key)
 			pick_suggestion();
