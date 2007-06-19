@@ -5,9 +5,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-18 23:33+0200\n"
-"PO-Revision-Date: 2007-06-18 00:53+0200\n"
-"Last-Translator: Piotr Drąg <raven@pmail.pl>\n"
+"POT-Creation-Date: 2007-06-19 22:55+0200\n"
+"PO-Revision-Date: 2007-06-19 22:55+0200\n"
+"Last-Translator: Piotr Drąg <raven@pmail.pl>, Bartosz Nowicki <barteqpl@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,12 +27,12 @@ msgstr " C - planista CPU zajmujący się zasilaniem "
 
 #: wireless.c:208
 msgid " I - disable WIFI Radio "
-msgstr " I - wyłącz radio WiFi "
+msgstr " I - wyłącz zasilanie WiFi "
 
 #: process.c:84
 #, c-format
 msgid " K - kill %s "
-msgstr " K - zniszcz %s "
+msgstr " K - zabij %s "
 
 #: misctips.c:80
 msgid " L - enable Laptop mode "
@@ -48,15 +48,15 @@ msgstr " O - włącz zarządcę ondemand "
 
 #: display.c:107
 msgid " Q - Quit "
-msgstr " Q - zakończ "
+msgstr " Q - Zakończ "
 
 #: display.c:108
 msgid " R - Refresh "
-msgstr " R - odświerz "
+msgstr " R - Odśwież "
 
 #: sata.c:104
 msgid " S - SATA Link Power Management "
-msgstr " S - zarządzanie zasilaniem łącza SATA "
+msgstr " S - zarządzanie zasilaniem magistrali SATA "
 
 #: misctips.c:201
 msgid " T - enable noatime "
@@ -64,11 +64,11 @@ msgstr " T - włącz noatime "
 
 #: xrandr.c:78
 msgid " V - Disable TV out "
-msgstr " V - wyłącz wyjście TV "
+msgstr " V - Wyłącz wyjście TV "
 
 #: wireless.c:203
 msgid " W - Enable wireless power saving "
-msgstr " W - włącz oszczędzanie energii urządzeń bezprzewodowych "
+msgstr " W - Włącz oszczędzanie energii urządzeń bezprzewodowych "
 
 #: ethernet.c:127
 msgid " W - disable Wake-On-Lan "
@@ -119,12 +119,12 @@ msgstr "C%i\t\t%5.1fms (%4.1f%%)\n"
 #: powertop.c:463
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
-msgstr "C0 (CPU jest uruchomiony)        (%4.1f%%)\n"
+msgstr "C0 (CPU aktywny)        (%4.1f%%)\n"
 
 #: powertop.c:462
 #, c-format
-msgid "Cn\t    Avg residency (%is)\t\tP-states (frequencies)\n"
-msgstr "Cn\t    Średnie użycie (%is)\t\tStany P (częstotliwości)\n"
+msgid  "Cn\t    Avg residency (%is)\t\tP-states (frequencies)\n"
+msgstr "Cn\t    Średnie użycie (%is)\t\tStany-P (częstotliwości)\n"
 
 #: powertop.c:403
 #, c-format
@@ -137,9 +137,9 @@ msgid ""
 "  ethtool -s eth0 wol d \n"
 "Wake-on-Lan keeps the phy active, this costs power."
 msgstr ""
-"Wyłącz funkcję Wake-On-Lan ethernetu za pomocą poniższego polecenia:\n"
+"Wyłącz funkcję Wake-On-Lan za pomocą poniższego polecenia:\n"
 "  ethtool -s eth0 wol d \n"
-"Wake-on-Lan utrzymuje aktywne phy, co używa zasilania."
+"Wake-on-Lan utrzymuje aktywne zasilanie, co powoduje stratę energii"
 
 #: powertop.c:655
 msgid ""
@@ -147,7 +147,7 @@ msgid ""
 "SE-Alert alerts you about SELinux policy violations, but also\n"
 "has a bug that wakes it up 10 times per second."
 msgstr ""
-"Wyłącz oprogramowanie SE-Alert usuwając RPM \"setroubleshoot-server\"\n"
+"Wyłącz oprogramowanie SE-Alert usuwając pakiet \"setroubleshoot-server\"\n"
 "SE-Alert powiadamia o naruszeniach polityki SELinuksa, ale ma\n"
 "błąd, który powoduje jego budzenie 10 razy na sekundę."
 
@@ -168,13 +168,13 @@ msgstr ""
 #: display.c:247
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr ""
-"Uwaga: ta opcja jest dostępna wyłącznie w jądrze 2.6.21 i późniejszych\n"
+"Uwaga: ta opcja jest dostępna wyłącznie w jądrze 2.6.21 i nowszych\n"
 
 #: display.c:203
 #, c-format
 msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
 msgstr ""
-"Użycie zasilania (ACPI szacuje 5 minut): %5.1f W (pozostało %3.1f godzin)"
+"Użycie zasilania (średnia ACPI z 5 minut): %5.1f W (pozostało %3.1f godzin)"
 
 #: display.c:196
 #, c-format
@@ -184,7 +184,8 @@ msgstr "Użycie zasilania (szacunek ACPI): %3.1fW (%3.1f godzin)"
 #: powertop.c:402
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr "PowerTOP wymaga uruchomienia jako root, aby zebrać wystarczające informacje\n"
+msgstr "PowerTOP wymaga uruchomienia jako root, aby zebrać wystarczającą \n" 
+"ilość informacji\n"
 
 #: powertop.c:649
 msgid ""
@@ -195,7 +196,7 @@ msgid ""
 msgstr ""
 "Podpowiedź: wyłącz sprawdzanie CD-ROM-u przez \"hal\" za pomocą:  \n"
 "hal-disable-polling /dev/scd0        \"hal\" jest składnikiem, który\n"
-"automatycznie otwiera okno, gdy podłączysz CD, ale wyłącza oszczędzanie\n"
+"automatycznie otwiera okno, gdy włożysz CD, ale wyłącza oszczędzanie\n"
 "energii SATA."
 
 #: powertop.c:626 powertop.c:630
@@ -246,7 +247,7 @@ msgid ""
 "command:\n"
 "  echo 1 > %s \n"
 msgstr ""
-"Podpowiedź: wyłącz nieużywane radio WiFi wykonując poniższe polecenie:\n"
+"Podpowiedź: wyłącz nieużywany interfejs WiFi wykonując poniższe polecenie:\n"
 "  echo 1 > %s \n"
 
 #: bluetooth.c:128
@@ -260,7 +261,7 @@ msgstr ""
 "Podpowiedź: wyłącz nieużywany interfejs Bluetooth za pomocą poniższego polecenia:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
 "Bluetooth jest urządzeniem radiowym i używa całkiem sporo energii, a także "
-"zajmuje USB\n"
+"utrzymuje aktywne USB\n"
 
 #: sata.c:101
 msgid ""
@@ -368,7 +369,7 @@ msgstr ""
 "Podpowiedź: włącz tryb oszczędzanie energii urządzeń bezprzewodowych "
 "wykonując poniższe polecenie:\n"
 "  iwpriv %s set_power 5 \n"
-"To nieznacznie poświęci wydajność sieci, aby oszczędzić energię."
+"To nieznacznie zmniejszy wydajność sieci, aby oszczędzać energię."
 
 #: xrandr.c:75
 msgid ""
@@ -388,7 +389,7 @@ msgid ""
 msgstr ""
 "Podpowiedź: wyłącz NMI watchdog wykonując poniższe polecenie:\n"
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
-"NMI watchdog jest mechanizmem debugowania jądra do wykrywania blokowania"
+"Jest to mechanizmem debugowania jądra służący do wykrywania blokad"
 
 #: misctips.c:170
 msgid ""
@@ -409,7 +410,7 @@ msgid ""
 msgstr ""
 "Podpowiedź: włącz HPET (Zegar multimedialny) w BIOS-ie lub dodaj \n"
 "łatę jądra, aby wymusić włączenie HPET. Obsługa HPET umożliwia Linuksowi \n"
-"na dużo dłuższe przerwania uśpienia."
+"na dużo dłuższe czasy uśpienia."
 
 #: misctips.c:199
 msgid ""
@@ -422,8 +423,8 @@ msgstr ""
 "Podpowiedź: włącz opcję noatime systemu plików wykonując poniższe "
 "polecenie:\n"
 "   mount -o remount,noatime /          lub przez naciśnięcie klawisza T \n"
-"noatime wyłącza stały czas dostępu do plików, który powoduje dużo "
-"wejścia/wejścia dysku."
+"noatime wyłącza stały czas dostępu do plików, który powoduje dużo operacji "
+"wejścia/wyjścia dysku."
 
 #: misctips.c:262
 msgid ""
@@ -439,16 +440,16 @@ msgstr ""
 
 #: display.c:245
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
-msgstr "Ta opcja jest położona w sekcji Kernel Debugging menuconfig\n"
+msgstr "Ta opcja jest położona w sekcji 'Kernel Debugging' menuconfig\n"
 
 #: display.c:231
 msgid "Top causes for wakeups:"
-msgstr "Najczęstsze powody budzenia:"
+msgstr "Najczęstsze powody wybudzenia:"
 
 #: display.c:220
 #, c-format
 msgid "Wakeups-from-idle per second : %4.1f"
-msgstr "Budzenia ze stanu bezczynności na sekundę: %4.1f"
+msgstr "Wybudzenia ze stanu bezczynności na sekundę: %4.1f"
 
 #: display.c:191
 #, c-format
