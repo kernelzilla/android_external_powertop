@@ -147,6 +147,8 @@ void ac97_power_on(void)
 		return;
 	fprintf(file,"1");
 	fclose(file);
+	if (access("/dev/dsp", F_OK))
+		return;
 	file = fopen("/dev/dsp", "w");
 	if (file) {
 		fprintf(file,"1");
