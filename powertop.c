@@ -683,7 +683,13 @@ int main(int argc, char **argv)
 		show_title_bar();
 
 		fflush(stdout);
-		if (!key && ticktime >= 4.8) sleep(3);	/* quiet down the effects of any IO to xterms */
+		if (!key && ticktime >= 4.8) {	/* quiet down the effects of any IO to xterms */
+			FD_ZERO(&rfds);
+			FD_SET(0, &rfds);
+			tv.tv_sec = 3;
+			tv.tv_usec = 0;
+			key = select(1, &rfds, NULL, NULL, &tv);
+		}
 
 		read_data(&cur_usage[0], &cur_duration[0]);
 		memcpy(last_usage, cur_usage, sizeof(last_usage));
