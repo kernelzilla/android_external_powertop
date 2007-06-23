@@ -433,8 +433,6 @@ int main(int argc, char **argv)
 		if (key && tv.tv_sec) ticktime = ticktime - tv.tv_sec - tv.tv_usec/1000000.0;
 
 
-		show_sample_time(ticktime);
-
 		stop_timerstats();
 		clear_lines();
 		do_proc_irq();
@@ -566,7 +564,7 @@ int main(int argc, char **argv)
 	
 		if (totalevents && ticktime) {
 			wakeups_per_second = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
-			show_wakeups(wakeups_per_second);
+			show_wakeups(wakeups_per_second, ticktime);
 		}
 		print_battery();
 		count_lines();

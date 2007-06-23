@@ -105,6 +105,7 @@ void setup_windows(void)
 	status_bar_window = subwin(stdscr, 1, maxx, maxy-1, 0);
 
 	strcpy(status_bar_slots[0], _(" Q - Quit "));
+	strcpy(status_bar_slots[1], _(" R - Refresh "));
 
 	werase(stdscr);
 	refresh();
@@ -205,7 +206,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	wrefresh(acpi_power_window);
 }
 
-void show_wakeups(double d)
+void show_wakeups(double d, double interval)
 {
 	werase(wakeup_window);
 
@@ -216,7 +217,7 @@ void show_wakeups(double d)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
 		
 	wattron(wakeup_window, A_BOLD);
-	mvwprintw(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f"), d);
+	mvwprintw(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs"), d, interval);
 	wrefresh(wakeup_window);
 }
 

@@ -131,7 +131,3 @@ void pick_suggestion(void)
 }
 
 
-void show_sample_time(double seconds)
-{
-	sprintf(status_bar_slots[9], _(" interval: %0.1fs "), seconds);
-}

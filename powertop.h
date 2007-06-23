@@ -95,14 +95,13 @@ void setup_windows(void);
 void initialize_curses(void);
 void show_acpi_power_line(double rate, double cap, double capdelta, time_t time);
 void show_cstates(void);
-void show_wakeups(double d);
+void show_wakeups(double d, double interval);
 void show_timerstats(int nostats, int ticktime);
 void show_suggestion(char *sug);
 
 void pick_suggestion(void);
 void add_suggestion(char *text, int weight, char key, char *keystring, suggestion_func *func);
 void reset_suggestions(void);
-void show_sample_time(double seconds);
 
 
 void  do_cpufreq_stats(void);
