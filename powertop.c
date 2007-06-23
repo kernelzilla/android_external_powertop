@@ -75,6 +75,8 @@ double prev_bat_cap = 0;
 time_t last_bat_time = 0;
 time_t prev_bat_time = 0;
 
+double displaytime = 0.0;
+
 void push_line(char *string, int count)
 {
 	int i;
@@ -570,6 +572,8 @@ int main(int argc, char **argv)
 		count_lines();
 		sort_lines();
 
+		displaytime = displaytime - ticktime;
+
 		show_timerstats(nostats, ticktime);
 
 		if (maxsleep < 5.0)
@@ -594,6 +598,7 @@ int main(int argc, char **argv)
 			if (keychar == suggestion_key && suggestion_activate) {
 				suggestion_activate();
 				ticktime = 2;
+				displaytime = -1.0;
 			}
 		}
 

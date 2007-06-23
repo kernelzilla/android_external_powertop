@@ -40,6 +40,8 @@ extern int             linehead;
 extern int             linesize;
 extern int             linectotal;
 
+extern double displaytime;
+
 void suggest_process_death(char *process_match, char *process_name, struct line *slines, int linecount, double minwakeups, char *comment, int weight);
 void suggest_kernel_config(char *string, int onoff, char *comment, int weight);
 void suggest_laptop_mode(void);
