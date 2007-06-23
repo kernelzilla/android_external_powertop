@@ -69,7 +69,7 @@ static int check_unused_wiresless_up(void)
 	val = fgetc(file);
 	fclose(file);
 	if (val != '0') /* already rfkill'd */
-		return 0;
+		return -1;
 	
 	sprintf(line,"iwconfig %s 2> /dev/null", wireless_nic);
 	file = popen(line, "r");
@@ -194,15 +194,19 @@ void activate_rfkill_suggestion(void)
 void suggest_wireless_powersave(void)
 {
 	char sug[1024];
+	int ret;
+
 	if (strlen(wireless_nic)==0)
 		find_wireless_nic();
-	if (need_wireless_suggest(wireless_nic)) {
+	ret = check_unused_wiresless_up();
+
+	if (ret >= 0 && need_wireless_suggest(wireless_nic)) {
 		sprintf(sug, _("Suggestion: Enable wireless power saving mode by executing the following command:\n "
 			       " iwpriv %s set_power 5 \n"
 			       "This will sacrifice network performance slightly to save power."), wireless_nic);
 		add_suggestion(sug, 20, 'W', _(" W - Enable wireless power saving "), activate_wireless_suggestion);
 	}
-	if (check_unused_wiresless_up()) {
+	if (ret>0) {
 		sprintf(sug, _("Suggestion: Disable the unused WIFI radio by executing the following command:\n "
 			       " echo 1 > %s \n"), rfkill_path);
 		add_suggestion(sug, 60, 'I', _(" I - disable WIFI Radio "), activate_rfkill_suggestion);
