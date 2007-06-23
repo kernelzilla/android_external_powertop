@@ -457,14 +457,18 @@ int main(int argc, char **argv)
 		if (totalevents == 0 && maxcstate <= 1) {
 			sprintf(cstate_lines[0],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
 		} else {
+			double sleept, percentage;;
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
 			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\t\tP-states (frequencies)\n"), (int)ticktime);
-			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ));
+
+			percentage = c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ);
+			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), percentage);
+			if (percentage > 50)
+				topcstate = 0;
 			for (i = 0; i < 4; i++)
 				if (cur_usage[i]) {
-					double sleept, percentage;;
 					sleept = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
 					percentage = (cur_duration[i] -
