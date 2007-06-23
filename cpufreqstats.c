@@ -165,7 +165,7 @@ void  do_cpufreq_stats(void)
 
 	topfreq = -1;
 	for (ret =0 ; ret<=maxfreq; ret++) {
-		sprintf(cpufreqstrings[ret], "%6s   %5.1f%%", HzToHuman(delta[ret].frequency), delta[ret].count * 100.0 / total_time);
+		sprintf(cpufreqstrings[ret], "%6s   (%4.1f%%)", HzToHuman(delta[ret].frequency), delta[ret].count * 100.0 / total_time);
 		if (delta[ret].count > total_time/2)
 			topfreq = ret;
 	}
