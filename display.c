@@ -105,7 +105,6 @@ void setup_windows(void)
 	status_bar_window = subwin(stdscr, 1, maxx, maxy-1, 0);
 
 	strcpy(status_bar_slots[0], _(" Q - Quit "));
-	strcpy(status_bar_slots[1], _(" R - Refresh "));
 
 	werase(stdscr);
 	refresh();
