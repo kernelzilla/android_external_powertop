@@ -380,6 +380,10 @@ int main(int argc, char **argv)
 	uint64_t cur_usage[8], cur_duration[8];
 	double wakeups_per_second = 0;
 
+	/* silence warning.. sigh */
+	if (argc < 0 || argv[0][0]=='a')
+		return 0;
+
 	read_data(&start_usage[0], &start_duration[0]);
 
 	system("modprobe cpufreq_stats &> /dev/null");
