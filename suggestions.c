@@ -70,7 +70,7 @@ void reset_suggestions(void)
 		ptr = next;
 	}
 	suggestions = NULL;
-	strcpy(status_bar_slots[9],"");
+	strcpy(status_bar_slots[8],"");
 	suggestion_key = 255;
 	suggestion_activate = NULL;
 	total_weight = 0;
@@ -103,7 +103,7 @@ void pick_suggestion(void)
 	int value, running = 0;
 	struct suggestion *ptr;
 
-	strcpy(status_bar_slots[9],"");
+	strcpy(status_bar_slots[8],"");
 	suggestion_key = 255;
 	suggestion_activate = NULL;
 
@@ -119,7 +119,7 @@ void pick_suggestion(void)
 		running += ptr->weight;
 		if (running > value) {
 			if (ptr->keystring)
-				strcpy(status_bar_slots[9],ptr->keystring);
+				strcpy(status_bar_slots[8],ptr->keystring);
 			suggestion_key = ptr->key;
 			suggestion_activate = ptr->func;
 			show_suggestion(ptr->string);
@@ -128,4 +128,10 @@ void pick_suggestion(void)
 		ptr = ptr->next;
 	}
 	show_suggestion("You have found a PowerTOP bug. Congratulations.");
+}
+
+
+void show_sample_time(double seconds)
+{
+	sprintf(status_bar_slots[9], _(" interval: %0.1fs "), seconds);
 }

@@ -432,6 +432,9 @@ int main(int argc, char **argv)
 
 		if (key && tv.tv_sec) ticktime = ticktime - tv.tv_sec - tv.tv_usec/1000000.0;
 
+
+		show_sample_time(ticktime);
+
 		stop_timerstats();
 		clear_lines();
 		do_proc_irq();
@@ -461,7 +464,7 @@ int main(int argc, char **argv)
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
-			sprintf(cstate_lines[0], _("Cn\t    Avg residency (%is)\t\tP-states (frequencies)\n"), (int)ticktime);
+			sprintf(cstate_lines[0], _("Cn\t          Avg residency\t\tP-states (frequencies)\n"));
 
 			percentage = c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ);
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), percentage);
