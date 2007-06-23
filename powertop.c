@@ -454,11 +454,8 @@ int main(int argc, char **argv)
 
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
 		topcstate = -4;
-		if (totalevents == 0) {
-			if (maxcstate <= 1)
-				sprintf(cstate_lines[0],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
-			else
-				sprintf(cstate_lines[0],_("< CPU was 100%% busy; no C-states were entered >\n"));
+		if (totalevents == 0 && maxcstate <= 1) {
+			sprintf(cstate_lines[0],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
 		} else {
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
