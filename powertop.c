@@ -630,6 +630,10 @@ int main(int argc, char **argv)
 		suggest_kernel_config("CONFIG_CPU_FREQ_STAT", 1,
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
 				      "This option allows PowerTOP to show P-state percentages \n" "P-states correspond to CPU frequencies."), 2);
+		suggest_kernel_config("CONFIG_INOTIFY", 1,
+				    _("Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
+				      "This option allows programs to wait for changes in files and directories\n" 
+				      "instead of having to poll for these changes"), 5);
 
 
 		/* suggest to stop beagle if it shows up in the top 20 and wakes up more than 10 times in the measurement */

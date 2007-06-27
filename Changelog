@@ -1,5 +1,6 @@
 1.8 --
 	* add suggestion to increase VM writeback timeout
+	* add suggestion to enable INOTIFY in the kernel
 
 1.7 --  Jun 17th, 2007
 	* add suggestion to disable TV out
