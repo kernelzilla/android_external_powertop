@@ -159,8 +159,10 @@ void find_wireless_nic(void)
 
 	/* Check if the interface is up */
 	ret = ioctl(sock, SIOCGIFFLAGS, &ifr);
-	if (ret<0)
+	if (ret<0) {
+		close(sock);
 		return;
+	}
 
 	ifaceup = 0;
 	if (ifr.ifr_flags & (IFF_UP | IFF_RUNNING))

@@ -66,8 +66,10 @@ void activate_WOL_suggestion(void)
 
 	/* Check if the interface is up */
 	ret = ioctl(sock, SIOCGIFFLAGS, &ifr);
-	if (ret<0)
+	if (ret<0) {
+		close(sock);
 		return;
+	}
 
 	if (ifr.ifr_flags & (IFF_UP | IFF_RUNNING)) {
 		close(sock);
@@ -105,8 +107,10 @@ void suggest_WOL_off(void)
 
 	/* Check if the interface is up */
 	ret = ioctl(sock, SIOCGIFFLAGS, &ifr);
-	if (ret<0)
+	if (ret<0) {
+		close(sock);
 		return;
+	}
 
 	if (ifr.ifr_flags & (IFF_UP | IFF_RUNNING)) {
 		close(sock);
