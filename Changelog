@@ -1,7 +1,7 @@
 1.8 --
 	* add suggestion to increase VM writeback timeout
 	* add suggestion to enable INOTIFY in the kernel
-	* fix socket fd leak, found by Nuhru on #powertop
+	* fix socket fd leak, found by Nikerabbit on #powertop
 
 1.7 --  Jun 17th, 2007
 	* add suggestion to disable TV out
