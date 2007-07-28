@@ -99,7 +99,7 @@ void suggest_usb_autosuspend(void)
 
 	if (need_hint) {
 		add_suggestion(_("Suggestion: Enable USB autosuspend by pressing the U key or adding \n"
-				 "usbcore.autosuspend=1 to the kernel command line in /etc/grub.conf"
+				 "usbcore.autosuspend=1 to the kernel command line in the grub config"
 				 ),
 				45, 'U', _(" U - Enable USB suspend "), activate_usb_autosuspend);
 	}
