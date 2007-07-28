@@ -693,6 +693,7 @@ int main(int argc, char **argv)
 		suggest_xrandr_TV_off();
 		suggest_WOL_off();
 		suggest_writeback_time();
+		suggest_usb_autosuspend();
 
 		if (!key)
 			pick_suggestion();

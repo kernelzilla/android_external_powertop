@@ -57,6 +57,7 @@ void suggest_powersched(void);
 void suggest_xrandr_TV_off(void);
 void suggest_WOL_off(void);
 void suggest_writeback_time(void);
+void suggest_usb_autosuspend(void);
 
 
 
