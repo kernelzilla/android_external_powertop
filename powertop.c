@@ -388,7 +388,7 @@ int main(int argc, char **argv)
 
 	read_data(&start_usage[0], &start_duration[0]);
 
-	system("modprobe cpufreq_stats &> /dev/null");
+	system("/sbin/modprobe cpufreq_stats &> /dev/null");
 
 	setlocale (LC_ALL, "");
 	bindtextdomain ("powertop", "/usr/share/locale");
@@ -499,6 +499,7 @@ int main(int argc, char **argv)
 			char *count, *pid, *process, *func;
 			char line2[1024];
 			int cnt;
+			int deferrable = 0;
 			memset(line, 0, 1024);
 			if (fgets(line, 1024, file) == NULL)
 				break;
@@ -544,7 +545,13 @@ int main(int argc, char **argv)
 				continue;
 			if (c)
 				*c = 0;
-			cnt = strtoull(count, NULL, 10);
+			cnt = strtoull(count, &c, 10);
+			while (*c != 0) {
+				if (*c++ == 'D')
+					deferrable = 1;
+			}
+			if (deferrable)
+				continue;
 			sprintf(line2, "%15s : %s", process, func);
 			push_line(line2, cnt);
 		}

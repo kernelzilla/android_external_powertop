@@ -2,6 +2,7 @@
 	* add suggestion to increase VM writeback timeout
 	* add suggestion to enable INOTIFY in the kernel
 	* fix socket fd leak, found by Nikerabbit on #powertop
+	* Add support for deferrable timers (Scott Lamb)
 
 1.7 --  Jun 17th, 2007
 	* add suggestion to disable TV out
