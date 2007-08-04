@@ -178,7 +178,7 @@ void suggest_ac97_powersave(void)
 
 void noatime_on(void)
 {
-	system("/bin/mount -o remount,noatime /");
+	system("/bin/mount -o remount,noatime,nodiratime /");
 }
 
 void suggest_noatime(void)
