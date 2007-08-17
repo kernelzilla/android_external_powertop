@@ -193,7 +193,7 @@ void suggest_noatime(void)
 		memset(buffer, 0, 1024);
 		if (!fgets(buffer, 1023, file))
 			break;
-		if (strstr(buffer, " / ext3") && !strstr(buffer, "noatime"))
+		if (strstr(buffer, " / ext3") && !strstr(buffer, "noatime") && !strstr(buffer, "relatime"))
 			suggest = 1;
 
 	}
