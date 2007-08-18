@@ -136,6 +136,8 @@ int update_irq(int irq, uint64_t count, char *name)
 	interrupts[firstfree].count = count;
 	interrupts[firstfree].number = irq;
 	strcpy(interrupts[firstfree].description, name);
+	if (strcmp(name,"i8042\n")==0)
+		strcpy(interrupts[firstfree].description, _("PS/2 keyboard/mouse/touchpad"));
 	return count;
 }
 
@@ -191,7 +193,11 @@ static void do_proc_irq(void)
 		c = strchr(name, '\n');
 		if (c)
 			*c = 0;
-		sprintf(line2, "    <interrupt> : %s", name);
+		if (strcmp(name, "i8042"))
+			sprintf(line2, "    <interrupt> : %s", name);
+		else
+			sprintf(line2, "    <interrupt> : %s", _("PS/2 keyboard/mouse/touchpad"));
+
 		if (nr > 0 && delta > 0)
 			push_line(line2, delta);
 		if (nr==0)
@@ -653,11 +659,11 @@ int main(int argc, char **argv)
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
 				      "not very efficient and costs a significant amount of battery life."), 30);
 
-		/* suggest to stop gnome-power-manager if it shows up in the top 10 and wakes up more than 10 times in the measurement */
+		/* suggest to stop gnome-power-manager only if it shows up in the top 10 and wakes up more than 10 times in the measurement */
 		suggest_process_death("gnome-power-man : schedule_timeout (process_timeout)", "gnome-power-manager", lines, min(linehead,10), 10.0,
 				    _("Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
-				      "Despite its name, some versions of gnome-power-manager end up costing more power \n"
-				      "than it'll ever save."), 5);
+				      "Older versions of gnome-power-manager wake up far more often than \n"
+				      "needed costing you some power."), 5);
 
 		/* suggest to stop pcscd if it shows up in the top 50 and wakes up at all*/
 		suggest_process_death("pcscd : ", "pcscd", lines, min(linehead,50), 1.0,
