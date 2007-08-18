@@ -126,7 +126,7 @@ void pick_suggestion(void)
 			running += 50;
 		if (running > value) {
 			if (ptr->keystring)
-				strcpy(status_bar_slots[8],ptr->keystring);
+				strncpy(status_bar_slots[8],ptr->keystring, 40);
 			suggestion_key = ptr->key;
 			suggestion_activate = ptr->func;
 			show_suggestion(ptr->string);
