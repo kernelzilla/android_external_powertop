@@ -7,6 +7,8 @@
  	* Show blue color if the cpu is 25% or more busy to indicate
 	  that idle wakeups no longer is the nr 1 power causer
 	  (Santiago Gala)
+  	* merge the -d option from Bill Nottingham (Fedora) to allow
+	  automated collection of data
 
 1.7 --  Jun 17th, 2007
 	* add suggestion to disable TV out

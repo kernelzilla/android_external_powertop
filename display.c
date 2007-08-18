@@ -43,6 +43,7 @@ static WINDOW *timerstat_window;
 static WINDOW *suggestion_window;
 static WINDOW *status_bar_window;
 
+#define print(win, y, x, fmt, args...) do { if (dump) printf(fmt, ## args); else mvwprintw(win, y, x, fmt, ## args); } while (0)
 
 char status_bar_slots[10][40];
 
@@ -85,8 +86,8 @@ static void zap_windows(void)
 
 int maxx, maxy;
 
-int maxtimerstats;
-int maxwidth;
+int maxtimerstats = 50;
+int maxwidth = 200;
 
 void setup_windows(void) 
 {
@@ -142,7 +143,7 @@ void show_title_bar(void)
 	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));   
 	werase(title_bar_window);
 
-	mvwprintw(title_bar_window, 0, 0,  "     PowerTOP version 1.7       (C) 2007 Intel Corporation");
+	print(title_bar_window, 0, 0,  "     PowerTOP version 1.7       (C) 2007 Intel Corporation");
 
 	wrefresh(title_bar_window);
 
@@ -153,7 +154,7 @@ void show_title_bar(void)
 		if (strlen(status_bar_slots[i])==0)
 			continue;
 		wattron(status_bar_window, A_REVERSE);
-		mvwprintw(status_bar_window, 0, x, status_bar_slots[i]);
+		print(status_bar_window, 0, x, status_bar_slots[i]);
 		wattroff(status_bar_window, A_REVERSE);			
 		x+= strlen(status_bar_slots[i])+1;
 	}
@@ -170,15 +171,15 @@ void show_cstates(void)
 			wattron(cstate_window, A_BOLD);
 		else
 			wattroff(cstate_window, A_BOLD);			
-		mvwprintw(cstate_window, i, 0, "%s", cstate_lines[i]);
+		print(cstate_window, i, 0, "%s", cstate_lines[i]);
 	}
 
-	for (i=0; i<4; i++) {
-		if (i == topfreq)
+	for (i=0; i<5; i++) {
+		if (i == topfreq+1)
 			wattron(cstate_window, A_BOLD);
 		else
 			wattroff(cstate_window, A_BOLD);			
-		mvwprintw(cstate_window, i+2, 38, "%s", cpufreqstrings[i]);
+		print(cstate_window, i, 38, "%s", cpufreqstrings[i]);
 	}
 
 	wrefresh(cstate_window);
@@ -203,7 +204,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	else if (ti>120 && capdelta > 0.001)
 		sprintf(buffer, _("Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
 
-	mvwprintw(acpi_power_window, 0, 0, buffer);	
+	print(acpi_power_window, 0, 0, "%s\n", buffer);	
 	wrefresh(acpi_power_window);
 }
 
@@ -225,7 +226,7 @@ void show_wakeups(double d, double interval, double C0time)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_BLUE));   
 		
 	wattron(wakeup_window, A_BOLD);
-	mvwprintw(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs"), d, interval);
+	print(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"), d, interval);
 	wrefresh(wakeup_window);
 }
 
@@ -236,25 +237,25 @@ void show_timerstats(int nostats, int ticktime)
 
 	if (!nostats) {
 		int counter = 0;
-		mvwprintw(timerstat_window, 0, 0, _("Top causes for wakeups:"));
+		print(timerstat_window, 0, 0, _("Top causes for wakeups:\n"));
 		for (i = 0; i < linehead; i++)
 			if (lines[i].count > 0 && counter++ < maxtimerstats) {
 				if ((lines[i].count * 1.0 / ticktime) >= 10.0)
 					wattron(timerstat_window, A_BOLD);
 				else
 					wattroff(timerstat_window, A_BOLD);
-				mvwprintw(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   %s ", lines[i].count * 100.0 / linectotal,
+				print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   %s \n", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, 
 						lines[i].string);
 				}
 	} else {
 		if (getuid() == 0) {
-			mvwprintw(timerstat_window, 0, 0, _("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"));
-			mvwprintw(timerstat_window, 1, 0, _("This option is located in the Kernel Debugging section of menuconfig\n"));
-			mvwprintw(timerstat_window, 2, 0, _("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"));
-			mvwprintw(timerstat_window, 3, 0, _("Note: this is only available in 2.6.21 and later kernels\n"));
+			print(timerstat_window, 0, 0, _("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"));
+			print(timerstat_window, 1, 0, _("This option is located in the Kernel Debugging section of menuconfig\n"));
+			print(timerstat_window, 2, 0, _("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"));
+			print(timerstat_window, 3, 0, _("Note: this is only available in 2.6.21 and later kernels\n"));
 		} else
-			mvwprintw(timerstat_window, 0, 0, _("No detailed statistics available; PowerTOP needs root privileges for that\n"));
+			print(timerstat_window, 0, 0, _("No detailed statistics available; PowerTOP needs root privileges for that\n"));
 	}
 
 
@@ -264,6 +265,6 @@ void show_timerstats(int nostats, int ticktime)
 void show_suggestion(char *sug)
 {
 	werase(suggestion_window);
-	mvwprintw(suggestion_window, 0, 0, "%s", sug);
+	print(suggestion_window, 0, 0, "%s", sug);
 	wrefresh(suggestion_window);
 }

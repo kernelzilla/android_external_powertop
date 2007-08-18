@@ -22,6 +22,7 @@
  * 	Arjan van de Ven <arjan@linux.intel.com>
  */
 
+#include <getopt.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,12 +42,14 @@ uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
 
 
-double ticktime = 5.0;
+double ticktime = 15.0;
 
 int interrupt_0, total_interrupt;
 
 static int maxcstate = 0;
 int topcstate = 0;
+
+int dump = 0;
 
 #define IRQCOUNT 100
 
@@ -380,6 +383,15 @@ void print_battery(void)
 
 char cstate_lines[6][200];
 
+void usage()
+{
+	printf(_("Usage: powertop [OPTION...]\n"));
+	printf(_("  -d, --dump            read wakeups once and print list of top offenders\n"));
+	printf(_("  -t, --time=DOUBLE     default time to gather data in seconds\n"));
+	printf(_("  -h, --help            Show this help message\n"));
+	exit(0);
+}
+
 int main(int argc, char **argv)
 {
 	char line[1024];
@@ -392,9 +404,38 @@ int main(int argc, char **argv)
 	if (argc < 0 || argv[0][0]=='a')
 		return 0;
 
-	read_data(&start_usage[0], &start_duration[0]);
+ 	while (1) {
+ 		static struct option opts[] = {
+ 			{ "dump", 0, NULL, 'd' },
+ 			{ "time", 1, NULL, 't' },
+ 			{ "help", 0, NULL, 'h' },
+ 			{ 0, 0, NULL, 0 }
+ 		};
+ 		int index2 = 0, c;
+ 		
+ 		c = getopt_long(argc, argv, "dt:h", opts, &index2);
+ 		if (c == -1)
+ 			break;
+ 		switch (c) {
+ 		case 'd':
+ 			dump = 1;
+ 			break;
+ 		case 't':
+ 			ticktime = strtod(optarg, NULL);
+ 			break;
+ 		case 'h':
+ 			usage();
+ 			break;
+ 		default:
+ 			;
+ 		}
+ 	}
 
+	if (!dump)
+		ticktime = 5.0;
+ 
 	system("/sbin/modprobe cpufreq_stats &> /dev/null");
+	read_data(&start_usage[0], &start_duration[0]);
 
 	setlocale (LC_ALL, "");
 	bindtextdomain ("powertop", "/usr/share/locale");
@@ -454,12 +495,14 @@ int main(int argc, char **argv)
 				totalevents += cur_usage[i] - last_usage[i];
 			}
 
-		if (!ncursesinited) {
-			initialize_curses();  
-			ncursesinited++;
+		if (!dump) {
+			if (!ncursesinited) {
+				initialize_curses();  
+				ncursesinited++;
+			}
+			setup_windows();
+			show_title_bar();
 		}
-		setup_windows();
-		show_title_bar();
 
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
 		topcstate = -4;
@@ -470,7 +513,7 @@ int main(int argc, char **argv)
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
-			sprintf(cstate_lines[0], _("Cn\t          Avg residency\t\tP-states (frequencies)\n"));
+			sprintf(cstate_lines[0], _("Cn\t          Avg residency\n"));
 
 			percentage = c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ);
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), percentage);
@@ -618,7 +661,8 @@ int main(int argc, char **argv)
 		if (wakeups_per_second < 0)
 			ticktime = 2;
 
-
+		if (dump)
+			exit(EXIT_SUCCESS);
 		reset_suggestions();
 
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
