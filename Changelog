@@ -4,6 +4,9 @@
 	* fix socket fd leak, found by Nikerabbit on #powertop
 	* Add support for deferrable timers (Scott Lamb)
 	* Add active hint to enable USB autosuspend on Fedora 7
+ 	* Show blue color if the cpu is 25% or more busy to indicate
+	  that idle wakeups no longer is the nr 1 power causer
+	  (Santiago Gala)
 
 1.7 --  Jun 17th, 2007
 	* add suggestion to disable TV out

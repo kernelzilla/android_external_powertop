@@ -91,6 +91,7 @@ extern suggestion_func *suggestion_activate;
 #define PT_COLOR_YELLOW     5
 #define PT_COLOR_GREEN      6
 #define PT_COLOR_BRIGHT     7
+#define PT_COLOR_BLUE	    8
 extern int maxwidth;
 
 void show_title_bar(void);
@@ -98,7 +99,7 @@ void setup_windows(void);
 void initialize_curses(void);
 void show_acpi_power_line(double rate, double cap, double capdelta, time_t time);
 void show_cstates(void);
-void show_wakeups(double d, double interval);
+void show_wakeups(double d, double interval, double c0time);
 void show_timerstats(int nostats, int ticktime);
 void show_suggestion(char *sug);
 

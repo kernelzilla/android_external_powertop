@@ -128,6 +128,7 @@ void initialize_curses(void)
 	init_pair(PT_COLOR_RED, COLOR_WHITE, COLOR_RED);
 	init_pair(PT_COLOR_YELLOW, COLOR_WHITE, COLOR_YELLOW);
 	init_pair(PT_COLOR_GREEN, COLOR_WHITE, COLOR_GREEN);
+	init_pair(PT_COLOR_BLUE, COLOR_WHITE, COLOR_BLUE);
 	init_pair(PT_COLOR_BRIGHT, COLOR_WHITE, COLOR_BLACK);
 	
 	atexit(cleanup_curses);
@@ -206,7 +207,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	wrefresh(acpi_power_window);
 }
 
-void show_wakeups(double d, double interval)
+void show_wakeups(double d, double interval, double C0time)
 {
 	werase(wakeup_window);
 
@@ -215,6 +216,13 @@ void show_wakeups(double d, double interval)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));   
 	if (d <= 3.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
+
+	/* 
+	 * if the cpu is really busy.... then make it blue to indicate
+	 * that it's not the primary power consumer anymore 
+	 */
+	if (C0time > 25.0)
+		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_BLUE));   
 		
 	wattron(wakeup_window, A_BOLD);
 	mvwprintw(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs"), d, interval);

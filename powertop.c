@@ -573,7 +573,7 @@ int main(int argc, char **argv)
 	
 		if (totalevents && ticktime) {
 			wakeups_per_second = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
-			show_wakeups(wakeups_per_second, ticktime);
+			show_wakeups(wakeups_per_second, ticktime, c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ) );
 		}
 		print_battery();
 		count_lines();
