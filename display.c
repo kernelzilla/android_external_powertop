@@ -212,9 +212,9 @@ void show_wakeups(double d, double interval, double C0time)
 	werase(wakeup_window);
 
 	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));   
-	if (d <= 10.0)
+	if (d <= 25.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));   
-	if (d <= 3.0)
+	if (d <= 10.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
 
 	/* 
