@@ -400,9 +400,9 @@ int main(int argc, char **argv)
 	uint64_t cur_usage[8], cur_duration[8];
 	double wakeups_per_second = 0;
 
-	/* silence warning.. sigh */
-	if (argc < 0 || argv[0][0]=='a')
-		return 0;
+	setlocale (LC_ALL, "");
+	bindtextdomain ("powertop", "/usr/share/locale");
+	textdomain ("powertop");
 
  	while (1) {
  		static struct option opts[] = {
@@ -437,9 +437,6 @@ int main(int argc, char **argv)
 	system("/sbin/modprobe cpufreq_stats &> /dev/null");
 	read_data(&start_usage[0], &start_duration[0]);
 
-	setlocale (LC_ALL, "");
-	bindtextdomain ("powertop", "/usr/share/locale");
-	textdomain ("powertop");
 
 	memcpy(last_usage, start_usage, sizeof(last_usage));
 	memcpy(last_duration, start_duration, sizeof(last_duration));
