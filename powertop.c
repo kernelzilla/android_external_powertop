@@ -504,7 +504,7 @@ int main(int argc, char **argv)
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
 		topcstate = -4;
 		if (totalevents == 0 && maxcstate <= 1) {
-			sprintf(cstate_lines[0],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
+			sprintf(cstate_lines[5],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
 		} else {
 			double sleept, percentage;;
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
