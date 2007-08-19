@@ -249,7 +249,7 @@ void show_timerstats(int nostats, int ticktime)
 						lines[i].string);
 				}
 	} else {
-		if (getuid() == 0) {
+		if (geteuid() == 0) {
 			print(timerstat_window, 0, 0, _("No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"));
 			print(timerstat_window, 1, 0, _("This option is located in the Kernel Debugging section of menuconfig\n"));
 			print(timerstat_window, 2, 0, _("(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"));
