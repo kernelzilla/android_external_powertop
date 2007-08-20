@@ -89,7 +89,7 @@ void suggest_usb_autosuspend(void)
 			fclose(file);
 			continue;
 		}
-		if (!strtoull(line, NULL,10)<1)
+		if (strtoull(line, NULL,10)<1)
 			need_hint = 1;
 
 		fclose(file);
