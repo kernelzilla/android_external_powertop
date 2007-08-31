@@ -143,4 +143,10 @@ void pick_suggestion(void)
 	displaytime = -1.0;
 }
 
+void print_all_suggestions(void)
+{
+	struct suggestion *ptr;
 
+	for (ptr = suggestions; ptr; ptr = ptr->next)
+		printf("\n%s\n", ptr->string);
+}

@@ -658,8 +658,6 @@ int main(int argc, char **argv)
 		if (wakeups_per_second < 0)
 			ticktime = 2;
 
-		if (dump)
-			exit(EXIT_SUCCESS);
 		reset_suggestions();
 
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
@@ -741,6 +739,11 @@ int main(int argc, char **argv)
 		suggest_WOL_off();
 		suggest_writeback_time();
 		suggest_usb_autosuspend();
+
+		if (dump) {
+			print_all_suggestions();
+			exit(EXIT_SUCCESS);
+		}
 
 		if (!key)
 			pick_suggestion();
