@@ -1,3 +1,6 @@
+1.9 --
+	* add support for mac80211 based wireless power saving
+
 1.8 --
 	* add suggestion to increase VM writeback timeout
 	* add suggestion to enable INOTIFY in the kernel

@@ -52,6 +52,7 @@
 
 static char wireless_nic[32];
 static char rfkill_path[PATH_MAX];
+static char powersave_path[PATH_MAX];
 
 static int check_unused_wiresless_up(void)
 {
@@ -113,6 +114,27 @@ static int need_wireless_suggest(char *iface)
 }
 
 
+static int need_wireless_suggest_new(void)
+{
+	FILE *file;
+	char val;
+	if (strlen(powersave_path)<2)
+		return 0;
+	if (access(powersave_path, W_OK))
+		return 0;
+
+	file = fopen(powersave_path, "r");
+	if (!file)
+		return 0;
+	val = fgetc(file);
+	fclose(file);
+	if (val <= '5' && val >= '0') /* already in powersave */
+		return 0;
+	
+	return 1;
+}
+
+
 void find_wireless_nic(void) 
 {
 	FILE *file;
@@ -125,6 +147,7 @@ void find_wireless_nic(void)
 
 	wireless_nic[0] = 0;
 	rfkill_path[0] = 0;
+	powersave_path[0] = 0;
 
 	file = popen("/sbin/iwpriv -a 2> /dev/null", "r");
 	if (!file)
@@ -174,6 +197,7 @@ void find_wireless_nic(void)
         ret = ioctl(sock, SIOCETHTOOL, &ifr);
 
 	sprintf(rfkill_path,"/sys/bus/pci/devices/%s/rf_kill", driver.bus_info);
+	sprintf(powersave_path,"/sys/bus/pci/devices/%s/power_level", driver.bus_info);
 	close(sock);
 }
 
@@ -182,6 +206,15 @@ void activate_wireless_suggestion(void)
 	char line[1024];
 	sprintf(line, "/sbin/iwpriv %s set_power 5 2> /dev/null", wireless_nic);
 	system(line);
+}
+void activate_wireless_suggestion_new(void)
+{
+	FILE *file;
+	file = fopen(powersave_path, "w");
+	if (!file)
+		return;
+	fprintf(file,"5\n");
+	fclose(file);
 }
 
 void activate_rfkill_suggestion(void)
@@ -207,6 +240,12 @@ void suggest_wireless_powersave(void)
 			       " iwpriv %s set_power 5 \n"
 			       "This will sacrifice network performance slightly to save power."), wireless_nic);
 		add_suggestion(sug, 20, 'W', _(" W - Enable wireless power saving "), activate_wireless_suggestion);
+	}
+	if (ret >= 0 && need_wireless_suggest_new()) {
+		sprintf(sug, _("Suggestion: Enable wireless power saving mode by executing the following command:\n "
+			       " echo 5 > %s \n"
+			       "This will sacrifice network performance slightly to save power."), powersave_path);
+		add_suggestion(sug, 20, 'W', _(" W - Enable wireless power saving "), activate_wireless_suggestion_new);
 	}
 	if (ret>0) {
 		sprintf(sug, _("Suggestion: Disable the unused WIFI radio by executing the following command:\n "
