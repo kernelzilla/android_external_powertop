@@ -97,6 +97,7 @@ void turn_bluetooth_off(void)
 void suggest_bluetooth_off(void)
 {
 	struct hci_dev_info devinfo;
+	FILE *file;
 	int fd;
 	int ret;
 	int thisbytes = 0;
@@ -124,14 +125,27 @@ void suggest_bluetooth_off(void)
 	thisbytes += devinfo.stat.byte_rx;
 	thisbytes += devinfo.stat.byte_tx;
 
-	if (thisbytes == previous_bytes) {
-		add_suggestion( _("Suggestion: Disable the unused bluetooth interface with the following command:\n"
+	if (thisbytes != previous_bytes)
+		goto out;
+
+	/* now, also check for active connections */
+	file = popen("/usr/bin/hcitool con 2> /dev/null", "r");
+	if (file) {
+		char line[2048];
+		/* first line is standard header */
+		fgets(line,2048,file);
+		memset(line, 0, 2048);
+		fgets(line, 2047, file);
+		pclose(file);
+		if (strlen(line)>0)
+			goto out;
+	}
+
+	add_suggestion( _("Suggestion: Disable the unused bluetooth interface with the following command:\n"
 			"  hciconfig hci0 down ; rmmod hci_usb\n"
 			"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"), 40, 'B' , _(" B - Turn Bluetooth off "), turn_bluetooth_off);
-	}
-	previous_bytes = thisbytes;
-
 out:
+	previous_bytes = thisbytes;
 	close(fd);
 	return;
 }
