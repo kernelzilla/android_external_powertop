@@ -101,7 +101,7 @@ static void update_urbnum(char *path, uint64_t count, char *shortname)
 	if (strlen(name)<4)
 		strcpy(ptr->human_name, path);
 	else
-		sprintf(ptr->human_name, _(" USB device %s : %s (%s)"), shortname, name, vendor);
+		sprintf(ptr->human_name, _("USB device %4s : %s (%s)"), shortname, name, vendor);
 	
 }
 
