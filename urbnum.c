@@ -56,7 +56,7 @@ static void cachunk_urbs(void)
 	}
 }
 
-static void update_urbnum(char *path, uint64_t count)
+static void update_urbnum(char *path, uint64_t count, char *shortname)
 {
 	struct device_data *ptr;
 	FILE *file;
@@ -101,7 +101,7 @@ static void update_urbnum(char *path, uint64_t count)
 	if (strlen(name)<4)
 		strcpy(ptr->human_name, path);
 	else
-		sprintf(ptr->human_name, "     USB device : %s (%s)", name, vendor);
+		sprintf(ptr->human_name, _(" USB device %s : %s (%s)"), shortname, name, vendor);
 	
 }
 
@@ -130,7 +130,7 @@ void count_usb_urbs(void)
 			continue;
 		memset(buffer, 0, 4096);
 		fgets(buffer, 4095, file);
-		update_urbnum(pathname, strtoull(buffer, NULL, 10));
+		update_urbnum(pathname, strtoull(buffer, NULL, 10), dirent->d_name);
 		fclose(file);
 	}
 
