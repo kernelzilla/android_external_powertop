@@ -444,6 +444,7 @@ int main(int argc, char **argv)
 	do_proc_irq();
 	do_proc_irq();
 	do_cpufreq_stats();
+	count_usb_urbs();
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
@@ -621,6 +622,7 @@ int main(int argc, char **argv)
 			wakeups_per_second = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
 			show_wakeups(wakeups_per_second, ticktime, c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ) );
 		}
+		count_usb_urbs();
 		print_battery();
 		count_lines();
 		sort_lines();

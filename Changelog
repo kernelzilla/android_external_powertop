@@ -1,6 +1,7 @@
 1.9 --
 	* add support for mac80211 based wireless power saving
 	* improve bluetooth inactivity detection (David Woodhouse)
+	* report USB activity
 
 1.8 --
 	* add suggestion to increase VM writeback timeout
