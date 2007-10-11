@@ -306,7 +306,7 @@ msgid ""
 "usbcore.autosuspend=1 to the kernel command line in the grub config"
 msgstr ""
 "Vorschlag: Aktivieren Sie \"USB autosuspend\" durch drücken der U-Taste\n"
-"oder durch anhängen der Bootoption \"usbcore autosuspend=1\" an die Kernel-\n"
+"oder durch anhängen der Bootoption \"usbcore.autosuspend=1\" an die Kernel-\n"
 "kommandozeile oder in der GRUB Konfiguration"
 
 #: misctips.c:79
