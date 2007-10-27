@@ -1,7 +1,8 @@
 1.9 --
 	* add support for mac80211 based wireless power saving
 	* improve bluetooth inactivity detection (David Woodhouse)
-	* report USB activity
+	* report USB activity (needs 2.6.24-rc kernel)
+	* support the newly reported interrupt events in 2.6.24-rc
 
 1.8 --
 	* add suggestion to increase VM writeback timeout

@@ -51,7 +51,7 @@ int topcstate = 0;
 
 int dump = 0;
 
-#define IRQCOUNT 100
+#define IRQCOUNT 150
 
 struct irqdata {
 	int active;
@@ -162,16 +162,35 @@ static void do_proc_irq(void)
 		char *c;
 		int nr = -1;
 		uint64_t count = 0;
+		int special = 0;
 		memset(line, 0, sizeof(line));
 		if (fgets(line, 1024, file) == NULL)
 			break;
 		c = strchr(line, ':');
 		if (!c)
 			continue;
-		/* deal with NMI and the like */
-		if (line[0] != ' ' && (line[0] < '0' || line[0] > '9'))
+		/* deal with NMI and the like.. make up fake nrs */
+		if (line[0] != ' ' && (line[0] < '0' || line[0] > '9')) {	
+			if (strncmp(line,"NMI:", 4)==0)
+				nr=20000;
+			if (strncmp(line,"RES:", 4)==0)
+				nr=20001;
+			if (strncmp(line,"CAL:", 4)==0)
+				nr=20002;
+			if (strncmp(line,"TLB:", 4)==0)
+				nr=20003;
+			if (strncmp(line,"TRM:", 4)==0)
+				nr=20004;
+			if (strncmp(line,"THR:", 4)==0)
+				nr=20005;
+			if (strncmp(line,"SPU:", 4)==0)
+				nr=20006;
+			special = 1;
+		} else
+			nr = strtoull(line, NULL, 10);
+
+		if (nr==-1)
 			continue;
-		nr = strtoull(line, NULL, 10);
 		*c = 0;
 		c++;
 		while (c && strlen(c)) {
@@ -186,11 +205,13 @@ static void do_proc_irq(void)
 			continue;
 		while (c && *c == ' ')
 			c++;
-		c = strchr(c, ' ');
-		if (!c) 
-			continue;
-		while (c && *c == ' ')
-			c++;
+		if (!special) {
+			c = strchr(c, ' ');
+			if (!c) 
+				continue;
+			while (c && *c == ' ')
+				c++;
+		}
 		name = c;
 		delta = update_irq(nr, count, name);
 		c = strchr(name, '\n');
