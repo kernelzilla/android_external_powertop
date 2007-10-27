@@ -217,10 +217,14 @@ static void do_proc_irq(void)
 		c = strchr(name, '\n');
 		if (c)
 			*c = 0;
-		if (strcmp(name, "i8042"))
-			sprintf(line2, "    <interrupt> : %s", name);
+		if (strcmp(name, "i8042")) { 
+			if (special) 
+				sprintf(line2, _("   <kernel IPI> : %s"), name);
+			else
+				sprintf(line2, _("    <interrupt> : %s"), name);
+		}
 		else
-			sprintf(line2, "    <interrupt> : %s", _("PS/2 keyboard/mouse/touchpad"));
+			sprintf(line2, _("    <interrupt> : %s"), _("PS/2 keyboard/mouse/touchpad"));
 
 		if (nr > 0 && delta > 0)
 			push_line(line2, delta);
