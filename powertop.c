@@ -725,7 +725,10 @@ int main(int argc, char **argv)
 				      "Beagle is the program that indexes for easy desktop search, however it's \n"
 				      "not very efficient and costs a significant amount of battery life."), 30);
 
-		/* suggest to stop gnome-power-manager only if it shows up in the top 10 and wakes up more than 10 times in the measurement */
+		/* suggest to stop gnome-power-manager *only* if it shows up in the top 10 and wakes up more than 10 times in the measurement */
+		/* note to distribution makers: There is no need to patch this out! */
+		/* If you ship a recent enough g-p-m, the warning will not be there, */
+		/* and if you ship a really old one the warning is really justified. */
 		suggest_process_death("gnome-power-man : schedule_timeout (process_timeout)", "gnome-power-manager", lines, min(linehead,10), 10.0,
 				    _("Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 				      "Older versions of gnome-power-manager wake up far more often than \n"
