@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-19 10:11+0200\n"
-"PO-Revision-Date: 2007-08-19 10:47+0200\n"
+"POT-Creation-Date: 2007-10-28 07:05+0100\n"
+"PO-Revision-Date: 2007-10-28 07:18+0100\n"
 "Last-Translator: Martin Kortmann <email@kortmann.de>\n"
 "Language-Team:  <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,17 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: powertop.c:389
+#: powertop.c:224 powertop.c:227
+#, c-format
+msgid "    <interrupt> : %s"
+msgstr "    <interrupt> : %s"
+
+#: powertop.c:222
+#, c-format
+msgid "   <kernel IPI> : %s"
+msgstr "   <kernel IPI> : %s"
+
+#: powertop.c:414
 #, c-format
 msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr "  -d, --dump            Ermittelt einmal alle Daten und listet diese auf\n"
 
-#: powertop.c:391
+#: powertop.c:416
 #, c-format
 msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            Zeigt diese Meldung\n"
 
-#: powertop.c:390
+#: powertop.c:415
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
 msgstr "  -t, --time=DOUBLE     Zeitintervall in dem Daten gesammelt werden\n"
@@ -37,7 +47,7 @@ msgstr "  -t, --time=DOUBLE     Zeitintervall in dem Daten gesammelt werden\n"
 msgid " A - Turn AC97 powersave on "
 msgstr " A - AC97 Stromsparfunktionen einschalten"
 
-#: bluetooth.c:130
+#: bluetooth.c:146
 msgid " B - Turn Bluetooth off "
 msgstr " B - Bluetooth ausschalten"
 
@@ -45,7 +55,7 @@ msgstr " B - Bluetooth ausschalten"
 msgid " C - Power aware CPU scheduler "
 msgstr " C - Stromsparenden CPU Scheduler aktivieren"
 
-#: wireless.c:214
+#: wireless.c:253
 msgid " I - disable WIFI Radio "
 msgstr " I - WIFI Sender ausschalten"
 
@@ -90,7 +100,7 @@ msgstr " U - USB suspend einschalten"
 msgid " V - Disable TV out "
 msgstr " I - TV Ausgang ausschalten"
 
-#: wireless.c:209
+#: wireless.c:242 wireless.c:248
 msgid " W - Enable wireless power saving "
 msgstr " W - WLAN Stromsparfunktionen aktivieren "
 
@@ -126,29 +136,29 @@ msgstr "(Langzeit: %3.1fW, %3.1f Std.)"
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(verfügbar über CONFIG_DEBUG_KERNEL=y in der .config Datei)\n"
 
-#: powertop.c:510
+#: powertop.c:533
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
 msgstr ""
 "<Detaillierte C-Status Informationen sind nur für Mobilprozessoren verfügbar."
 ">\n"
 
-#: powertop.c:530
+#: powertop.c:553
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\n"
 msgstr "C%i\t\t%5.1fms (%4.1f%%)\n"
 
-#: powertop.c:519
+#: powertop.c:542
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (Prozessor läuft)    (%4.1f%%)\n"
 
-#: powertop.c:516
+#: powertop.c:539
 #, c-format
 msgid "Cn\t          Avg residency\n"
 msgstr "Cn\t           Verweildauer\n"
 
-#: powertop.c:456
+#: powertop.c:479
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr "Sammle Daten für %i Sekunden \n"
@@ -163,7 +173,7 @@ msgstr ""
 "  ethtool -s eth0 wol d\n"
 "\"Wake-On-Lan\" hält die Physikalische Netzwerkverbindung aufrecht."
 
-#: powertop.c:727
+#: powertop.c:749
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
@@ -197,7 +207,7 @@ msgstr "Achtung: Das funktioniert erst ab Kernel 2.6.21\n"
 msgid "P-states (frequencies)\n"
 msgstr "P-States (Frequenzen)\n"
 
-#: powertop.c:143 powertop.c:202
+#: powertop.c:143 powertop.c:227
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 keyboard/mouse/touchpad"
 
@@ -211,12 +221,12 @@ msgstr "Stromverbrauch (5 Min. ACPI-Schätzung): %5.1fW (%3.1f Stunden verbleibe
 msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
 msgstr "Stromverbrauch (nach ACPI): %3.1fW (%3.1f Std.)"
 
-#: powertop.c:455
+#: powertop.c:478
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr "Sie müssen PowerTOP als root ausführen, um alle Daten sehen zu können\n"
 
-#: powertop.c:721
+#: powertop.c:743
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 "hal-disable-polling --device /dev/scd0 'hal' is the component that auto-"
@@ -228,7 +238,7 @@ msgstr ""
 "CD\n"
 "autom. einen Dateimanager. Die Abfragen verhindert den SATA Energiesparmodus."
 
-#: powertop.c:698 powertop.c:702
+#: powertop.c:720 powertop.c:724
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -238,7 +248,7 @@ msgstr ""
 "Beagle indiziert die Dateien Ihres Computers für die Suche, reduziert dafür\n"
 " aber signifikant Ihre Akkulaufzeit."
 
-#: powertop.c:708
+#: powertop.c:730
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Older versions of gnome-power-manager wake up far more often than \n"
@@ -248,7 +258,7 @@ msgstr ""
 "Entgegen ihrer Bezeichnung verbrauchen einige Versionen des\n"
 "gnome-power-manager mehr Energie als sie einsparen."
 
-#: powertop.c:714
+#: powertop.c:736
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
@@ -258,7 +268,7 @@ msgstr ""
 "zu verhindern, das das USB-Subsystem in den Energiesparmodus wechseln\n"
 "kann. Damit kann auch die CPU in keinen tieferen Energiesparmodus schalten."
 
-#: powertop.c:686
+#: powertop.c:708
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
@@ -267,7 +277,7 @@ msgstr ""
 "Vorschlag: Deaktivieren Sie die Option CONFIG_IRQBALANCE Ihres Kernels.\n"
 "Der Kernel-eigene Irqbalancer ist veraltet und ineffizient."
 
-#: wireless.c:212
+#: wireless.c:251
 #, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by executing the following "
@@ -278,7 +288,7 @@ msgstr ""
 "Befehl:\n"
 "  echo 1 > %s \n"
 
-#: bluetooth.c:128
+#: bluetooth.c:144
 msgid ""
 "Suggestion: Disable the unused bluetooth interface with the following "
 "command:\n"
@@ -306,7 +316,7 @@ msgid ""
 "usbcore.autosuspend=1 to the kernel command line in the grub config"
 msgstr ""
 "Vorschlag: Aktivieren Sie \"USB autosuspend\" durch drücken der U-Taste\n"
-"oder durch anhängen der Bootoption \"usbcore.autosuspend=1\" an die Kernel-\n"
+"oder durch Anhängen der Bootoption \"usbcore.autosuspend=1\" an die Kernel-\n"
 "kommandozeile oder in der GRUB Konfiguration"
 
 #: misctips.c:79
@@ -317,7 +327,7 @@ msgstr ""
 "Vorschlag: Aktivieren Sie den Laptop-Modus mit folgendem Befehl:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 
-#: powertop.c:674
+#: powertop.c:696
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
@@ -325,7 +335,7 @@ msgstr ""
 "Vorschlag: Aktivieren Sie die Option CONFIG_ACPI_BATTERY Ihres Kernels.\n"
 "Ohne diese Option kann PowerTOP keinen Stromverbrauch ermitteln."
 
-#: powertop.c:671
+#: powertop.c:693
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -336,7 +346,7 @@ msgstr ""
 "Der \"Ondemand Governor\" minimiert den Stromverbrauch des Prozessors,\n"
 "wenn er nicht ausgelastet ist."
 
-#: powertop.c:688
+#: powertop.c:710
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
 "This option allows PowerTOP to show P-state percentages \n"
@@ -346,7 +356,7 @@ msgstr ""
 "Mit dieser Option kann PowerTOP die P-States ermitteln,\n"
 "die P-States entsprechen den CPU Frequenzen."
 
-#: powertop.c:677
+#: powertop.c:699
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
@@ -355,7 +365,7 @@ msgstr ""
 "Vorschlag: Aktivieren Sie die Option CONFIG_HPET_TIMER Ihres Kernels.\n"
 "Ohne HPET weckt der Kernel den Prozessor alle 20ms für kleinere Aufgaben auf."
 
-#: powertop.c:691
+#: powertop.c:713
 msgid ""
 "Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
 "This option allows programs to wait for changes in files and directories\n"
@@ -365,7 +375,7 @@ msgstr ""
 "Mit dieser Option können Programme auf Veränderungen im Dateisystem\n"
 "warten anstatt diese selber ständig abzufragen.."
 
-#: powertop.c:673
+#: powertop.c:695
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
@@ -373,7 +383,7 @@ msgstr ""
 "Vorschlag: Aktivieren Sie die Option CONFIG_NO_HZ Ihres Kernels.\n"
 "Das ist nötig, um überhaupt längere Ruhezeiten des Prozessors zu erzielen."
 
-#: powertop.c:682
+#: powertop.c:704
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -385,7 +395,7 @@ msgstr ""
 "Das deaktiviert den Sound-Codec, wenn er nicht benötigt wird\n"
 "und spart ca. 0,5 Watt Leistung."
 
-#: powertop.c:669
+#: powertop.c:691
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -403,7 +413,19 @@ msgstr ""
 "Vorschlag: Aktivieren Sie den \"ondemand governor\" durch: \n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 
-#: wireless.c:206
+#: wireless.c:245
+#, c-format
+msgid ""
+"Suggestion: Enable wireless power saving mode by executing the following "
+"command:\n"
+"  echo 5 > %s \n"
+"This will sacrifice network performance slightly to save power."
+msgstr ""
+"Vorschlag: Aktivieren Sie folgendem Befehl die WLAN Stromsparfunktionen:\n"
+"  echo 5 > %s \n"
+"Dadurch verringert sich die WLAN-Geschwindigkeit etwas, spart aber Strom."
+
+#: wireless.c:239
 #, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
@@ -505,7 +527,12 @@ msgstr ""
 msgid "Top causes for wakeups:\n"
 msgstr "Häufigste Ursachen für das Aufwachen:\n"
 
-#: powertop.c:388
+#: urbnum.c:104
+#, c-format
+msgid "USB device %4s : %s (%s)"
+msgstr "USB Gerät %4s : %s (%s)"
+
+#: powertop.c:413
 #, c-format
 msgid "Usage: powertop [OPTION...]\n"
 msgstr "Benutzung: powertop [Option...]\n"

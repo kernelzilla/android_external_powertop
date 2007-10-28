@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PowerTOP\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-26 16:05+0200\n"
-"PO-Revision-Date: 2007-08-19 19:23+0100\n"
+"PO-Revision-Date: 2007-10-28 18:30+0100\n"
 "Last-Translator: Yuan CHAO <yuanchao@gmail.com>\n"
 "Language-Team: Yuan CHAO <yuanchao@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,11 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Basepath: /home/john/packages/powertop\n"
 "X-Poedit-SearchPath-0: /home/john/packages/powertop\n"
+
+#: /home/john/packages/powertop/urbnum.c:104
+#, c-format
+msgid "USB device %4s : %s (%s)"
+msgstr "USB 設備 %4s : %s (%s)"
 
 #: /home/john/packages/powertop/process.c:84
 #, c-format
@@ -108,7 +113,7 @@ msgstr ""
 msgid " W - disable Wake-On-Lan "
 msgstr " W - 關閉 \"Wake-On-Lan\" "
 
-#: /home/john/packages/powertop/wireless.c:206
+#: /home/john/packages/powertop/wireless.c:239
 #, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following command:\n"
@@ -119,11 +124,23 @@ msgstr ""
 "  iwpriv %s set_power 5 \n"
 "這會犧牲一點網路效能來節省電源的消耗"
 
-#: /home/john/packages/powertop/wireless.c:209
+#: /home/john/packages/powertop/wireless.c:242
+#: /home/john/packages/powertop/wireless.c:248
 msgid " W - Enable wireless power saving "
 msgstr " W - 開啟無線網路省電功能 "
 
-#: /home/john/packages/powertop/wireless.c:212
+#: /home/john/packages/powertop/wireless.c:245
+#, c-format
+msgid ""
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
+"  echo 5 > %s \n"
+"This will sacrifice network performance slightly to save power."
+msgstr ""
+"建議: 使用下列指令啟動無線網路省電功能:\n"
+"  echo 5 > %s \n"
+"這會犧牲一點網路效能來節省電源的消耗"
+
+#: /home/john/packages/powertop/wireless.c:251
 #, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by executing the following command:\n"
@@ -132,7 +149,7 @@ msgstr ""
 "建議: 當不使用 WIFI 時, 以下列指令關閉 WIFI 信號:\n"
 "  echo 1 > %s \n"
 
-#: /home/john/packages/powertop/wireless.c:214
+#: /home/john/packages/powertop/wireless.c:253
 msgid " I - disable WIFI Radio "
 msgstr " I - 關閉 WIFI 信號 "
 
@@ -241,7 +258,7 @@ msgstr ""
 msgid " U - Enable USB suspend "
 msgstr " U - 啟用 USB 休眠功能"
 
-#: /home/john/packages/powertop/bluetooth.c:128
+#: /home/john/packages/powertop/bluetooth.c:144
 msgid ""
 "Suggestion: Disable the unused bluetooth interface with the following command:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
@@ -251,7 +268,7 @@ msgstr ""
 "  hciconfig hci0 down ; rmmod hci_usb\n"
 "藍牙是一種無線通訊介面，會有相當大的耗電量，同時使得 USB 持續忙碌\n"
 
-#: /home/john/packages/powertop/bluetooth.c:130
+#: /home/john/packages/powertop/bluetooth.c:146
 msgid " B - Turn Bluetooth off "
 msgstr " B - 關閉藍牙介面通訊 "
 
@@ -269,61 +286,72 @@ msgid " S - SATA Link Power Management "
 msgstr " S - SATA Link 電源管理功能 "
 
 #: /home/john/packages/powertop/powertop.c:143
-#: /home/john/packages/powertop/powertop.c:202
+#: /home/john/packages/powertop/powertop.c:227
 msgid "PS/2 keyboard/mouse/touchpad"
-msgstr "PS/2 鍵盤/滑鼠/觸控版"
+msgstr "PS/2 鍵盤/滑鼠/觸控板"
 
-#: /home/john/packages/powertop/powertop.c:388
+#: /home/john/packages/powertop/powertop.c:222
+#, c-format
+msgid "   <kernel IPI> : %s"
+msgstr "   <核心 IPI> : %s"
+
+#: /home/john/packages/powertop/powertop.c:224
+#: /home/john/packages/powertop/powertop.c:227
+#, c-format
+msgid "    <interrupt> : %s"
+msgstr "    <中斷服務> : %s"
+
+#: /home/john/packages/powertop/powertop.c:413
 #, c-format
 msgid "Usage: powertop [OPTION...]\n"
 msgstr "用法：powertop [選項...]\n"
 
-#: /home/john/packages/powertop/powertop.c:389
+#: /home/john/packages/powertop/powertop.c:414
 #, c-format
 msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
-msgstr "  -d, --dump            讀取一次並列出首要造成脫離閒置的元兇\n"
+msgstr "  -d, --dump            一次列出所有造成CPU脫離閒置的首要程序後退出\n"
 
-#: /home/john/packages/powertop/powertop.c:390
+#: /home/john/packages/powertop/powertop.c:415
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
 msgstr "  -t, --time=DOUBLE     預設用來蒐集資料的時間, 以秒為單位\n"
 
-#: /home/john/packages/powertop/powertop.c:391
+#: /home/john/packages/powertop/powertop.c:416
 #, c-format
 msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            顯示本輔助說明\n"
 
-#: /home/john/packages/powertop/powertop.c:455
+#: /home/john/packages/powertop/powertop.c:478
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr "PowerTOP 需要以 root 的身份執行，以取得足夠的資訊\n"
 
-#: /home/john/packages/powertop/powertop.c:456
+#: /home/john/packages/powertop/powertop.c:479
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr "正在收集資料中，請稍等 %i 秒 \n"
 
-#: /home/john/packages/powertop/powertop.c:510
+#: /home/john/packages/powertop/powertop.c:533
 #, c-format
 msgid "< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"
 msgstr "< 詳細的 C-state 資訊，只有行動運算型 CPU 有提供 (筆記型電腦) >\n"
 
-#: /home/john/packages/powertop/powertop.c:516
+#: /home/john/packages/powertop/powertop.c:539
 #, c-format
 msgid "Cn\t          Avg residency\n"
 msgstr "Cn\t          平均停留時間\n"
 
-#: /home/john/packages/powertop/powertop.c:519
+#: /home/john/packages/powertop/powertop.c:542
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (cpu 忙碌中)        (%4.1f%%)\n"
 
-#: /home/john/packages/powertop/powertop.c:530
+#: /home/john/packages/powertop/powertop.c:553
 #, c-format
 msgid "C%i\t\t%5.1fms (%4.1f%%)\n"
 msgstr "C%i\t\t%5.1f毫秒 (%4.1f%%)\n"
 
-#: /home/john/packages/powertop/powertop.c:669
+#: /home/john/packages/powertop/powertop.c:691
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -333,7 +361,7 @@ msgstr ""
 "此選項會在 UHCI USB 不用時自動關閉 UHCI USB 設備,\n"
 "最高約可節省 1 瓦的耗電量."
 
-#: /home/john/packages/powertop/powertop.c:671
+#: /home/john/packages/powertop/powertop.c:693
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
@@ -343,7 +371,7 @@ msgstr ""
 "'ondemand' CPU 時脈管理模式可減少 CPU 功率的消耗\n"
 "同時能在必要時提供所需的效能."
 
-#: /home/john/packages/powertop/powertop.c:673
+#: /home/john/packages/powertop/powertop.c:695
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
@@ -351,7 +379,7 @@ msgstr ""
 "建議: 啟用 CONFIG_NO_HZ 核心選項.\n"
 "需啟用此功能來使用各種維持 CPU 閒置狀態的功能"
 
-#: /home/john/packages/powertop/powertop.c:674
+#: /home/john/packages/powertop/powertop.c:696
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
@@ -359,7 +387,7 @@ msgstr ""
 "建議: 啟用 CONFIG_ACPI_BATTERY 核心選項.\n"
 "PowerTOP 需要此功能以得知剩餘電池電量."
 
-#: /home/john/packages/powertop/powertop.c:677
+#: /home/john/packages/powertop/powertop.c:699
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
@@ -369,7 +397,7 @@ msgstr ""
 "不使用 HPET 核心支援將造成核心每 20ms\n"
 "需離開閒置狀態來做整理的工作."
 
-#: /home/john/packages/powertop/powertop.c:682
+#: /home/john/packages/powertop/powertop.c:704
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
@@ -379,7 +407,7 @@ msgstr ""
 "此選項可以使音效卡於閒置時自動關閉電源\n"
 "大約可以節省 0.5 瓦的耗電量."
 
-#: /home/john/packages/powertop/powertop.c:686
+#: /home/john/packages/powertop/powertop.c:708
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
@@ -387,7 +415,7 @@ msgstr ""
 "建議: 取消 CONFIG_IRQBALANCE 核心選項\n"
 "核心中 IRQ 負載平衡是過時的，而且會造成 CPU 過多離開閒置狀態的頻率"
 
-#: /home/john/packages/powertop/powertop.c:688
+#: /home/john/packages/powertop/powertop.c:710
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
 "This option allows PowerTOP to show P-state percentages \n"
@@ -397,7 +425,7 @@ msgstr ""
 "PowerTOP 需要此選項來顯示 CPU P-States,\n"
 "P-States 對應到 CPU 頻率狀態."
 
-#: /home/john/packages/powertop/powertop.c:691
+#: /home/john/packages/powertop/powertop.c:713
 msgid ""
 "Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
 "This option allows programs to wait for changes in files and directories\n"
@@ -407,8 +435,8 @@ msgstr ""
 "此選項可使程式在以等待核心通知的方式，來獲知檔案或目錄的更動\n"
 "而無須不斷使用poll指令來探尋變更"
 
-#: /home/john/packages/powertop/powertop.c:698
-#: /home/john/packages/powertop/powertop.c:702
+#: /home/john/packages/powertop/powertop.c:720
+#: /home/john/packages/powertop/powertop.c:724
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -418,7 +446,7 @@ msgstr ""
 "Beagle  套件會在系統閒置時製做索引來加速桌面搜尋，\n"
 "但也會因此而縮短電池可用時間"
 
-#: /home/john/packages/powertop/powertop.c:708
+#: /home/john/packages/powertop/powertop.c:730
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Older versions of gnome-power-manager wake up far more often than \n"
@@ -428,7 +456,7 @@ msgstr ""
 "雖然該程式用來設定電源管理模式，但某些舊版本存在一個臭蟲使得 \n"
 "電源消耗更加嚴重."
 
-#: /home/john/packages/powertop/powertop.c:714
+#: /home/john/packages/powertop/powertop.c:736
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
@@ -438,7 +466,7 @@ msgstr ""
 "pcscd 會使得 USB 子系統脫離省電模式\n"
 "並且使中央處理器離開深度省電模式."
 
-#: /home/john/packages/powertop/powertop.c:721
+#: /home/john/packages/powertop/powertop.c:743
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 "hal-disable-polling --device /dev/scd0 'hal' is the component that auto-opens a\n"
@@ -448,7 +476,7 @@ msgstr ""
 "hal-disable-polling --device /dev/scd0 'hal' 會在插入光碟時自動開啟檔案總管 \n"
 "但是會使得 SATA 脫離省電模式."
 
-#: /home/john/packages/powertop/powertop.c:727
+#: /home/john/packages/powertop/powertop.c:749
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
