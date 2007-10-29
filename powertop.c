@@ -603,11 +603,11 @@ int main(int argc, char **argv)
 				c++;
 			func = c;
 			if (strcmp(process, "insmod") == 0)
-				process = "<kernel module>";
+				process = _("<kernel module>");
 			if (strcmp(process, "modprobe") == 0)
-				process = "<kernel module>";
+				process = _("<kernel module>");
 			if (strcmp(process, "swapper") == 0)
-				process = "<kernel core>";
+				process = _("<kernel core>");
 			c = strchr(c, '\n');
 			if (strncmp(func, "tick_nohz_", 10) == 0)
 				continue;
@@ -639,7 +639,7 @@ int main(int argc, char **argv)
 					totalevents += interrupt_0 - d;
 			}
 			if (d>0 && d < interrupt_0)
-				push_line("    <interrupt> : extra timer interrupt", interrupt_0 - d);
+				push_line(_("    <interrupt> : extra timer interrupt"), interrupt_0 - d);
 		}
 
 	
