@@ -31,6 +31,7 @@
 struct line {
 	char	*string;
 	int	count;
+	char 	pid[12];
 };
 
 typedef void (suggestion_func)(void);
@@ -68,6 +69,8 @@ extern char cpufreqstrings[5][80];
 extern int topcstate;
 extern int topfreq;  
 extern int dump;
+
+extern int showpids;
 
 extern char status_bar_slots[10][40];
 extern char suggestion_key;

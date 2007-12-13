@@ -1,3 +1,6 @@
+1.10 --
+	* add the "P" key to show the PIDs of the processes when possible
+
 1.9 --
 	* add support for mac80211 based wireless power saving
 	* improve bluetooth inactivity detection (David Woodhouse)

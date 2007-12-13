@@ -79,7 +79,7 @@ void suggest_process_death(char *process_match, char *tokill, struct line *sline
 	int i;
 
 	for (i = 0; i < linecount; i++) {
-		if (strstr(slines[i].string, process_match)) {
+		if (slines[i].string && strstr(slines[i].string, process_match)) {
 			char hotkey_string[300];
 			sprintf(hotkey_string, _(" K - kill %s "), tokill);
 			strcpy(process_to_kill, tokill);

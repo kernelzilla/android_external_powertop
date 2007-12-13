@@ -46,6 +46,8 @@ double ticktime = 15.0;
 
 int interrupt_0, total_interrupt;
 
+int showpids = 0;
+
 static int maxcstate = 0;
 int topcstate = 0;
 
@@ -94,6 +96,27 @@ void push_line(char *string, int count)
 		lines = realloc (lines, (linesize ? (linesize *= 2) : (linesize = 64)) * sizeof (struct line));
 	lines[linehead].string = strdup (string);
 	lines[linehead].count = count;
+	lines[linehead].pid[0] = 0;
+	linehead++;
+}
+
+void push_line_pid(char *string, int count, char *pid) 
+{
+	int i;
+	assert(string != NULL);
+	for (i = 0; i < linehead; i++)
+		if (strcmp(string, lines[i].string) == 0) {
+			lines[i].count += count;
+			if (pid && strcmp(lines[i].pid, pid)!=0)
+				lines[i].pid[0] = 0;
+			return;
+		}
+	if (linehead == linesize)
+		lines = realloc (lines, (linesize ? (linesize *= 2) : (linesize = 64)) * sizeof (struct line));
+	lines[linehead].string = strdup (string);
+	lines[linehead].count = count;
+	if (pid)
+		strcpy(lines[linehead].pid, pid);
 	linehead++;
 }
 
@@ -625,7 +648,7 @@ int main(int argc, char **argv)
 			if (deferrable)
 				continue;
 			sprintf(line2, "%15s : %s", process, func);
-			push_line(line2, cnt);
+			push_line_pid(line2, cnt, pid);
 		}
 		if (file)
 			pclose(file);
@@ -679,7 +702,9 @@ int main(int argc, char **argv)
 				suggestion_activate();
 				ticktime = 2;
 				displaytime = -1.0;
-			}
+			} else
+			if (keychar == 'P')
+				showpids = !showpids;
 		}
 
 		if (wakeups_per_second < 0)

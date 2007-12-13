@@ -244,7 +244,12 @@ void show_timerstats(int nostats, int ticktime)
 					wattron(timerstat_window, A_BOLD);
 				else
 					wattroff(timerstat_window, A_BOLD);
-				print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   %s \n", lines[i].count * 100.0 / linectotal,
+				if (showpids)
+					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   [%6s] %s \n", lines[i].count * 100.0 / linectotal,
+						lines[i].count * 1.0 / ticktime, 
+						lines[i].pid, lines[i].string);
+				else
+					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   %s \n", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, 
 						lines[i].string);
 				}
