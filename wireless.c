@@ -139,7 +139,6 @@ void find_4965(void)
 	static int tried_4965 = 0;
 	DIR *dir;
 	struct dirent *dirent;
-	FILE *file;
 	char pathname[PATH_MAX];
 
 	if (tried_4965++)
