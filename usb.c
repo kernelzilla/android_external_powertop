@@ -52,7 +52,7 @@ static void activate_usb_autosuspend(void)
 		file = fopen(filename, "w");
 		if (!file)
 			continue;
-		fprintf(file, "1\n");
+		fprintf(file, "0\n");
 		fclose(file);
 	}
 
@@ -89,7 +89,7 @@ void suggest_usb_autosuspend(void)
 			fclose(file);
 			continue;
 		}
-		if (strtoull(line, NULL,10)<1)
+		if (strtoll(line, NULL,10)<0)
 			need_hint = 1;
 
 		fclose(file);
