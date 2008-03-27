@@ -371,7 +371,7 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 
 			if (f) {
 				clevel = 0;
-				sprintf(cnames[clevel], "polling");
+				sprintf(cnames[clevel], _("polling"));
 			}
 
 			sprintf(filename + len, "/%s/usage", entry->d_name);
@@ -725,6 +725,7 @@ int main(int argc, char **argv)
 	do_proc_irq();
 	do_proc_irq();
 	do_cpufreq_stats();
+	count_usb_urbs();
 	count_usb_urbs();
 
 	memset(cur_usage, 0, sizeof(cur_usage));

@@ -52,6 +52,12 @@ static void activate_usb_autosuspend(void)
 			continue;
 		fprintf(file, "0\n");
 		fclose(file);
+		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
+		file = fopen(filename, "w");
+		if (!file)
+			continue;
+		fprintf(file, "auto\n");
+		fclose(file);
 	}
 
 	closedir(dir);
@@ -87,6 +93,23 @@ void suggest_usb_autosuspend(void)
 			need_hint = 1;
 
 		fclose(file);
+
+
+		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
+		file = fopen(filename, "r");
+		if (!file)
+			continue;
+		memset(line, 0, 1024);
+		if (fgets(line, 1023,file)==NULL) {
+			fclose(file);
+			continue;
+		}
+		if (strstr(line, "on"))
+			need_hint = 1;
+
+		fclose(file);
+
+
 	}
 
 	closedir(dir);
