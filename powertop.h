@@ -119,7 +119,7 @@ void count_usb_urbs(void);
 
 void display_usb_activity(void);
 void activate_usb_autosuspend(void);
-
+void print_intel_cstates(void);
 
 
 #endif
