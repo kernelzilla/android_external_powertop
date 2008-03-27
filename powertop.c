@@ -471,7 +471,9 @@ void sort_lines(void)
 	qsort (lines, linehead, sizeof (struct line), line_compare);
 }
 
-void print_battery(void)
+
+
+void print_battery_proc(void)
 {
 	DIR *dir;
 	struct dirent *dirent;
@@ -537,6 +539,109 @@ void print_battery(void)
 			rate += watts_drawn + voltage * amperes_drawn;
 		}
 		cap += watts_left + voltage * amperes_left;
+		
+
+	}
+	closedir(dir);
+	if (prev_bat_cap - cap < 0.001 && rate < 0.001)
+		last_bat_time = 0;
+	if (!last_bat_time) {
+		last_bat_time = prev_bat_time = time(NULL);
+		last_bat_cap = prev_bat_cap = cap;
+	}
+	if (time(NULL) - last_bat_time >= 400) {
+		prev_bat_cap = last_bat_cap;
+		prev_bat_time = last_bat_time;
+		last_bat_time = time(NULL);
+		last_bat_cap = cap;
+	}
+
+	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
+}
+
+void print_battery_sysfs(void)
+{
+	DIR *dir;
+	struct dirent *dirent;
+	FILE *file;
+	double rate = 0;
+	double cap = 0;
+
+	char filename[256];
+
+	dir = opendir("/sys/class/power_supply");
+	if (!dir) {
+		print_battery_proc();
+		return;
+	}
+
+	while ((dirent = readdir(dir))) {
+		int dontcount = 0;
+		double voltage = 0.0;
+		double amperes_drawn = 0.0;
+		double watts_drawn = 0.0;
+		double watts_left = 0.0;
+		char line[1024];
+
+		if (strstr(dirent->d_name, "AC"))
+			continue;
+
+		sprintf(filename, "/sys/class/power_supply/%s/present", dirent->d_name);
+		file = fopen(filename, "r");
+		if (!file)
+			continue;
+		int s;
+		if ((s = getc(file)) != EOF) {
+			if (s == 0)
+				break;
+		}
+		fclose(file);
+
+		sprintf(filename, "/sys/class/power_supply/%s/status", dirent->d_name);
+		file = fopen(filename, "r");
+		if (!file)
+			continue;
+		memset(line, 0, 1024);
+		if (fgets(line, 1024, file) != NULL) {
+			if (!strstr(line, "Discharging"))
+				dontcount = 1;
+		}
+		fclose(file);
+
+		sprintf(filename, "/sys/class/power_supply/%s/voltage_now", dirent->d_name);
+		file = fopen(filename, "r");
+		if (!file)
+			continue;
+		memset(line, 0, 1024);
+		if (fgets(line, 1024, file) != NULL) {
+			voltage = strtoull(line, NULL, 10) / 1000000.0;
+		}
+		fclose(file);
+
+		sprintf(filename, "/sys/class/power_supply/%s/energy_now", dirent->d_name);
+		file = fopen(filename, "r");
+		if (!file)
+			continue;
+		memset(line, 0, 1024);
+		if (fgets(line, 1024, file) != NULL) {
+			watts_left = strtoull(line, NULL, 10) / 1000000.0;
+		}
+		fclose(file);
+
+		sprintf(filename, "/sys/class/power_supply/%s/current_now", dirent->d_name);
+		file = fopen(filename, "r");
+		if (!file)
+			continue;
+		memset(line, 0, 1024);
+		if (fgets(line, 1024, file) != NULL) {
+			watts_drawn = strtoull(line, NULL, 10) / 1000000.0;
+		}
+		fclose(file);
+	
+		if (!dontcount) {
+			rate += watts_drawn + voltage * amperes_drawn;
+		}
+		cap += watts_left;
 		
 
 	}
@@ -802,7 +907,7 @@ int main(int argc, char **argv)
 			show_wakeups(wakeups_per_second, ticktime, c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ) );
 		}
 		count_usb_urbs();
-		print_battery();
+		print_battery_sysfs();
 		count_lines();
 		sort_lines();
 

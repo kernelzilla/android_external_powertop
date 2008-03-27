@@ -4,6 +4,8 @@
 	* Add support for reading C-state info via sysfs
 	  (Kevin Hilman, Venki Pallipadi)
 	* Show USB suspend statistics of USB devices in "-d" dump mode
+	* Add support for using the sysfs power supply class
+	  (Donnie Berkholz)
 
 1.9 --
 	* add support for mac80211 based wireless power saving
