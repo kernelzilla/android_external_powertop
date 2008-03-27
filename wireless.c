@@ -134,9 +134,37 @@ static int need_wireless_suggest_new(void)
 	return 1;
 }
 
+void find_4965(void)
+{
+	static int tried_4965 = 0;
+	DIR *dir;
+	struct dirent *dirent;
+	FILE *file;
+	char pathname[PATH_MAX];
+
+	if (tried_4965++)
+		return;
+
+	dir = opendir("/sys/bus/pci/drivers/iwl4965");
+	if (!dir)
+		return;
+		
+	while ((dirent = readdir(dir))) {
+		if (dirent->d_name[0]=='.')
+			continue;
+		sprintf(pathname, "/sys/bus/pci/drivers/iwl4965/%s/power_level", dirent->d_name);
+		if (!access(pathname, W_OK))
+			strcpy(powersave_path, pathname);
+	}
+
+	closedir(dir);
+
+}
+
 
 void find_wireless_nic(void) 
 {
+	static int found = 0;
 	FILE *file;
 	int sock;
 	struct ifreq ifr;
@@ -144,6 +172,9 @@ void find_wireless_nic(void)
 	struct ethtool_drvinfo driver;
 	int ifaceup = 0;
 	int ret;
+
+	if (found++)
+		return;
 
 	wireless_nic[0] = 0;
 	rfkill_path[0] = 0;
@@ -231,8 +262,9 @@ void suggest_wireless_powersave(void)
 	char sug[1024];
 	int ret;
 
-	if (strlen(wireless_nic)==0)
+	if (strlen(wireless_nic)==0) 
 		find_wireless_nic();
+	find_4965();
 	ret = check_unused_wiresless_up();
 
 	if (ret >= 0 && need_wireless_suggest(wireless_nic)) {
