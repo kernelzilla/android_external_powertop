@@ -365,13 +365,17 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 			if (f) {
 				f += 6;
 				clevel = (strtoull(f, NULL, 16)>>4) + 1;
-				sprintf(cnames[clevel], "C%i", clevel);
 			}
+			sprintf(cnames[clevel], "C%i", clevel);
 			f = strstr(line, "POLL IDLE");
-
 			if (f) {
-				clevel = 0;
 				sprintf(cnames[clevel], _("polling"));
+			}
+
+			f = strstr(line, "ACPI HLT");
+			if (f) {
+				clevel = 1;
+				sprintf(cnames[clevel], "C1");
 			}
 
 			sprintf(filename + len, "/%s/usage", entry->d_name);

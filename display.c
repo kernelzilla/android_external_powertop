@@ -171,7 +171,7 @@ void show_cstates(void)
 			wattron(cstate_window, A_BOLD);
 		else
 			wattroff(cstate_window, A_BOLD);			
-		if (strlen(cstate_lines[i]) && count < 6) {
+		if (strlen(cstate_lines[i]) && count <= 6) {
 			print(cstate_window, count, 0, "%s", cstate_lines[i]);
 			count++;
 		}
