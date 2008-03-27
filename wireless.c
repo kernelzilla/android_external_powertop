@@ -253,7 +253,7 @@ void activate_wireless_suggestion_new(void)
 	file = fopen(powersave_path, "w");
 	if (!file)
 		return;
-	fprintf(file,"5\n");
+	fprintf(file,"1\n");
 	fclose(file);
 }
 
