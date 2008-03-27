@@ -41,7 +41,7 @@
 
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
-char cnames[8][8];
+char cnames[8][10];
 
 double ticktime = 15.0;
 
@@ -369,13 +369,12 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 			sprintf(cnames[clevel], "C%i", clevel);
 			f = strstr(line, "POLL IDLE");
 			if (f) {
-				sprintf(cnames[clevel], _("polling"));
+				sprintf(cnames[clevel], "%s", _("polling"));
 			}
 
 			f = strstr(line, "ACPI HLT");
 			if (f) {
-				clevel = 1;
-				sprintf(cnames[clevel], "C1");
+				sprintf(cnames[clevel], "%s", "C1 halt");
 			}
 
 			sprintf(filename + len, "/%s/usage", entry->d_name);
