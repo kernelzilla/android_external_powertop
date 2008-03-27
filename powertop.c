@@ -35,12 +35,13 @@
 #include <assert.h>
 #include <locale.h>
 #include <time.h>
+#include <sys/stat.h>
 
 #include "powertop.h"
 
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
-
+char cnames[8][8];
 
 double ticktime = 15.0;
 
@@ -64,7 +65,8 @@ struct irqdata {
 
 struct irqdata interrupts[IRQCOUNT];
 
-#define FREQ 3579.545
+#define FREQ_ACPI 3579.545
+static unsigned long FREQ;
 
 int nostats;
 
@@ -259,7 +261,7 @@ static void do_proc_irq(void)
 	fclose(file);
 }
 
-static void read_data(uint64_t * usage, uint64_t * duration)
+static void read_data_acpi(uint64_t * usage, uint64_t * duration)
 {
 	DIR *dir;
 	struct dirent *entry;
@@ -307,6 +309,132 @@ static void read_data(uint64_t * usage, uint64_t * duration)
 		fclose(file);
 	}
 	closedir(dir);
+}
+
+static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
+{
+	DIR *cpudir;
+	DIR *dir;
+	struct dirent *entry;
+	FILE *file = NULL;
+	char line[4096];
+	char filename[128], *f;
+	int len, clevel = 0;
+
+	memset(usage, 0, 64);
+	memset(duration, 0, 64);
+
+	cpudir = opendir("/sys/devices/system/cpu");
+	if (!cpudir)
+		return;
+
+	/* Loop over cpuN entries */
+	while ((entry = readdir(cpudir))) {
+		if (strlen(entry->d_name) < 3)
+			continue;
+
+		if (!isdigit(entry->d_name[3]))
+			continue;
+
+		len = sprintf(filename, "/sys/devices/system/cpu/%s/cpuidle",
+			      entry->d_name);
+
+		dir = opendir(filename);
+		if (!dir)
+			return;
+
+		clevel = 0;
+
+		/* For each C-state, there is a stateX directory which
+		 * contains a 'usage' and a 'time' (duration) file */
+		while ((entry = readdir(dir))) {
+			if (strlen(entry->d_name) < 3)
+				continue;
+			sprintf(filename + len, "/%s/desc", entry->d_name);
+			file = fopen(filename, "r");
+			if (!file)
+				continue;
+
+			memset(line, 0, 4096);
+			f = fgets(line, 4096, file);
+			fclose(file);
+			if (f == NULL)
+				break;
+			
+			f = strstr(line, "MWAIT ");
+			if (f) {
+				f += 6;
+				clevel = (strtoull(f, NULL, 16)>>4) + 1;
+				sprintf(cnames[clevel], "C%i", clevel);
+			}
+			f = strstr(line, "POLL IDLE");
+
+			if (f) {
+				clevel = 0;
+				sprintf(cnames[clevel], "polling");
+			}
+
+			sprintf(filename + len, "/%s/usage", entry->d_name);
+			file = fopen(filename, "r");
+			if (!file)
+				continue;
+
+			memset(line, 0, 4096);
+			f = fgets(line, 4096, file);
+			fclose(file);
+			if (f == NULL)
+				break;
+
+			usage[clevel] += 1+strtoull(line, NULL, 10);
+
+			sprintf(filename + len, "/%s/time", entry->d_name);
+			file = fopen(filename, "r");
+			if (!file)
+				continue;
+		
+			memset(line, 0, 4096);
+			f = fgets(line, 4096, file);
+			fclose(file);
+			if (f == NULL)
+				break;
+
+			duration[clevel] += 1+strtoull(line, NULL, 10);
+
+			clevel++;
+			if (clevel > maxcstate)
+				maxcstate = clevel;
+		
+		}
+		closedir(dir);
+
+	}
+	closedir(cpudir);
+}
+
+static void read_data(uint64_t * usage, uint64_t * duration)
+{
+	int r;
+	struct stat s;
+
+	/* Then check for CPUidle */
+	r = stat("/sys/devices/system/cpu/cpuidle", &s);
+	if (!r) {
+		read_data_cpuidle(usage, duration);
+		
+		/* perform residency calculations based on usecs */
+		FREQ = 1000;
+		return;
+	}
+
+	/* First, check for ACPI */
+	r = stat("/proc/acpi/processor", &s);
+	if (!r) {
+		read_data_acpi(usage, duration);
+
+		/* perform residency calculations based on ACPI timer */
+		FREQ = FREQ_ACPI;
+		return;
+	}
 }
 
 void stop_timerstats(void)
@@ -429,7 +557,7 @@ void print_battery(void)
 	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
 }
 
-char cstate_lines[6][200];
+char cstate_lines[12][200];
 
 void usage()
 {
@@ -553,7 +681,7 @@ int main(int argc, char **argv)
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
 		topcstate = -4;
 		if (totalevents == 0 && maxcstate <= 1) {
-			sprintf(cstate_lines[5],_("< Detailed C-state information is only available on Mobile CPUs (laptops) >\n"));
+			sprintf(cstate_lines[5],_("< Detailed C-state information is not available.>\n"));
 		} else {
 			double sleept, percentage;;
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
@@ -565,16 +693,19 @@ int main(int argc, char **argv)
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), percentage);
 			if (percentage > 50)
 				topcstate = 0;
-			for (i = 0; i < 4; i++)
+			for (i = 0; i < 8; i++)
 				if (cur_usage[i]) {
 					sleept = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
 					percentage = (cur_duration[i] -
 					      last_duration[i]) * 100 /
 					     (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ);
+
+					if (cnames[i][0]==0)
+						sprintf(cnames[i],"C%i",i+1);
 					sprintf
-					    (cstate_lines[2+i], _("C%i\t\t%5.1fms (%4.1f%%)\n"),
-					     i + 1, sleept, percentage);
+					    (cstate_lines[2+i], _("%s\t\t%5.1fms (%4.1f%%)\n"),
+					     cnames[i], sleept, percentage);
 					if (maxsleep < sleept)
 						maxsleep = sleept;
 					if (percentage > 50)

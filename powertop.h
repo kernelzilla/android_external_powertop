@@ -63,7 +63,7 @@ void suggest_usb_autosuspend(void);
 
 
 
-extern char cstate_lines[6][200];
+extern char cstate_lines[12][200];
 extern char cpufreqstrings[5][80];
 
 extern int topcstate;

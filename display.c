@@ -163,15 +163,18 @@ void show_title_bar(void)
 
 void show_cstates(void) 
 {
-	int i;
+	int i, count = 0;
 	werase(cstate_window);
 
-	for (i=0; i<6; i++) {
+	for (i=0; i < 10; i++) {
 		if (i == topcstate+1)
 			wattron(cstate_window, A_BOLD);
 		else
 			wattroff(cstate_window, A_BOLD);			
-		print(cstate_window, i, 0, "%s", cstate_lines[i]);
+		if (strlen(cstate_lines[i]) && count < 6) {
+			print(cstate_window, count, 0, "%s", cstate_lines[i]);
+			count++;
+		}
 	}
 
 	for (i=0; i<5; i++) {
