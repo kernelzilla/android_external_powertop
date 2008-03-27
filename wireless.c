@@ -146,9 +146,18 @@ void find_4965(void)
 		return;
 
 	dir = opendir("/sys/bus/pci/drivers/iwl4965");
+	while (dir && (dirent = readdir(dir))) {
+		if (dirent->d_name[0]=='.')
+			continue;
+		sprintf(pathname, "/sys/bus/pci/drivers/iwl4965/%s/power_level", dirent->d_name);
+		if (!access(pathname, W_OK))
+			strcpy(powersave_path, pathname);
+	}
+	if (dir)
+		closedir(dir);
+	dir = opendir("/sys/bus/pci/drivers/iwl3945");
 	if (!dir)
 		return;
-		
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
 			continue;
