@@ -32,7 +32,7 @@
 
 #include "powertop.h"
 
-static void activate_usb_autosuspend(void)
+void activate_usb_autosuspend(void)
 {
 	DIR *dir;
 	struct dirent *dirent;

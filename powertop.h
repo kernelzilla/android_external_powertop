@@ -59,6 +59,7 @@ void suggest_xrandr_TV_off(void);
 void suggest_WOL_off(void);
 void suggest_writeback_time(void);
 void suggest_usb_autosuspend(void);
+void usb_activity_hint(void);
 
 
 
@@ -117,6 +118,7 @@ void  do_cpufreq_stats(void);
 void count_usb_urbs(void);
 
 void display_usb_activity(void);
+void activate_usb_autosuspend(void);
 
 
 

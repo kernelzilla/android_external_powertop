@@ -1034,6 +1034,7 @@ int main(int argc, char **argv)
 		suggest_WOL_off();
 		suggest_writeback_time();
 		suggest_usb_autosuspend();
+		usb_activity_hint();
 
 		if (dump) {
 			print_all_suggestions();
