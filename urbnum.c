@@ -39,8 +39,8 @@ struct device_data {
 	struct device_data *next;
 	char pathname[4096];
 	char human_name[4096];
-	uint64_t urbs;
-	uint64_t previous_urbs;
+	uint64_t urbs, active, connected;
+	uint64_t previous_urbs, previous_active, previous_connected;
 };
 
 
@@ -52,6 +52,8 @@ static void cachunk_urbs(void)
 	ptr = devices;
 	while (ptr) {
 		ptr->previous_urbs = ptr->urbs;
+		ptr->previous_active = ptr->active;
+		ptr->previous_connected = ptr->connected;
 		ptr = ptr->next;
 	}
 }
@@ -63,9 +65,25 @@ static void update_urbnum(char *path, uint64_t count, char *shortname)
 	char fullpath[4096];
 	char name[4096], vendor[4096];
 	ptr = devices;
+
 	while (ptr) {
 		if (strcmp(ptr->pathname, path)==0) {
 			ptr->urbs = count;
+			sprintf(fullpath, "%s/power/active_duration", path);
+			file = fopen(fullpath, "r");
+			if (!file)
+				return;
+			fgets(name, 4096, file);
+			ptr->active = strtoull(name, NULL, 10);
+			fclose(file);
+			sprintf(fullpath, "%s/power/connected_duration", path);
+			file = fopen(fullpath, "r");
+			if (!file)
+				return;
+			fgets(name, 4096, file);
+			ptr->connected = strtoull(name, NULL, 10);
+			fclose(file);
+
 			return;
 		}
 		ptr = ptr->next;
@@ -145,3 +163,18 @@ void count_usb_urbs(void)
 	}
 }
 
+
+void display_usb_activity(void)
+{
+	struct device_data *dev;
+	printf("\n");
+	printf("%s\n", _("Recent USB suspend statistics"));
+	printf("%s\n", _("Active  Device name"));
+	dev = devices;
+	while (dev) {
+		printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) / 
+			(0.00001 + dev->connected - dev->previous_connected), dev->human_name);
+		dev = dev->next;
+	}
+
+}

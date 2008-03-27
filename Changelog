@@ -1,10 +1,9 @@
-1.11 --
-	* Add support for reading C-state info via sysfs
-	  (Kevin Hilman, Venki Pallipadi)
-
 
 1.10 --
 	* add the "P" key to show the PIDs of the processes when possible
+	* Add support for reading C-state info via sysfs
+	  (Kevin Hilman, Venki Pallipadi)
+	* Show USB suspend statistics of USB devices in "-d" dump mode
 
 1.9 --
 	* add support for mac80211 based wireless power saving

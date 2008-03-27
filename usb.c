@@ -32,8 +32,6 @@
 
 #include "powertop.h"
 
-int alpm_activated;
-
 static void activate_usb_autosuspend(void)
 {
 	DIR *dir;
@@ -57,7 +55,6 @@ static void activate_usb_autosuspend(void)
 	}
 
 	closedir(dir);
-	alpm_activated = 1;
 }
 
 void suggest_usb_autosuspend(void)
@@ -68,9 +65,6 @@ void suggest_usb_autosuspend(void)
 	char filename[PATH_MAX];
 	char line[1024];
 	int need_hint  = 0;
-
-	if (alpm_activated)
-		return;
 
 
 	dir = opendir("/sys/bus/usb/devices");
@@ -104,3 +98,5 @@ void suggest_usb_autosuspend(void)
 				45, 'U', _(" U - Enable USB suspend "), activate_usb_autosuspend);
 	}
 }
+
+

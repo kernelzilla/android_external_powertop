@@ -928,6 +928,7 @@ int main(int argc, char **argv)
 
 		if (dump) {
 			print_all_suggestions();
+			display_usb_activity();
 			exit(EXIT_SUCCESS);
 		}
 
@@ -951,5 +952,6 @@ int main(int argc, char **argv)
 
 		
 	}
+
 	return 0;
 }

@@ -116,6 +116,8 @@ void push_line(char *string, int count);
 void  do_cpufreq_stats(void);
 void count_usb_urbs(void);
 
+void display_usb_activity(void);
+
 
 
 #endif
