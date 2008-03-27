@@ -352,31 +352,32 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 				continue;
 			sprintf(filename + len, "/%s/desc", entry->d_name);
 			file = fopen(filename, "r");
-			if (!file)
-				continue;
+			if (file) {
 
-			memset(line, 0, 4096);
-			f = fgets(line, 4096, file);
-			fclose(file);
-			if (f == NULL)
-				break;
+				memset(line, 0, 4096);
+				f = fgets(line, 4096, file);
+				fclose(file);
+				if (f == NULL)
+					break;
 			
-			f = strstr(line, "MWAIT ");
-			if (f) {
-				f += 6;
-				clevel = (strtoull(f, NULL, 16)>>4) + 1;
-			}
-			sprintf(cnames[clevel], "C%i", clevel);
-			f = strstr(line, "POLL IDLE");
-			if (f) {
-				sprintf(cnames[clevel], "%s", _("polling"));
-			}
+				f = strstr(line, "MWAIT ");
+				if (f) {
+					f += 6;
+					clevel = (strtoull(f, NULL, 16)>>4) + 1;
+				}
+				sprintf(cnames[clevel], "C%i", clevel);
+				f = strstr(line, "POLL IDLE");
+				if (f) {
+					clevel = 0;
+					sprintf(cnames[clevel], "%s", _("polling"));
+				}
 
-			f = strstr(line, "ACPI HLT");
-			if (f) {
-				sprintf(cnames[clevel], "%s", "C1 halt");
+				f = strstr(line, "ACPI HLT");
+				if (f) {
+					clevel = 1;
+					sprintf(cnames[clevel], "%s", "C1 halt");
+				}
 			}
-
 			sprintf(filename + len, "/%s/usage", entry->d_name);
 			file = fopen(filename, "r");
 			if (!file)
@@ -476,7 +477,7 @@ void sort_lines(void)
 
 
 
-void print_battery_proc(void)
+int print_battery_proc(void)
 {
 	DIR *dir;
 	struct dirent *dirent;
@@ -488,7 +489,7 @@ void print_battery_proc(void)
 
 	dir = opendir("/proc/acpi/battery");
 	if (!dir)
-		return;
+		return 0;
 
 	while ((dirent = readdir(dir))) {
 		int dontcount = 0;
@@ -560,6 +561,7 @@ void print_battery_proc(void)
 	}
 
 	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
+	return 1;
 }
 
 void print_battery_sysfs(void)
@@ -571,10 +573,12 @@ void print_battery_sysfs(void)
 	double cap = 0;
 
 	char filename[256];
+	
+	if (print_battery_proc())
+		return;
 
 	dir = opendir("/sys/class/power_supply");
 	if (!dir) {
-		print_battery_proc();
 		return;
 	}
 
