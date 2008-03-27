@@ -420,7 +420,7 @@ static void read_data(uint64_t * usage, uint64_t * duration)
 	struct stat s;
 
 	/* Then check for CPUidle */
-	r = stat("/sys/devices/system/cpu/cpuidle", &s);
+	r = stat("/sys/devices/system/cpu/cpu0/cpuidle", &s);
 	if (!r) {
 		read_data_cpuidle(usage, duration);
 		
