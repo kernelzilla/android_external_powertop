@@ -54,7 +54,26 @@ static char wireless_nic[32];
 static char rfkill_path[PATH_MAX];
 static char powersave_path[PATH_MAX];
 
-static int check_unused_wiresless_up(void)
+static int rfkill_enabled(void)
+{
+	FILE *file;
+	char val;
+	if (strlen(rfkill_path)<2)
+		return 0;
+	if (access(rfkill_path, W_OK))
+		return 0;
+
+	file = fopen(rfkill_path, "r");
+	if (!file)
+		return 0;
+	val = fgetc(file);
+	fclose(file);
+	if (val != '0') /* already rfkill'd */
+		return 1;
+	return 0;
+}
+
+int check_unused_wiresless_up(void)
 {
 	FILE *file;
 	char val;
@@ -96,6 +115,9 @@ static int need_wireless_suggest(char *iface)
 	char line[1024];
 	int ret = 0;
 
+	if (rfkill_enabled())
+		return 0;
+
 	sprintf(line, "/sbin/iwpriv %s get_power 2> /dev/null", iface);
 	file = popen(line, "r");
 	if (!file)
@@ -121,6 +143,9 @@ static int need_wireless_suggest_new(void)
 	if (strlen(powersave_path)<2)
 		return 0;
 	if (access(powersave_path, W_OK))
+		return 0;
+
+	if (rfkill_enabled())
 		return 0;
 
 	file = fopen(powersave_path, "r");
@@ -160,7 +185,7 @@ void find_4965(void)
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
 			continue;
-		sprintf(pathname, "/sys/bus/pci/drivers/iwl4965/%s/power_level", dirent->d_name);
+		sprintf(pathname, "/sys/bus/pci/drivers/iwl3945/%s/power_level", dirent->d_name);
 		if (!access(pathname, W_OK))
 			strcpy(powersave_path, pathname);
 	}
@@ -188,6 +213,8 @@ void find_wireless_nic(void)
 	rfkill_path[0] = 0;
 	powersave_path[0] = 0;
 
+	strcpy(wireless_nic, "wlan0");
+
 	file = popen("/sbin/iwpriv -a 2> /dev/null", "r");
 	if (!file)
 		return;
@@ -202,6 +229,8 @@ void find_wireless_nic(void)
 			if (c) *c = 0;
 			strcpy(wireless_nic, line);
 		}
+		if (strstr(line, "wlan0:"))
+			strcpy(wireless_nic, "wlan0");
 	}
 	pclose(file);
 
@@ -235,7 +264,7 @@ void find_wireless_nic(void)
         ifr.ifr_data = (void*) &driver;
         ret = ioctl(sock, SIOCETHTOOL, &ifr);
 
-	sprintf(rfkill_path,"/sys/bus/pci/devices/%s/rf_kill", driver.bus_info);
+	sprintf(rfkill_path,"/sys/bus/pci/devices/%s/rfkill/rfkill0/state", driver.bus_info);
 	sprintf(powersave_path,"/sys/bus/pci/devices/%s/power_level", driver.bus_info);
 	close(sock);
 }
