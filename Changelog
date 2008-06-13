@@ -1,4 +1,7 @@
 
+1.11 --
+
+
 1.10 --
 	* add the "P" key to show the PIDs of the processes when possible
 	* Add support for reading C-state info via sysfs

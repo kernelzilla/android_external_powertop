@@ -737,7 +737,7 @@ int main(int argc, char **argv)
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
-	printf("PowerTOP 1.10    (C) 2007, 2008 Intel Corporation \n\n");
+	printf("PowerTOP 1.11    (C) 2007, 2008 Intel Corporation \n\n");
 	if (geteuid() != 0)
 		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
 	printf(_("Collecting data for %i seconds \n"), (int)ticktime);
