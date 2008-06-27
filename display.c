@@ -177,7 +177,7 @@ void show_cstates(void)
 		}
 	}
 
-	for (i=0; i<5; i++) {
+	for (i=0; i<6; i++) {
 		if (i == topfreq+1)
 			wattron(cstate_window, A_BOLD);
 		else

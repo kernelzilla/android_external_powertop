@@ -41,7 +41,7 @@
 
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
-char cnames[8][10];
+char cnames[8][16];
 
 double ticktime = 15.0;
 
@@ -359,23 +359,26 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 				fclose(file);
 				if (f == NULL)
 					break;
+
 			
 				f = strstr(line, "MWAIT ");
 				if (f) {
 					f += 6;
 					clevel = (strtoull(f, NULL, 16)>>4) + 1;
-				}
-				sprintf(cnames[clevel], "C%i", clevel);
+					sprintf(cnames[clevel], "C%i mwait", clevel);
+				} else
+					sprintf(cnames[clevel], "C%i\t", clevel);
+
 				f = strstr(line, "POLL IDLE");
 				if (f) {
 					clevel = 0;
-					sprintf(cnames[clevel], "%s", _("polling"));
+					sprintf(cnames[clevel], "%s\t", _("polling"));
 				}
 
 				f = strstr(line, "ACPI HLT");
 				if (f) {
 					clevel = 1;
-					sprintf(cnames[clevel], "%s", "C1 halt");
+					sprintf(cnames[clevel], "%s\t", "C1 halt");
 				}
 			}
 			sprintf(filename + len, "/%s/usage", entry->d_name);
@@ -819,7 +822,7 @@ int main(int argc, char **argv)
 					if (cnames[i][0]==0)
 						sprintf(cnames[i],"C%i",i+1);
 					sprintf
-					    (cstate_lines[2+i], _("%s\t\t%5.1fms (%4.1f%%)\n"),
+					    (cstate_lines[2+i], _("%s\t%5.1fms (%4.1f%%)\n"),
 					     cnames[i], sleept, percentage);
 					if (maxsleep < sleept)
 						maxsleep = sleept;

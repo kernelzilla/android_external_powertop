@@ -65,7 +65,7 @@ void usb_activity_hint(void);
 
 
 extern char cstate_lines[12][200];
-extern char cpufreqstrings[5][80];
+extern char cpufreqstrings[6][80];
 
 extern int topcstate;
 extern int topfreq;  

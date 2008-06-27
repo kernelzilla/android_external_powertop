@@ -42,7 +42,7 @@ struct cpufreqdata oldfreqs[16];
 
 struct cpufreqdata delta[16];
 
-char cpufreqstrings[5][80];
+char cpufreqstrings[6][80];
 int topfreq = -1;
 
 static void zap(void)
@@ -160,8 +160,8 @@ void  do_cpufreq_stats(void)
 		return;
 
 	qsort(&delta, maxfreq+1, sizeof(struct cpufreqdata), sort_by_count);
-	if (maxfreq>3)
-		maxfreq=3;
+	if (maxfreq>4)
+		maxfreq=4;
 	qsort(&delta, maxfreq+1, sizeof(struct cpufreqdata), sort_by_freq);
 
 	topfreq = -1;
