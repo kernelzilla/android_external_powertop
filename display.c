@@ -38,7 +38,7 @@
 static WINDOW *title_bar_window;
 static WINDOW *cstate_window;
 static WINDOW *wakeup_window;
-static WINDOW *acpi_power_window;
+static WINDOW *battery_power_window;
 static WINDOW *timerstat_window;
 static WINDOW *suggestion_window;
 static WINDOW *status_bar_window;
@@ -65,9 +65,9 @@ static void zap_windows(void)
 		delwin(wakeup_window);
 		wakeup_window = NULL;
 	}
-	if (acpi_power_window) {
-		delwin(acpi_power_window);
-		acpi_power_window = NULL;
+	if (battery_power_window) {
+		delwin(battery_power_window);
+		battery_power_window = NULL;
 	}
 	if (timerstat_window) {
 		delwin(timerstat_window);
@@ -98,7 +98,7 @@ void setup_windows(void)
 	title_bar_window = subwin(stdscr, 1, maxx, 0, 0);
 	cstate_window = subwin(stdscr, 7, maxx, 2, 0);
 	wakeup_window = subwin(stdscr, 1, maxx, 9, 0);
-	acpi_power_window = subwin(stdscr, 2, maxx, 10, 0);
+	battery_power_window = subwin(stdscr, 2, maxx, 10, 0);
 	timerstat_window = subwin(stdscr, maxy-16, maxx, 12, 0);
 	maxtimerstats = maxy-16  -2;
 	maxwidth = maxx - 18;
@@ -195,7 +195,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 
 	sprintf(buffer,  _("no ACPI power usage estimate available") );
 
-	werase(acpi_power_window);
+	werase(battery_power_window);
 	if (rate > 0.001) {
 		char *c;
 		sprintf(buffer, _("Power usage (ACPI estimate): %3.1fW (%3.1f hours)"), rate, cap/rate);
@@ -207,9 +207,47 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	else if (ti>120 && capdelta > 0.001)
 		sprintf(buffer, _("Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
 
-	print(acpi_power_window, 0, 0, "%s\n", buffer);	
-	wrefresh(acpi_power_window);
+	print(battery_power_window, 0, 0, "%s\n", buffer);	
+	wrefresh(battery_power_window);
 }
+
+void show_pmu_power_line(unsigned num_batteries, unsigned sum_voltage_mV,
+                         unsigned sum_charge_mAh, unsigned sum_max_charge_mAh,
+                         int sum_discharge_mA)
+{
+	char buffer[1024];
+
+	if (sum_discharge_mA != 0)
+	{
+		unsigned remaining_charge_mAh;
+
+		if (sum_discharge_mA < 0)
+		{
+			/* we are currently discharging */
+			sum_discharge_mA = -sum_discharge_mA;
+			remaining_charge_mAh = sum_charge_mAh;
+		}
+		else
+		{
+			/* we are currently charging */
+			remaining_charge_mAh = (sum_max_charge_mAh
+						- sum_charge_mAh);
+		}
+
+		snprintf(buffer, sizeof(buffer),
+			 _("Power usage: %3.1fW (%3.1f hours)"),
+			 sum_voltage_mV * sum_discharge_mA / 1e6,
+			 (double)remaining_charge_mAh / sum_discharge_mA);
+	}
+	else
+		snprintf(buffer, sizeof(buffer),
+			 _("no power usage estimate available") );
+
+	werase(battery_power_window);
+	print(battery_power_window, 0, 0, "%s\n", buffer);
+	wrefresh(battery_power_window);
+}
+
 
 void show_wakeups(double d, double interval, double C0time)
 {

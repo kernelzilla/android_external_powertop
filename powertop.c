@@ -480,7 +480,7 @@ void sort_lines(void)
 
 
 
-int print_battery_proc(void)
+int print_battery_proc_acpi(void)
 {
 	DIR *dir;
 	struct dirent *dirent;
@@ -567,6 +567,79 @@ int print_battery_proc(void)
 	return 1;
 }
 
+int print_battery_proc_pmu(void)
+{
+	char line[80];
+	int i;
+	int power_present = 0;
+	int num_batteries = 0;
+	/* unsigned rem_time_sec = 0; */
+	unsigned charge_mAh = 0, max_charge_mAh = 0, voltage_mV = 0;
+	int discharge_mA = 0;
+	FILE *fd;
+
+	fd = fopen("/proc/pmu/info", "r");
+	if (fd == NULL)
+		return 0;
+
+	while ( fgets(line, sizeof(line), fd) != NULL )
+	{
+		if (strncmp("AC Power", line, strlen("AC Power")) == 0)
+			sscanf(strchr(line, ':')+2, "%d", &power_present);
+		else if (strncmp("Battery count", line, strlen("Battery count")) == 0)
+			sscanf(strchr(line, ':')+2, "%d", &num_batteries);
+	}
+	fclose(fd);
+
+	for (i = 0; i < num_batteries; ++i)
+	{
+		char file_name[20];
+		int flags = 0;
+		/* int battery_charging, battery_full; */
+		/* unsigned this_rem_time_sec = 0; */
+		unsigned this_charge_mAh = 0, this_max_charge_mAh = 0;
+		unsigned this_voltage_mV = 0, this_discharge_mA = 0;
+
+		snprintf(file_name, sizeof(file_name), "/proc/pmu/battery_%d", i);
+		fd = fopen(file_name, "r");
+		if (fd == NULL)
+			continue;
+
+		while (fgets(line, sizeof(line), fd) != NULL)
+		{
+			if (strncmp("flags", line, strlen("flags")) == 0)
+				sscanf(strchr(line, ':')+2, "%x", &flags);
+			else if (strncmp("charge", line, strlen("charge")) == 0)
+				sscanf(strchr(line, ':')+2, "%d", &this_charge_mAh);
+			else if (strncmp("max_charge", line, strlen("max_charge")) == 0)
+				sscanf(strchr(line, ':')+2, "%d", &this_max_charge_mAh);
+			else if (strncmp("voltage", line, strlen("voltage")) == 0)
+				sscanf(strchr(line, ':')+2, "%d", &this_voltage_mV);
+			else if (strncmp("current", line, strlen("current")) == 0)
+				sscanf(strchr(line, ':')+2, "%d", &this_discharge_mA);
+			/* else if (strncmp("time rem.", line, strlen("time rem.")) == 0) */
+			/*   sscanf(strchr(line, ':')+2, "%d", &this_rem_time_sec); */
+		}
+		fclose(fd);
+
+		if ( !(flags & 0x1) )
+			/* battery isn't present */
+			continue;
+
+		/* battery_charging = flags & 0x2; */
+		/* battery_full = !battery_charging && power_present; */
+
+		charge_mAh += this_charge_mAh;
+		max_charge_mAh += this_max_charge_mAh;
+		voltage_mV += this_voltage_mV;
+		discharge_mA += this_discharge_mA;
+		/* rem_time_sec += this_rem_time_sec; */
+	}
+	show_pmu_power_line(num_batteries, voltage_mV, charge_mAh, max_charge_mAh,
+	                    discharge_mA);
+	return 1;
+}
+
 void print_battery_sysfs(void)
 {
 	DIR *dir;
@@ -577,7 +650,10 @@ void print_battery_sysfs(void)
 
 	char filename[256];
 	
-	if (print_battery_proc())
+	if (print_battery_proc_acpi())
+		return;
+	
+	if (print_battery_proc_pmu())
 		return;
 
 	dir = opendir("/sys/class/power_supply");
