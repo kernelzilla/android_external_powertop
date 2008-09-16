@@ -103,7 +103,7 @@ void show_title_bar(void);
 void setup_windows(void);
 void initialize_curses(void);
 void show_acpi_power_line(double rate, double cap, double capdelta, time_t time);
-void show_pmu_power_line(unsigned num_batteries, unsigned sum_voltage_mV,
+void show_pmu_power_line(unsigned sum_voltage_mV,
                          unsigned sum_charge_mAh, unsigned sum_max_charge_mAh,
                          int sum_discharge_mA);
 void show_cstates(void);

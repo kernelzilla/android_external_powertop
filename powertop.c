@@ -635,7 +635,7 @@ int print_battery_proc_pmu(void)
 		discharge_mA += this_discharge_mA;
 		/* rem_time_sec += this_rem_time_sec; */
 	}
-	show_pmu_power_line(num_batteries, voltage_mV, charge_mAh, max_charge_mAh,
+	show_pmu_power_line(voltage_mV, charge_mAh, max_charge_mAh,
 	                    discharge_mA);
 	return 1;
 }
@@ -706,12 +706,19 @@ void print_battery_sysfs(void)
 
 		sprintf(filename, "/sys/class/power_supply/%s/energy_now", dirent->d_name);
 		file = fopen(filename, "r");
-		if (!file)
-			continue;
-		memset(line, 0, 1024);
-		if (fgets(line, 1024, file) != NULL) {
-			watts_left = strtoull(line, NULL, 10) / 1000000.0;
+		watts_left = 1;
+		if (!file) {
+			sprintf(filename, "/sys/class/power_supply/%s/charge_now", dirent->d_name);
+			file = fopen(filename, "r");
+			if (!file) 
+				continue;
+
+			/* W = A * V */
+			watts_left = voltage;
 		}
+		memset(line, 0, 1024);
+		if (fgets(line, 1024, file) != NULL) 
+			watts_left *= strtoull(line, NULL, 10) / 1000000.0;
 		fclose(file);
 
 		sprintf(filename, "/sys/class/power_supply/%s/current_now", dirent->d_name);
@@ -720,7 +727,7 @@ void print_battery_sysfs(void)
 			continue;
 		memset(line, 0, 1024);
 		if (fgets(line, 1024, file) != NULL) {
-			watts_drawn = strtoull(line, NULL, 10) / 1000000.0;
+			amperes_drawn = strtoull(line, NULL, 10) / 1000000.0;
 		}
 		fclose(file);
 	

@@ -211,7 +211,7 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 	wrefresh(battery_power_window);
 }
 
-void show_pmu_power_line(unsigned num_batteries, unsigned sum_voltage_mV,
+void show_pmu_power_line(unsigned sum_voltage_mV,
                          unsigned sum_charge_mAh, unsigned sum_max_charge_mAh,
                          int sum_discharge_mA)
 {
