@@ -5,7 +5,7 @@ INST= $(SRC:.po=.inst)
 translations: $(OBJ)
 	
 %.mo: %.po
-	-@msgfmt -o $@  $<
+	msgfmt -o $@  $<
 
 clean:
 	rm -f *.mo *~

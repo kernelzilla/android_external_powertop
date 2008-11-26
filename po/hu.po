@@ -286,11 +286,11 @@ msgstr ""
 #: powertop.c:1017
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "Tanács: Ne engedd a 'hal' alkalmazásnak a CD-meghajtó állandó figyelését:  \n"
-"hal-disable-polling /dev/scd0    a 'hal' egy alkalmazás, ami automatikusan \n"
+"hal-disable-polling /dev/cdrom    a 'hal' egy alkalmazás, ami automatikusan \n"
 "megnyit egy grafikus ablakot, ha egy CD-lemezt helyezel a meghajtóba, \n"
 "viszont ez megakadályozza a SATA energiatakarékos üzemmód bekapcsolását."
 

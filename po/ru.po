@@ -193,12 +193,12 @@ msgstr ""
 #: powertop.c:647
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling /dev/scd0        'hal' is the component that auto-opens "
+"hal-disable-polling /dev/cdrom        'hal' is the component that auto-opens "
 "a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "Совет: запретите 'hal' проверять Ваш cdrom командой:  \n"
-"hal-disable-polling /dev/scd0  'hal'автоматически открывает окно, когда \n"
+"hal-disable-polling /dev/cdrom  'hal'автоматически открывает окно, когда \n"
 "Вы вставляете CD, но он мешает нормальной работе энергосбережения SATA."
 
 #: powertop.c:624 powertop.c:628

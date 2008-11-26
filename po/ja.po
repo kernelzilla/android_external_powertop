@@ -252,12 +252,12 @@ msgstr "最近のUSBサスペンド状況"
 #: powertop.c:1017
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
 "opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "提案: 次のコマンドでhalによるcdromのポーリング機能が無効になります。\n"
-"hal-disable-polling --device /dev/scd0\n"
+"hal-disable-polling --device /dev/cdrom\n"
 "halはCD挿入時の自動実行機能を提供しますが、SATAの省電力が無効になります。"
 
 #: powertop.c:991 powertop.c:995

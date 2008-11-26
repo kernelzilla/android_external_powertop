@@ -258,7 +258,7 @@ msgstr "Statistik suspensi USB terkini"
 #: powertop.c:1019
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
 "opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""

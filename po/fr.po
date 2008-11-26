@@ -224,10 +224,10 @@ msgstr "PowerTOP doit être lancé en root pour collecter suffisamment d'informa
 #: powertop.c:743
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
-"Suggestion : empêchez hal de surveiller votre cdrom avec : hal-disable-polling --device /dev/scd0\n"
+"Suggestion : empêchez hal de surveiller votre cdrom avec : hal-disable-polling --device /dev/cdrom\n"
 "hal est le composant qui ouvre automatiquement une fenêtre lorsque vous insérez\n"
 "un CD, mais qui empêche les économies d'énergie sur le bus SATA."
 

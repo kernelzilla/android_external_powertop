@@ -514,11 +514,11 @@ msgstr ""
 #: /home/john/packages/powertop/powertop.c:1017
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "建議: 使用下列指令取消 'hal' 檢查光碟狀態: \n"
-"hal-disable-polling --device /dev/scd0 'hal' 會在插入光碟時自動開啟檔案總管 \n"
+"hal-disable-polling --device /dev/cdrom 'hal' 會在插入光碟時自動開啟檔案總管 \n"
 "但是會使得 SATA 脫離省電模式."
 
 #: /home/john/packages/powertop/powertop.c:1023

@@ -254,11 +254,11 @@ msgstr "Estatísticas recentes da suspensão USB"
 #: powertop.c:1017
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "Sugestão: Desabilite 'hal' de acessar o seu cdrom com: \n"
-"hal-stop-polling --device /dev/scd0 'hal' é o componente que abre uma janela\n"
+"hal-stop-polling --device /dev/cdrom 'hal' é o componente que abre uma janela\n"
 "quando você insere um CD, mas desabilita o modo de economia de energia do SATA."
 
 #: powertop.c:991
