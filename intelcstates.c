@@ -44,17 +44,24 @@ static void cpuid(      unsigned int *eax,
                         unsigned int *ecx,
                         unsigned int *edx)
 {
-        /* call the cpuid instruction with the registers as input and output */
-        __asm__("cpuid"
-                : "=a" (*eax),
-                  "=b" (*ebx),
-                  "=c" (*ecx),
-                  "=d" (*edx)
-                : "0" (*eax),
-                  "1" (*ebx),
-                  "2" (*ecx),
-                  "3" (*edx)
-                );
+	/* call the cpuid instruction with the registers as input and output
+	 * modification by Dwokfur based on Sam Hocevar's discussion on
+	 * how to make Assemly code PIC compatible:
+	 * http://sam.zoy.org/blog/2007-04-13-shlib-with-non-pic-code-have-inline-assembly-and-pic-mix-well
+	 */
+	__asm__("pushl %%ebx	\n\t" /* save %ebx */
+		"cpuid		\n\t"
+		"movl %%ebx, %1	\n\t" /* save what cpuid just put in %ebx */
+		"popl %%ebx	\n\t" /* restore the old %ebx */
+		: "=a" (*eax),
+		  "=r" (*ebx),
+		  "=c" (*ecx),
+		  "=d" (*edx)
+		: "0" (*eax),
+		  "1" (*ebx),
+		  "2" (*ecx),
+		  "3" (*edx)
+		);
 }
 
 #endif
