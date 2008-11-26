@@ -1024,8 +1024,11 @@ int main(int argc, char **argv)
 
 		if (key) {
 			char keychar;
+			int keystroke = fgetc(stdin);
+			if (keystroke == EOF)
+				exit(EXIT_SUCCESS);
 
-			keychar = toupper(fgetc(stdin));
+			keychar = toupper(keystroke);
 			if (keychar == 'Q')
 				exit(EXIT_SUCCESS);
 			if (keychar == 'R')
