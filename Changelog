@@ -1,6 +1,10 @@
 
 1.11 --
-
+	* Fix compilation with PIC
+	* polling hint now refers to /dev/cdrom instead of /dev/scd0
+	* fix calculations for systems that vary in power draw proc info
+	* Display mwait usage
+	* fix EOF at input
 
 1.10 --
 	* add the "P" key to show the PIDs of the processes when possible
@@ -11,7 +15,7 @@
 	devices
 	* Add support for using the sysfs power supply class
 	  (Donnie Berkholz)
- 	* Fix USB suspend suggestion to take semi blacklisted stuff into
+	* Fix USB suspend suggestion to take semi blacklisted stuff into
 	  account
 	* Add support for Intel's 4965 wireless power saving mode
 	* On new enough cpus (and kernel 2.6.25), report which C-states the
