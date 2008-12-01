@@ -39,6 +39,8 @@
 
 #include "powertop.h"
 
+#define VERSION "1.11"
+
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
 char cnames[8][16];
@@ -763,6 +765,13 @@ void usage()
 	printf(_("  -d, --dump            read wakeups once and print list of top offenders\n"));
 	printf(_("  -t, --time=DOUBLE     default time to gather data in seconds\n"));
 	printf(_("  -h, --help            Show this help message\n"));
+	printf(_("  -v, --version         Show version information and exit\n"));
+	exit(0);
+}
+
+void version()
+{
+	printf(_("powertop version " VERSION "\n"));
 	exit(0);
 }
 
@@ -783,11 +792,12 @@ int main(int argc, char **argv)
  			{ "dump", 0, NULL, 'd' },
  			{ "time", 1, NULL, 't' },
  			{ "help", 0, NULL, 'h' },
+ 			{ "version", 0, NULL, 'v' },
  			{ 0, 0, NULL, 0 }
  		};
  		int index2 = 0, c;
  		
- 		c = getopt_long(argc, argv, "dt:h", opts, &index2);
+ 		c = getopt_long(argc, argv, "dt:hv", opts, &index2);
  		if (c == -1)
  			break;
  		switch (c) {
@@ -799,6 +809,9 @@ int main(int argc, char **argv)
  			break;
  		case 'h':
  			usage();
+ 			break;
+ 		case 'v':
+ 			version();
  			break;
  		default:
  			;
@@ -823,7 +836,7 @@ int main(int argc, char **argv)
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
-	printf("PowerTOP 1.11    (C) 2007, 2008 Intel Corporation \n\n");
+	printf("PowerTOP " VERSION "   (C) 2007, 2008 Intel Corporation \n\n");
 	if (geteuid() != 0)
 		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
 	printf(_("Collecting data for %i seconds \n"), (int)ticktime);
