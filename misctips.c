@@ -296,7 +296,7 @@ void suggest_writeback_time(void)
 		char line[1024];
 		sprintf(line,_("Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
 			 	"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
-				"This wakes the disk up less frequenty for background VM activity"),
+				"This wakes the disk up less frequently for background VM activity"),
 			i/100.0);
 		add_suggestion(line, 15, 'W', _(" W - Increase Writeback time "), writeback_long);
 	}

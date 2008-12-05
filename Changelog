@@ -5,6 +5,8 @@
 	* fix calculations for systems that vary in power draw proc info
 	* Display mwait usage
 	* fix EOF at input
+	* add --version|-v option
+	* spelling error in tips.
 
 1.10 --
 	* add the "P" key to show the PIDs of the processes when possible
