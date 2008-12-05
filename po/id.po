@@ -1,14 +1,14 @@
 # Translation of English po to Indonesian
 # This file is distributed under the same license as the PowerTOP package.
-# Andika Triwidada <andika@gmail.com>, 2007
+# Andika Triwidada <andika@gmail.com>, 2007-2008
 # 
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: powertop 1.10\n"
+"Project-Id-Version: powertop 1.11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-31 15:54+0700\n"
-"PO-Revision-Date: 2008-05-31 16:00+0700\n"
+"POT-Creation-Date: 2008-12-03 10:44+0700\n"
+"PO-Revision-Date: 2008-12-03 10:48+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "    <interrupt> : %s"
 msgstr "    <interupsi> : %s"
 
-#: powertop.c:913
+#: powertop.c:996
 msgid "    <interrupt> : extra timer interrupt"
 msgstr "    <interupsi> : interupsi pewaktu ekstra"
 
@@ -29,24 +29,23 @@ msgstr "    <interupsi> : interupsi pewaktu ekstra"
 msgid "   <kernel IPI> : %s"
 msgstr "   <kernel IPI> : %s"
 
-#: powertop.c:679
+#: powertop.c:762
 #, c-format
 msgid ""
 "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr ""
-"  -d, --dump            membaca cacah bangun hanya dalam satu perioda \n"
+"  -d, --dump            membaca cacah bangun hanya sekali \n"
 "dan mencetak daftar pelanggar utama\n"
 
-#: powertop.c:681
+#: powertop.c:764
 #, c-format
 msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            Tampilkan pesan bantuan ini\n"
 
-#: powertop.c:680
+#: powertop.c:763
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
-msgstr ""
-"  -t, --time=DOUBLE     waktu default untuk mengumpulkan data dalam detik\n"
+msgstr "  -t, --time=DOUBLE     waktu default untuk mengumpulkan data dalam detik\n"
 
 #: misctips.c:174
 msgid " A - Turn AC97 powersave on "
@@ -132,31 +131,30 @@ msgstr "%6lli MHz"
 msgid "%9lli"
 msgstr "%9lli"
 
-#: powertop.c:824
+#: powertop.c:907
 #, c-format
-msgid "%s\t\t%5.1fms (%4.1f%%)\n"
-msgstr "%s\t\t%5.1fms (%4.1f%%)\n"
+msgid "%s\t%5.1fms (%4.1f%%)\n"
+msgstr "%s\t%5.1fms (%4.1f%%)\n"
 
-#: display.c:205
+#: display.c:215
 #, c-format
-msgid "(long term: %3.1fW,/%3.1fh)"
-msgstr "(jangka pjg: %3.1fW/%3.1fj)"
+msgid "(long term: %3.1fW/%dh:%02dm)"
+msgstr "(jangka pjg: %3.1fW/%dj:%02dm)"
 
-#: display.c:263
+#: display.c:319
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(yaitu CONFIG_DEBUG_KERNEL=y di berkas config)\n"
 
-#: powertop.c:801
+#: powertop.c:884
 #, c-format
 msgid "< Detailed C-state information is not available.>\n"
-msgstr ""
-"< Informasi C-state terinci tidak tersedia >\n"
+msgstr "< Informasi C-state terinci tidak tersedia >\n"
 
-#: powertop.c:881
+#: powertop.c:964
 msgid "<kernel core>"
 msgstr "<core kernel>"
 
-#: powertop.c:877 powertop.c:879
+#: powertop.c:960 powertop.c:962
 msgid "<kernel module>"
 msgstr "<modul kernel>"
 
@@ -166,24 +164,24 @@ msgid ""
 "A USB device is active %4.1f%% of the time:\n"
 "%s"
 msgstr ""
-"Sebuah perangkat USB aktif %4.1f%% dari waktu:\n"
+"Suatu piranti USB aktif %4.1f%% dari waktu:\n"
 "%s"
 
 #: urbnum.c:176
 msgid "Active  Device name"
-msgstr "Nama Perangkat Aktif"
+msgstr "Nama Piranti Aktif"
 
-#: powertop.c:810
+#: powertop.c:893
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (cpu bekerja)        (%4.1f%%)\n"
 
-#: powertop.c:807
+#: powertop.c:890
 #, c-format
 msgid "Cn\t          Avg residency\n"
 msgstr "Cn\t    Residensi rata-rata\n"
 
-#: powertop.c:745
+#: powertop.c:828
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr "Mengumpulkan data selama %i detik \n"
@@ -198,7 +196,7 @@ msgstr ""
 "  ethtool -s eth0 wol d \n"
 "Bangun-Lewat-LAN membuat phy terus aktif, yang memakan daya."
 
-#: powertop.c:1025
+#: powertop.c:1108
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
@@ -208,13 +206,13 @@ msgstr ""
 "SE-Alert mengingatkan anda tentang pelanggaran kebijakan SELinux, tapi juga\n"
 "memiliki bug yang membangunkannya 10 kali per detik."
 
-#: display.c:266
+#: display.c:322
 msgid ""
 "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr ""
 "Tidak tersedia statistik rinci; PowerTOP perlu privilese root untuk itu\n"
 
-#: display.c:261
+#: display.c:317
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
@@ -222,7 +220,7 @@ msgstr ""
 "Tidak tersedia statistik rinci; silahkan hidupkan opsi kernel "
 "CONFIG_TIMER_STATS\n"
 
-#: display.c:264
+#: display.c:320
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "Catatan: ini hanya tersedia di kernel 2.6.21 dan setelahnya\n"
 
@@ -235,17 +233,22 @@ msgstr "P-state (frekuensi)\n"
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 keyboard/mouse/touchpad"
 
-#: display.c:208
+#: display.c:220
 #, c-format
-msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr "Penggunaan daya (perkiraan ACPI 5 menit) : %5.1f W (%3.1f jam tersisa)"
+msgid "Power usage (5 minute ACPI estimate): %3.1f W (%d:%02dm left)"
+msgstr "Penggunaan daya (perkiraan ACPI 5 menit) : %3.1f W (%d:%02dm tersisa)"
 
-#: display.c:201
+#: display.c:210
 #, c-format
-msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
-msgstr "Penggunaan daya (perkiraan ACPI): %3.1fW (%3.1f jam)"
+msgid "Power usage (ACPI estimate): %3.1fW (%dh:%02dm)"
+msgstr "Penggunaan daya (perkiraan ACPI): %3.1fW (%dj:%02dm)"
 
-#: powertop.c:744
+#: display.c:256
+#, c-format
+msgid "Power usage: %3.1fW (%3.1f hours)"
+msgstr "Penggunaan daya: %3.1fW (%3.1f jam)"
+
+#: powertop.c:827
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr ""
@@ -255,19 +258,19 @@ msgstr ""
 msgid "Recent USB suspend statistics"
 msgstr "Statistik suspensi USB terkini"
 
-#: powertop.c:1019
+#: powertop.c:1102
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
+"hal-disable-polling --device /dev/scd0 'hal' is the component that auto-"
 "opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "Saran: Atur agar 'hal' tidak melakukan polling ke cdrom anda dengan:  \n"
 "hal-disable-polling --device /dev/sdc0 'hal' akan membuka otomatis \n"
-"perambah berkas ketika CD dimasukkan tapi mencegah penghematan daya SATA "
+"peramban berkas ketika CD dimasukkan tapi mencegah penghematan daya SATA "
 "bekerja."
 
-#: powertop.c:993 powertop.c:997
+#: powertop.c:1076 powertop.c:1080
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -278,7 +281,7 @@ msgstr ""
 "yang muda, namun tidak cukup efisien dan memakan cukup banyak \n"
 "umur batere."
 
-#: powertop.c:1006
+#: powertop.c:1089
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Older versions of gnome-power-manager wake up far more often than \n"
@@ -288,7 +291,7 @@ msgstr ""
 "Versi-versi terdahulu gnome-power-manager bangun terlalu sering daripada\n"
 "yang diperlukan sehingga memakan daya."
 
-#: powertop.c:1012
+#: powertop.c:1095
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
@@ -298,7 +301,7 @@ msgstr ""
 "pcscd cenderung membuat subsistem USB keluar dari mode penghematan daya dan "
 "prosesor keluar dari state penghematan daya yang lebih jauh."
 
-#: powertop.c:981
+#: powertop.c:1064
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
@@ -360,7 +363,7 @@ msgstr ""
 "Saran: Fungsikan mode laptop dengan menjalankan perintah berikut:\n"
 "   echo 5 > /proc/sys/vm/laptop_mode \n"
 
-#: powertop.c:969
+#: powertop.c:1052
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
@@ -368,7 +371,7 @@ msgstr ""
 "Saran: Fungsikan opsi konfigurasi kernel CONFIG_ACPI_BATTERY.\n"
 "Opsi ini diperlukan untuk mendapat estimasi penggunaan daya PowerTOP"
 
-#: powertop.c:966
+#: powertop.c:1049
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -379,7 +382,7 @@ msgstr ""
 "Pengendali kecepatan CPU 'ondemand' akan meminimalkan pemakaian daya CPU\n"
 "sambil memberikan kinerja ketika diperlukan."
 
-#: powertop.c:983
+#: powertop.c:1066
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
 "This option allows PowerTOP to show P-state percentages \n"
@@ -389,7 +392,7 @@ msgstr ""
 "Opsi ini memungkinkan PowerTOP menampilkan persentase P-state \n"
 "P-state terkait dengan frekuensi-frekuensi CPU."
 
-#: powertop.c:972
+#: powertop.c:1055
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
@@ -399,7 +402,7 @@ msgstr ""
 "Tanpa dukungan HPET kernel perlu bangun setiap 20 milidetik untuk \n"
 "melakukan tugas-tugas housekeeping."
 
-#: powertop.c:986
+#: powertop.c:1069
 msgid ""
 "Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
 "This option allows programs to wait for changes in files and directories\n"
@@ -409,7 +412,7 @@ msgstr ""
 "Opsi ini memungkinkan program menunggu pemberitahuan perubahan\n"
 "dalam berkas dan direktori tanpa harus memeriksa berulang kali"
 
-#: powertop.c:968
+#: powertop.c:1051
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
@@ -418,7 +421,7 @@ msgstr ""
 "Opsi ini diperlukan untuk memperoleh sebarang waktu sleep yang lebih panjang "
 "di CPU."
 
-#: powertop.c:977
+#: powertop.c:1060
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -429,7 +432,7 @@ msgstr ""
 "Opsi ini akan otomatis mematikan daya codec suara ketika tidak dipakai,\n"
 "dan dapat menghemat daya sekitar setengah Watt."
 
-#: powertop.c:964
+#: powertop.c:1047
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -552,45 +555,50 @@ msgstr ""
 "  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 "Hal ini membangunkan disk lebih jarang untuk aktivitas latarbelakang VM"
 
-#: display.c:262
+#: display.c:318
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr "Opsi ini terletak di bagian Kernel Debugging dari menuconfig\n"
 
-#: display.c:243
+#: display.c:299
 msgid "Top causes for wakeups:\n"
 msgstr "Penyebab utama bangun:\n"
 
 #: urbnum.c:123
 #, c-format
 msgid "USB device %4s : %s (%s)"
-msgstr "Perangkat USB %4s : %s (%s)"
+msgstr "Piranti USB %3s : %s (%s)"
 
-#: powertop.c:678
+#: powertop.c:761
 #, c-format
 msgid "Usage: powertop [OPTION...]\n"
 msgstr "Penggunaan: powertop [OPSI...]\n"
 
-#: display.c:232
+#: display.c:288
 #, c-format
 msgid "Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"
 msgstr "Bangun-dari-menganggur per detik: %4.1f\tinterval: %0.1fd\n"
 
-#: intelcstates.c:145
+#: intelcstates.c:152
 #, c-format
 msgid "Your BIOS reports the following C-states : "
 msgstr "BIOS anda melaporkan state C berikut : "
 
-#: intelcstates.c:136
+#: intelcstates.c:143
 #, c-format
 msgid "Your CPU supports the following C-states : "
 msgstr "CPU anda mendukung state C berikut : "
 
-#: display.c:196
+#: display.c:203
 #, c-format
 msgid "no ACPI power usage estimate available"
 msgstr "tidak tersedia estimasi penggunaan daya ACPI"
 
-#: powertop.c:372
+#: display.c:262
+#, c-format
+msgid "no power usage estimate available"
+msgstr "tidak tersedia estimasi penggunaan daya"
+
+#: powertop.c:379
 msgid "polling"
 msgstr "polling"
 
