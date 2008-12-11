@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PowerTOP 1.11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-28 21:46-0200\n"
+"POT-Creation-Date: 2008-12-11 22:36+0100\n"
 "PO-Revision-Date: 2008-12-03 16:04-0200\n"
 "Last-Translator: Nelson A. de Oliveira <naoliv@debian.org>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -18,8 +18,7 @@ msgstr ""
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: BRAZIL\n"
 
-#: powertop.c:251
-#: powertop.c:254
+#: powertop.c:251 powertop.c:254
 #, c-format
 msgid "    <interrupt> : %s"
 msgstr "  <interrupção> : %s"
@@ -35,8 +34,11 @@ msgstr "   <kernel IPI> : %s"
 
 #: powertop.c:765
 #, c-format
-msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
-msgstr "  -d, --dump            lê as ativações uma vez e exibe a lista das maiores causas\n"
+msgid ""
+"  -d, --dump            read wakeups once and print list of top offenders\n"
+msgstr ""
+"  -d, --dump            lê as ativações uma vez e exibe a lista das maiores "
+"causas\n"
 
 #: powertop.c:767
 #, c-format
@@ -46,7 +48,8 @@ msgstr "  -h, --help            Exibe esta mensagem de ajuda\n"
 #: powertop.c:766
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
-msgstr "  -t, --time=DOUBLE     tempo padrão para obter os dados, em segundos\n"
+msgstr ""
+"  -t, --time=DOUBLE     tempo padrão para obter os dados, em segundos\n"
 
 #: powertop.c:768
 #, c-format
@@ -102,8 +105,7 @@ msgstr " S - Gerenciamento de energia SATA "
 msgid " T - enable noatime "
 msgstr " T - habilitar noatime "
 
-#: urbnum.c:212
-#: usb.c:121
+#: urbnum.c:212 usb.c:121
 msgid " U - Enable USB suspend "
 msgstr " U - Habilitar suspensão USB "
 
@@ -111,8 +113,7 @@ msgstr " U - Habilitar suspensão USB "
 msgid " V - Disable TV out "
 msgstr " V - Desabilitar saída de TV "
 
-#: wireless.c:311
-#: wireless.c:317
+#: wireless.c:311 wireless.c:317
 msgid " W - Enable wireless power saving "
 msgstr " W - Habilitar modo de economia de energia da rede wireless "
 
@@ -162,8 +163,7 @@ msgstr "< Informação detalhada do estado-C não está disponível >\n"
 msgid "<kernel core>"
 msgstr "<núcleo do kernel>"
 
-#: powertop.c:974
-#: powertop.c:976
+#: powertop.c:974 powertop.c:976
 msgid "<kernel module>"
 msgstr "<módulo do kernel>"
 
@@ -216,12 +216,19 @@ msgstr ""
 "possui um bug que o ativa 10 vezes por segundo."
 
 #: display.c:304
-msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
-msgstr "Estatísticas detalhadas indisponíveis; PowerTOP necessita de privilégios de root para isso\n"
+msgid ""
+"No detailed statistics available; PowerTOP needs root privileges for that\n"
+msgstr ""
+"Estatísticas detalhadas indisponíveis; PowerTOP necessita de privilégios de "
+"root para isso\n"
 
 #: display.c:299
-msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
-msgstr "Estatísticas detalhadas indisponíveis; por favor, habilite a opção CONFIG_TIMER_STATS do kernel\n"
+msgid ""
+"No detailed statistics available; please enable the CONFIG_TIMER_STATS "
+"kernel option\n"
+msgstr ""
+"Estatísticas detalhadas indisponíveis; por favor, habilite a opção "
+"CONFIG_TIMER_STATS do kernel\n"
 
 #: display.c:302
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
@@ -232,15 +239,16 @@ msgstr "Nota: isto está disponível apenas em kernels 2.6.21 ou superiores\n"
 msgid "P-states (frequencies)\n"
 msgstr "Estados-P (frequências)\n"
 
-#: powertop.c:170
-#: powertop.c:254
+#: powertop.c:170 powertop.c:254
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "teclado/mouse/touchpad PS/2"
 
 #: display.c:208
 #, c-format
 msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr "Uso de energia (estimativa de 5 minutos por ACPI): %5.1f W (%3.1f hrs restantes)"
+msgstr ""
+"Uso de energia (estimativa de 5 minutos por ACPI): %5.1f W (%3.1f hrs "
+"restantes)"
 
 #: display.c:201
 #, c-format
@@ -255,7 +263,9 @@ msgstr "Uso de energia: %3.1fW (%3.1f horas)"
 #: powertop.c:841
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr "PowerTOP necessita ser executado como root para coletar informações suficientes\n"
+msgstr ""
+"PowerTOP necessita ser executado como root para coletar informações "
+"suficientes\n"
 
 #: urbnum.c:175
 msgid "Recent USB suspend statistics"
@@ -264,15 +274,17 @@ msgstr "Estatísticas recentes da suspensão USB"
 #: powertop.c:1119
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
+"opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "Sugestão: Desabilite 'hal' de acessar o seu cdrom com: \n"
-"hal-stop-polling --device /dev/cdrom 'hal' é o componente que abre uma janela\n"
-"quando você insere um CD, mas desabilita o modo de economia de energia do SATA."
+"hal-stop-polling --device /dev/cdrom 'hal' é o componente que abre uma "
+"janela\n"
+"quando você insere um CD, mas desabilita o modo de economia de energia do "
+"SATA."
 
-#: powertop.c:1093
-#: powertop.c:1097
+#: powertop.c:1093 powertop.c:1097
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -280,7 +292,8 @@ msgid ""
 msgstr ""
 "Sugestão: Desabilite ou remova 'beagle' do seu sistema. \n"
 "Beagle é um programa que cria índices para buscas mais fáceis, no entanto, \n"
-"não é muito eficiente e custa uma quantidade significativa da vida da bateria."
+"não é muito eficiente e custa uma quantidade significativa da vida da "
+"bateria."
 
 #: powertop.c:1106
 msgid ""
@@ -305,7 +318,8 @@ msgstr ""
 #: powertop.c:1081
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
-"The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
+"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
+"needed."
 msgstr ""
 "Sugestão: Desabilite a opção de configuração do kernel CONFIG_IRQBALANCE.\n"
 "O balanceador de irq do kernel é obsoleto e acorda a CPU além do necessário."
@@ -313,21 +327,27 @@ msgstr ""
 #: wireless.c:320
 #, c-format
 msgid ""
-"Suggestion: Disable the unused WIFI radio by executing the following command:\n"
+"Suggestion: Disable the unused WIFI radio by executing the following "
+"command:\n"
 "  echo 1 > %s \n"
 msgstr ""
-"Sugestão: Desabilite o rádio WIFI não-utilizado executando o seguindo comando:\n"
+"Sugestão: Desabilite o rádio WIFI não-utilizado executando o seguindo "
+"comando:\n"
 "  echo 1 > %s \n"
 
 #: bluetooth.c:144
 msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following command:\n"
+"Suggestion: Disable the unused bluetooth interface with the following "
+"command:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
+"well.\n"
 msgstr ""
-"Sugestão: Desabilite a interface bluetooth não utilizada com o seguinte comando:\n"
+"Sugestão: Desabilite a interface bluetooth não utilizada com o seguinte "
+"comando:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth é um rádio, consome bastante energia e também mantém o USB ocupado.\n"
+"Bluetooth é um rádio, consome bastante energia e também mantém o USB "
+"ocupado.\n"
 
 #: sata.c:101
 msgid ""
@@ -344,7 +364,8 @@ msgid ""
 "Suggestion: Enable USB autosuspend by pressing the U key or adding \n"
 "usbcore.autosuspend=1 to the kernel command line in the grub config"
 msgstr ""
-"Sugestão: Habilite a auto-suspensão USB pressionando a tecla U ou adicionando \n"
+"Sugestão: Habilite a auto-suspensão USB pressionando a tecla U ou "
+"adicionando \n"
 "usbcore.autosuspend=1 à linha de comando do kernel, na configuração do grub"
 
 #: misctips.c:79
@@ -365,11 +386,13 @@ msgstr ""
 
 #: powertop.c:1066
 msgid ""
-"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
+"option.\n"
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
-"Sugestão: Habilite a opção de config. do kernel CONFIG_CPU_FREQ_GOV_ONDEMAND.\n"
+"Sugestão: Habilite a opção de config. do kernel "
+"CONFIG_CPU_FREQ_GOV_ONDEMAND.\n"
 "O regulador 'ondemand' minimizará o consumo de energia da CPU enquanto\n"
 "fornece à você performance quando necessário."
 
@@ -390,7 +413,8 @@ msgid ""
 "some housekeeping tasks."
 msgstr ""
 "Sugestão: Habilite a opção de configuração do kernel CONFIG_HPET_TIMER.\n"
-"Sem suporte ao HPET o kernel necessita acordar a cada 20 milissegundos para \n"
+"Sem suporte ao HPET o kernel necessita acordar a cada 20 milissegundos "
+"para \n"
 "realizar algumas tarefas de manutenção."
 
 #: powertop.c:1086
@@ -413,7 +437,8 @@ msgstr ""
 
 #: powertop.c:1077
 msgid ""
-"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
+"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
+"option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
 msgstr ""
@@ -442,7 +467,8 @@ msgstr ""
 #: wireless.c:314
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following "
+"command:\n"
 "  echo 5 > %s \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -453,7 +479,8 @@ msgstr ""
 #: wireless.c:308
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following "
+"command:\n"
 "  iwpriv %s set_power 5 \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -497,34 +524,41 @@ msgid ""
 "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
 "have much longer sleep intervals."
 msgstr ""
-"Sugestão: habilite o HPET (Multimedia Timer) em sua BIOS ou adicione o patch \n"
+"Sugestão: habilite o HPET (Multimedia Timer) em sua BIOS ou adicione o "
+"patch \n"
 "do kernel para forçar a habilitação do HPET. Suporte ao HPET permite \n"
 "que o Linux tenha intervalos bem maiores de suspensão."
 
 #: misctips.c:201
 msgid ""
-"Suggestion: enable the noatime filesystem option by executing the following command:\n"
+"Suggestion: enable the noatime filesystem option by executing the following "
+"command:\n"
 "   mount -o remount,noatime /          or by pressing the T key \n"
-"noatime disables persistent access time of file accesses, which causes lots of disk IO."
+"noatime disables persistent access time of file accesses, which causes lots "
+"of disk IO."
 msgstr ""
 "Sugestão: habilite a opção do sistema de arquivos noatime executando:\n"
 "   mount -o remount,noatime /          ou pressione a tecla T \n"
-"noatime desabilita o tempo de acesso dos arquivos, que causa muita E/S no disco."
+"noatime desabilita o tempo de acesso dos arquivos, que causa muita E/S no "
+"disco."
 
 #: misctips.c:264
 msgid ""
-"Suggestion: enable the power aware CPU scheduler with the following command:\n"
+"Suggestion: enable the power aware CPU scheduler with the following "
+"command:\n"
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "or by pressing the C key."
 msgstr ""
-"Sugestão: hab. o escalonador de CPU voltado à economia de energia executando:\n"
+"Sugestão: hab. o escalonador de CPU voltado à economia de energia "
+"executando:\n"
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "ou pressionando a tecla C."
 
 #: misctips.c:297
 #, c-format
 msgid ""
-"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
+"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds "
+"with:\n"
 "  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 "This wakes the disk up less frequently for background VM activity"
 msgstr ""
@@ -580,10 +614,9 @@ msgid "polling"
 msgstr "polling"
 
 #: powertop.c:774
-#, c-format
-msgid "powertop version "
+#, fuzzy, c-format
+msgid "powertop version %s\n"
 msgstr "versão do powertop"
 
 #~ msgid "< CPU was 100%% busy; no C-states were entered >\n"
 #~ msgstr "< A CPU estava 100%% ocupada; não se entrou em nenhum estado-C >\n"
-

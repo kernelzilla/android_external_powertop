@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-11 11:27+0200\n"
+"POT-Creation-Date: 2008-12-11 22:36+0100\n"
 "PO-Revision-Date: 2008-12-11 11:26+0200\n"
 "Last-Translator: Niklas Laxström <niklas.laxstrom+powertop@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -610,6 +610,6 @@ msgid "polling"
 msgstr "pollaus"
 
 #: powertop.c:774
-#, c-format
-msgid "powertop version "
-msgstr "powertop-versio"
+#, fuzzy, c-format
+msgid "powertop version %s\n"
+msgstr "powertop-versio %s\n"
