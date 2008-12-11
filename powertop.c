@@ -771,7 +771,7 @@ void usage()
 
 void version()
 {
-	printf(_("powertop version " VERSION "\n"));
+	printf(_("powertop version %s\n"), VERSION);
 	exit(0);
 }
 
