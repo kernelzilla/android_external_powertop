@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-12-11 22:36+0100\n"
-"PO-Revision-Date: 2008-06-06 02:37+0900\n"
+"PO-Revision-Date: 2008-12-12 01:52+0900\n"
 "Last-Translator: MATSUU Takuto <matsuu@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "  -t, --time=DOUBLE     データを取得する間隔を秒単位で指
 #: powertop.c:768
 #, c-format
 msgid "  -v, --version         Show version information and exit\n"
-msgstr ""
+msgstr "  -v, --version         バージョン情報を表示して終了する\n"
 
 #: misctips.c:174
 msgid " A - Turn AC97 powersave on "
@@ -135,9 +135,9 @@ msgid "%9lli"
 msgstr "%9lli"
 
 #: powertop.c:921
-#, fuzzy, c-format
+#, c-format
 msgid "%s\t%5.1fms (%4.1f%%)\n"
-msgstr "%s\t\t%5.1fms (%4.1f%%)\n"
+msgstr "%s\t%5.1fms (%4.1f%%)\n"
 
 #: display.c:205
 #, c-format
@@ -246,9 +246,9 @@ msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
 msgstr "消費電力(ACPI見積り): %3.1fW (%3.1f時間)"
 
 #: display.c:238
-#, fuzzy, c-format
+#, , c-format
 msgid "Power usage: %3.1fW (%3.1f hours)"
-msgstr "消費電力(ACPI見積り): %3.1fW (%3.1f時間)"
+msgstr "消費電力: %3.1fW (%3.1f時間)"
 
 #: powertop.c:841
 #, c-format
@@ -586,9 +586,9 @@ msgid "no ACPI power usage estimate available"
 msgstr "ACPIの消費電力見積り機能が有効ではありません。"
 
 #: display.c:244
-#, fuzzy, c-format
+#, , c-format
 msgid "no power usage estimate available"
-msgstr "ACPIの消費電力見積り機能が有効ではありません。"
+msgstr "消費電力見積り機能が有効ではありません。"
 
 #: powertop.c:377
 msgid "polling"
@@ -597,4 +597,4 @@ msgstr "ポーリング"
 #: powertop.c:774
 #, c-format
 msgid "powertop version %s\n"
-msgstr ""
+msgstr "powertop バージョン %s\n"
