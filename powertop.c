@@ -729,7 +729,7 @@ void print_battery_sysfs(void)
 			continue;
 		memset(line, 0, 1024);
 		if (fgets(line, 1024, file) != NULL) {
-			amperes_drawn = strtoull(line, NULL, 10) / 1000000.0;
+			watts_drawn = strtoull(line, NULL, 10) / 1000000.0;
 		}
 		fclose(file);
 	
