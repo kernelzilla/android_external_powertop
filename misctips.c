@@ -32,56 +32,6 @@
 
 #include "powertop.h"
 
-void set_laptop_mode(void)
-{
-	FILE *file;
-	file = fopen("/proc/sys/vm/laptop_mode", "w");
-	if (!file)
-		return;
-	fprintf(file,"5\n");
-	fclose(file);
-}
-
-void suggest_laptop_mode(void)
-{
-	FILE *file;
-	int i;
-	char buffer[1024];
-	/*
-	 * Check to see if we are on AC - lots of distros have
-	 * annoying scripts to turn laptop mode off when on AC, which
-	 * results in annoying distracting return of set laptop mode
-	 * hint.
-	 */
-	file = fopen("/proc/acpi/ac_adapter/AC/state", "r");
-	if (!file)
-		return;
-	memset(buffer, 0, 1024);
-	if (!fgets(buffer, 1023, file)) {
-		fclose(file);
-		return;
-	}
-	fclose(file);
-	if (strstr(buffer, "on-line") != NULL)
-		return;
-
-	/* Now check for laptop mode */
-	file = fopen("/proc/sys/vm/laptop_mode", "r");
-	if (!file)
-		return;
-	memset(buffer, 0, 1024);
-	if (!fgets(buffer, 1023, file)) {
-		fclose(file);
-		return;
-	}
-	i = strtoul(buffer, NULL, 10);
-	if (i<1) {
-		add_suggestion( _("Suggestion: Enable laptop-mode by executing the following command:\n"
-		 	"   echo 5 > /proc/sys/vm/laptop_mode \n"), 15, 'L', _(" L - enable Laptop mode "), set_laptop_mode);
-	}
-	fclose(file);
-}
-
 void nmi_watchdog_off(void)
 {
 	FILE *file;

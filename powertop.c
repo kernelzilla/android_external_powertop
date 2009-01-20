@@ -1129,7 +1129,6 @@ int main(int argc, char **argv)
 
 		suggest_bluetooth_off();
 		suggest_nmi_watchdog();
-		suggest_laptop_mode();
 		if (maxsleep > 15.0)
 			suggest_hpet();
 		suggest_ac97_powersave();
