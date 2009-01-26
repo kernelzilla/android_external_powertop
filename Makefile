@@ -1,6 +1,6 @@
 BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
-MANDIR=/usr/share/man/man1
+MANDIR=/usr/share/man/man8
 WARNFLAGS=-Wall  -W -Wshadow
 CFLAGS?=-O1 -g ${WARNFLAGS}
 CC?=gcc
@@ -23,14 +23,14 @@ powertop: $(OBJS) Makefile powertop.h
 	$(CC) ${CFLAGS}  $(OBJS) -lncursesw -o powertop
 	@(cd po/ && $(MAKE))
 
-powertop.1.gz: powertop.1
+powertop.8.gz: powertop.8
 	gzip -c $< > $@
 
-install: powertop powertop.1.gz
+install: powertop powertop.8.gz
 	mkdir -p ${DESTDIR}${BINDIR}
 	cp powertop ${DESTDIR}${BINDIR}
 	mkdir -p ${DESTDIR}${MANDIR}
-	cp powertop.1.gz ${DESTDIR}${MANDIR}
+	cp powertop.8.gz ${DESTDIR}${MANDIR}
 	@(cd po/ && env LOCALESDIR=$(LOCALESDIR) DESTDIR=$(DESTDIR) $(MAKE) $@)
 
 # This is for translators. To update your po with new strings, do :
@@ -40,7 +40,7 @@ uptrans:
 	@(cd po/ && env LG=$(LG) $(MAKE) $@)
 
 clean:
-	rm -f *~ powertop powertop.1.gz po/powertop.pot DEADJOE svn-commit* *.o *.orig 
+	rm -f *~ powertop powertop.8.gz po/powertop.pot DEADJOE svn-commit* *.o *.orig 
 	@(cd po/ && $(MAKE) $@)
 
 
