@@ -858,7 +858,8 @@ int main(int argc, char **argv)
 
 
 		FD_ZERO(&rfds);
-		FD_SET(0, &rfds);
+		if (!dump)
+			FD_SET(0, &rfds);
 		tv.tv_sec = ticktime;
 		tv.tv_usec = (ticktime - tv.tv_sec) * 1000000;;
 		do_proc_irq();
