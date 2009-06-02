@@ -35,6 +35,7 @@
 #include <assert.h>
 #include <locale.h>
 #include <time.h>
+#include <limits.h>
 #include <sys/stat.h>
 
 #include "powertop.h"
@@ -171,6 +172,58 @@ int update_irq(int irq, uint64_t count, char *name)
 	return count;
 }
 
+static int percpu_hpet_timer(char *name)
+{
+	static int timer_list_read;
+	static int percpu_hpet_start = INT_MAX, percpu_hpet_end = INT_MIN;
+	char *c;
+	long hpet_chan;
+
+	if (!timer_list_read) {
+		char file_name[20];
+		char ln[80];
+		FILE *fp;
+
+		timer_list_read = 1;
+		snprintf(file_name, sizeof(file_name), "/proc/timer_list");
+		fp = fopen(file_name, "r");
+		if (fp == NULL)
+			return 0;
+
+		while (fgets(ln, sizeof(ln), fp) != NULL)
+		{
+			c = strstr(ln, "Clock Event Device: hpet");
+			if (!c)
+				continue;
+
+			c += 24;
+			if (!isdigit(c[0]))
+				continue;
+
+			hpet_chan = strtol(c, NULL, 10);
+			if (hpet_chan < percpu_hpet_start)
+				percpu_hpet_start = hpet_chan;
+			if (hpet_chan > percpu_hpet_end)
+				percpu_hpet_end = hpet_chan;
+		}
+		fclose(fp);
+	}
+
+	c = strstr(name, "hpet");
+	if (!c)
+		return 0;
+
+	c += 4;
+	if (!isdigit(c[0]))
+		return 0;
+
+	hpet_chan = strtol(c, NULL, 10);
+	if (percpu_hpet_start <= hpet_chan && hpet_chan <= percpu_hpet_end)
+		return 1;
+
+	return 0;
+}
+
 static void do_proc_irq(void)
 {
 	FILE *file;
@@ -252,6 +305,10 @@ static void do_proc_irq(void)
 		}
 		else
 			sprintf(line2, _("    <interrupt> : %s"), _("PS/2 keyboard/mouse/touchpad"));
+
+		/* skip per CPU timer interrupts */
+		if (percpu_hpet_timer(name))
+			delta = 0;
 
 		if (nr > 0 && delta > 0)
 			push_line(line2, delta);
