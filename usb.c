@@ -38,6 +38,8 @@ void activate_usb_autosuspend(void)
 	struct dirent *dirent;
 	FILE *file;
 	char filename[PATH_MAX];
+	int len;
+	char linkto[PATH_MAX];
 
 	dir = opendir("/sys/bus/usb/devices");
 	if (!dir)
@@ -46,12 +48,13 @@ void activate_usb_autosuspend(void)
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
 			continue;
-		sprintf(filename, "/sys/bus/usb/devices/%s/power/autosuspend", dirent->d_name);
-		file = fopen(filename, "w");
-		if (!file)
+
+		/* skip usb input devices */
+		sprintf(filename, "/sys/bus/usb/devices/%s/driver", dirent->d_name);
+		len = readlink(filename, linkto, sizeof(link) - 1);
+		if (strstr(linkto, "usbhid"))
 			continue;
-		fprintf(file, "0\n");
-		fclose(file);
+
 		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
 		file = fopen(filename, "w");
 		if (!file)
@@ -70,8 +73,9 @@ void suggest_usb_autosuspend(void)
 	FILE *file;
 	char filename[PATH_MAX];
 	char line[1024];
-	int need_hint  = 0;
-
+	int len;
+	char linkto[PATH_MAX];
+	int need_hint = 0;
 
 	dir = opendir("/sys/bus/usb/devices");
 	if (!dir)
@@ -80,20 +84,12 @@ void suggest_usb_autosuspend(void)
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
 			continue;
-		sprintf(filename, "/sys/bus/usb/devices/%s/power/autosuspend", dirent->d_name);
-		file = fopen(filename, "r");
-		if (!file)
-			continue;
-		memset(line, 0, 1024);
-		if (fgets(line, 1023,file)==NULL) {
-			fclose(file);
-			continue;
-		}
-		if (strtoll(line, NULL,10)<0)
-			need_hint = 1;
 
-		fclose(file);
-
+		/* skip usb input devices */
+		sprintf(filename, "/sys/bus/usb/devices/%s/driver", dirent->d_name);
+		len = readlink(filename, linkto, sizeof(link) - 1);
+		if (strstr(linkto, "usbhid"))
+			continue;
 
 		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
 		file = fopen(filename, "r");
@@ -115,8 +111,7 @@ void suggest_usb_autosuspend(void)
 	closedir(dir);
 
 	if (need_hint) {
-		add_suggestion(_("Suggestion: Enable USB autosuspend by pressing the U key or adding \n"
-				 "usbcore.autosuspend=1 to the kernel command line in the grub config"
+		add_suggestion(_("Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
 				 ),
 				45, 'U', _(" U - Enable USB suspend "), activate_usb_autosuspend);
 	}
