@@ -821,6 +821,7 @@ void usage()
 	printf(_("Usage: powertop [OPTION...]\n"));
 	printf(_("  -d, --dump            read wakeups once and print list of top offenders\n"));
 	printf(_("  -t, --time=DOUBLE     default time to gather data in seconds\n"));
+	printf(_("  -p, --pids            show pids in wakeups list\n"));
 	printf(_("  -h, --help            Show this help message\n"));
 	printf(_("  -v, --version         Show version information and exit\n"));
 	exit(0);
@@ -848,13 +849,14 @@ int main(int argc, char **argv)
  		static struct option opts[] = {
  			{ "dump", 0, NULL, 'd' },
  			{ "time", 1, NULL, 't' },
+ 			{ "pids", 0, NULL, 'p' },
  			{ "help", 0, NULL, 'h' },
  			{ "version", 0, NULL, 'v' },
  			{ 0, 0, NULL, 0 }
  		};
  		int index2 = 0, c;
  		
- 		c = getopt_long(argc, argv, "dt:hv", opts, &index2);
+ 		c = getopt_long(argc, argv, "dt:phv", opts, &index2);
  		if (c == -1)
  			break;
  		switch (c) {
@@ -863,6 +865,9 @@ int main(int argc, char **argv)
  			break;
  		case 't':
  			ticktime = strtod(optarg, NULL);
+ 			break;
+ 		case 'p':
+ 			showpids = 1;
  			break;
  		case 'h':
  			usage();
