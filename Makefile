@@ -16,7 +16,7 @@ CC?=gcc
 #
 
 OBJS = powertop.o config.o process.o misctips.o bluetooth.o display.o suggestions.o wireless.o cpufreq.o \
-	sata.o xrandr.o ethernet.o cpufreqstats.o usb.o urbnum.o intelcstates.o
+	sata.o xrandr.o ethernet.o cpufreqstats.o usb.o urbnum.o intelcstates.o wifi-new.o
 	
 
 powertop: $(OBJS) Makefile powertop.h

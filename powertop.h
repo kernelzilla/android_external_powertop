@@ -50,6 +50,7 @@ void suggest_nmi_watchdog(void);
 void suggest_hpet(void);
 void suggest_ac97_powersave(void);
 void suggest_wireless_powersave(void);
+void suggest_wifi_new_powersave(void);
 void suggest_ondemand_governor(void);
 void suggest_noatime(void);
 void suggest_sata_alpm(void);

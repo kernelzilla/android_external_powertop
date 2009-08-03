@@ -1191,6 +1191,7 @@ int main(int argc, char **argv)
 			suggest_hpet();
 		suggest_ac97_powersave();
 		suggest_wireless_powersave();
+		suggest_wifi_new_powersave();
 		suggest_ondemand_governor();
 		suggest_noatime();
 		suggest_sata_alpm();
