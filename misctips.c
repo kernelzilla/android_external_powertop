@@ -126,6 +126,45 @@ void suggest_ac97_powersave(void)
 	fclose(file);
 }
 
+void hda_power_on(void)
+{
+	FILE *file;
+
+	file = fopen("/sys/module/snd_hda_intel/parameters/power_save", "w");
+	if (!file)
+		return;
+	fprintf(file,"1");
+	fclose(file);
+	if (access("/dev/dsp", F_OK))
+		return;
+	file = fopen("/dev/dsp", "w");
+	if (file) {
+		fprintf(file,"1");
+		fclose(file);
+	}
+}
+
+void suggest_hda_powersave(void)
+{
+	FILE *file;
+	char buffer[1024];
+
+	file = fopen("/sys/module/snd_hda_intel/parameters/power_save", "r");
+	if (!file)
+		return;
+	memset(buffer, 0, 1024);
+	if (!fgets(buffer, 1023, file)) {
+		fclose(file);
+		return;
+	}
+	if (buffer[0]=='0') {
+		add_suggestion( _("Suggestion: enable HD audio powersave mode by executing the following command:\n"
+		 	"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
+			"or by passing power_save=1 as module parameter."), 25, 'A', _(" A - Turn HD audio powersave on "), hda_power_on);
+	}
+	fclose(file);
+}
+
 void noatime_on(void)
 {
 	system("/bin/mount -o remount,noatime,nodiratime /");

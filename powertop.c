@@ -1195,6 +1195,7 @@ int main(int argc, char **argv)
 		if (maxsleep > 15.0)
 			suggest_hpet();
 		suggest_ac97_powersave();
+		suggest_hda_powersave();
 		suggest_wireless_powersave();
 		suggest_wifi_new_powersave();
 		suggest_ondemand_governor();

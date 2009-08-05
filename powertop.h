@@ -49,6 +49,7 @@ void suggest_bluetooth_off(void);
 void suggest_nmi_watchdog(void);
 void suggest_hpet(void);
 void suggest_ac97_powersave(void);
+void suggest_hda_powersave(void);
 void suggest_wireless_powersave(void);
 void suggest_wifi_new_powersave(void);
 void suggest_ondemand_governor(void);
