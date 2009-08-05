@@ -62,6 +62,17 @@ int sort_by_freq (const void *av, const void *bv)
         return b->frequency - a->frequency;
 } 
 
+
+static turbo_hz;
+
+static int is_turbo(unsigned long hz)
+{
+	if (hz == turbo_hz)
+		return 1;
+	return 0;
+}
+
+
 static char *HzToHuman(unsigned long hz)
 {	
 	static char buffer[1024];
@@ -78,6 +89,9 @@ static char *HzToHuman(unsigned long hz)
 
 	if (Hz>1500000)
 		sprintf(buffer, _("%6.2f Ghz"), (Hz+5000.0)/1000000);
+
+	if (is_turbo(hz))
+		sprintf(buffer, "%s", _("Turbo Mode"));
 
 
 	return buffer;
@@ -163,6 +177,9 @@ void  do_cpufreq_stats(void)
 	if (maxfreq>4)
 		maxfreq=4;
 	qsort(&delta, maxfreq+1, sizeof(struct cpufreqdata), sort_by_freq);
+
+	if (delta[0].frequency == delta[1].frequency + 1000)
+		turbo_hz = delta[0].frequency;
 
 	topfreq = -1;
 	for (ret = 0 ; ret<=maxfreq; ret++) {
