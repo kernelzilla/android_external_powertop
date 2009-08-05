@@ -40,7 +40,7 @@
 
 #include "powertop.h"
 
-#define VERSION "1.11"
+#define VERSION "1.12"
 
 uint64_t start_usage[8], start_duration[8];
 uint64_t last_usage[8], last_duration[8];
