@@ -63,7 +63,7 @@ int sort_by_freq (const void *av, const void *bv)
 } 
 
 
-static turbo_hz;
+static unsigned long turbo_hz;
 
 static int is_turbo(unsigned long hz)
 {
