@@ -99,6 +99,7 @@ void ac97_power_on(void)
 	fclose(file);
 	if (access("/dev/dsp", F_OK))
 		return;
+	/* kick power mgmt update to the driver */
 	file = fopen("/dev/dsp", "w");
 	if (file) {
 		fprintf(file,"1");
@@ -137,6 +138,7 @@ void hda_power_on(void)
 	fclose(file);
 	if (access("/dev/dsp", F_OK))
 		return;
+	/* kick power mgmt update to the driver */
 	file = fopen("/dev/dsp", "w");
 	if (file) {
 		fprintf(file,"1");
