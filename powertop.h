@@ -28,6 +28,8 @@
 
 #include <libintl.h>
 
+#define VERSION "1.12"
+
 struct line {
 	char	*string;
 	int	count;
