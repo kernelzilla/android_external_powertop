@@ -922,7 +922,7 @@ int main(int argc, char **argv)
 		if (!dump)
 			FD_SET(0, &rfds);
 		tv.tv_sec = ticktime;
-		tv.tv_usec = (ticktime - tv.tv_sec) * 1000000;;
+		tv.tv_usec = (ticktime - tv.tv_sec) * 1000000;
 		do_proc_irq();
 		start_timerstats();
 
@@ -959,7 +959,7 @@ int main(int argc, char **argv)
 		if (totalevents == 0 && maxcstate <= 1) {
 			sprintf(cstate_lines[5],_("< Detailed C-state information is not available.>\n"));
 		} else {
-			double sleept, percentage;;
+			double sleept, percentage;
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
 			if (c0 < 0)
 				c0 = 0;	/* rounding errors in measurement might make c0 go slightly negative.. this is confusing */
