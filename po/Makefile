@@ -8,7 +8,7 @@ translations: $(OBJ)
 	msgfmt -o $@  $<
 
 clean:
-	rm -f *.mo *~
+	rm -f *.mo *~ powertop.pot
 
 powertop.pot: Makefile
 	xgettext -C -s -k_ -o powertop.pot ../*.c ../*.h
