@@ -26,6 +26,7 @@ uptrans: $(LG).po
 $(LG).po: powertop.pot
 ifdef LG
 	msgmerge -U $@ $<
+	msgfmt --statistics $@
 else
 	@echo "Usage : make uptrans LG=xx # with xx = de, es, fi ..."
 	@exit 1
