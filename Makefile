@@ -36,7 +36,6 @@ install: powertop powertop.8.gz
 # This is for translators. To update your po with new strings, do :
 # svn up ; make uptrans LG=fr # or de, ru, hu, it, ...
 uptrans:
-	xgettext -C -s -k_ -o po/powertop.pot *.c *.h
 	@(cd po/ && env LG=$(LG) $(MAKE) $@)
 
 clean:

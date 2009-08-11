@@ -10,6 +10,9 @@ translations: $(OBJ)
 clean:
 	rm -f *.mo *~
 
+powertop.pot: Makefile
+	xgettext -C -s -k_ -o powertop.pot ../*.c ../*.h
+
 # hack to automate installation dynamicaly, without previous knowledge of 
 # the po/mo file list (we fool make by pretending the need for .inst files).
 install: $(OBJ) $(INST)
