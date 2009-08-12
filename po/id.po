@@ -1,19 +1,19 @@
 # Translation of English po to Indonesian
 # This file is distributed under the same license as the PowerTOP package.
-# Andika Triwidada <andika@gmail.com>, 2007-2008
 #
 #
+# Andika Triwidada <andika@gmail.com>, 2007-2009, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: powertop 1.11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-11 13:44-0700\n"
-"PO-Revision-Date: 2008-12-14 12:57+0700\n"
+"PO-Revision-Date: 2009-08-12 12:30+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
-"Language-Team: Indonesian\n"
+"Language-Team: Indonesian <>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: \n"
 
 #: ../powertop.c:303 ../powertop.c:306
 #, c-format
@@ -43,9 +43,9 @@ msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            Tampilkan pesan bantuan ini\n"
 
 #: ../powertop.c:823
-#, fuzzy, c-format
+#, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
-msgstr "  -h, --help            Tampilkan pesan bantuan ini\n"
+msgstr "  -h, --help            Tampilkan pada daftar bangun\n"
 
 #: ../powertop.c:822
 #, c-format
@@ -63,9 +63,8 @@ msgid " A - Turn AC97 powersave on "
 msgstr " A - Nyalakan pengehematan daya AC97 "
 
 #: ../misctips.c:165
-#, fuzzy
 msgid " A - Turn HD audio powersave on "
-msgstr " A - Nyalakan pengehematan daya AC97 "
+msgstr " A - Nyalakan pengehematan daya HD audio "
 
 #: ../bluetooth.c:146
 msgid " B - Turn Bluetooth off "
@@ -76,9 +75,8 @@ msgid " C - Power aware CPU scheduler "
 msgstr " C - Skeduler CPU yang sadar daya "
 
 #: ../wifi-new.c:196
-#, fuzzy
 msgid " D - disable wireless "
-msgstr " W - Fungsikan penghematan daya wireless "
+msgstr " D - Matikan wireless "
 
 #: ../wireless.c:322
 msgid " I - disable WIFI Radio "
@@ -98,9 +96,8 @@ msgid " O - enable Ondemand governor "
 msgstr " O - Fungsikan governor Ondemand "
 
 #: ../wifi-new.c:201
-#, fuzzy
 msgid " P - Enable wireless power saving "
-msgstr " W - Fungsikan penghematan daya wireless "
+msgstr " P - Fungsikan penghematan daya wireless "
 
 #: ../display.c:108
 msgid " Q - Quit "
@@ -281,7 +278,6 @@ msgid "Recent USB suspend statistics"
 msgstr "Statistik suspensi USB terkini"
 
 #: ../powertop.c:1181
-#, fuzzy
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 "hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
@@ -289,7 +285,7 @@ msgid ""
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "Saran: Atur agar 'hal' tidak melakukan polling ke cdrom anda dengan:\n"
-"hal-disable-polling --device /dev/sdc0 'hal' akan membuka otomatis \n"
+"hal-disable-polling --device /dev/cdrom 'hal' akan membuka otomatis \n"
 "peramban berkas ketika CD dimasukkan tapi mencegah penghematan daya \n"
 "SATA bekerja."
 
@@ -346,14 +342,13 @@ msgstr ""
 "  echo 1 > %s \n"
 
 #: ../wifi-new.c:194
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
 " ifconfig %s down\n"
 msgstr ""
-"Saran: Matikan radio WIFI yang tak dipakai dengan mengeksekusi perintah "
-"ini:\n"
-"  echo 1 > %s \n"
+"Saran: Matikan radio WIFI yang tak dipakai dengan mematikan interface-nya:\n"
+" ifconfig %s down\n"
 
 #: ../bluetooth.c:144
 msgid ""
@@ -384,6 +379,8 @@ msgid ""
 "Suggestion: Enable USB autosuspend for non-input devices by pressing the U "
 "key\n"
 msgstr ""
+"Saran: Aktifkan autosuspend USB bagi perangkat bukan masukan dengan menekan "
+"tombol U\n"
 
 #: ../powertop.c:1131
 msgid ""
@@ -487,7 +484,7 @@ msgstr ""
 "Ini akan sedikit mengorbankan kinerja jaringan untuk menghemat daya."
 
 #: ../wifi-new.c:198
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
 "command:\n"
@@ -496,7 +493,7 @@ msgid ""
 msgstr ""
 "Saran: Fungsikan penghematan daya wireless dengan menjalankan perintah "
 "berikut:\n"
-"  iwpriv %s set_power 5 \n"
+"  iwconfig %s power timeout 500ms\n"
 "Ini akan sedikit mengorbankan kinerja jaringan untuk menghemat daya."
 
 #: ../wireless.c:308
@@ -544,16 +541,15 @@ msgstr ""
 "atau dengan menambahkan parameter modul power_save=1."
 
 #: ../misctips.c:163
-#, fuzzy
 msgid ""
 "Suggestion: enable HD audio powersave mode by executing the following "
 "command:\n"
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
-"Saran: fungsikan mode penghematan daya AC97 dengan menjalankan perintah "
+"Saran: fungsikan mode penghematan daya HD audio dengan menjalankan perintah "
 "berikut:\n"
-"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "atau dengan menambahkan parameter modul power_save=1."
 
 #: ../misctips.c:87
@@ -613,7 +609,7 @@ msgstr "Penyebab utama bangun:\n"
 
 #: ../cpufreqstats.c:94
 msgid "Turbo Mode"
-msgstr ""
+msgstr "Mode Turbo"
 
 #: ../urbnum.c:123
 #, c-format
@@ -658,4 +654,3 @@ msgstr "polling"
 #, c-format
 msgid "powertop version %s\n"
 msgstr "powertop versi %s\n"
-
