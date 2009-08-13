@@ -39,7 +39,7 @@ static void activate_ondemand(void)
 	FILE *file;
 	char filename[PATH_MAX];
 
-	system("/sbin/modprobe cpufreq_ondemand &> /dev/null");
+	system("/sbin/modprobe cpufreq_ondemand > /dev/null 2>&1");
 
 
 	dir = opendir("/sys/devices/system/cpu");
