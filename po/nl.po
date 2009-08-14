@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-12 15:39-0700\n"
-"PO-Revision-Date: 2009-08-14 09:40+0100\n"
+"PO-Revision-Date: 2009-08-14 10:13+0100\n"
 "Last-Translator: Sibo Attema <sibo.attema@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,9 +37,9 @@ msgid "  -d, --dump            read wakeups once and print list of top offenders
 msgstr ""
 
 #: ../powertop.c:824
-#, c-format
+#, fuzzy, c-format
 msgid "  -h, --help            Show this help message\n"
-msgstr ""
+msgstr "  -h, --help            voor meer informatie\n"
 
 #: ../powertop.c:823
 #, c-format
@@ -54,115 +54,130 @@ msgstr ""
 #: ../powertop.c:825
 #, c-format
 msgid "  -v, --version         Show version information and exit\n"
-msgstr ""
+msgstr "  -v, --version         Toon versie informatie bij afsluiting\n"
 
 #: ../misctips.c:125
 msgid " A - Turn AC97 powersave on "
-msgstr ""
+msgstr " A - Schakel AC97 energiebesparing aan"
 
 #: ../misctips.c:165
 msgid " A - Turn HD audio powersave on "
-msgstr ""
+msgstr " A - Schakel HD audio energiebesparing aan "
 
 #: ../bluetooth.c:146
 msgid " B - Turn Bluetooth off "
-msgstr ""
+msgstr " B - Bluetooth uitschakelen"
 
 #: ../misctips.c:257
 msgid " C - Power aware CPU scheduler "
 msgstr ""
 
 #: ../wifi-new.c:196
+#, fuzzy
 msgid " D - disable wireless "
-msgstr ""
+msgstr " D - Draadloos uitschakelen"
 
 #: ../wireless.c:322
+#, fuzzy
 msgid " I - disable WIFI Radio "
-msgstr ""
+msgstr " I - WIFI Radio uitschakelen"
 
 #: ../process.c:84
-#, c-format
+#, fuzzy, c-format
 msgid " K - kill %s "
-msgstr ""
+msgstr " K - kill %s "
 
 #: ../misctips.c:61
+#, fuzzy
 msgid " N - Turn NMI watchdog off "
-msgstr ""
+msgstr " N - NMI watchdog uitschakelen"
 
 #: ../cpufreq.c:118
+#, fuzzy
 msgid " O - enable Ondemand governor "
-msgstr ""
+msgstr " O - Schakel Ondemand governor aan"
 
 #: ../wifi-new.c:201
+#, fuzzy
 msgid " P - Enable wireless power saving "
-msgstr ""
+msgstr " P - Schakel draadloze energiebesparing aan"
 
 #: ../display.c:108
+#, fuzzy
 msgid " Q - Quit "
-msgstr ""
+msgstr " Q - Quit "
 
 #: ../display.c:109
+#, fuzzy
 msgid " R - Refresh "
-msgstr ""
+msgstr " R - Refresh "
 
 #: ../sata.c:104
+#, fuzzy
 msgid " S - SATA Link Power Management "
-msgstr ""
+msgstr " S - SATA Link Energie Management "
 
 #: ../misctips.c:194
+#, fuzzy
 msgid " T - enable noatime "
-msgstr ""
+msgstr " T - schakel noatime aan"
 
 #: ../urbnum.c:222
 #: ../usb.c:116
+#, fuzzy
 msgid " U - Enable USB suspend "
-msgstr ""
+msgstr " U - Schakel USB suspend aan"
 
 #: ../xrandr.c:78
+#, fuzzy
 msgid " V - Disable TV out "
-msgstr ""
+msgstr " V - TV out uitschakelen"
 
 #: ../wireless.c:311
 #: ../wireless.c:317
+#, fuzzy
 msgid " W - Enable wireless power saving "
-msgstr ""
+msgstr " W - Schakel draadloze energiebesparing aan "
 
 #: ../misctips.c:292
+#, fuzzy
 msgid " W - Increase Writeback time "
-msgstr ""
+msgstr " W - Verhoog Writeback tijd "
 
 #: ../ethernet.c:131
+#, fuzzy
 msgid " W - disable Wake-On-Lan "
-msgstr ""
+msgstr " W - Wake-On-Lan uitschakelen"
 
 #: ../cpufreqstats.c:91
 #, c-format
 msgid "%6.2f Ghz"
-msgstr ""
+msgstr "%6.2f Ghz"
 
 #: ../cpufreqstats.c:88
 #, c-format
 msgid "%6lli Mhz"
-msgstr ""
+msgstr "%6lli Mhz"
 
 #: ../cpufreqstats.c:85
 #, c-format
 msgid "%9lli"
-msgstr ""
+msgstr "%9lli"
 
 #: ../powertop.c:983
 #, c-format
 msgid "%s\t%5.1fms (%4.1f%%)\n"
-msgstr ""
+msgstr "%s\t%5.1fms (%4.1f%%)\n"
 
 #: ../display.c:205
-#, c-format
+#, fuzzy, c-format
 msgid "(long term: %3.1fW,/%3.1fh)"
-msgstr ""
+msgstr "(lange termijn: %3.1fW,/%3.1fh)"
 
 #: ../display.c:301
+#, fuzzy
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
-msgstr ""
+msgstr "(dat is CONFIG_DEBUG_KERNEL=y in het config bestand)\n"
 
 #: ../powertop.c:960
 #, fuzzy, c-format
@@ -170,29 +185,33 @@ msgid "< Detailed C-state information is not available.>\n"
 msgstr "< Gedetailleerde C-state informatie is alleen beschikbaar op Mobile processoren (laptops) >\n"
 
 #: ../powertop.c:1040
+#, fuzzy
 msgid "<kernel core>"
-msgstr ""
+msgstr "<kernel core>"
 
 #: ../powertop.c:1036
 #: ../powertop.c:1038
+#, fuzzy
 msgid "<kernel module>"
-msgstr ""
+msgstr "<kernel module>"
 
 #: ../urbnum.c:217
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "A USB device is active %4.1f%% of the time:\n"
 "%s"
 msgstr ""
+"Een USB-apparaat is actief %4.1f%% van de tijd:\n"
+"%s"
 
 #: ../urbnum.c:186
 msgid "Active  Device name"
-msgstr ""
+msgstr "Actieve Apparaatnaam"
 
 #: ../powertop.c:969
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
-msgstr ""
+msgstr "C0 (cpu running)        (%4.1f%%)\n"
 
 #: ../powertop.c:966
 #, c-format
@@ -200,23 +219,31 @@ msgid "Cn\t          Avg residency\n"
 msgstr ""
 
 #: ../powertop.c:903
-#, c-format
+#, fuzzy, c-format
 msgid "Collecting data for %i seconds \n"
-msgstr ""
+msgstr "Verzamelen van gegevens voor %i seconde \n"
 
 #: ../ethernet.c:128
+#, fuzzy
 msgid ""
 "Disable Ethernet Wake-On-Lan with the following command:\n"
 "  ethtool -s eth0 wol d \n"
 "Wake-on-Lan keeps the phy active, this costs power."
 msgstr ""
+"Ethernet Wake-On-Lan uitschakelen met het volgende commando:\n"
+"  ethtool -s eth0 wol d \n"
+"Wake-on-Lan houd de phy actief, dit kost energie."
 
 #: ../powertop.c:1187
+#, fuzzy
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
 "has a bug that wakes it up 10 times per second."
 msgstr ""
+"Schakel de SE-Alert software uit voor het verwijderen van de  'setroubleshoot-server' rpm\n"
+"SE-Alert waarschuwt u over SELinux policy schndingen, maar ook\n"
+"heeft de software een bug die 10 keer per seconde ontstaat."
 
 #: ../display.c:304
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
@@ -227,8 +254,9 @@ msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS ke
 msgstr ""
 
 #: ../display.c:302
+#, fuzzy
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
-msgstr ""
+msgstr "Opmerking: dit is alleen beschikbaar in de kernels 2.6.21 of nieuwer\n"
 
 #: ../cpufreqstats.c:115
 #, c-format
@@ -238,22 +266,22 @@ msgstr ""
 #: ../powertop.c:170
 #: ../powertop.c:306
 msgid "PS/2 keyboard/mouse/touchpad"
-msgstr ""
+msgstr "PS/2 toetsenbord/muis/touchpad"
 
 #: ../display.c:208
-#, c-format
+#, fuzzy, c-format
 msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr ""
+msgstr "Energie verbruik (5 minuten ACPI schatting) : %5.1f W (%3.1f uren te gaan)"
 
 #: ../display.c:201
-#, c-format
+#, fuzzy, c-format
 msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
-msgstr ""
+msgstr "Energie verbruik (ACPI schatting): %3.1fW (%3.1f uren)"
 
 #: ../display.c:238
 #, c-format
 msgid "Power usage: %3.1fW (%3.1f hours)"
-msgstr ""
+msgstr "Energie verbruik: %3.1fW (%3.1f uren)"
 
 #: ../powertop.c:902
 #, c-format
@@ -487,7 +515,7 @@ msgstr ""
 #: ../urbnum.c:123
 #, c-format
 msgid "USB device %4s : %s (%s)"
-msgstr ""
+msgstr "USB apparaat %4s : %s (%s)"
 
 #: ../powertop.c:820
 #, c-format
@@ -505,9 +533,9 @@ msgid "Your BIOS reports the following C-states : "
 msgstr ""
 
 #: ../intelcstates.c:143
-#, c-format
+#, fuzzy, c-format
 msgid "Your CPU supports the following C-states : "
-msgstr ""
+msgstr "Uw CPU ondersteund the volgende C-states :"
 
 #: ../display.c:196
 #, c-format
@@ -515,9 +543,9 @@ msgid "no ACPI power usage estimate available"
 msgstr ""
 
 #: ../display.c:244
-#, c-format
+#, fuzzy, c-format
 msgid "no power usage estimate available"
-msgstr ""
+msgstr "Geen energie verbruik schatting beschikbaar"
 
 #: ../powertop.c:433
 msgid "polling"
