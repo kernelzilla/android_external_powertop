@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 13:36-0700\n"
-"PO-Revision-Date: 2007-05-22 10:20-0700\n"
-"Last-Translator: Arjan van de Ven <arjan@linux.intel.com>\n"
+"POT-Creation-Date: 2009-08-12 15:39-0700\n"
+"PO-Revision-Date: 2009-08-14 09:40+0100\n"
+"Last-Translator: Sibo Attema <sibo.attema@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../powertop.c:303 ../powertop.c:306
+#: ../powertop.c:303
+#: ../powertop.c:306
 #, c-format
 msgid "    <interrupt> : %s"
 msgstr ""
@@ -32,8 +33,7 @@ msgstr ""
 
 #: ../powertop.c:821
 #, c-format
-msgid ""
-"  -d, --dump            read wakeups once and print list of top offenders\n"
+msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr ""
 
 #: ../powertop.c:824
@@ -113,7 +113,8 @@ msgstr ""
 msgid " T - enable noatime "
 msgstr ""
 
-#: ../urbnum.c:222 ../usb.c:116
+#: ../urbnum.c:222
+#: ../usb.c:116
 msgid " U - Enable USB suspend "
 msgstr ""
 
@@ -121,7 +122,8 @@ msgstr ""
 msgid " V - Disable TV out "
 msgstr ""
 
-#: ../wireless.c:311 ../wireless.c:317
+#: ../wireless.c:311
+#: ../wireless.c:317
 msgid " W - Enable wireless power saving "
 msgstr ""
 
@@ -165,15 +167,14 @@ msgstr ""
 #: ../powertop.c:960
 #, fuzzy, c-format
 msgid "< Detailed C-state information is not available.>\n"
-msgstr ""
-"< Gedetailleerde C-state informatie is alleen beschikbaar op Mobile "
-"processoren (laptops) >\n"
+msgstr "< Gedetailleerde C-state informatie is alleen beschikbaar op Mobile processoren (laptops) >\n"
 
 #: ../powertop.c:1040
 msgid "<kernel core>"
 msgstr ""
 
-#: ../powertop.c:1036 ../powertop.c:1038
+#: ../powertop.c:1036
+#: ../powertop.c:1038
 msgid "<kernel module>"
 msgstr ""
 
@@ -218,14 +219,11 @@ msgid ""
 msgstr ""
 
 #: ../display.c:304
-msgid ""
-"No detailed statistics available; PowerTOP needs root privileges for that\n"
+msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr ""
 
 #: ../display.c:299
-msgid ""
-"No detailed statistics available; please enable the CONFIG_TIMER_STATS "
-"kernel option\n"
+msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
 msgstr ""
 
 #: ../display.c:302
@@ -237,7 +235,8 @@ msgstr ""
 msgid "P-states (frequencies)\n"
 msgstr ""
 
-#: ../powertop.c:170 ../powertop.c:306
+#: ../powertop.c:170
+#: ../powertop.c:306
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr ""
 
@@ -259,9 +258,7 @@ msgstr ""
 #: ../powertop.c:902
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr ""
-"PowerTOP heeft 'root' gebruikersrechten nodig om alle informatie te "
-"verzamelen\n"
+msgstr "PowerTOP heeft 'root' gebruikersrechten nodig om alle informatie te verzamelen\n"
 
 #: ../urbnum.c:185
 msgid "Recent USB suspend statistics"
@@ -270,12 +267,12 @@ msgstr ""
 #: ../powertop.c:1181
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
-"opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 
-#: ../powertop.c:1155 ../powertop.c:1159
+#: ../powertop.c:1155
+#: ../powertop.c:1159
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -299,15 +296,13 @@ msgstr ""
 #: ../powertop.c:1143
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
-"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
-"needed."
+"The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
 msgstr ""
 
 #: ../wireless.c:320
 #, c-format
 msgid ""
-"Suggestion: Disable the unused WIFI radio by executing the following "
-"command:\n"
+"Suggestion: Disable the unused WIFI radio by executing the following command:\n"
 "  echo 1 > %s \n"
 msgstr ""
 
@@ -320,11 +315,9 @@ msgstr ""
 
 #: ../bluetooth.c:144
 msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following "
-"command:\n"
+"Suggestion: Disable the unused bluetooth interface with the following command:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
-"well.\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
 msgstr ""
 
 #: ../sata.c:101
@@ -335,9 +328,7 @@ msgid ""
 msgstr ""
 
 #: ../usb.c:114
-msgid ""
-"Suggestion: Enable USB autosuspend for non-input devices by pressing the U "
-"key\n"
+msgid "Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
 msgstr ""
 
 #: ../powertop.c:1131
@@ -348,8 +339,7 @@ msgstr ""
 
 #: ../powertop.c:1128
 msgid ""
-"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
-"option.\n"
+"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
@@ -383,8 +373,7 @@ msgstr ""
 
 #: ../powertop.c:1139
 msgid ""
-"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
-"option.\n"
+"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
 msgstr ""
@@ -405,8 +394,7 @@ msgstr ""
 #: ../wireless.c:314
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following "
-"command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
 "  echo 5 > %s \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -414,8 +402,7 @@ msgstr ""
 #: ../wifi-new.c:198
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following "
-"command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
 "  iwconfig %s power timeout 500ms\n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -423,8 +410,7 @@ msgstr ""
 #: ../wireless.c:308
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following "
-"command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
 "  iwpriv %s set_power 5 \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -452,8 +438,7 @@ msgstr ""
 
 #: ../misctips.c:163
 msgid ""
-"Suggestion: enable HD audio powersave mode by executing the following "
-"command:\n"
+"Suggestion: enable HD audio powersave mode by executing the following command:\n"
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
@@ -467,17 +452,14 @@ msgstr ""
 
 #: ../misctips.c:192
 msgid ""
-"Suggestion: enable the noatime filesystem option by executing the following "
-"command:\n"
+"Suggestion: enable the noatime filesystem option by executing the following command:\n"
 "   mount -o remount,noatime /          or by pressing the T key \n"
-"noatime disables persistent access time of file accesses, which causes lots "
-"of disk IO."
+"noatime disables persistent access time of file accesses, which causes lots of disk IO."
 msgstr ""
 
 #: ../misctips.c:255
 msgid ""
-"Suggestion: enable the power aware CPU scheduler with the following "
-"command:\n"
+"Suggestion: enable the power aware CPU scheduler with the following command:\n"
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "or by pressing the C key."
 msgstr ""
@@ -485,8 +467,7 @@ msgstr ""
 #: ../misctips.c:288
 #, c-format
 msgid ""
-"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds "
-"with:\n"
+"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
 "  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 "This wakes the disk up less frequently for background VM activity"
 msgstr ""
@@ -545,5 +526,5 @@ msgstr ""
 #: ../powertop.c:831
 #, c-format
 msgid "powertop version %s\n"
-msgstr ""
+msgstr "powertop versie %s\n"
 
