@@ -911,7 +911,7 @@ int main(int argc, char **argv)
 		int64_t totalevents;
 		fd_set rfds;
 		struct timeval tv;
-		int key;
+		int key = 0;
 
 		int i = 0;
 		double c0 = 0;
