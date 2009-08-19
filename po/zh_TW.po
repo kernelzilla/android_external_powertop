@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PowerTOP\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-12 15:39-0700\n"
-"PO-Revision-Date: 2008-12-15 22:18+0100\n"
-"Last-Translator: Yuan CHAO <yuanchao@gmail.com>\n"
+"PO-Revision-Date: 2009-08-18 23:25+0800\n"
+"Last-Translator: Yuan Chao <yuanchao@gmail.com>\n"
 "Language-Team: Yuan CHAO <yuanchao@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Poedit-Basepath: /home/john/packages/powertop\n"
 "X-Poedit-SearchPath-0: /home/john/packages/powertop\n"
 
-#: ../powertop.c:303 ../powertop.c:306
+#: ../powertop.c:303
+#: ../powertop.c:306
 #, c-format
 msgid "    <interrupt> : %s"
 msgstr "     <中斷服務> : %s"
@@ -36,8 +37,7 @@ msgstr "     <核心 IPI> : %s"
 
 #: ../powertop.c:821
 #, c-format
-msgid ""
-"  -d, --dump            read wakeups once and print list of top offenders\n"
+msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr "  -d, --dump            一次列出主要造成CPU脫離閒置的所有程序後退出\n"
 
 #: ../powertop.c:824
@@ -46,9 +46,9 @@ msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            顯示本輔助說明\n"
 
 #: ../powertop.c:823
-#, fuzzy, c-format
+#, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
-msgstr "  -h, --help            顯示本輔助說明\n"
+msgstr "  -p, --pids            於脫離閒置的清單中顯示程序編號\n"
 
 #: ../powertop.c:822
 #, c-format
@@ -65,9 +65,8 @@ msgid " A - Turn AC97 powersave on "
 msgstr " A - 開啟 AC97 省電功能 "
 
 #: ../misctips.c:165
-#, fuzzy
 msgid " A - Turn HD audio powersave on "
-msgstr " A - 開啟 AC97 省電功能 "
+msgstr " A - 開啟高傳真音效設備的省電功能 "
 
 #: ../bluetooth.c:146
 msgid " B - Turn Bluetooth off "
@@ -78,9 +77,8 @@ msgid " C - Power aware CPU scheduler "
 msgstr " C - 省電型 CPU 排程器 "
 
 #: ../wifi-new.c:196
-#, fuzzy
 msgid " D - disable wireless "
-msgstr " W - 開啟無線網路省電功能 "
+msgstr " D - 關閉無線網路"
 
 #: ../wireless.c:322
 msgid " I - disable WIFI Radio "
@@ -100,9 +98,8 @@ msgid " O - enable Ondemand governor "
 msgstr " O - 啟用 CPU Ondemand 時脈管理 "
 
 #: ../wifi-new.c:201
-#, fuzzy
 msgid " P - Enable wireless power saving "
-msgstr " W - 開啟無線網路省電功能 "
+msgstr " P - 開啟無線網路省電功能 "
 
 #: ../display.c:108
 msgid " Q - Quit "
@@ -120,7 +117,8 @@ msgstr " S - SATA Link 電源管理功能 "
 msgid " T - enable noatime "
 msgstr " T - 啟動 noatime "
 
-#: ../urbnum.c:222 ../usb.c:116
+#: ../urbnum.c:222
+#: ../usb.c:116
 msgid " U - Enable USB suspend "
 msgstr " U - 啟用 USB 自動休眠"
 
@@ -128,7 +126,8 @@ msgstr " U - 啟用 USB 自動休眠"
 msgid " V - Disable TV out "
 msgstr " V - 關閉 TV 輸出 "
 
-#: ../wireless.c:311 ../wireless.c:317
+#: ../wireless.c:311
+#: ../wireless.c:317
 msgid " W - Enable wireless power saving "
 msgstr " W - 開啟無線網路省電功能 "
 
@@ -178,7 +177,8 @@ msgstr "< 無法取得詳細的 C-state 資訊 >\n"
 msgid "<kernel core>"
 msgstr "     <系統核心>"
 
-#: ../powertop.c:1036 ../powertop.c:1038
+#: ../powertop.c:1036
+#: ../powertop.c:1038
 msgid "<kernel module>"
 msgstr "     <核心模組>"
 
@@ -231,14 +231,11 @@ msgstr ""
 "使得系統每秒被喚醒的次數增加十次。"
 
 #: ../display.c:304
-msgid ""
-"No detailed statistics available; PowerTOP needs root privileges for that\n"
+msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr "無法取得詳細統計資料; PowerTOP 需要 root 權限\n"
 
 #: ../display.c:299
-msgid ""
-"No detailed statistics available; please enable the CONFIG_TIMER_STATS "
-"kernel option\n"
+msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
 msgstr "無法取得詳細統計資料; 需開啟 CONFIG_TIMER_STATS 核心選項\n"
 
 #: ../display.c:302
@@ -250,7 +247,8 @@ msgstr "請注意: 此功能需要 2.6.21 或更新版本的系統核心\n"
 msgid "P-states (frequencies)\n"
 msgstr "P-states (CPU 時脈)\n"
 
-#: ../powertop.c:170 ../powertop.c:306
+#: ../powertop.c:170
+#: ../powertop.c:306
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 鍵盤/滑鼠/觸控板"
 
@@ -281,16 +279,15 @@ msgstr "近期 USB 進入自動休眠次數"
 #: ../powertop.c:1181
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
-"opens a\n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 "建議: 使用下列指令取消 'hal' 檢查光碟狀態: \n"
-"hal-disable-polling --device /dev/cdrom 'hal' 會在插入光碟時自動開啟檔案總"
-"管 \n"
+"hal-disable-polling --device /dev/cdrom 'hal' 會在插入光碟時自動開啟檔案總管 \n"
 "但是會使得 SATA 脫離省電模式"
 
-#: ../powertop.c:1155 ../powertop.c:1159
+#: ../powertop.c:1155
+#: ../powertop.c:1159
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -323,8 +320,7 @@ msgstr ""
 #: ../powertop.c:1143
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
-"The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
-"needed."
+"The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
 msgstr ""
 "建議: 取消 CONFIG_IRQBALANCE 核心選項\n"
 "核心中 IRQ 負載平衡是過時的，而且會造成 CPU 過多離開閒置狀態的頻率。"
@@ -332,29 +328,26 @@ msgstr ""
 #: ../wireless.c:320
 #, c-format
 msgid ""
-"Suggestion: Disable the unused WIFI radio by executing the following "
-"command:\n"
+"Suggestion: Disable the unused WIFI radio by executing the following command:\n"
 "  echo 1 > %s \n"
 msgstr ""
 "建議: 當不使用 WIFI 時，以下列指令關閉 WIFI 信號:\n"
 "  echo 1 > %s \n"
 
 #: ../wifi-new.c:194
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
 " ifconfig %s down\n"
 msgstr ""
 "建議: 當不使用 WIFI 時，以下列指令關閉 WIFI 信號:\n"
-"  echo 1 > %s \n"
+" ifconfig %s down\n"
 
 #: ../bluetooth.c:144
 msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following "
-"command:\n"
+"Suggestion: Disable the unused bluetooth interface with the following command:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as "
-"well.\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
 msgstr ""
 "建議: 不使用藍牙功能時，以下列指令關閉藍牙信號:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
@@ -366,15 +359,12 @@ msgid ""
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "or press the S key."
 msgstr ""
-"建議: 使用下列指令啟動 SATA ALPM 電源管理功能:   echo min_power > /sys/class/"
-"scsi_host/host0/link_power_management_policy\n"
+"建議: 使用下列指令啟動 SATA ALPM 電源管理功能:   echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "或直接按下 S 鍵"
 
 #: ../usb.c:114
-msgid ""
-"Suggestion: Enable USB autosuspend for non-input devices by pressing the U "
-"key\n"
-msgstr ""
+msgid "Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
+msgstr "建議: 按下 U 鍵啟用 USB 非輸入設備的自動休眠功能。\n"
 
 #: ../powertop.c:1131
 msgid ""
@@ -386,8 +376,7 @@ msgstr ""
 
 #: ../powertop.c:1128
 msgid ""
-"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
-"option.\n"
+"Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
@@ -435,8 +424,7 @@ msgstr ""
 
 #: ../powertop.c:1139
 msgid ""
-"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
-"option.\n"
+"Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration option.\n"
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
 msgstr ""
@@ -465,8 +453,7 @@ msgstr ""
 #: ../wireless.c:314
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following "
-"command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
 "  echo 5 > %s \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -475,22 +462,20 @@ msgstr ""
 "這會犧牲一點網路效能來節省電源的消耗。"
 
 #: ../wifi-new.c:198
-#, fuzzy, c-format
+#, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following "
-"command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
 "  iwconfig %s power timeout 500ms\n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
 "建議: 使用下列指令啟動無線網路省電功能:\n"
-"  iwpriv %s set_power 5 \n"
+"  iwconfig %s power timeout 500ms\n"
 "這會犧牲一點網路效能來節省電源的消耗。"
 
 #: ../wireless.c:308
 #, c-format
 msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following "
-"command:\n"
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
 "  iwpriv %s set_power 5 \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
@@ -529,15 +514,13 @@ msgstr ""
 "或是設定 power_save=1 模組參數。"
 
 #: ../misctips.c:163
-#, fuzzy
 msgid ""
-"Suggestion: enable HD audio powersave mode by executing the following "
-"command:\n"
+"Suggestion: enable HD audio powersave mode by executing the following command:\n"
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
-"建議: 使用下列指令啟用 AC97 省電功能:\n"
-"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"建議: 使用下列指令啟用高傳真音效設備的省電功能:\n"
+"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "或是設定 power_save=1 模組參數。"
 
 #: ../misctips.c:87
@@ -552,11 +535,9 @@ msgstr ""
 
 #: ../misctips.c:192
 msgid ""
-"Suggestion: enable the noatime filesystem option by executing the following "
-"command:\n"
+"Suggestion: enable the noatime filesystem option by executing the following command:\n"
 "   mount -o remount,noatime /          or by pressing the T key \n"
-"noatime disables persistent access time of file accesses, which causes lots "
-"of disk IO."
+"noatime disables persistent access time of file accesses, which causes lots of disk IO."
 msgstr ""
 "建議: 以下列指令啟用 noatime 使檔案系統停止紀錄檔案存取時間 \n"
 "  mount -o remount,noatime /               或直接按下 T 鍵\n"
@@ -564,8 +545,7 @@ msgstr ""
 
 #: ../misctips.c:255
 msgid ""
-"Suggestion: enable the power aware CPU scheduler with the following "
-"command:\n"
+"Suggestion: enable the power aware CPU scheduler with the following command:\n"
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "or by pressing the C key."
 msgstr ""
@@ -576,13 +556,11 @@ msgstr ""
 #: ../misctips.c:288
 #, c-format
 msgid ""
-"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds "
-"with:\n"
+"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
 "  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 "This wakes the disk up less frequently for background VM activity"
 msgstr ""
-"建議: 使用下列指令延長 VM dirty writeback 資料回寫時間自 %1.2f 改為 15 秒"
-"鐘:\n"
+"建議: 使用下列指令延長 VM dirty writeback 資料回寫時間自 %1.2f 改為 15 秒鐘:\n"
 "  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 "如此可以減少因為 VM 虛擬記憶體的運作而啟動磁碟的頻率。"
 
@@ -641,3 +619,4 @@ msgstr "巡察"
 #, c-format
 msgid "powertop version %s\n"
 msgstr "powertop 版本為 %s\n"
+
