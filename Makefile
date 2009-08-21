@@ -20,7 +20,7 @@ OBJS = powertop.o config.o process.o misctips.o bluetooth.o display.o suggestion
 	
 
 powertop: $(OBJS) Makefile powertop.h
-	$(CC) ${CFLAGS}  $(OBJS) -lncursesw -o powertop
+	$(CC) ${CFLAGS} $(LDFLAGS) $(OBJS) -lncursesw -o powertop
 	@(cd po/ && $(MAKE))
 
 powertop.8.gz: powertop.8
