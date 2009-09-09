@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: powertop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-12 15:39-0700\n"
-"PO-Revision-Date: 2009-09-09 14:17+0200\n"
+"PO-Revision-Date: 2009-09-10 01:56+0200\n"
 "Last-Translator: Cosmin Bordeianu <elloxar@gmail.com>\n"
 "Language-Team: Moblin Romania <live@moblin.ro>\n"
 "MIME-Version: 1.0\n"
@@ -214,6 +214,9 @@ msgid ""
 "  ethtool -s eth0 wol d \n"
 "Wake-on-Lan keeps the phy active, this costs power."
 msgstr ""
+"Dezactivează propietate Wake-On-Lan a rețelei cu următoare comandă:\n"
+"  ethtool -s eth0 wol d \n"
+"Această propietate păstrează phy-ul activ dar și consumă energie."
 
 #: ../powertop.c:1187
 msgid ""
@@ -221,52 +224,55 @@ msgid ""
 "SE-Alert alerts you about SELinux policy violations, but also\n"
 "has a bug that wakes it up 10 times per second."
 msgstr ""
+"Dezactivează softul SE-Alert prin eliminarea pachetului rpm 'setroubleshoot-server'\n"
+"Acest soft vă avertizează cu privire la politica de încălcare SELinux, dar\n"
+"are și un bug care îl activează la fiecare 10 secunde."
 
 #: ../display.c:304
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
-msgstr ""
+msgstr "Nu sunt disponibile statistici detaliate; PowerTOP are nevoie de privilegii de root pentru aceasta\n"
 
 #: ../display.c:299
 msgid "No detailed statistics available; please enable the CONFIG_TIMER_STATS kernel option\n"
-msgstr ""
+msgstr "Nu sunt disponibile statistici detaliate; vă rog să activaţi opțiunea CONFIG_TIMER_STATS al kernelului\n"
 
 #: ../display.c:302
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
-msgstr ""
+msgstr "Notă: aceasta este disponibilă numai în 2.6.21 şi kernel-urile ulterioare\n"
 
 #: ../cpufreqstats.c:115
 #, c-format
 msgid "P-states (frequencies)\n"
-msgstr ""
+msgstr "P-states (frecvențe)\n"
 
 #: ../powertop.c:170
 #: ../powertop.c:306
 msgid "PS/2 keyboard/mouse/touchpad"
-msgstr ""
+msgstr "PS/2 tastatură/maus/touchpad"
 
 #: ../display.c:208
 #, c-format
 msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr ""
+msgstr "Consumul de energie (ACPI estimează 5 minute) : %5.1f W (%3.1f ore rămase)"
 
 #: ../display.c:201
 #, c-format
 msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
-msgstr ""
+msgstr "Consumul de energie (ACPI estimează): %3.1fW (%3.1f ore)"
 
 #: ../display.c:238
 #, c-format
 msgid "Power usage: %3.1fW (%3.1f hours)"
-msgstr ""
+msgstr "Consumul de energie: %3.1fW (%3.1f ore)"
 
 #: ../powertop.c:902
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr ""
+msgstr "PowerTOP trebuie să fie rulat ca root pentru a colecta informaţii suficiente\n"
 
 #: ../urbnum.c:185
 msgid "Recent USB suspend statistics"
-msgstr ""
+msgstr "Statistici USB recent suspendate"
 
 #: ../powertop.c:1181
 msgid ""
@@ -478,7 +484,7 @@ msgstr ""
 
 #: ../display.c:300
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
-msgstr ""
+msgstr "Această opţiune este situată în menuconfig, secțiunea Kernel Debugging\n"
 
 #: ../display.c:281
 msgid "Top causes for wakeups:\n"
