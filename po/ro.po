@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: powertop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-12 15:39-0700\n"
-"PO-Revision-Date: 2009-09-10 01:56+0200\n"
+"PO-Revision-Date: 2009-09-11 01:53+0200\n"
 "Last-Translator: Cosmin Bordeianu <elloxar@gmail.com>\n"
 "Language-Team: Moblin Romania <live@moblin.ro>\n"
 "MIME-Version: 1.0\n"
@@ -280,6 +280,9 @@ msgid ""
 "hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
+"Sugestie: Dezactivați modul în care 'hal' obține drepturi la cdrom:  \n"
+"hal-disable-polling --device /dev/cdrom 'hal' este o componentă ce deschide automat o\n"
+"fereastră dacă introduceți un CD dar și dezactivează modul econom pentru SATA."
 
 #: ../powertop.c:1155
 #: ../powertop.c:1159
@@ -288,6 +291,9 @@ msgid ""
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
 msgstr ""
+"Sugestie: Dezactivaţi sau eliminaţi 'beagle' din sistem. \n"
+"Beagle este un program ce indexează pentru a ușura căutările, totuși nu \n"
+"este foarte eficient și scade durata de viață a bateriei."
 
 #: ../powertop.c:1168
 msgid ""
@@ -295,6 +301,9 @@ msgid ""
 "Older versions of gnome-power-manager wake up far more often than \n"
 "needed costing you some power."
 msgstr ""
+"Sugestie: Dezactivați sau eliminați 'gnome-power-manager' din sistem. \n"
+"Versiunile mai vechi de gnome-power-manager se deschid mult mai repede decât \n"
+"este nevoie, astfel consumul este mai mare."
 
 #: ../powertop.c:1174
 msgid ""
@@ -302,12 +311,17 @@ msgid ""
 "pcscd tends to keep the USB subsystem out of power save mode\n"
 "and your processor out of deeper powersave states."
 msgstr ""
+"Sugestie: Dezactivați sau eliminați 'pcscd' din sistem. \n"
+"În modul de economisire pcscd tinde să păstreze subsistemul USB fără putere\n"
+"și nu permite procesorului să ruleze la frecvențe mai joase."
 
 #: ../powertop.c:1143
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
 msgstr ""
+"Sugestie: Dezactivați opțiunea CONFIG_IRQBALANCE a kernelului.\n"
+"Balanța in-kernel irq este absolută și trezește procesorul mai mult decât este nevoie."
 
 #: ../wireless.c:320
 #, c-format
@@ -315,6 +329,8 @@ msgid ""
 "Suggestion: Disable the unused WIFI radio by executing the following command:\n"
 "  echo 1 > %s \n"
 msgstr ""
+"Sugestie: Dezactivați rețeaua fără fir atunci când nu este folosită cu următoarea comandă:\n"
+"  echo 1 > %s \n"
 
 #: ../wifi-new.c:194
 #, c-format
@@ -322,6 +338,8 @@ msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
 " ifconfig %s down\n"
 msgstr ""
+"Sugestie: Dezactivați rețeaua fără fir atunci când nu este folosită prin închiderea acesteia:\n"
+" ifconfig %s down\n"
 
 #: ../bluetooth.c:144
 msgid ""
@@ -329,6 +347,9 @@ msgid ""
 "  hciconfig hci0 down ; rmmod hci_usb\n"
 "Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
 msgstr ""
+"Sugestie: Dezactivați interfața bluetooth atunci când nu este folosit cu următoarea comandă:\n"
+"  hciconfig hci0 down ; rmmod hci_usb\n"
+"Bluetooth-ul folosește unde și consumă destul de multă energie, dar și ține portul USB ocupat.\n"
 
 #: ../sata.c:101
 msgid ""
@@ -336,16 +357,21 @@ msgid ""
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "or press the S key."
 msgstr ""
+"Sugestie: Activați modul de gestionare a energiei SATA ALPM prin intermediul: \n"
+"  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
+"sau apăsați tasta S."
 
 #: ../usb.c:114
 msgid "Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
-msgstr ""
+msgstr "Sugestie: Activează modul de suspendare automată a USB-ului pentru dispozitele non-input prin apăsarea tastei U\n"
 
 #: ../powertop.c:1131
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_ACPI_BATTERY a kernelului.\n"
+" Această opţiune este necesară pentru a obţine, de la PowerTOP, informații estimative despre puterea de consum"
 
 #: ../powertop.c:1128
 msgid ""
@@ -353,6 +379,9 @@ msgid ""
 "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n"
 "giving you performance when it is needed."
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_CPU_FREQ_GOV_ONDEMAND a kernelului.\n"
+"Această opțiune va minimaliza consumul de energie a procesorului,\n"
+"oferind performanțele necesare atunci când este nevoie."
 
 #: ../powertop.c:1145
 msgid ""
