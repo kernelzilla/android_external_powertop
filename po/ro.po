@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: powertop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-12 15:39-0700\n"
-"PO-Revision-Date: 2009-09-11 01:53+0200\n"
+"PO-Revision-Date: 2009-09-14 12:23+0200\n"
 "Last-Translator: Cosmin Bordeianu <elloxar@gmail.com>\n"
 "Language-Team: Moblin Romania <live@moblin.ro>\n"
 "MIME-Version: 1.0\n"
@@ -31,12 +31,12 @@ msgstr "    <întrerupe> : întrerupere extra timp"
 #: ../powertop.c:301
 #, c-format
 msgid "   <kernel IPI> : %s"
-msgstr "   <kernel IPI> : %s"
+msgstr "   <IPI kernel> : %s"
 
 #: ../powertop.c:821
 #, c-format
 msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
-msgstr "  -d, --dump            citește odată deșteptările și imprimă o listă cu contravențiile\n"
+msgstr "  -d, --dump            citește o dată pornirile și imprimă o listă cu contravențiile importante\n"
 
 #: ../powertop.c:824
 #, c-format
@@ -46,7 +46,7 @@ msgstr "  -h, --help            Arată acest mesaj de ajutor\n"
 #: ../powertop.c:823
 #, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
-msgstr "  -p, --pids            arată aceste pid-uri în lista de deșteptări\n"
+msgstr "  -p, --pids            arată aceste pid-uri în lista de porniri\n"
 
 #: ../powertop.c:822
 #, c-format
@@ -72,7 +72,7 @@ msgstr " B - Dezactivează Bluetooth "
 
 #: ../misctips.c:257
 msgid " C - Power aware CPU scheduler "
-msgstr " C - Programa pentru energie procesor "
+msgstr " C - Jurnalul de putere a procesorului "
 
 #: ../wifi-new.c:196
 msgid " D - disable wireless "
@@ -89,11 +89,11 @@ msgstr " K - termină %s "
 
 #: ../misctips.c:61
 msgid " N - Turn NMI watchdog off "
-msgstr " N - Dezactivează monitorizarea NMI"
+msgstr " N - Dezactivează gardianul NMI"
 
 #: ../cpufreq.c:118
 msgid " O - enable Ondemand governor "
-msgstr " O - activează guvernatorul La comandă "
+msgstr " O - activează guvernatorul Ondemand "
 
 #: ../wifi-new.c:201
 msgid " P - Enable wireless power saving "
@@ -131,7 +131,7 @@ msgstr " W - Activează economizatorul de energie pentru conexiunea fără fir "
 
 #: ../misctips.c:292
 msgid " W - Increase Writeback time "
-msgstr " W - Mărește timpul de Writeback "
+msgstr " W - Mărește timpul de Răspuns în scris "
 
 #: ../ethernet.c:131
 msgid " W - disable Wake-On-Lan "
@@ -173,7 +173,7 @@ msgstr "< Informații detaliate despre C-state nu sunt disponibile.>\n"
 
 #: ../powertop.c:1040
 msgid "<kernel core>"
-msgstr "<nucleul kernel>"
+msgstr "<nucleu kernel>"
 
 #: ../powertop.c:1036
 #: ../powertop.c:1038
@@ -214,9 +214,9 @@ msgid ""
 "  ethtool -s eth0 wol d \n"
 "Wake-on-Lan keeps the phy active, this costs power."
 msgstr ""
-"Dezactivează propietate Wake-On-Lan a rețelei cu următoare comandă:\n"
+"Dezactivează opțiunea Wake-On-Lan a rețelei cu următoarea comandă:\n"
 "  ethtool -s eth0 wol d \n"
-"Această propietate păstrează phy-ul activ dar și consumă energie."
+"Această opțiune păstrează phy-ul activ dar și consumă energie."
 
 #: ../powertop.c:1187
 msgid ""
@@ -226,7 +226,7 @@ msgid ""
 msgstr ""
 "Dezactivează softul SE-Alert prin eliminarea pachetului rpm 'setroubleshoot-server'\n"
 "Acest soft vă avertizează cu privire la politica de încălcare SELinux, dar\n"
-"are și un bug care îl activează la fiecare 10 secunde."
+"are un bug care îl activează la fiecare 10 secunde."
 
 #: ../display.c:304
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
@@ -238,7 +238,7 @@ msgstr "Nu sunt disponibile statistici detaliate; vă rog să activaţi opțiune
 
 #: ../display.c:302
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
-msgstr "Notă: aceasta este disponibilă numai în 2.6.21 şi kernel-urile ulterioare\n"
+msgstr "Notă: acest lucru este disponibil numai în versiunea 2.6.21 şi kernelurile ulterioare\n"
 
 #: ../cpufreqstats.c:115
 #, c-format
@@ -248,7 +248,7 @@ msgstr "P-states (frecvențe)\n"
 #: ../powertop.c:170
 #: ../powertop.c:306
 msgid "PS/2 keyboard/mouse/touchpad"
-msgstr "PS/2 tastatură/maus/touchpad"
+msgstr "tastatură PS/2/maus/touchpad"
 
 #: ../display.c:208
 #, c-format
@@ -268,7 +268,7 @@ msgstr "Consumul de energie: %3.1fW (%3.1f ore)"
 #: ../powertop.c:902
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
-msgstr "PowerTOP trebuie să fie rulat ca root pentru a colecta informaţii suficiente\n"
+msgstr "PowerTOP trebuie să ruleze ca root pentru a colecta informaţii suficiente\n"
 
 #: ../urbnum.c:185
 msgid "Recent USB suspend statistics"
@@ -280,7 +280,7 @@ msgid ""
 "hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
-"Sugestie: Dezactivați modul în care 'hal' obține drepturi la cdrom:  \n"
+"Sugestie: Dezactivează modul în care 'hal' obține drepturi la cdrom:  \n"
 "hal-disable-polling --device /dev/cdrom 'hal' este o componentă ce deschide automat o\n"
 "fereastră dacă introduceți un CD dar și dezactivează modul econom pentru SATA."
 
@@ -291,8 +291,8 @@ msgid ""
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
 msgstr ""
-"Sugestie: Dezactivaţi sau eliminaţi 'beagle' din sistem. \n"
-"Beagle este un program ce indexează pentru a ușura căutările, totuși nu \n"
+"Sugestie: Dezactivează sau eliminăi 'beagle' din sistem. \n"
+"Beagle este un program ce indexează conținutul pentru a ușura căutările, totuși nu \n"
 "este foarte eficient și scade durata de viață a bateriei."
 
 #: ../powertop.c:1168
@@ -301,7 +301,7 @@ msgid ""
 "Older versions of gnome-power-manager wake up far more often than \n"
 "needed costing you some power."
 msgstr ""
-"Sugestie: Dezactivați sau eliminați 'gnome-power-manager' din sistem. \n"
+"Sugestie: Dezactivează sau elimină 'gnome-power-manager' din sistem. \n"
 "Versiunile mai vechi de gnome-power-manager se deschid mult mai repede decât \n"
 "este nevoie, astfel consumul este mai mare."
 
@@ -311,7 +311,7 @@ msgid ""
 "pcscd tends to keep the USB subsystem out of power save mode\n"
 "and your processor out of deeper powersave states."
 msgstr ""
-"Sugestie: Dezactivați sau eliminați 'pcscd' din sistem. \n"
+"Sugestie: Dezactivează sau elimină 'pcscd' din sistem. \n"
 "În modul de economisire pcscd tinde să păstreze subsistemul USB fără putere\n"
 "și nu permite procesorului să ruleze la frecvențe mai joase."
 
@@ -320,8 +320,8 @@ msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than needed."
 msgstr ""
-"Sugestie: Dezactivați opțiunea CONFIG_IRQBALANCE a kernelului.\n"
-"Balanța in-kernel irq este absolută și trezește procesorul mai mult decât este nevoie."
+"Sugestie: Dezactivează opțiunea CONFIG_IRQBALANCE a kernelului.\n"
+"Balanța in-kernel irq este absolută și folosește procesorul mai mult decât este nevoie."
 
 #: ../wireless.c:320
 #, c-format
@@ -329,7 +329,7 @@ msgid ""
 "Suggestion: Disable the unused WIFI radio by executing the following command:\n"
 "  echo 1 > %s \n"
 msgstr ""
-"Sugestie: Dezactivați rețeaua fără fir atunci când nu este folosită cu următoarea comandă:\n"
+"Sugestie: Dezactivează rețeaua fără fir atunci când nu este folosită cu următoarea comandă:\n"
 "  echo 1 > %s \n"
 
 #: ../wifi-new.c:194
@@ -338,7 +338,7 @@ msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
 " ifconfig %s down\n"
 msgstr ""
-"Sugestie: Dezactivați rețeaua fără fir atunci când nu este folosită prin închiderea acesteia:\n"
+"Sugestie: Dezactivează rețeaua fără fir atunci când nu este folosită prin închiderea acesteia:\n"
 " ifconfig %s down\n"
 
 #: ../bluetooth.c:144
@@ -347,9 +347,9 @@ msgid ""
 "  hciconfig hci0 down ; rmmod hci_usb\n"
 "Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
 msgstr ""
-"Sugestie: Dezactivați interfața bluetooth atunci când nu este folosit cu următoarea comandă:\n"
+"Sugestie: Dezactivează interfața bluetooth atunci când nu este folosit cu următoarea comandă:\n"
 "  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth-ul folosește unde și consumă destul de multă energie, dar și ține portul USB ocupat.\n"
+"Bluetooth-ul folosește unde, astfel consumă destul de multă energie, dar și ține portul USB ocupat.\n"
 
 #: ../sata.c:101
 msgid ""
@@ -357,7 +357,7 @@ msgid ""
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "or press the S key."
 msgstr ""
-"Sugestie: Activați modul de gestionare a energiei SATA ALPM prin intermediul: \n"
+"Sugestie: Activează modul de gestionare a energiei SATA ALPM prin intermediul comenzii: \n"
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "sau apăsați tasta S."
 
@@ -389,6 +389,9 @@ msgid ""
 "This option allows PowerTOP to show P-state percentages \n"
 "P-states correspond to CPU frequencies."
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_CPU_FREQ_STAT a kernelului.\n"
+"Această opțiune permite ca PowerTOP să arate procente P-state \n"
+"Acestea corespund procentelor procesorului."
 
 #: ../powertop.c:1134
 msgid ""
@@ -396,6 +399,9 @@ msgid ""
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_HPET_TIMER a kernelului.\n"
+"Fără suport HPET, kernelul trebuie să se activeze odată la 20 de milisecunde pentru \n"
+"sarcini de menaj."
 
 #: ../powertop.c:1148
 msgid ""
@@ -403,12 +409,17 @@ msgid ""
 "This option allows programs to wait for changes in files and directories\n"
 "instead of having to poll for these changes"
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_INOTIFY a kernelului.\n"
+"Această opțiune permite programelor să aștepte modificări ale fișierelor și dosarelor\n"
+"în loc să verifice fiecare fișier și dosar în parte"
 
 #: ../powertop.c:1130
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_NO_HZ a kernelului.\n"
+"Această opțiune permite procesorului să primească durate mai lungi de repaus."
 
 #: ../powertop.c:1139
 msgid ""
@@ -416,6 +427,9 @@ msgid ""
 "This option will automatically power down your sound codec when not in use,\n"
 "and can save approximately half a Watt of power."
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_SND_AC97_POWER_SAVE a kernelului.\n"
+"Această opțiune va închide automat codecul de sunet atunci când nu este folosit,\n"
+"astfel se poate salva aproximativ jumătate din energia consumată."
 
 #: ../powertop.c:1126
 msgid ""
@@ -423,12 +437,17 @@ msgid ""
 "This option will automatically disable UHCI USB when not in use, and may\n"
 "save approximately 1 Watt of power."
 msgstr ""
+"Sugestie: Activează opțiunea CONFIG_USB_SUSPEND a kernelului.\n"
+"Această opțiune va dezactiva automat UHCI USB atunci când nu este folosit, astfel se poate\n"
+"salva aproximativ 1 Watt de energie."
 
 #: ../cpufreq.c:116
 msgid ""
 "Suggestion: Enable the ondemand cpu speed governor for all processors via: \n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 msgstr ""
+"Sugestie: Activează guvernatorul de viteză a procesorului folosind comanda: \n"
+" echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 
 #: ../wireless.c:314
 #, c-format
@@ -437,6 +456,9 @@ msgid ""
 "  echo 5 > %s \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
+"Sugestie: Activează modul de economisire a rețelei fără fir folosind comanda:\n"
+"  echo 5 > %s \n"
+"Această opțiune va sacrifica ușor performața rețelei pentru a salva energie."
 
 #: ../wifi-new.c:198
 #, c-format
@@ -445,6 +467,9 @@ msgid ""
 "  iwconfig %s power timeout 500ms\n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
+"Sugestie: Activează modul de economisire a rețelei fără fir folosind comanda:\n"
+"  iwconfig %s power timeout 500ms\n"
+"Această opțiune va sacrifica ușor performața rețelei pentru a salva energie."
 
 #: ../wireless.c:308
 #, c-format
@@ -453,6 +478,9 @@ msgid ""
 "  iwpriv %s set_power 5 \n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
+"Sugestie: Activează modul de economisire a rețelei fără fir folosind comanda:\n"
+"  iwpriv %s set_power 5 \n"
+"Această opțiune va sacrifica ușor performața rețelei pentru a salva energie."
 
 #: ../xrandr.c:75
 msgid ""
@@ -460,6 +488,9 @@ msgid ""
 "  xrandr --output TV --off \n"
 "or press the V key."
 msgstr ""
+"Sugestie: dezactivează ieșirea TV prin comanda: \n"
+"  xrandr --output TV --off \n"
+"sau apasă tasta V."
 
 #: ../misctips.c:59
 msgid ""
@@ -467,6 +498,9 @@ msgid ""
 "   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 "The NMI watchdog is a kernel debug mechanism to detect deadlocks"
 msgstr ""
+"Sugestie: dezactivează gardianul NMI prin executarea următoarei comenzi:\n"
+"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
+"Gardianul NMI este un mecanism de depanare a kernelului folosit pentru a detecta partajări (zone moarte)"
 
 #: ../misctips.c:123
 msgid ""
@@ -474,6 +508,9 @@ msgid ""
 "   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
+"Sugestie: activează modul de economisire AC97 folosind următoarea comandă:\n"
+"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"sau prin trecerea parametrului power_save=1 a modulului."
 
 #: ../misctips.c:163
 msgid ""
@@ -481,6 +518,9 @@ msgid ""
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
+"Sugestie: activează modul de economisire audio HD folosind următoarea comandă:\n"
+"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"sau prin trecerea parametrului power_save=1 a modulului."
 
 #: ../misctips.c:87
 msgid ""
@@ -488,6 +528,9 @@ msgid ""
 "the kernel patch to force-enable HPET. HPET support allows Linux to \n"
 "have much longer sleep intervals."
 msgstr ""
+"Sugestie: activează HPET (Multimedia Timer) în BIOS sau adaugă \n"
+"patchul force-enable HPET a kernelului. Sprijinul oferit de HPET sistemului permite acestuia\n"
+"să primească durate mai lungi de repaus."
 
 #: ../misctips.c:192
 msgid ""
@@ -495,6 +538,9 @@ msgid ""
 "   mount -o remount,noatime /          or by pressing the T key \n"
 "noatime disables persistent access time of file accesses, which causes lots of disk IO."
 msgstr ""
+"Sugestie: activează opțiunea de sistem noatime cu următoarea comandă:\n"
+"   mount -o remount,noatime /          sau prin apăsarea tastei T \n"
+"noatime dezactivează accesul repetat la fișiere, acces ce poate cauza multe defecțiuni ale discului."
 
 #: ../misctips.c:255
 msgid ""
@@ -502,6 +548,9 @@ msgid ""
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "or by pressing the C key."
 msgstr ""
+"Sugestie: activează jurnalul de putere a procesorului cu ajutorul următoarei comenzi:\n"
+"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
+"sau prin apăsarea tastei C."
 
 #: ../misctips.c:288
 #, c-format
@@ -510,14 +559,17 @@ msgid ""
 "  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 "This wakes the disk up less frequently for background VM activity"
 msgstr ""
+"Sugestie: mărește timpul de răspuns în scris VM de la %1.2f la 15 secunde cu:\n"
+"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
+"Această opțiune accesează discul mai rar pentru activitatea de fundal VM"
 
 #: ../display.c:300
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
-msgstr "Această opţiune este situată în menuconfig, secțiunea Kernel Debugging\n"
+msgstr "Această opţiune este situată în menuconfig, secțiunea Depanare Kernel\n"
 
 #: ../display.c:281
 msgid "Top causes for wakeups:\n"
-msgstr "Top cauze pentru deșteptări:\n"
+msgstr "Top cauze pentru porniri:\n"
 
 #: ../cpufreqstats.c:94
 msgid "Turbo Mode"
@@ -551,7 +603,7 @@ msgstr "Procesorul suportă următoarele stări C-states : "
 #: ../display.c:196
 #, c-format
 msgid "no ACPI power usage estimate available"
-msgstr "nici o estimare a puterii de utilizare a ACPi disponibilă"
+msgstr "nici o estimare a puterii de utilizare ACPI disponibilă"
 
 #: ../display.c:244
 #, c-format
