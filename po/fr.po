@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 13:44-0700\n"
-"PO-Revision-Date: 2008-12-14 20:19+0100\n"
-"Last-Translator: Benjamin Pineau <ben@zouh.org>\n"
+"POT-Creation-Date: 2009-08-12 15:39-0700\n"
+"PO-Revision-Date: 2009-09-25 18:08-0800\n"
+"Last-Translator: Loïc Dufresne de Virel <loic.dufresne.de.virel@intel.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -45,9 +45,9 @@ msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            Afficher ce message d'aide\n"
 
 #: ../powertop.c:823
-#, fuzzy, c-format
+#, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
-msgstr "  -h, --help            Afficher ce message d'aide\n"
+msgstr "  -h, --pids            Afficher pids dans la liste de réveils\n"
 
 #: ../powertop.c:822
 #, c-format
@@ -66,9 +66,8 @@ msgid " A - Turn AC97 powersave on "
 msgstr " A - Activer l'économie d'énergie pour l'AC97 "
 
 #: ../misctips.c:165
-#, fuzzy
 msgid " A - Turn HD audio powersave on "
-msgstr " A - Activer l'économie d'énergie pour l'AC97 "
+msgstr " A - Activer l'économie d'énergie pour l'audio HD "
 
 #: ../bluetooth.c:146
 msgid " B - Turn Bluetooth off "
@@ -79,9 +78,8 @@ msgid " C - Power aware CPU scheduler "
 msgstr " C - activer l'ordonnanceur CPU économe "
 
 #: ../wifi-new.c:196
-#, fuzzy
 msgid " D - disable wireless "
-msgstr " W - Activer l'économie d'énergie pour le Wi-Fi "
+msgstr " D - Désactiver le sans fil"
 
 #: ../wireless.c:322
 msgid " I - disable WIFI Radio "
@@ -101,9 +99,8 @@ msgid " O - enable Ondemand governor "
 msgstr " O - Activer la politique CPU « ondemand »"
 
 #: ../wifi-new.c:201
-#, fuzzy
 msgid " P - Enable wireless power saving "
-msgstr " W - Activer l'économie d'énergie pour le Wi-Fi "
+msgstr " P - Activer l'économie d'énergie pour le sans fil "
 
 #: ../display.c:108
 msgid " Q - Quit "
@@ -357,14 +354,14 @@ msgstr ""
 "  echo 1 > %s \n"
 
 #: ../wifi-new.c:194
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
 " ifconfig %s down\n"
 msgstr ""
-"Suggestion : désactivez la radio Wi-Fi non utilisée en exécutant la commande "
-"suivante:\n"
-"  echo 1 > %s \n"
+"Suggestion : désactivez la radio Wi-Fi non utilisée en stoppant "
+"l'interface:\n"
+" ifconfig %s down\n"
 
 #: ../bluetooth.c:144
 msgid ""
@@ -396,6 +393,8 @@ msgid ""
 "Suggestion: Enable USB autosuspend for non-input devices by pressing the U "
 "key\n"
 msgstr ""
+"Suggestion : activez la suspension automatique de l'USB pour les "
+"périphériques autres que de saisie à l'aide de la touche U\n"
 
 #: ../powertop.c:1131
 msgid ""
@@ -507,18 +506,18 @@ msgstr ""
 "d'énergie."
 
 #: ../wifi-new.c:198
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
 "command:\n"
 "  iwconfig %s power timeout 500ms\n"
 "This will sacrifice network performance slightly to save power."
 msgstr ""
-"Suggestion : activez le mode d'économie d'énergie pour le Wi-Fi à l'aide la "
-"commande\n"
+"Suggestion : activez le mode d'économie d'énergie pour le sans fil à l'aide "
+"la commande\n"
 "suivante :\n"
-"  iwpriv %s set_power 5 \n"
-"Cela sacrifiera légèrement les performances réseau au profit de l'économie "
+"  iwconfig %s power timeout 500ms\n"
+"Cela affectera légèrement les performances réseau au profit de l'économie "
 "d'énergie."
 
 #: ../wireless.c:308
@@ -570,17 +569,16 @@ msgstr ""
 "ou en passant le paramètre power_save=1 au module."
 
 #: ../misctips.c:163
-#, fuzzy
 msgid ""
 "Suggestion: enable HD audio powersave mode by executing the following "
 "command:\n"
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "or by passing power_save=1 as module parameter."
 msgstr ""
-"Suggestion : activez l'économie d'énergie pour l'AC97 à l'aide de la "
+"Suggestion : activez l'économie d'énergie pour l'audio HD à l'aide de la "
 "commande \n"
 "suivante :\n"
-"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "ou en passant le paramètre power_save=1 au module."
 
 #: ../misctips.c:87
@@ -645,7 +643,7 @@ msgstr "Principales causes de réveils :\n"
 
 #: ../cpufreqstats.c:94
 msgid "Turbo Mode"
-msgstr ""
+msgstr "Mode Turbo"
 
 #: ../urbnum.c:123
 #, c-format
@@ -684,12 +682,10 @@ msgid "no power usage estimate available"
 msgstr "Pas d'estimation de consommation électrique disponible"
 
 #: ../powertop.c:433
-#, fuzzy
 msgid "polling"
-msgstr "polling"
+msgstr "En cours d'interrogation"
 
 #: ../powertop.c:831
 #, c-format
 msgid "powertop version %s\n"
 msgstr "powertop version %s\n"
-
