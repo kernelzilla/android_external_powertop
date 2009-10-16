@@ -196,16 +196,6 @@ msgstr ""
 "  ethtool -s eth0 wol d \n"
 "Bangun-Lewat-LAN membuat phy terus aktif, yang memakan daya."
 
-#: ../powertop.c:1187
-msgid ""
-"Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
-"SE-Alert alerts you about SELinux policy violations, but also\n"
-"has a bug that wakes it up 10 times per second."
-msgstr ""
-"Hentikan SE-Alert dengan menghapus rpm 'setroubleshoot-server'\n"
-"SE-Alert mengingatkan anda tentang pelanggaran kebijakan SELinux, tapi juga\n"
-"memiliki bug yang membangunkannya 10 kali per detik."
-
 #: ../display.c:304
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr "Tidak tersedia statistik rinci; PowerTOP perlu privilese root untuk itu\n"
@@ -250,47 +240,6 @@ msgstr "PowerTOP perlu dijalankan sebagai root untuk mengumpulkan cukup informas
 #: ../urbnum.c:185
 msgid "Recent USB suspend statistics"
 msgstr "Statistik suspensi USB terkini"
-
-#: ../powertop.c:1181
-msgid ""
-"Suggestion: Disable 'hal' from polling your cdrom with:  \n"
-"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
-"window if you plug in a CD but disables SATA power saving from kicking in."
-msgstr ""
-"Saran: Atur agar 'hal' tidak melakukan polling ke cdrom anda dengan:\n"
-"hal-disable-polling --device /dev/cdrom 'hal' akan membuka otomatis \n"
-"peramban berkas ketika CD dimasukkan tapi mencegah penghematan daya \n"
-"SATA bekerja."
-
-#: ../powertop.c:1155 ../powertop.c:1159
-msgid ""
-"Suggestion: Disable or remove 'beagle' from your system. \n"
-"Beagle is the program that indexes for easy desktop search, however it's \n"
-"not very efficient and costs a significant amount of battery life."
-msgstr ""
-"Saran: Matikan atau hapus 'beagle' dari sistem anda. \n"
-"Beagle adalah program yang membuat indeks untuk pencarian desktop \n"
-"yang muda, namun tidak cukup efisien dan memakan cukup banyak \n"
-"umur batere."
-
-#: ../powertop.c:1168
-msgid ""
-"Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
-"Older versions of gnome-power-manager wake up far more often than \n"
-"needed costing you some power."
-msgstr ""
-"Saran: Matikan atau hapus 'gnome-power-manager' dari sistem anda. \n"
-"Versi-versi terdahulu gnome-power-manager bangun terlalu sering daripada\n"
-"yang diperlukan sehingga memakan daya."
-
-#: ../powertop.c:1174
-msgid ""
-"Suggestion: Disable or remove 'pcscd' from your system. \n"
-"pcscd tends to keep the USB subsystem out of power save mode\n"
-"and your processor out of deeper powersave states."
-msgstr ""
-"Saran: Matikan atau hapus 'pcscd' dari sistem anda. \n"
-"pcscd cenderung membuat subsistem USB keluar dari mode penghematan daya dan prosesor keluar dari state penghematan daya yang lebih jauh."
 
 #: ../powertop.c:1143
 msgid ""
@@ -499,16 +448,6 @@ msgstr ""
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "atau dengan menambahkan parameter modul power_save=1."
 
-#: ../misctips.c:87
-msgid ""
-"Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
-"the kernel patch to force-enable HPET. HPET support allows Linux to \n"
-"have much longer sleep intervals."
-msgstr ""
-"Saran: fungsikan HPET (Multimedia Timer) pada BIOS anda atau \n"
-"tambahkan patch kernel untuk memaksa-fungsikan HPET. Dukungan \n"
-"HPET memungkinkan Linux untuk memiliki interval sleep lebih panjang."
-
 #: ../misctips.c:192
 msgid ""
 "Suggestion: enable the noatime filesystem option by executing the following command:\n"
@@ -567,16 +506,6 @@ msgstr "Penggunaan: powertop [OPSI...]\n"
 msgid "Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"
 msgstr "Bangun-dari-menganggur per detik: %4.1f\tinterval: %0.1fd\n"
 
-#: ../intelcstates.c:152
-#, c-format
-msgid "Your BIOS reports the following C-states : "
-msgstr "BIOS anda melaporkan state C berikut : "
-
-#: ../intelcstates.c:143
-#, c-format
-msgid "Your CPU supports the following C-states : "
-msgstr "CPU anda mendukung state C berikut : "
-
 #: ../display.c:196
 #, c-format
 msgid "no ACPI power usage estimate available"
@@ -610,3 +539,74 @@ msgstr "  -t, --time=DOUBLE     waktu baku untuk mengumpulkan data dalam detik\n
 #, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
 msgstr "  -p, --pids            tampilkan PIDS pada daftar cacah bangun\n"
+
+#: ../powertop.c:1174
+msgid ""
+"Suggestion: Disable or remove 'pcscd' from your system. \n"
+"pcscd tends to keep the USB subsystem out of power save mode\n"
+"and your processor out of deeper powersave states."
+msgstr ""
+"Saran: Matikan atau hapus 'pcscd' dari sistem Anda. \n"
+"pcscd cenderung membuat subsistem USB keluar dari mode penghematan daya dan prosesor keluar dari state penghematan daya yang lebih jauh."
+
+#: ../powertop.c:1181
+msgid ""
+"Suggestion: Disable 'hal' from polling your cdrom with:  \n"
+"hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
+"window if you plug in a CD but disables SATA power saving from kicking in."
+msgstr ""
+"Saran: Atur agar 'hal' tidak melakukan polling ke cdrom Anda dengan:\n"
+"hal-disable-polling --device /dev/cdrom 'hal' akan membuka otomatis \n"
+"peramban berkas ketika CD dimasukkan tapi mencegah penghematan daya \n"
+"SATA bekerja."
+
+#: ../powertop.c:1168
+msgid ""
+"Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
+"Older versions of gnome-power-manager wake up far more often than \n"
+"needed costing you some power."
+msgstr ""
+"Saran: Matikan atau hapus 'gnome-power-manager' dari sistem Anda. \n"
+"Versi-versi terdahulu gnome-power-manager bangun terlalu sering daripada\n"
+"yang diperlukan sehingga memakan daya."
+
+#: ../powertop.c:1155 ../powertop.c:1159
+msgid ""
+"Suggestion: Disable or remove 'beagle' from your system. \n"
+"Beagle is the program that indexes for easy desktop search, however it's \n"
+"not very efficient and costs a significant amount of battery life."
+msgstr ""
+"Saran: Matikan atau hapus 'beagle' dari sistem Anda. \n"
+"Beagle adalah program yang membuat indeks untuk pencarian desktop \n"
+"yang muda, namun tidak cukup efisien dan memakan cukup banyak \n"
+"umur baterai."
+
+#: ../intelcstates.c:152
+#, c-format
+msgid "Your BIOS reports the following C-states : "
+msgstr "BIOS Anda melaporkan state C berikut : "
+
+#: ../intelcstates.c:143
+#, c-format
+msgid "Your CPU supports the following C-states : "
+msgstr "CPU Anda mendukung state C berikut : "
+
+#: ../powertop.c:1187
+msgid ""
+"Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
+"SE-Alert alerts you about SELinux policy violations, but also\n"
+"has a bug that wakes it up 10 times per second."
+msgstr ""
+"Hentikan SE-Alert dengan menghapus rpm 'setroubleshoot-server'\n"
+"SE-Alert mengingatkan Anda tentang pelanggaran kebijakan SELinux, tapi juga\n"
+"memiliki bug yang membangunkannya 10 kali per detik."
+
+#: ../misctips.c:87
+msgid ""
+"Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
+"the kernel patch to force-enable HPET. HPET support allows Linux to \n"
+"have much longer sleep intervals."
+msgstr ""
+"Saran: fungsikan HPET (Multimedia Timer) pada BIOS Anda atau \n"
+"tambahkan patch kernel untuk memaksa-fungsikan HPET. Dukungan \n"
+"HPET memungkinkan Linux untuk memiliki interval sleep lebih panjang."
