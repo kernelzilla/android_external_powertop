@@ -167,10 +167,6 @@ msgstr ""
 "Suatu piranti USB aktif %4.1f%% dari waktu:\n"
 "%s"
 
-#: ../urbnum.c:186
-msgid "Active  Device name"
-msgstr "Nama Piranti Aktif"
-
 #: ../powertop.c:969
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
@@ -491,11 +487,6 @@ msgstr "Penyebab utama bangun:\n"
 msgid "Turbo Mode"
 msgstr "Mode Turbo"
 
-#: ../urbnum.c:123
-#, c-format
-msgid "USB device %4s : %s (%s)"
-msgstr "Piranti USB %3s : %s (%s)"
-
 #: ../powertop.c:820
 #, c-format
 msgid "Usage: powertop [OPTION...]\n"
@@ -610,3 +601,12 @@ msgstr ""
 "Saran: fungsikan HPET (Multimedia Timer) pada BIOS Anda atau \n"
 "tambahkan patch kernel untuk memaksa-fungsikan HPET. Dukungan \n"
 "HPET memungkinkan Linux untuk memiliki interval sleep lebih panjang."
+
+#: ../urbnum.c:123
+#, c-format
+msgid "USB device %4s : %s (%s)"
+msgstr "Piranti USB %s : %s (%s)4"
+
+#: ../urbnum.c:186
+msgid "Active  Device name"
+msgstr "Aktif   Name piranti"
