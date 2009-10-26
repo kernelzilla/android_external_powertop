@@ -41,6 +41,8 @@ static void activate_alpm(void)
 	FILE *file;
 	char filename[PATH_MAX];
 
+	alpm_activated = 1;
+
 	dir = opendir("/sys/class/scsi_host");
 	if (!dir)
 		return;
@@ -57,7 +59,6 @@ static void activate_alpm(void)
 	}
 
 	closedir(dir);
-	alpm_activated = 1;
 }
 
 void suggest_sata_alpm(void)
