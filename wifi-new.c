@@ -106,8 +106,10 @@ static int check_wireless_powersave(void)
 	strncpy(wrq.ifr_name, wireless_nic, sizeof(wrq.ifr_name));
 
 	/* get powersave -- if supported */
-	if (ioctl(wext_sock, SIOCGIWPOWER, &wrq) < 0)
+	if (ioctl(wext_sock, SIOCGIWPOWER, &wrq) < 0) {
+		ps_not_working = 1;
 		return false;
+	}
 
 	return wrq.u.param.disabled;
 }
@@ -198,6 +200,6 @@ void suggest_wifi_new_powersave(void)
 		sprintf(sug, _("Suggestion: Enable wireless power saving mode by executing the following command:\n "
 			       " iwconfig %s power timeout 500ms\n"
 			       "This will sacrifice network performance slightly to save power."), wireless_nic);
-		add_suggestion(sug, 20, 'P', _(" P - Enable wireless power saving "), activate_wireless_suggestion);
+		add_suggestion(sug, 20, 'W', _(" W - Enable Wireless power saving "), activate_wireless_suggestion);
 	}
 }
