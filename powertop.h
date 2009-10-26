@@ -33,6 +33,7 @@
 struct line {
 	char	*string;
 	int	count;
+	int	disk_count;
 	char 	pid[12];
 };
 
@@ -117,8 +118,11 @@ void show_suggestion(char *sug);
 void pick_suggestion(void);
 void add_suggestion(char *text, int weight, char key, char *keystring, suggestion_func *func);
 void reset_suggestions(void);
+void reset_suggestions2(void);
 void print_all_suggestions(void);
 void push_line(char *string, int count);
+void push_line_pid(char *string, int cpu_count, int disk_count, char *pid);
+
 
 void  do_cpufreq_stats(void);
 void count_usb_urbs(void);
@@ -127,5 +131,8 @@ void display_usb_activity(void);
 void activate_usb_autosuspend(void);
 void print_intel_cstates(void);
 
+void start_data_dirty_capture(void);
+void end_data_dirty_capture(void);
+void parse_data_dirty_buffer(void);
 
 #endif

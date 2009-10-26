@@ -280,18 +280,21 @@ void show_timerstats(int nostats, int ticktime)
 		int counter = 0;
 		print(timerstat_window, 0, 0, _("Top causes for wakeups:\n"));
 		for (i = 0; i < linehead; i++)
-			if (lines[i].count > 0 && counter++ < maxtimerstats) {
+			if ((lines[i].count > 0 || lines[i].disk_count > 0) && counter++ < maxtimerstats) {
+				char c = ' ';
+				if (lines[i].disk_count)
+					c = 'D';
 				if ((lines[i].count * 1.0 / ticktime) >= 10.0)
 					wattron(timerstat_window, A_BOLD);
 				else
 					wattroff(timerstat_window, A_BOLD);
 				if (showpids)
-					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   [%6s] %s \n", lines[i].count * 100.0 / linectotal,
-						lines[i].count * 1.0 / ticktime, 
+					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)%c  [%6s] %s ", lines[i].count * 100.0 / linectotal,
+						lines[i].count * 1.0 / ticktime, c,
 						lines[i].pid, lines[i].string);
 				else
-					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)   %s \n", lines[i].count * 100.0 / linectotal,
-						lines[i].count * 1.0 / ticktime, 
+					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)%c  %s ", lines[i].count * 100.0 / linectotal,
+						lines[i].count * 1.0 / ticktime, c,
 						lines[i].string);
 				}
 	} else {

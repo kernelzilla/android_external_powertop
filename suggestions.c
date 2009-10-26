@@ -72,9 +72,13 @@ void reset_suggestions(void)
 	}
 	suggestions = NULL;
 	strcpy(status_bar_slots[8],"");
+	total_weight = 0;
+}
+
+void reset_suggestions2(void)
+{
 	suggestion_key = 255;
 	suggestion_activate = NULL;
-	total_weight = 0;
 }
 
 void add_suggestion(char *text, int weight, char key, char *keystring, suggestion_func *func)

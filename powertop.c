@@ -98,27 +98,33 @@ void push_line(char *string, int count)
 		}
 	if (linehead == linesize)
 		lines = realloc (lines, (linesize ? (linesize *= 2) : (linesize = 64)) * sizeof (struct line));
+	memset(&lines[linehead], 0, sizeof(&lines[0]));
 	lines[linehead].string = strdup (string);
 	lines[linehead].count = count;
+	lines[linehead].disk_count = 0;
 	lines[linehead].pid[0] = 0;
 	linehead++;
 }
 
-void push_line_pid(char *string, int count, char *pid) 
+void push_line_pid(char *string, int cpu_count, int disk_count, char *pid) 
 {
 	int i;
 	assert(string != NULL);
+	assert(strlen(string) > 0);
 	for (i = 0; i < linehead; i++)
 		if (strcmp(string, lines[i].string) == 0) {
-			lines[i].count += count;
+			lines[i].count += cpu_count;
+			lines[i].disk_count += disk_count;
 			if (pid && strcmp(lines[i].pid, pid)!=0)
 				lines[i].pid[0] = 0;
 			return;
 		}
 	if (linehead == linesize)
 		lines = realloc (lines, (linesize ? (linesize *= 2) : (linesize = 64)) * sizeof (struct line));
+	memset(&lines[linehead], 0, sizeof(&lines[0]));
 	lines[linehead].string = strdup (string);
-	lines[linehead].count = count;
+	lines[linehead].count = cpu_count;
+	lines[linehead].disk_count = disk_count;
 	if (pid)
 		strcpy(lines[linehead].pid, pid);
 	linehead++;
@@ -528,7 +534,7 @@ void start_timerstats(void)
 int line_compare (const void *av, const void *bv)
 {
 	const struct line	*a = av, *b = bv;
-	return b->count - a->count;
+	return (b->count + 50 * b->disk_count) - (a->count + 50 * a->disk_count);
 }
 
 void sort_lines(void)
@@ -844,6 +850,8 @@ int main(int argc, char **argv)
 	bindtextdomain ("powertop", "/usr/share/locale");
 	textdomain ("powertop");
 
+	start_data_dirty_capture();
+
  	while (1) {
  		static struct option opts[] = {
  			{ "dump", 0, NULL, 'd' },
@@ -1054,11 +1062,19 @@ int main(int argc, char **argv)
 			}
 			if (deferrable)
 				continue;
-			sprintf(line2, "%15s : %s", process, func);
-			push_line_pid(line2, cnt, pid);
+			if (strchr(process, '<'))
+				sprintf(line2, "%15s : %s", process, func);
+			else
+				sprintf(line2, "%s", process);
+			push_line_pid(line2, cnt, 0, pid);
 		}
+
 		if (file)
 			pclose(file);
+
+		reset_suggestions();
+
+		parse_data_dirty_buffer();
 
 		if (strstr(line, "total events")) {
 			int d;
@@ -1120,7 +1136,7 @@ int main(int argc, char **argv)
 		if (wakeups_per_second < 0)
 			ticktime = 2;
 
-		reset_suggestions();
+		reset_suggestions2();
 
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."), 20);
@@ -1234,5 +1250,6 @@ int main(int argc, char **argv)
 		
 	}
 
+	end_data_dirty_capture();
 	return 0;
 }
