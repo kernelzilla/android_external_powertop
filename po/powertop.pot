@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-12 15:39-0700\n"
+"POT-Creation-Date: 2009-10-26 09:21-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,42 +16,42 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../powertop.c:303 ../powertop.c:306
+#: ../powertop.c:309 ../powertop.c:312
 #, c-format
 msgid "    <interrupt> : %s"
 msgstr ""
 
-#: ../powertop.c:1072
+#: ../powertop.c:1088
 msgid "    <interrupt> : extra timer interrupt"
 msgstr ""
 
-#: ../powertop.c:301
+#: ../powertop.c:307
 #, c-format
 msgid "   <kernel IPI> : %s"
 msgstr ""
 
-#: ../powertop.c:821
+#: ../powertop.c:827
 #, c-format
 msgid ""
 "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr ""
 
-#: ../powertop.c:824
+#: ../powertop.c:830
 #, c-format
 msgid "  -h, --help            Show this help message\n"
 msgstr ""
 
-#: ../powertop.c:823
+#: ../powertop.c:829
 #, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
 msgstr ""
 
-#: ../powertop.c:822
+#: ../powertop.c:828
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
 msgstr ""
 
-#: ../powertop.c:825
+#: ../powertop.c:831
 #, c-format
 msgid "  -v, --version         Show version information and exit\n"
 msgstr ""
@@ -72,7 +72,7 @@ msgstr ""
 msgid " C - Power aware CPU scheduler "
 msgstr ""
 
-#: ../wifi-new.c:196
+#: ../wifi-new.c:198
 msgid " D - disable wireless "
 msgstr ""
 
@@ -93,10 +93,6 @@ msgstr ""
 msgid " O - enable Ondemand governor "
 msgstr ""
 
-#: ../wifi-new.c:201
-msgid " P - Enable wireless power saving "
-msgstr ""
-
 #: ../display.c:108
 msgid " Q - Quit "
 msgstr ""
@@ -105,7 +101,7 @@ msgstr ""
 msgid " R - Refresh "
 msgstr ""
 
-#: ../sata.c:104
+#: ../sata.c:105
 msgid " S - SATA Link Power Management "
 msgstr ""
 
@@ -119,6 +115,10 @@ msgstr ""
 
 #: ../xrandr.c:78
 msgid " V - Disable TV out "
+msgstr ""
+
+#: ../wifi-new.c:203
+msgid " W - Enable Wireless power saving "
 msgstr ""
 
 #: ../wireless.c:311 ../wireless.c:317
@@ -148,7 +148,7 @@ msgstr ""
 msgid "%9lli"
 msgstr ""
 
-#: ../powertop.c:983
+#: ../powertop.c:991
 #, c-format
 msgid "%s\t%5.1fms (%4.1f%%)\n"
 msgstr ""
@@ -158,20 +158,20 @@ msgstr ""
 msgid "(long term: %3.1fW,/%3.1fh)"
 msgstr ""
 
-#: ../display.c:301
+#: ../display.c:304
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr ""
 
-#: ../powertop.c:960
+#: ../powertop.c:968
 #, c-format
 msgid "< Detailed C-state information is not available.>\n"
 msgstr ""
 
-#: ../powertop.c:1040
+#: ../powertop.c:1048
 msgid "<kernel core>"
 msgstr ""
 
-#: ../powertop.c:1036 ../powertop.c:1038
+#: ../powertop.c:1044 ../powertop.c:1046
 msgid "<kernel module>"
 msgstr ""
 
@@ -186,17 +186,17 @@ msgstr ""
 msgid "Active  Device name"
 msgstr ""
 
-#: ../powertop.c:969
+#: ../powertop.c:977
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr ""
 
-#: ../powertop.c:966
+#: ../powertop.c:974
 #, c-format
 msgid "Cn\t          Avg residency\n"
 msgstr ""
 
-#: ../powertop.c:903
+#: ../powertop.c:911
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr ""
@@ -208,25 +208,25 @@ msgid ""
 "Wake-on-Lan keeps the phy active, this costs power."
 msgstr ""
 
-#: ../powertop.c:1187
+#: ../powertop.c:1203
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
 "has a bug that wakes it up 10 times per second."
 msgstr ""
 
-#: ../display.c:304
+#: ../display.c:307
 msgid ""
 "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr ""
 
-#: ../display.c:299
+#: ../display.c:302
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
 msgstr ""
 
-#: ../display.c:302
+#: ../display.c:305
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr ""
 
@@ -235,7 +235,7 @@ msgstr ""
 msgid "P-states (frequencies)\n"
 msgstr ""
 
-#: ../powertop.c:170 ../powertop.c:306
+#: ../powertop.c:176 ../powertop.c:312
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr ""
 
@@ -254,7 +254,7 @@ msgstr ""
 msgid "Power usage: %3.1fW (%3.1f hours)"
 msgstr ""
 
-#: ../powertop.c:902
+#: ../powertop.c:910
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr ""
@@ -263,7 +263,7 @@ msgstr ""
 msgid "Recent USB suspend statistics"
 msgstr ""
 
-#: ../powertop.c:1181
+#: ../powertop.c:1197
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 "hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
@@ -271,28 +271,28 @@ msgid ""
 "window if you plug in a CD but disables SATA power saving from kicking in."
 msgstr ""
 
-#: ../powertop.c:1155 ../powertop.c:1159
+#: ../powertop.c:1171 ../powertop.c:1175
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
 "not very efficient and costs a significant amount of battery life."
 msgstr ""
 
-#: ../powertop.c:1168
+#: ../powertop.c:1184
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Older versions of gnome-power-manager wake up far more often than \n"
 "needed costing you some power."
 msgstr ""
 
-#: ../powertop.c:1174
+#: ../powertop.c:1190
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
 "and your processor out of deeper powersave states."
 msgstr ""
 
-#: ../powertop.c:1143
+#: ../powertop.c:1159
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
@@ -307,7 +307,7 @@ msgid ""
 "  echo 1 > %s \n"
 msgstr ""
 
-#: ../wifi-new.c:194
+#: ../wifi-new.c:196
 #, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
@@ -323,7 +323,7 @@ msgid ""
 "well.\n"
 msgstr ""
 
-#: ../sata.c:101
+#: ../sata.c:102
 msgid ""
 "Suggestion: Enable SATA ALPM link power management via: \n"
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
@@ -336,13 +336,13 @@ msgid ""
 "key\n"
 msgstr ""
 
-#: ../powertop.c:1131
+#: ../powertop.c:1147
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
 msgstr ""
 
-#: ../powertop.c:1128
+#: ../powertop.c:1144
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -350,34 +350,34 @@ msgid ""
 "giving you performance when it is needed."
 msgstr ""
 
-#: ../powertop.c:1145
+#: ../powertop.c:1161
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
 "This option allows PowerTOP to show P-state percentages \n"
 "P-states correspond to CPU frequencies."
 msgstr ""
 
-#: ../powertop.c:1134
+#: ../powertop.c:1150
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
 
-#: ../powertop.c:1148
+#: ../powertop.c:1164
 msgid ""
 "Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
 "This option allows programs to wait for changes in files and directories\n"
 "instead of having to poll for these changes"
 msgstr ""
 
-#: ../powertop.c:1130
+#: ../powertop.c:1146
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
 
-#: ../powertop.c:1139
+#: ../powertop.c:1155
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -385,7 +385,7 @@ msgid ""
 "and can save approximately half a Watt of power."
 msgstr ""
 
-#: ../powertop.c:1126
+#: ../powertop.c:1142
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -407,7 +407,7 @@ msgid ""
 "This will sacrifice network performance slightly to save power."
 msgstr ""
 
-#: ../wifi-new.c:198
+#: ../wifi-new.c:200
 #, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
@@ -487,7 +487,14 @@ msgid ""
 "This wakes the disk up less frequently for background VM activity"
 msgstr ""
 
-#: ../display.c:300
+#: ../perf.c:213
+#, c-format
+msgid ""
+"The program '%s' is writing to file '%s' on /dev/%s.\n"
+"This prevents the disk from going to powersave mode."
+msgstr ""
+
+#: ../display.c:303
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr ""
 
@@ -504,7 +511,7 @@ msgstr ""
 msgid "USB device %4s : %s (%s)"
 msgstr ""
 
-#: ../powertop.c:820
+#: ../powertop.c:826
 #, c-format
 msgid "Usage: powertop [OPTION...]\n"
 msgstr ""
@@ -534,11 +541,11 @@ msgstr ""
 msgid "no power usage estimate available"
 msgstr ""
 
-#: ../powertop.c:433
+#: ../powertop.c:439
 msgid "polling"
 msgstr ""
 
-#: ../powertop.c:831
+#: ../powertop.c:837
 #, c-format
 msgid "powertop version %s\n"
 msgstr ""
