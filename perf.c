@@ -183,7 +183,7 @@ struct sample_event{
 };
 
 
-static void parse_event(void *ptr)
+static void parse_event(void *ptr, int verbose)
 {
 	char line[8192];
 	char pid[14];
@@ -214,6 +214,10 @@ static void parse_event(void *ptr)
 			event->inode.comm, event->inode.file, event->inode.dev);
 		add_suggestion(line, 30, 0, NULL, NULL);
 	}
+	if (verbose) 
+		printf(_("The application '%s' is writing to file '%s' on /dev/%s\n"),
+			event->inode.comm, event->inode.file, event->inode.dev);
+
 }
 
 void parse_data_dirty_buffer(void)
@@ -223,6 +227,9 @@ void parse_data_dirty_buffer(void)
 
 	if (perf_fd < 0)
 		return;
+
+	if (dump)
+		printf(_("Disk accesses:\n"));
 
 	while (pc->data_tail != pc->data_head && i++ < 5000) {
 		while (pc->data_tail >= 128U * getpagesize())
@@ -239,7 +246,7 @@ void parse_data_dirty_buffer(void)
 			pc->data_tail -= 128 * getpagesize();
 
 		if (header->type == PERF_RECORD_SAMPLE)
-			parse_event(header);
+			parse_event(header, dump);
 	}
 	pc->data_tail = pc->data_head;
 }

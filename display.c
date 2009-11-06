@@ -289,11 +289,11 @@ void show_timerstats(int nostats, int ticktime)
 				else
 					wattroff(timerstat_window, A_BOLD);
 				if (showpids)
-					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)%c  [%6s] %s ", lines[i].count * 100.0 / linectotal,
+					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)%c  [%6s] %s\n", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, c,
 						lines[i].pid, lines[i].string);
 				else
-					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)%c  %s ", lines[i].count * 100.0 / linectotal,
+					print(timerstat_window, i+1, 0," %5.1f%% (%5.1f)%c  %s\n", lines[i].count * 100.0 / linectotal,
 						lines[i].count * 1.0 / ticktime, c,
 						lines[i].string);
 				}
