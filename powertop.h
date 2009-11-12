@@ -126,6 +126,11 @@ void push_line_pid(char *string, int cpu_count, int disk_count, char *pid);
 
 void  do_cpufreq_stats(void);
 void count_usb_urbs(void);
+void alsa_activity_hint(void);
+void display_alsa_activity(void);
+void do_alsa_stats(void);
+
+
 
 void display_usb_activity(void);
 void activate_usb_autosuspend(void);
@@ -134,5 +139,8 @@ void print_intel_cstates(void);
 void start_data_dirty_capture(void);
 void end_data_dirty_capture(void);
 void parse_data_dirty_buffer(void);
+
+
+void hda_power_on(void);
 
 #endif

@@ -902,6 +902,9 @@ int main(int argc, char **argv)
 	do_cpufreq_stats();
 	count_usb_urbs();
 	count_usb_urbs();
+	do_alsa_stats();
+	do_alsa_stats();
+
 
 	memset(cur_usage, 0, sizeof(cur_usage));
 	memset(cur_duration, 0, sizeof(cur_duration));
@@ -1094,6 +1097,7 @@ int main(int argc, char **argv)
 			show_wakeups(wakeups_per_second, ticktime, c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ) );
 		}
 		count_usb_urbs();
+		do_alsa_stats();
 		print_battery_sysfs();
 		count_lines();
 		sort_lines();
@@ -1222,10 +1226,12 @@ int main(int argc, char **argv)
 		suggest_writeback_time();
 		suggest_usb_autosuspend();
 		usb_activity_hint();
+		alsa_activity_hint();
 
 		if (dump) {
 			print_all_suggestions();
 			display_usb_activity();
+			display_alsa_activity();
 			exit(EXIT_SUCCESS);
 		}
 
