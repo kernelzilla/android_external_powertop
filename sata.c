@@ -90,7 +90,7 @@ void suggest_sata_alpm(void)
 			fclose(file);
 			continue;
 		}
-		if (!strstr(line, "min_power"))
+		if (!strstr(line, "min_power\n"))
 			need_hint = 1;
 
 		fclose(file);
