@@ -34,7 +34,7 @@
 
 int alpm_activated;
 
-static void activate_alpm(void)
+void activate_alpm(void)
 {
 	DIR *dir;
 	struct dirent *dirent;

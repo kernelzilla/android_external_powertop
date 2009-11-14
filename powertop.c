@@ -904,6 +904,8 @@ int main(int argc, char **argv)
 	count_usb_urbs();
 	do_alsa_stats();
 	do_alsa_stats();
+	do_ahci_stats();
+	do_ahci_stats();
 
 
 	memset(cur_usage, 0, sizeof(cur_usage));
@@ -1098,6 +1100,7 @@ int main(int argc, char **argv)
 		}
 		count_usb_urbs();
 		do_alsa_stats();
+		do_ahci_stats();
 		print_battery_sysfs();
 		count_lines();
 		sort_lines();
@@ -1227,11 +1230,13 @@ int main(int argc, char **argv)
 		suggest_usb_autosuspend();
 		usb_activity_hint();
 		alsa_activity_hint();
+		ahci_activity_hint();
 
 		if (dump) {
 			print_all_suggestions();
 			display_usb_activity();
 			display_alsa_activity();
+			display_ahci_activity();
 			exit(EXIT_SUCCESS);
 		}
 
