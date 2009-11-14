@@ -102,7 +102,7 @@ static void update_ahci_device(char *path, char *shortname)
 			if (!file)
 				return;
 			fgets(name, 4096, file);
-			ptr->partial = strtoull(name, NULL, 10);
+			ptr->slumber = strtoull(name, NULL, 10);
 			fclose(file);
 
 			ptr->total = ptr->active + ptr->partial + ptr->slumber;
