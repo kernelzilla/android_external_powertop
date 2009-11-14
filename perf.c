@@ -90,6 +90,7 @@ static int get_trace_type(void)
 static void create_perf_event(void)
 {
 	struct perf_event_attr attr;
+	int ret;
 
 	struct {
 		__u64 count;
@@ -104,7 +105,7 @@ static void create_perf_event(void)
 				  PERF_FORMAT_TOTAL_TIME_RUNNING |
 				  PERF_FORMAT_ID;
 
-	attr.sample_freq 	= 1;
+	attr.sample_freq 	= 0;
 	attr.sample_period	= 1;
 	attr.sample_type	|= PERF_SAMPLE_RAW;
 
@@ -133,16 +134,21 @@ static void create_perf_event(void)
 	fcntl(perf_fd, F_SETFL, O_NONBLOCK);
 
 	perf_mmap = mmap(NULL, (128+1)*getpagesize(),
-				PROT_READ|PROT_WRITE, MAP_SHARED, perf_fd, 0);
+				PROT_READ | PROT_WRITE, MAP_SHARED, perf_fd, 0);
 	if (perf_mmap == MAP_FAILED) {
 		fprintf(stderr, "failed to mmap with %d (%s)\n", errno, strerror(errno));
 		return;
 	}
 
-	ioctl(perf_fd, PERF_EVENT_IOC_ENABLE);
+	ret = ioctl(perf_fd, PERF_EVENT_IOC_ENABLE);
+
+	if (ret < 0)
+		fprintf(stderr, "failed to enable perf \n");
 
 	pc = perf_mmap;
 	data_mmap = perf_mmap + getpagesize();
+
+
 }
 
 
