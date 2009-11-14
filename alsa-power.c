@@ -57,6 +57,33 @@ static void cachunk_data(void)
 	}
 }
 
+static char *long_name(char *path, char *shortname)
+{
+	static char line[4096];
+	char filename[4096], temp[4096], *c;
+	FILE *file;
+	sprintf(line, "%s ", shortname);
+
+	sprintf(filename, "%s/vendor_name", path);
+	file = fopen(filename, "r");
+	if (file) {
+		if (fgets(temp, 4096, file))
+			strcat(line, temp);
+		fclose(file);
+	}
+
+	sprintf(filename, "%s/chip_name", path);
+	file = fopen(filename, "r");
+	if (file) {
+		if (fgets(temp, 4096, file))
+			strcat(line, temp);
+		fclose(file);
+	}
+
+	while ((c = strchr(line, '\n')))
+		*c = ' ';
+	return line;
+}
 static void update_alsa_device(char *path, char *shortname)
 {
 	struct device_data *ptr;
@@ -97,7 +124,7 @@ static void update_alsa_device(char *path, char *shortname)
 	ptr->next = devices;
 	devices = ptr;
 	strcpy(ptr->pathname, path);
-	strcpy(ptr->human_name, shortname);
+	strcpy(ptr->human_name, long_name(path, shortname));
 }
 
 void do_alsa_stats(void)
