@@ -59,13 +59,76 @@ static void cachunk_data(void)
 	}
 }
 
+static char *disk_name(char *path, char *target, char *shortname)
+{
+
+	DIR *dir;
+	struct dirent *dirent;
+	char pathname[PATH_MAX];
+
+	sprintf(pathname, "%s/%s", path, target);
+	dir = opendir(pathname);
+	if (!dir)
+		return strdup(shortname);
+		
+	while ((dirent = readdir(dir))) {
+		char line[4096];
+		FILE *file;
+		if (dirent->d_name[0]=='.')
+			continue;
+
+		if (!strchr(dirent->d_name, ':'))
+			continue;
+
+		sprintf(line, "%s/%s/model", pathname, dirent->d_name);
+		file = fopen(line, "r");
+		if (file) {
+			if (fgets(line, 4096, file) == NULL)
+				return strdup(shortname);
+			fclose(file);
+			return strdup(line);
+		}
+	}
+	closedir(dir);
+	
+	return strdup(shortname);
+}
+
+static char *model_name(char *path, char *shortname)
+{
+
+	DIR *dir;
+	struct dirent *dirent;
+	char pathname[PATH_MAX];
+
+	sprintf(pathname, "%s/device", path);
+
+	dir = opendir(pathname);
+	if (!dir)
+		return strdup(shortname);
+		
+	while ((dirent = readdir(dir))) {
+		if (dirent->d_name[0]=='.')
+			continue;
+
+		if (!strchr(dirent->d_name, ':'))
+			continue;
+		if (!strstr(dirent->d_name, "target"))
+			continue;
+		return disk_name(pathname, dirent->d_name, shortname);
+	}
+	closedir(dir);
+	
+	return strdup(shortname);
+}
+
 static int first_time = 1;
 static void update_ahci_device(char *path, char *shortname)
 {
 	struct device_data *ptr;
 	FILE *file;
 	char fullpath[4096];
-	char name[4096];
+	char name[4096], *c;
 	ptr = devices;
 
 	sprintf(fullpath, "%s/ahci_alpm_accounting", path);
@@ -117,7 +180,9 @@ static void update_ahci_device(char *path, char *shortname)
 	ptr->next = devices;
 	devices = ptr;
 	strcpy(ptr->pathname, path);
-	strcpy(ptr->human_name, shortname);
+	c = model_name(path, shortname);
+	strcpy(ptr->human_name, c);
+	free(c);
 }
 
 void do_ahci_stats(void)
