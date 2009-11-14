@@ -130,6 +130,10 @@ void alsa_activity_hint(void);
 void display_alsa_activity(void);
 void do_alsa_stats(void);
 
+void ahci_activity_hint(void);
+void display_ahci_activity(void);
+void do_ahci_stats(void);
+
 
 
 void display_usb_activity(void);
@@ -142,5 +146,6 @@ void parse_data_dirty_buffer(void);
 
 
 void hda_power_on(void);
+void activate_alpm(void);
 
 #endif
