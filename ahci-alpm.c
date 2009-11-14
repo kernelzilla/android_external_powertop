@@ -72,7 +72,7 @@ static char *disk_name(char *path, char *target, char *shortname)
 		return strdup(shortname);
 		
 	while ((dirent = readdir(dir))) {
-		char line[4096];
+		char line[4096], *c;
 		FILE *file;
 		if (dirent->d_name[0]=='.')
 			continue;
@@ -86,6 +86,9 @@ static char *disk_name(char *path, char *target, char *shortname)
 			if (fgets(line, 4096, file) == NULL)
 				return strdup(shortname);
 			fclose(file);
+			c = strchr(line, '\n');
+			if (c)
+				*c = 0;
 			return strdup(line);
 		}
 	}
