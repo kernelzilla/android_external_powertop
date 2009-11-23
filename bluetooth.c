@@ -45,6 +45,8 @@
 #define __u8 uint8_t
 #define __u32 uint32_t
 
+static int suggested = 0;
+
 typedef struct {
         __u8 b[6];
 } __attribute__((packed)) bdaddr_t;
@@ -90,6 +92,7 @@ static int previous_bytes = -1;
 
 void turn_bluetooth_off(void)
 {
+	suggested = 1;
 	system("/usr/sbin/hciconfig hci0 down &> /dev/null");
 	system("/sbin/rmmod hci_usb &> /dev/null");
 }
@@ -101,6 +104,9 @@ void suggest_bluetooth_off(void)
 	int fd;
 	int ret;
 	int thisbytes = 0;
+
+	if (suggested)
+		return;
 
 	/* first check if /sys/modules/bluetooth exists, if not, don't probe bluetooth because
 	   it would trigger an autoload */

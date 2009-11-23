@@ -197,10 +197,13 @@ static void parse_event(void *ptr, int verbose)
 	struct sample_event *event = ptr;
 	if (event->trace.type != this_trace)
 		return;
-	if (event->trace.size < sizeof(struct dirty_inode))
+
+	if (event->trace.size < sizeof(struct dirty_inode)) 
 		return;
+
 	if (event->inode.pid == 0)
 		return;
+
 	if (strcmp(event->inode.comm, "powertop") == 0)
 		return;
 	/*
@@ -210,6 +213,11 @@ static void parse_event(void *ptr, int verbose)
 		return;
 	if (strcmp(event->inode.dev, "proc") == 0)
 		return;
+	if (strcmp(event->inode.dev, "pipefs") == 0)
+		return;
+	if (strcmp(event->inode.dev, "anon_inodefs") == 0)
+		return;
+
 	sprintf(pid, "%i", event->inode.pid);
 	sprintf(line, "%s", event->inode.comm);
 	push_line_pid(line, 0, 1, pid);
