@@ -207,6 +207,13 @@ static void parse_event(void *ptr, int verbose)
 	if (strcmp(event->inode.comm, "powertop") == 0)
 		return;
 	/*
+	 * btrfs kernel threads are internal and only
+	 * do IO on behalf of others that also got recorded
+	 */
+
+	if (strcmp(event->inode.comm, "btrfs-") == 0)
+		return;
+	/*
 	 * don't record "IO" to tmpfs or /proc
 	 */
 	if (strcmp(event->inode.dev, "tmpfs") == 0)
