@@ -33,7 +33,8 @@
 #include "powertop.h"
 
 /* static arrays are not nice programming.. but they're easy */
-static char configlines[10000][100];
+#define MAXCONFIGLINES 10000
+static char configlines[MAXCONFIGLINES][100];
 static int configcount;
 
 static void read_kernel_config(void)
@@ -48,6 +49,8 @@ static void read_kernel_config(void)
 		while (file && !feof(file)) {
 			char line[100];
 			if (fgets(line, 100, file) == NULL)
+				break;
+			if (configcount >= MAXCONFIGLINES)
 				break;
 			strcpy(configlines[configcount++], line);
 		}
