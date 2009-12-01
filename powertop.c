@@ -1,4 +1,4 @@
-/*
+;/*
  * Copyright 2007, Intel Corporation
  *
  * This file is part of PowerTOP
@@ -304,12 +304,12 @@ static void do_proc_irq(void)
 			*c = 0;
 		if (strcmp(name, "i8042")) { 
 			if (special) 
-				sprintf(line2, _("   <kernel IPI> : %s"), name);
+				sprintf(line2, _("[%s] <kernel IPI>"), name);
 			else
-				sprintf(line2, _("    <interrupt> : %s"), name);
+				sprintf(line2, _("[%s] <interrupt>"), name);
 		}
 		else
-			sprintf(line2, _("    <interrupt> : %s"), _("PS/2 keyboard/mouse/touchpad"));
+			sprintf(line2, _("%s interrupt"), _("PS/2 keyboard/mouse/touchpad"));
 
 		/* skip per CPU timer interrupts */
 		if (percpu_hpet_timer(name))
@@ -1046,11 +1046,11 @@ int main(int argc, char **argv)
 				c++;
 			func = c;
 			if (strcmp(process, "insmod") == 0)
-				process = _("<kernel module>");
+				process = _("[kernel module]");
 			if (strcmp(process, "modprobe") == 0)
-				process = _("<kernel module>");
+				process = _("[kernel module]");
 			if (strcmp(process, "swapper") == 0)
-				process = _("<kernel core>");
+				process = _("[kernel core]");
 			c = strchr(c, '\n');
 			if (strncmp(func, "tick_nohz_", 10) == 0)
 				continue;
@@ -1067,8 +1067,8 @@ int main(int argc, char **argv)
 			}
 			if (deferrable)
 				continue;
-			if (strchr(process, '<'))
-				sprintf(line2, "%15s : %s", process, func);
+			if (strchr(process, '['))
+				sprintf(line2, "%s %s", process, func);
 			else
 				sprintf(line2, "%s", process);
 			push_line_pid(line2, cnt, 0, pid);
@@ -1090,7 +1090,7 @@ int main(int argc, char **argv)
 					totalevents += interrupt_0 - d;
 			}
 			if (d>0 && d < interrupt_0)
-				push_line(_("    <interrupt> : extra timer interrupt"), interrupt_0 - d);
+				push_line(_("[extra timer interrupt]"), interrupt_0 - d);
 		}
 
 	
