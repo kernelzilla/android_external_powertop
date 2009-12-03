@@ -1045,6 +1045,12 @@ int main(int argc, char **argv)
 			while (*c != 0 && *c == ' ')
 				c++;
 			func = c;
+
+			if (strcmp(process, "swapper")==0 &&
+			    strcmp(func, "hrtimer_start_range_ns (tick_sched_timer)\n")==0) {
+				process = _("[kernel scheduler]");
+				func = _("Load balancing tick");
+			}
 			if (strcmp(process, "insmod") == 0)
 				process = _("[kernel module]");
 			if (strcmp(process, "modprobe") == 0)
@@ -1065,6 +1071,7 @@ int main(int argc, char **argv)
 				if (*c++ == 'D')
 					deferrable = 1;
 			}
+
 			if (deferrable)
 				continue;
 			if (strchr(process, '['))
@@ -1211,6 +1218,12 @@ int main(int argc, char **argv)
 				      "SE-Alert alerts you about SELinux policy violations, but also\n"
 				      "has a bug that wakes it up 10 times per second."), 20);
 
+		suggest_on_dmesg("failed to find CxSR latency, disabling CxSR",
+			_("The Intel Integrated Graphics driver failed to enable Memory "
+			  "self refresh.\nMemory Self Refresh is important for "
+			  "good memory power savings.\nPlease check your OS "
+			  "vendor for a kernel update and/or report a bug."),
+			  10);
 
 		suggest_bluetooth_off();
 		suggest_nmi_watchdog();

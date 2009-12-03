@@ -148,4 +148,7 @@ void parse_data_dirty_buffer(void);
 void hda_power_on(void);
 void activate_alpm(void);
 
+void suggest_on_dmesg(char *string, char *comment, int weight);
+
+
 #endif
