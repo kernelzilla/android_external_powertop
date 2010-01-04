@@ -154,7 +154,7 @@ void show_title_bar(void)
 		if (strlen(status_bar_slots[i])==0)
 			continue;
 		wattron(status_bar_window, A_REVERSE);
-		print(status_bar_window, 0, x, status_bar_slots[i]);
+		print(status_bar_window, 0, x, "%s", status_bar_slots[i]);
 		wattroff(status_bar_window, A_REVERSE);			
 		x+= strlen(status_bar_slots[i])+1;
 	}
