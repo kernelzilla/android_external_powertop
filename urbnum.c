@@ -139,6 +139,8 @@ void count_usb_urbs(void)
 	int len;
 	char linkto[PATH_MAX];
 
+	memset(linkto, 0, sizeof(linkto));
+
 	dir = opendir("/sys/bus/usb/devices");
 	if (!dir)
 		return;

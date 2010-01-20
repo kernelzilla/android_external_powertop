@@ -852,44 +852,44 @@ int main(int argc, char **argv)
 
 	start_data_dirty_capture();
 
- 	while (1) {
- 		static struct option opts[] = {
- 			{ "dump", 0, NULL, 'd' },
- 			{ "time", 1, NULL, 't' },
- 			{ "pids", 0, NULL, 'p' },
- 			{ "help", 0, NULL, 'h' },
- 			{ "version", 0, NULL, 'v' },
- 			{ 0, 0, NULL, 0 }
- 		};
- 		int index2 = 0, c;
- 		
- 		c = getopt_long(argc, argv, "dt:phv", opts, &index2);
- 		if (c == -1)
- 			break;
- 		switch (c) {
- 		case 'd':
- 			dump = 1;
- 			break;
- 		case 't':
- 			ticktime = strtod(optarg, NULL);
- 			break;
- 		case 'p':
- 			showpids = 1;
- 			break;
- 		case 'h':
- 			usage();
- 			break;
- 		case 'v':
- 			version();
- 			break;
- 		default:
- 			;
- 		}
- 	}
+	while (1) {
+		static struct option opts[] = {
+			{ "dump", 0, NULL, 'd' },
+			{ "time", 1, NULL, 't' },
+			{ "pids", 0, NULL, 'p' },
+			{ "help", 0, NULL, 'h' },
+			{ "version", 0, NULL, 'v' },
+			{ 0, 0, NULL, 0 }
+		};
+		int index2 = 0, c;
+		
+		c = getopt_long(argc, argv, "dt:phv", opts, &index2);
+		if (c == -1)
+			break;
+		switch (c) {
+		case 'd':
+			dump = 1;
+			break;
+		case 't':
+			ticktime = strtod(optarg, NULL);
+			break;
+		case 'p':
+			showpids = 1;
+			break;
+		case 'h':
+			usage();
+			break;
+		case 'v':
+			version();
+			break;
+		default:
+			;
+		}
+	}
 
 	if (!dump)
 		ticktime = 5.0;
- 
+
 	system("/sbin/modprobe cpufreq_stats > /dev/null 2>&1");
 	read_data(&start_usage[0], &start_duration[0]);
 
