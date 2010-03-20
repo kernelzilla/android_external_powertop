@@ -40,6 +40,7 @@ LOCAL_SRC_FILES:=	\
 LOCAL_MODULE:= powertop
 
  LOCAL_CFLAGS +=		\
+	-D__ARM__			\
 	-DUSE_SLANG=1		\
 	-DIS_ANDROID=1
 # 	-DSAVERDIR=\"/system/bin/\"		\
