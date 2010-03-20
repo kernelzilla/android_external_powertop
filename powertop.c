@@ -919,7 +919,11 @@ int main(int argc, char **argv)
 		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
 	printf(_("Collecting data for %i seconds \n"), (int)ticktime);
 	printf("\n\n");
+#if defined (__I386__)
 	print_intel_cstates();
+#elif defined (__ARM__)
+	print_arm_cstates();
+#endif
 	stop_timerstats();
 
 	while (1) {

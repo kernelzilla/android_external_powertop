@@ -144,7 +144,11 @@ void do_ahci_stats(void);
 
 void display_usb_activity(void);
 void activate_usb_autosuspend(void);
+#if defined (__I386__)
 void print_intel_cstates(void);
+#elif defined(__ARM__)
+void print_arm_cstates(void);
+#endif
 
 void start_data_dirty_capture(void);
 void end_data_dirty_capture(void);
