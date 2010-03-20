@@ -854,6 +854,11 @@ int main(int argc, char **argv)
 	textdomain ("powertop");
 #endif
 
+#ifdef DEFAULT_TERM
+	if (!getenv("TERM"))
+	  setenv("TERM", DEFAULT_TERM, 1);
+#endif
+
 	start_data_dirty_capture();
 
 	while (1) {

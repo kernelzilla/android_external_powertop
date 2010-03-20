@@ -40,6 +40,7 @@ LOCAL_SRC_FILES:=	\
 LOCAL_MODULE:= powertop
 
  LOCAL_CFLAGS +=		\
+	-DDEFAULT_TERM=\"xterm\" \
 	-D__ARM__			\
 	-DUSE_SLANG=1		\
 	-DIS_ANDROID=1
