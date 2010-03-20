@@ -29,7 +29,11 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
-#include <ncurses.h>
+#ifdef USE_SLANG
+  #include <slcurses.h>
+#else
+  #include <ncurses.h>
+#endif
 #include <time.h>
 #include <wchar.h>
 
@@ -121,7 +125,7 @@ void initialize_curses(void)
 	cbreak();		/* take input chars one at a time, no wait for \n */
 	noecho();		/* dont echo input */
 	curs_set(0);		/* turn off cursor */
-	use_default_colors();
+//	use_default_colors();
 
 	init_pair(PT_COLOR_DEFAULT, COLOR_WHITE, COLOR_BLACK);
 	init_pair(PT_COLOR_HEADER_BAR, COLOR_BLACK, COLOR_WHITE);
@@ -140,7 +144,7 @@ void show_title_bar(void)
 	int i;
 	int x;
 	wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
-	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));   
+//	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));   
 	werase(title_bar_window);
 
 	print(title_bar_window, 0, 0,  "     PowerTOP version %s      (C) 2007 Intel Corporation", VERSION);
@@ -253,6 +257,7 @@ void show_wakeups(double d, double interval, double C0time)
 {
 	werase(wakeup_window);
 
+#if 0
 	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));   
 	if (d <= 25.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));   
@@ -265,7 +270,8 @@ void show_wakeups(double d, double interval, double C0time)
 	 */
 	if (C0time > 25.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_BLUE));   
-		
+#endif
+	
 	wattron(wakeup_window, A_BOLD);
 	print(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"), d, interval);
 	wrefresh(wakeup_window);
