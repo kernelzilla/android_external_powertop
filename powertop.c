@@ -30,7 +30,9 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
-#include <libintl.h>
+#ifndef IS_ANDROID
+  #include <libintl.h>
+#endif
 #include <ctype.h>
 #include <assert.h>
 #include <locale.h>
@@ -846,9 +848,11 @@ int main(int argc, char **argv)
 	uint64_t cur_usage[8], cur_duration[8];
 	double wakeups_per_second = 0;
 
+#ifndef IS_ANDROID
 	setlocale (LC_ALL, "");
 	bindtextdomain ("powertop", "/usr/share/locale");
 	textdomain ("powertop");
+#endif
 
 	start_data_dirty_capture();
 

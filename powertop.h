@@ -26,7 +26,9 @@
 #ifndef __INCLUDE_GUARD_POWERTOP_H_
 #define __INCLUDE_GUARD_POWERTOP_H_
 
-#include <libintl.h>
+#ifndef IS_ANDROID
+  #include <libintl.h>
+#endif
 
 #define VERSION "1.12"
 
@@ -90,7 +92,11 @@ extern suggestion_func *suggestion_activate;
         _x < _y ? _x : _y; })
 
 
-#define _(STRING)    gettext(STRING)
+#ifdef IS_ANDROID
+  #define _(STRING)    STRING
+#else
+  #define _(STRING)    gettext(STRING)
+#endif
 
 
 #define PT_COLOR_DEFAULT    1
