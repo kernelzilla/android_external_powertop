@@ -18,6 +18,7 @@ LOCAL_SRC_FILES:=	\
 	usb.c			\
 	urbnum.c		\
 	intelcstates.c	\
+	armcstates.c	\
 	wifi-new.c		\
 	perf.c			\
 	alsa-power.c	\
