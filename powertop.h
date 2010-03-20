@@ -30,6 +30,18 @@
   #include <libintl.h>
 #endif
 
+#if defined (__I386__)
+  #define MAX_NUM_CSTATES 4
+  #define MAX_NUM_PSTATES 6
+#elif defined (__ARM__)
+  #define MAX_NUM_CSTATES 7
+  #define MAX_NUM_PSTATES 5
+#else
+  #error "No valid architecture defined!"
+#endif
+
+#define MAX_CSTATE_LINES (MAX_NUM_CSTATES + 3)
+
 #define VERSION "1.12"
 
 struct line {
@@ -70,8 +82,8 @@ void usb_activity_hint(void);
 
 
 
-extern char cstate_lines[12][200];
-extern char cpufreqstrings[6][80];
+extern char cstate_lines[MAX_CSTATE_LINES][200];
+extern char cpufreqstrings[MAX_NUM_PSTATES][80];
 
 extern int topcstate;
 extern int topfreq;  

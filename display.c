@@ -100,10 +100,10 @@ void setup_windows(void)
 	zap_windows();	
 
 	title_bar_window = subwin(stdscr, 1, maxx, 0, 0);
-	cstate_window = subwin(stdscr, 7, maxx, 2, 0);
-	wakeup_window = subwin(stdscr, 1, maxx, 9, 0);
-	battery_power_window = subwin(stdscr, 2, maxx, 10, 0);
-	timerstat_window = subwin(stdscr, maxy-16, maxx, 12, 0);
+	cstate_window = subwin(stdscr, (MAX_NUM_CSTATES + 2), maxx, 2, 0);
+	wakeup_window = subwin(stdscr, 1, maxx, (MAX_NUM_CSTATES + 5), 0);
+	battery_power_window = subwin(stdscr, 2, maxx, (MAX_NUM_CSTATES + 6), 0);
+	timerstat_window = subwin(stdscr, maxy-16, maxx, (MAX_NUM_CSTATES + 8), 0);
 	maxtimerstats = maxy-16  -2;
 	maxwidth = maxx - 18;
 	suggestion_window = subwin(stdscr, 3, maxx, maxy-4, 0);	
@@ -170,18 +170,18 @@ void show_cstates(void)
 	int i, count = 0;
 	werase(cstate_window);
 
-	for (i=0; i < 10; i++) {
+	for (i=0; i < MAX_CSTATE_LINES; i++) {
 		if (i == topcstate+1)
 			wattron(cstate_window, A_BOLD);
 		else
 			wattroff(cstate_window, A_BOLD);			
-		if (strlen(cstate_lines[i]) && count <= 6) {
+		if (strlen(cstate_lines[i]) && count <= MAX_CSTATE_LINES) {
 			print(cstate_window, count, 0, "%s", cstate_lines[i]);
 			count++;
 		}
 	}
 
-	for (i=0; i<6; i++) {
+	for (i=0; i < MAX_NUM_PSTATES; i++) {
 		if (i == topfreq+1)
 			wattron(cstate_window, A_BOLD);
 		else

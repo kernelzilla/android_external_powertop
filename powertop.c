@@ -821,7 +821,7 @@ void print_battery_sysfs(void)
 	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
 }
 
-char cstate_lines[12][200];
+char cstate_lines[MAX_CSTATE_LINES][200];
 
 void usage()
 {
@@ -960,7 +960,7 @@ int main(int argc, char **argv)
 
 		totalticks = 0;
 		totalevents = 0;
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < MAX_NUM_CSTATES; i++)
 			if (cur_usage[i]) {
 				totalticks += cur_duration[i] - last_duration[i];
 				totalevents += cur_usage[i] - last_usage[i];
@@ -976,7 +976,7 @@ int main(int argc, char **argv)
 		}
 
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
-		topcstate = -4;
+		topcstate = -(MAX_NUM_CSTATES);
 		if (totalevents == 0 && maxcstate <= 1) {
 			sprintf(cstate_lines[5],_("< Detailed C-state information is not available.>\n"));
 		} else {
@@ -990,7 +990,7 @@ int main(int argc, char **argv)
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), percentage);
 			if (percentage > 50)
 				topcstate = 0;
-			for (i = 0; i < 8; i++)
+			for (i = 0; i < MAX_NUM_CSTATES; i++)
 				if (cur_usage[i]) {
 					sleept = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
