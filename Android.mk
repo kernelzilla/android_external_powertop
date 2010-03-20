@@ -18,7 +18,11 @@ LOCAL_SRC_FILES:=	\
 	usb.c			\
 	urbnum.c		\
 	intelcstates.c	\
-	wifi-new.c
+	wifi-new.c		\
+	perf.c			\
+	alsa-power.c	\
+	ahci-alpm.c		\
+	dmesg.c
 
  LOCAL_STATIC_LIBRARIES :=	\
  		libslang-static
