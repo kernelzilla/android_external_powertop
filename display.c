@@ -32,7 +32,7 @@
 #ifdef USE_SLANG
   #include <slcurses.h>
 #else
-  #include <ncurses.h>
+  #include <ncurses/ncurses.h>
 #endif
 #include <time.h>
 #include <wchar.h>
