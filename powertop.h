@@ -26,7 +26,7 @@
 #ifndef __INCLUDE_GUARD_POWERTOP_H_
 #define __INCLUDE_GUARD_POWERTOP_H_
 
-#ifndef IS_ANDROID
+#ifdef USE_LOCALE
   #include <libintl.h>
 #endif
 
@@ -53,7 +53,7 @@ struct line {
 
 typedef void (suggestion_func)(void);
 
-extern struct line     *lines;  
+extern struct line     *lines;
 extern int             linehead;
 extern int             linesize;
 extern int             linectotal;
@@ -86,14 +86,14 @@ extern char cstate_lines[MAX_CSTATE_LINES][200];
 extern char cpufreqstrings[MAX_NUM_PSTATES][80];
 
 extern int topcstate;
-extern int topfreq;  
+extern int topfreq;
 extern int dump;
 
 extern int showpids;
 
 extern char status_bar_slots[10][40];
 extern char suggestion_key;
-extern suggestion_func *suggestion_activate; 
+extern suggestion_func *suggestion_activate;
 
 
 /* min definition borrowed from the Linux kernel */
@@ -104,10 +104,10 @@ extern suggestion_func *suggestion_activate;
         _x < _y ? _x : _y; })
 
 
-#ifdef IS_ANDROID
-  #define _(STRING)    STRING
-#else
+#ifdef USE_LOCALE
   #define _(STRING)    gettext(STRING)
+#else
+  #define _(STRING)    STRING
 #endif
 
 

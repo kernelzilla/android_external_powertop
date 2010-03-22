@@ -30,9 +30,11 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
-#ifndef IS_ANDROID
+
+#ifdef USE_LOCALE
   #include <libintl.h>
 #endif
+
 #include <ctype.h>
 #include <assert.h>
 #include <locale.h>
@@ -108,7 +110,7 @@ void push_line(char *string, int count)
 	linehead++;
 }
 
-void push_line_pid(char *string, int cpu_count, int disk_count, char *pid) 
+void push_line_pid(char *string, int cpu_count, int disk_count, char *pid)
 {
 	int i;
 	assert(string != NULL);
@@ -238,7 +240,7 @@ static void do_proc_irq(void)
 	char line2[1024];
 	char *name;
 	uint64_t delta;
-	
+
 	interrupt_0 = 0;
 	total_interrupt  = 0;
 
@@ -257,7 +259,7 @@ static void do_proc_irq(void)
 		if (!c)
 			continue;
 		/* deal with NMI and the like.. make up fake nrs */
-		if (line[0] != ' ' && (line[0] < '0' || line[0] > '9')) {	
+		if (line[0] != ' ' && (line[0] < '0' || line[0] > '9')) {
 			if (strncmp(line,"NMI:", 4)==0)
 				nr=20000;
 			if (strncmp(line,"RES:", 4)==0)
@@ -288,13 +290,13 @@ static void do_proc_irq(void)
 			c = newc;
 		}
 		c = strchr(c, ' ');
-		if (!c) 
+		if (!c)
 			continue;
 		while (c && *c == ' ')
 			c++;
 		if (!special) {
 			c = strchr(c, ' ');
-			if (!c) 
+			if (!c)
 				continue;
 			while (c && *c == ' ')
 				c++;
@@ -304,8 +306,8 @@ static void do_proc_irq(void)
 		c = strchr(name, '\n');
 		if (c)
 			*c = 0;
-		if (strcmp(name, "i8042")) { 
-			if (special) 
+		if (strcmp(name, "i8042")) {
+			if (special)
 				sprintf(line2, _("[%s] <kernel IPI>"), name);
 			else
 				sprintf(line2, _("[%s] <interrupt>"), name);
@@ -426,7 +428,7 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 				if (f == NULL)
 					break;
 
-			
+
 				f = strstr(line, "MWAIT ");
 				if (f) {
 					f += 6;
@@ -464,7 +466,7 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 			file = fopen(filename, "r");
 			if (!file)
 				continue;
-		
+
 			memset(line, 0, 4096);
 			f = fgets(line, 4096, file);
 			fclose(file);
@@ -476,7 +478,7 @@ static void read_data_cpuidle(uint64_t * usage, uint64_t * duration)
 			clevel++;
 			if (clevel > maxcstate)
 				maxcstate = clevel;
-		
+
 		}
 		closedir(dir);
 
@@ -493,7 +495,7 @@ static void read_data(uint64_t * usage, uint64_t * duration)
 	r = stat("/sys/devices/system/cpu/cpu0/cpuidle", &s);
 	if (!r) {
 		read_data_cpuidle(usage, duration);
-		
+
 		/* perform residency calculations based on usecs */
 		FREQ = 1000;
 		return;
@@ -590,14 +592,14 @@ int print_battery_proc_acpi(void)
 				continue;
 			c++;
 
-			if (strstr(line, "present voltage")) 
+			if (strstr(line, "present voltage"))
 				voltage = strtoull(c, NULL, 10) / 1000.0;
-		
+
 			if (strstr(line, "remaining capacity") && strstr(c, "mW"))
 				watts_left = strtoull(c, NULL, 10) / 1000.0;
 
 			if (strstr(line, "remaining capacity") && strstr(c, "mAh"))
-				amperes_left = strtoull(c, NULL, 10) / 1000.0; 
+				amperes_left = strtoull(c, NULL, 10) / 1000.0;
 
 			if (strstr(line, "present rate") && strstr(c, "mW"))
 				watts_drawn = strtoull(c, NULL, 10) / 1000.0 ;
@@ -607,12 +609,12 @@ int print_battery_proc_acpi(void)
 
 		}
 		fclose(file);
-	
+
 		if (!dontcount) {
 			rate += watts_drawn + voltage * amperes_drawn;
 		}
 		cap += watts_left + voltage * amperes_left;
-		
+
 
 	}
 	closedir(dir);
@@ -715,10 +717,10 @@ void print_battery_sysfs(void)
 	double cap = 0;
 
 	char filename[256];
-	
+
 	if (print_battery_proc_acpi())
 		return;
-	
+
 	if (print_battery_proc_pmu())
 		return;
 
@@ -776,14 +778,14 @@ void print_battery_sysfs(void)
 		if (!file) {
 			sprintf(filename, "/sys/class/power_supply/%s/charge_now", dirent->d_name);
 			file = fopen(filename, "r");
-			if (!file) 
+			if (!file)
 				continue;
 
 			/* W = A * V */
 			watts_left = voltage;
 		}
 		memset(line, 0, 1024);
-		if (fgets(line, 1024, file) != NULL) 
+		if (fgets(line, 1024, file) != NULL)
 			watts_left *= strtoull(line, NULL, 10) / 1000000.0;
 		fclose(file);
 
@@ -796,12 +798,12 @@ void print_battery_sysfs(void)
 			watts_drawn = strtoull(line, NULL, 10) / 1000000.0;
 		}
 		fclose(file);
-	
+
 		if (!dontcount) {
 			rate += watts_drawn + voltage * amperes_drawn;
 		}
 		cap += watts_left;
-		
+
 
 	}
 	closedir(dir);
@@ -848,7 +850,7 @@ int main(int argc, char **argv)
 	uint64_t cur_usage[8], cur_duration[8];
 	double wakeups_per_second = 0;
 
-#ifndef IS_ANDROID
+#ifdef USE_LOCALE
 	setlocale (LC_ALL, "");
 	bindtextdomain ("powertop", "/usr/share/locale");
 	textdomain ("powertop");
@@ -871,7 +873,7 @@ int main(int argc, char **argv)
 			{ 0, 0, NULL, 0 }
 		};
 		int index2 = 0, c;
-		
+
 		c = getopt_long(argc, argv, "dt:phv", opts, &index2);
 		if (c == -1)
 			break;
@@ -973,7 +975,7 @@ int main(int argc, char **argv)
 
 		if (!dump) {
 			if (!ncursesinited) {
-				initialize_curses();  
+				initialize_curses();
 				ncursesinited++;
 			}
 			setup_windows();
@@ -1012,7 +1014,7 @@ int main(int argc, char **argv)
 						maxsleep = sleept;
 					if (percentage > 50)
 						topcstate = i+1;
-					
+
 				}
 		}
 		do_cpufreq_stats();
@@ -1113,7 +1115,7 @@ int main(int argc, char **argv)
 				push_line(_("[extra timer interrupt]"), interrupt_0 - d);
 		}
 
-	
+
 		if (totalevents && ticktime) {
 			wakeups_per_second = totalevents * 1.0 / ticktime / sysconf(_SC_NPROCESSORS_ONLN);
 			show_wakeups(wakeups_per_second, ticktime, c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ) );
@@ -1189,7 +1191,7 @@ int main(int argc, char **argv)
 				      "This option allows PowerTOP to show P-state percentages \n" "P-states correspond to CPU frequencies."), 2);
 		suggest_kernel_config("CONFIG_INOTIFY", 1,
 				    _("Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
-				      "This option allows programs to wait for changes in files and directories\n" 
+				      "This option allows programs to wait for changes in files and directories\n"
 				      "instead of having to poll for these changes"), 5);
 
 
@@ -1221,7 +1223,7 @@ int main(int argc, char **argv)
 
 		/* suggest to stop hal polilng if it shows up in the top 50 and wakes up too much*/
 		suggest_process_death("hald-addon-stor : ", "hald-addon-storage", lines, min(linehead,50), 2.0,
-				    _( "Suggestion: Disable 'hal' from polling your cdrom with:  \n" 
+				    _( "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 				       "hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-opens a\n"
 				       "window if you plug in a CD but disables SATA power saving from kicking in."), 30);
 
@@ -1284,7 +1286,7 @@ int main(int argc, char **argv)
 		memcpy(last_duration, cur_duration, sizeof(last_duration));
 
 
-		
+
 	}
 
 	end_data_dirty_capture();
