@@ -186,84 +186,14 @@ msgstr ""
 "al núcleo los parches que fuerzan la activación de HPET. El soporte de\n"
 "HPET permite a Linux suspenderse durante más tiempo."
 
-#: ../misctips.c:255
-#, fuzzy
-msgid ""
-"Suggestion: enable the power aware CPU scheduler with the following command:\n"
-"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
-"or by pressing the C key."
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
-#: ../misctips.c:288
-#, c-format
-msgid ""
-"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
-"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
-"This wakes the disk up less frequently for background VM activity"
-msgstr ""
-
 #: ../display.c:300
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr "Esta opción se encuentra en la seción Kernel Debugging de menuconfig\n"
-
-#: ../display.c:281
-#, fuzzy
-msgid "Top causes for wakeups:\n"
-msgstr ""
-"\n"
-"Causas principales de activación:\n"
-
-#: ../cpufreqstats.c:94
-msgid "Turbo Mode"
-msgstr ""
-
-#: ../urbnum.c:123
-#, c-format
-msgid "USB device %4s : %s (%s)"
-msgstr ""
-
-#: ../powertop.c:820
-#, c-format
-msgid "Usage: powertop [OPTION...]\n"
-msgstr ""
-
-#: ../display.c:270
-#, fuzzy, c-format
-msgid "Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"
-msgstr "Activaciones-desde-inactivo por segundo : "
-
-#: ../intelcstates.c:152
-#, c-format
-msgid "Your BIOS reports the following C-states : "
-msgstr ""
-
-#: ../intelcstates.c:143
-#, c-format
-msgid "Your CPU supports the following C-states : "
-msgstr ""
 
 #: ../display.c:196
 #, c-format
 msgid "no ACPI power usage estimate available"
 msgstr "las estimaciones de ACPI sobre el uso de corriente no están disponibles"
-
-#: ../display.c:244
-#, fuzzy, c-format
-msgid "no power usage estimate available"
-msgstr "las estimaciones de ACPI sobre el uso de corriente no están disponibles"
-
-#: ../powertop.c:433
-msgid "polling"
-msgstr ""
-
-#: ../powertop.c:831
-#, c-format
-msgid "powertop version %s\n"
-msgstr ""
 
 #: ../powertop.c:303 ../powertop.c:306
 #, c-format
@@ -670,3 +600,79 @@ msgstr ""
 "   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 "\r\n"
 "o pasando power_save=1 como parámetro del módulo."
+
+#: ../powertop.c:831
+#, c-format
+msgid "powertop version %s\n"
+msgstr "versión de Powertop: %s\n"
+
+#: ../misctips.c:255
+msgid ""
+"Suggestion: enable the power aware CPU scheduler with the following command:\n"
+"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
+"or by pressing the C key."
+msgstr ""
+"Sugerencia: active el organizador de la CPU ahorrador de energía\n"
+"\r\n"
+"ejecutando el siguiente comando: \n"
+"\r\n"
+"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
+"\r\n"
+"o presionando la tecla C."
+
+#: ../misctips.c:288
+#, c-format
+msgid ""
+"Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
+"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
+"This wakes the disk up less frequently for background VM activity"
+msgstr ""
+"Sugerencia: aumente el tiempo de \"reescritura sucia\" (\"dirty writeback\") de la VM\n"
+"\r\n"
+"de %1.2f a 15 segundos:\n"
+"\r\n"
+"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
+"\r\n"
+"Esto activa el disco con menor frecuencia en actividades de VM de fondo."
+
+#: ../powertop.c:820
+#, c-format
+msgid "Usage: powertop [OPTION...]\n"
+msgstr "Uso: powertop [OPCIÓN...]\n"
+
+#: ../urbnum.c:123
+#, c-format
+msgid "USB device %4s : %s (%s)"
+msgstr "Dispositivo USB %4s : %s (%s)"
+
+#: ../cpufreqstats.c:94
+msgid "Turbo Mode"
+msgstr "Modo turbo"
+
+#: ../display.c:281
+msgid "Top causes for wakeups:\n"
+msgstr "Principales causas de activación:\n"
+
+#: ../intelcstates.c:143
+#, c-format
+msgid "Your CPU supports the following C-states : "
+msgstr "La CPU admite los siguientes estados C:"
+
+#: ../intelcstates.c:152
+#, c-format
+msgid "Your BIOS reports the following C-states : "
+msgstr "La BIOS informa sobre los siguientes estados C:"
+
+#: ../display.c:270
+#, c-format
+msgid "Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"
+msgstr "Activaciones-desde-inactivo por segundo : %4.1f\tintervalo: %0.1fs\n"
+
+#: ../powertop.c:433
+msgid "polling"
+msgstr "espera activa"
+
+#: ../display.c:244
+#, c-format
+msgid "no power usage estimate available"
+msgstr "No disponemos de ninguna estimación del uso de la energía"
