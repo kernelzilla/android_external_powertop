@@ -55,13 +55,6 @@ msgstr "<núcleo>"
 msgid "<kernel module>"
 msgstr "<módulo de núcleo>"
 
-#: ../urbnum.c:217
-#, c-format
-msgid ""
-"A USB device is active %4.1f%% of the time:\n"
-"%s"
-msgstr ""
-
 #: ../urbnum.c:186
 msgid "Active  Device name"
 msgstr ""
@@ -615,3 +608,13 @@ msgstr "(largo plazo: %3.1fW,/%3.1fh)"
 #, c-format
 msgid "< Detailed C-state information is not available.>\n"
 msgstr "< No hay información detallada sobre los estados C.>\n"
+
+#: ../urbnum.c:217
+#, c-format
+msgid ""
+"A USB device is active %4.1f%% of the time:\n"
+"%s"
+msgstr ""
+"Hay un dispositivo USB activo el %4.1f%% del tiempo:\n"
+"\r\n"
+"%s"
