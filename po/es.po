@@ -43,30 +43,6 @@ msgstr "R - Redibujar "
 msgid " W - Enable wireless power saving "
 msgstr " W - Activar el ahorro de energía para red inalámbrica "
 
-#: ../ethernet.c:131
-msgid " W - disable Wake-On-Lan "
-msgstr ""
-
-#: ../cpufreqstats.c:91
-#, c-format
-msgid "%6.2f Ghz"
-msgstr ""
-
-#: ../cpufreqstats.c:88
-#, c-format
-msgid "%6lli Mhz"
-msgstr ""
-
-#: ../cpufreqstats.c:85
-#, c-format
-msgid "%9lli"
-msgstr ""
-
-#: ../powertop.c:983
-#, c-format
-msgid "%s\t%5.1fms (%4.1f%%)\n"
-msgstr ""
-
 #: ../display.c:205
 #, c-format
 msgid "(long term: %3.1fW,/%3.1fh)"
@@ -615,3 +591,27 @@ msgstr " V - Desactivar la salida a TV"
 #: ../misctips.c:292
 msgid " W - Increase Writeback time "
 msgstr " W - Aumentar el tiempo de reescritura (\"writeback\")"
+
+#: ../cpufreqstats.c:91
+#, c-format
+msgid "%6.2f Ghz"
+msgstr "%6.2f Ghz"
+
+#: ../ethernet.c:131
+msgid " W - disable Wake-On-Lan "
+msgstr " W - Desactivar el encendido a través de la red"
+
+#: ../cpufreqstats.c:85
+#, c-format
+msgid "%9lli"
+msgstr "%9lli"
+
+#: ../cpufreqstats.c:88
+#, c-format
+msgid "%6lli Mhz"
+msgstr "%6lli Mhz"
+
+#: ../powertop.c:983
+#, c-format
+msgid "%s\t%5.1fms (%4.1f%%)\n"
+msgstr "%s\t%5.1fms (%4.1f%%)\n"
