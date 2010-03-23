@@ -15,40 +15,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../powertop.c:1072
-msgid "    <interrupt> : extra timer interrupt"
-msgstr ""
-
-#: ../powertop.c:301
-#, c-format
-msgid "   <kernel IPI> : %s"
-msgstr ""
-
-#: ../powertop.c:821
-#, c-format
-msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
-msgstr ""
-
-#: ../powertop.c:824
-#, c-format
-msgid "  -h, --help            Show this help message\n"
-msgstr ""
-
-#: ../powertop.c:823
-#, c-format
-msgid "  -p, --pids            show pids in wakeups list\n"
-msgstr ""
-
-#: ../powertop.c:822
-#, c-format
-msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
-msgstr ""
-
-#: ../powertop.c:825
-#, c-format
-msgid "  -v, --version         Show version information and exit\n"
-msgstr ""
-
 #: ../misctips.c:125
 msgid " A - Turn AC97 powersave on "
 msgstr " A - Activar ahorro de energía en AC97"
@@ -619,3 +585,37 @@ msgstr ""
 #, c-format
 msgid "    <interrupt> : %s"
 msgstr "<interrupción> : %s"
+
+#: ../powertop.c:1072
+msgid "    <interrupt> : extra timer interrupt"
+msgstr "<interrupción> : interrupción del temporizador extra"
+
+#: ../powertop.c:821
+#, c-format
+msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
+msgstr "-d, --dump            Leer las activaciones una vez e imprimir la lista de los peores ofensores\n"
+
+#: ../powertop.c:301
+#, c-format
+msgid "   <kernel IPI> : %s"
+msgstr "<kernel IPI> : %s"
+
+#: ../powertop.c:823
+#, c-format
+msgid "  -p, --pids            show pids in wakeups list\n"
+msgstr "-p, --pids            Mostrar los PIDS en la lista de activaciones\n"
+
+#: ../powertop.c:824
+#, c-format
+msgid "  -h, --help            Show this help message\n"
+msgstr "-h, --help            Mostrar este mensaje de ayuda\n"
+
+#: ../powertop.c:825
+#, c-format
+msgid "  -v, --version         Show version information and exit\n"
+msgstr "-v, --version         Mostrar la información de la versión y salir\n"
+
+#: ../powertop.c:822
+#, c-format
+msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
+msgstr "-t, --time=DOUBLE     Tiempo predeterminado entre recogida de datos, en segundos\n"
