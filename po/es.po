@@ -65,20 +65,6 @@ msgstr "C0 (cpu ejecutando)        (%4.1f%%)\n"
 msgid "Collecting data for %i seconds \n"
 msgstr "Recolectando datos durante %i segundos\n"
 
-#: ../ethernet.c:128
-msgid ""
-"Disable Ethernet Wake-On-Lan with the following command:\n"
-"  ethtool -s eth0 wol d \n"
-"Wake-on-Lan keeps the phy active, this costs power."
-msgstr ""
-
-#: ../powertop.c:1187
-msgid ""
-"Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
-"SE-Alert alerts you about SELinux policy violations, but also\n"
-"has a bug that wakes it up 10 times per second."
-msgstr ""
-
 #: ../display.c:304
 msgid "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr "No hay estadísticas detalladas; PowerTOP necesita privilegios de root para ello\n"
@@ -92,15 +78,6 @@ msgstr ""
 #: ../display.c:302
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "Nota: sólo disponible en versiones 2.6.21 y posteriores del núcleo\n"
-
-#: ../cpufreqstats.c:115
-#, c-format
-msgid "P-states (frequencies)\n"
-msgstr ""
-
-#: ../powertop.c:170 ../powertop.c:306
-msgid "PS/2 keyboard/mouse/touchpad"
-msgstr ""
 
 #: ../display.c:208
 #, fuzzy, c-format
@@ -617,3 +594,40 @@ msgstr "Nombre del dispositivo activo"
 #, c-format
 msgid "Cn\t          Avg residency\n"
 msgstr "Cn\t          Residencia media\n"
+
+#: ../powertop.c:170 ../powertop.c:306
+msgid "PS/2 keyboard/mouse/touchpad"
+msgstr "PS/2 teclado/ratón/touchpad"
+
+#: ../cpufreqstats.c:115
+#, c-format
+msgid "P-states (frequencies)\n"
+msgstr "Estados P (frecuencias)\n"
+
+#: ../ethernet.c:128
+msgid ""
+"Disable Ethernet Wake-On-Lan with the following command:\n"
+"  ethtool -s eth0 wol d \n"
+"Wake-on-Lan keeps the phy active, this costs power."
+msgstr ""
+"Desactive el encendido a través de la red con el siguiente \n"
+"\r\n"
+"comando:\n"
+"\r\n"
+"  ethtool -s eth0 wol d \n"
+"\r\n"
+"El encendido por red mantiene phy activo, lo que consume\n"
+"\r\n"
+"energía extra."
+
+#: ../powertop.c:1187
+msgid ""
+"Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
+"SE-Alert alerts you about SELinux policy violations, but also\n"
+"has a bug that wakes it up 10 times per second."
+msgstr ""
+"Se puede desactivar el software SE-Alert eliminando el paquete rpm\n"
+"\r\n"
+"'setroubleshoot-server'. Este software alerta ante posibles violaciones de\n"
+"\r\n"
+"las normas SELinux, pero tiene un defecto que lo activa 10 veces por segundo."
