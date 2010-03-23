@@ -43,10 +43,6 @@ msgstr "R - Redibujar "
 msgid " W - Enable wireless power saving "
 msgstr " W - Activar el ahorro de energía para red inalámbrica "
 
-#: ../misctips.c:292
-msgid " W - Increase Writeback time "
-msgstr ""
-
 #: ../ethernet.c:131
 msgid " W - disable Wake-On-Lan "
 msgstr ""
@@ -615,3 +611,7 @@ msgstr " U - Permitir suspender los puertos USB"
 #: ../xrandr.c:78
 msgid " V - Disable TV out "
 msgstr " V - Desactivar la salida a TV"
+
+#: ../misctips.c:292
+msgid " W - Increase Writeback time "
+msgstr " W - Aumentar el tiempo de reescritura (\"writeback\")"
