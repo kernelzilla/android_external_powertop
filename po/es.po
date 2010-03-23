@@ -55,19 +55,10 @@ msgstr "<núcleo>"
 msgid "<kernel module>"
 msgstr "<módulo de núcleo>"
 
-#: ../urbnum.c:186
-msgid "Active  Device name"
-msgstr ""
-
 #: ../powertop.c:969
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (cpu ejecutando)        (%4.1f%%)\n"
-
-#: ../powertop.c:966
-#, c-format
-msgid "Cn\t          Avg residency\n"
-msgstr ""
 
 #: ../powertop.c:903
 #, c-format
@@ -617,3 +608,12 @@ msgid ""
 msgstr ""
 "Hay un dispositivo USB activo el %4.1f%% del tiempo:\n"
 "%s"
+
+#: ../urbnum.c:186
+msgid "Active  Device name"
+msgstr "Nombre del dispositivo activo"
+
+#: ../powertop.c:966
+#, c-format
+msgid "Cn\t          Avg residency\n"
+msgstr "Cn\t          Residencia media\n"
