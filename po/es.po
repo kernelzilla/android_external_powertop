@@ -79,21 +79,6 @@ msgstr ""
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "Nota: sólo disponible en versiones 2.6.21 y posteriores del núcleo\n"
 
-#: ../display.c:208
-#, fuzzy, c-format
-msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
-msgstr "Uso de electicidad (estimación de ACPI) : %5.1f W (%3.1f horas disponibles)\n"
-
-#: ../display.c:201
-#, fuzzy, c-format
-msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
-msgstr "Uso de electicidad (estimación de ACPI) : %5.1f W (%3.1f horas disponibles)\n"
-
-#: ../display.c:238
-#, fuzzy, c-format
-msgid "Power usage: %3.1fW (%3.1f hours)"
-msgstr "Uso de electicidad (estimación de ACPI) : %5.1f W (%3.1f horas disponibles)\n"
-
 #: ../powertop.c:902
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
@@ -631,3 +616,18 @@ msgstr ""
 "'setroubleshoot-server'. Este software alerta ante posibles violaciones de\n"
 "\r\n"
 "las normas SELinux, pero tiene un defecto que lo activa 10 veces por segundo."
+
+#: ../display.c:238
+#, c-format
+msgid "Power usage: %3.1fW (%3.1f hours)"
+msgstr "Uso de electricidad: %3.1fW (%3.1f horas)"
+
+#: ../display.c:201
+#, c-format
+msgid "Power usage (ACPI estimate): %3.1fW (%3.1f hours)"
+msgstr "Uso de electricidad (estimación de ACPI) : %3.1fW (%3.1f horas)"
+
+#: ../display.c:208
+#, c-format
+msgid "Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"
+msgstr "Uso de electricidad (5 minutos, estimación de ACPI) : %5.1f W (%3.1f horas disponibles)"
