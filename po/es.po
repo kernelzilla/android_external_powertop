@@ -104,13 +104,6 @@ msgstr ""
 "El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
 "CPU más veces de las necesarias."
 
-#: ../sata.c:101
-msgid ""
-"Suggestion: Enable SATA ALPM link power management via: \n"
-"  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
-"or press the S key."
-msgstr ""
-
 #: ../usb.c:114
 msgid "Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
 msgstr ""
@@ -645,3 +638,15 @@ msgstr ""
 "Bluetooth es una transmisión de radio y como tal consume bastante electricidad,\n"
 "\r\n"
 "además de mantener al USB activo.\n"
+
+#: ../sata.c:101
+msgid ""
+"Suggestion: Enable SATA ALPM link power management via: \n"
+"  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
+"or press the S key."
+msgstr ""
+"Sugerencia: active el gestor de energía del vínculo SATA ALPM así:\n"
+"\r\n"
+"  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
+"\r\n"
+"o presionando la tecla S."
