@@ -104,16 +104,6 @@ msgstr ""
 "El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
 "CPU más veces de las necesarias."
 
-#: ../powertop.c:1131
-#, fuzzy
-msgid ""
-"Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
-" This option is required to get power estimages from PowerTOP"
-msgstr ""
-"Sugerencia: Active la opción del núcleo CONFIG_NO_HZ.\n"
-"Esta opción se necesita para poder beneficiarse de periodos de\n"
-"suspensión más largos en la CPU. "
-
 #: ../powertop.c:1128
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
@@ -125,17 +115,6 @@ msgstr ""
 "electricidad de la CPU, proveyendo de capacidad de proceso cuando se\n"
 "necesita."
 
-#: ../powertop.c:1145
-#, fuzzy
-msgid ""
-"Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
-"This option allows PowerTOP to show P-state percentages \n"
-"P-states correspond to CPU frequencies."
-msgstr ""
-"Sugerencia: Active la opción del núcleo CONFIG_NO_HZ.\n"
-"Esta opción se necesita para poder beneficiarse de periodos de\n"
-"suspensión más largos en la CPU. "
-
 #: ../powertop.c:1134
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
@@ -145,17 +124,6 @@ msgstr ""
 "Sugerencia: Active la opción del núcleo CONFIG_HPET_TIMER.\n"
 "Si no hay soporte HPET, el núcleo necesita activarse cada 20\n"
 "milisegundos para realizar tareas de mantenimiento."
-
-#: ../powertop.c:1148
-#, fuzzy
-msgid ""
-"Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
-"This option allows programs to wait for changes in files and directories\n"
-"instead of having to poll for these changes"
-msgstr ""
-"Sugerencia: Active la opción del núcleo CONFIG_NO_HZ.\n"
-"Esta opción se necesita para poder beneficiarse de periodos de\n"
-"suspensión más largos en la CPU. "
 
 #: ../powertop.c:1130
 msgid ""
@@ -195,32 +163,6 @@ msgstr ""
 "todos los procesadores ejecutando:\n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 
-#: ../wireless.c:314
-#, fuzzy, c-format
-msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following command:\n"
-"  echo 5 > %s \n"
-"This will sacrifice network performance slightly to save power."
-msgstr ""
-"Sugerencia: active el modo de ahorro de energía para redes\n"
-"inalámbricas ejecutando: \n"
-"  iwpriv %s set_power 5 \n"
-"Este modo sacrifica algo de velocidad a favor de ahorro de consumo\n"
-"eléctrico."
-
-#: ../wifi-new.c:198
-#, fuzzy, c-format
-msgid ""
-"Suggestion: Enable wireless power saving mode by executing the following command:\n"
-"  iwconfig %s power timeout 500ms\n"
-"This will sacrifice network performance slightly to save power."
-msgstr ""
-"Sugerencia: active el modo de ahorro de energía para redes\n"
-"inalámbricas ejecutando: \n"
-"  iwpriv %s set_power 5 \n"
-"Este modo sacrifica algo de velocidad a favor de ahorro de consumo\n"
-"eléctrico."
-
 #: ../wireless.c:308
 #, c-format
 msgid ""
@@ -234,49 +176,6 @@ msgstr ""
 "Este modo sacrifica algo de velocidad a favor de ahorro de consumo\n"
 "eléctrico."
 
-#: ../xrandr.c:75
-msgid ""
-"Suggestion: disable TV out via: \n"
-"  xrandr --output TV --off \n"
-"or press the V key."
-msgstr ""
-
-#: ../misctips.c:59
-#, fuzzy
-msgid ""
-"Suggestion: disable the NMI watchdog by executing the following command:\n"
-"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
-"The NMI watchdog is a kernel debug mechanism to detect deadlocks"
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
-#: ../misctips.c:123
-#, fuzzy
-msgid ""
-"Suggestion: enable AC97 powersave mode by executing the following command:\n"
-"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
-"or by passing power_save=1 as module parameter."
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
-#: ../misctips.c:163
-#, fuzzy
-msgid ""
-"Suggestion: enable HD audio powersave mode by executing the following command:\n"
-"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
-"or by passing power_save=1 as module parameter."
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
 #: ../misctips.c:87
 msgid ""
 "Suggestion: enable the HPET (Multimedia Timer) in your BIOS or add \n"
@@ -286,13 +185,6 @@ msgstr ""
 "Sugerencia: active HPET (Temporizador Multimedia) en su BIOS o añada\n"
 "al núcleo los parches que fuerzan la activación de HPET. El soporte de\n"
 "HPET permite a Linux suspenderse durante más tiempo."
-
-#: ../misctips.c:192
-msgid ""
-"Suggestion: enable the noatime filesystem option by executing the following command:\n"
-"   mount -o remount,noatime /          or by pressing the T key \n"
-"noatime disables persistent access time of file accesses, which causes lots of disk IO."
-msgstr ""
 
 #: ../misctips.c:255
 #, fuzzy
@@ -653,3 +545,128 @@ msgstr ""
 "Sugerencia: active la autosuspensión de los dispositivos USB que no sean\n"
 "\r\n"
 "dispositivos de entrada presionando la tecla U.\n"
+
+#: ../powertop.c:1131
+msgid ""
+"Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
+" This option is required to get power estimages from PowerTOP"
+msgstr ""
+"Sugerencia: active la opción del núcleo CONFIG_ACPI_BATTERY.\n"
+"\r\n"
+" Se necesita esta opción para obtener estimaciones de PowerTOP."
+
+#: ../powertop.c:1145
+msgid ""
+"Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
+"This option allows PowerTOP to show P-state percentages \n"
+"P-states correspond to CPU frequencies."
+msgstr ""
+"Sugerencia: active la opción del núcleo CONFIG_CPU_FREQ_STAT.\n"
+"\r\n"
+"Esta opción permite a PowerTOP mostrar los porcentajes de los estados P.\n"
+"\r\n"
+"Los estados P se corresponden con las frecuencias de la CPU."
+
+#: ../powertop.c:1148
+msgid ""
+"Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
+"This option allows programs to wait for changes in files and directories\n"
+"instead of having to poll for these changes"
+msgstr ""
+"Sugerencia: active la opción del núcleo CONFIG_INOTIFY.\n"
+"\r\n"
+"Esta opción permite que los programas esperen a que se produzcan\n"
+"\r\n"
+"cambios en los archivos en lugar de estar en espera activa."
+
+#: ../wireless.c:314
+#, c-format
+msgid ""
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
+"  echo 5 > %s \n"
+"This will sacrifice network performance slightly to save power."
+msgstr ""
+"Sugerencia: active el modo de ahorro de energía ejecutando este comando:\n"
+"\r\n"
+"  echo 5 > %s \n"
+"\r\n"
+"Este modo sacrifica algo del rendimiento de la red para ahorrar energía."
+
+#: ../wifi-new.c:198
+#, c-format
+msgid ""
+"Suggestion: Enable wireless power saving mode by executing the following command:\n"
+"  iwconfig %s power timeout 500ms\n"
+"This will sacrifice network performance slightly to save power."
+msgstr ""
+"Sugerencia: active el modo de ahorro de energía ejecutando este comando: \n"
+"\r\n"
+"  iwconfig %s power timeout 500ms\n"
+"\r\n"
+"Este modo sacrifica algo del rendimiento de la red para ahorrar energía."
+
+#: ../misctips.c:123
+msgid ""
+"Suggestion: enable AC97 powersave mode by executing the following command:\n"
+"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"or by passing power_save=1 as module parameter."
+msgstr ""
+"Sugerencia: active el modo de ahorro de energía AC97 ejecutando este comando:\n"
+"\r\n"
+"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+"\r\n"
+"o pasando power_save=1 como parámetro del módulo."
+
+#: ../misctips.c:59
+msgid ""
+"Suggestion: disable the NMI watchdog by executing the following command:\n"
+"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
+"The NMI watchdog is a kernel debug mechanism to detect deadlocks"
+msgstr ""
+"Sugerencia: desactive el guardián NMI ejecutando el siguiente comando:\n"
+"\r\n"
+"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
+"\r\n"
+"El guardián NMI es un mecanismo de depuración que detecta bloqueos."
+
+#: ../xrandr.c:75
+msgid ""
+"Suggestion: disable TV out via: \n"
+"  xrandr --output TV --off \n"
+"or press the V key."
+msgstr ""
+"Sugerencia: desactive la salida\n"
+"\r\n"
+"de televisión de este modo:\n"
+"\r\n"
+"  xrandr --output TV --off \n"
+"\r\n"
+"o presione la tecla V."
+
+#: ../misctips.c:192
+msgid ""
+"Suggestion: enable the noatime filesystem option by executing the following command:\n"
+"   mount -o remount,noatime /          or by pressing the T key \n"
+"noatime disables persistent access time of file accesses, which causes lots of disk IO."
+msgstr ""
+"Sugerencia: active la opción noatime filesystem ejecutando este comando:\n"
+"\r\n"
+"   mount -o remount,noatime /          o presionando la tecla T.\n"
+"\r\n"
+"noatime desactiva el tiempo de acceso continuo a los archivos, que causa un montón\n"
+"\r\n"
+"de operaciones de entrada y salida en el disco."
+
+#: ../misctips.c:163
+msgid ""
+"Suggestion: enable HD audio powersave mode by executing the following command:\n"
+"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
+"or by passing power_save=1 as module parameter."
+msgstr ""
+"Sugerencia: active el modo de ahorro de energía del audio de alta definición\n"
+"\r\n"
+"ejecutando este comando: \n"
+"\r\n"
+"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
+"\r\n"
+"o pasando power_save=1 como parámetro del módulo."
