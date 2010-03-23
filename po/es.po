@@ -43,11 +43,6 @@ msgstr "R - Redibujar "
 msgid " W - Enable wireless power saving "
 msgstr " W - Activar el ahorro de energía para red inalámbrica "
 
-#: ../display.c:205
-#, c-format
-msgid "(long term: %3.1fW,/%3.1fh)"
-msgstr ""
-
 #: ../display.c:301
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(que corresponde a CONFIG_DEBUG_KERNEL=y en el fichero de configuración)\n"
@@ -615,3 +610,8 @@ msgstr "%6lli Mhz"
 #, c-format
 msgid "%s\t%5.1fms (%4.1f%%)\n"
 msgstr "%s\t%5.1fms (%4.1f%%)\n"
+
+#: ../display.c:205
+#, c-format
+msgid "(long term: %3.1fW,/%3.1fh)"
+msgstr "(largo plazo: %3.1fW,/%3.1fh)"
