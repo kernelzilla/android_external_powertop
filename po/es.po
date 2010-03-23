@@ -104,17 +104,6 @@ msgstr ""
 "El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
 "CPU más veces de las necesarias."
 
-#: ../wireless.c:320
-#, fuzzy, c-format
-msgid ""
-"Suggestion: Disable the unused WIFI radio by executing the following command:\n"
-"  echo 1 > %s \n"
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
 #: ../wifi-new.c:194
 #, fuzzy, c-format
 msgid ""
@@ -646,3 +635,13 @@ msgstr ""
 "pcscd tiende a dejar el subsistema USB fuera del modo de ahorro\n"
 "\r\n"
 "de energía y el procesador fuera de los estados de menor actividad."
+
+#: ../wireless.c:320
+#, c-format
+msgid ""
+"Suggestion: Disable the unused WIFI radio by executing the following command:\n"
+"  echo 1 > %s \n"
+msgstr ""
+"Sugerencia: desactive la red WIFI inactiva ejecutando el siguiente comando:\n"
+"\r\n"
+"  echo 1 > %s \n"
