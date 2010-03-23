@@ -39,14 +39,6 @@ msgstr " Q - Salir "
 msgid " R - Refresh "
 msgstr "R - Redibujar "
 
-#: ../urbnum.c:222 ../usb.c:116
-msgid " U - Enable USB suspend "
-msgstr ""
-
-#: ../xrandr.c:78
-msgid " V - Disable TV out "
-msgstr ""
-
 #: ../wireless.c:311 ../wireless.c:317
 msgid " W - Enable wireless power saving "
 msgstr " W - Activar el ahorro de energía para red inalámbrica "
@@ -615,3 +607,11 @@ msgstr " S - Gestión energética del vínculo SATA"
 #: ../misctips.c:194
 msgid " T - enable noatime "
 msgstr " T - Activar noatime "
+
+#: ../urbnum.c:222 ../usb.c:116
+msgid " U - Enable USB suspend "
+msgstr " U - Permitir suspender los puertos USB"
+
+#: ../xrandr.c:78
+msgid " V - Disable TV out "
+msgstr " V - Desactivar la salida a TV"
