@@ -19,32 +19,9 @@ msgstr ""
 msgid " A - Turn AC97 powersave on "
 msgstr " A - Activar ahorro de energía en AC97"
 
-#: ../misctips.c:165
-#, fuzzy
-msgid " A - Turn HD audio powersave on "
-msgstr " A - Activar ahorro de energía en AC97"
-
 #: ../bluetooth.c:146
 msgid " B - Turn Bluetooth off "
 msgstr " B - Apagar Bluetooth "
-
-#: ../misctips.c:257
-msgid " C - Power aware CPU scheduler "
-msgstr ""
-
-#: ../wifi-new.c:196
-#, fuzzy
-msgid " D - disable wireless "
-msgstr " W - Activar el ahorro de energía para red inalámbrica "
-
-#: ../wireless.c:322
-msgid " I - disable WIFI Radio "
-msgstr ""
-
-#: ../process.c:84
-#, c-format
-msgid " K - kill %s "
-msgstr ""
 
 #: ../misctips.c:61
 msgid " N - Turn NMI watchdog off "
@@ -54,11 +31,6 @@ msgstr " N - Apagar el vigilante de NMI "
 msgid " O - enable Ondemand governor "
 msgstr " O - Encender el goverando basado en demanda "
 
-#: ../wifi-new.c:201
-#, fuzzy
-msgid " P - Enable wireless power saving "
-msgstr " W - Activar el ahorro de energía para red inalámbrica "
-
 #: ../display.c:108
 msgid " Q - Quit "
 msgstr " Q - Salir "
@@ -66,15 +38,6 @@ msgstr " Q - Salir "
 #: ../display.c:109
 msgid " R - Refresh "
 msgstr "R - Redibujar "
-
-#: ../sata.c:104
-msgid " S - SATA Link Power Management "
-msgstr ""
-
-#: ../misctips.c:194
-#, fuzzy
-msgid " T - enable noatime "
-msgstr " L - Encender modo portátil "
 
 #: ../urbnum.c:222 ../usb.c:116
 msgid " U - Enable USB suspend "
@@ -619,3 +582,36 @@ msgstr "-v, --version         Mostrar la información de la versión y salir\n"
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
 msgstr "-t, --time=DOUBLE     Tiempo predeterminado entre recogida de datos, en segundos\n"
+
+#: ../misctips.c:165
+msgid " A - Turn HD audio powersave on "
+msgstr " A - Activar el ahorro de energía para el audio de alta definición"
+
+#: ../wifi-new.c:196
+msgid " D - disable wireless "
+msgstr " D - Desactivar la red inalámbrica "
+
+#: ../misctips.c:257
+msgid " C - Power aware CPU scheduler "
+msgstr " C - Organizador de la CPU ahorrador de energía"
+
+#: ../process.c:84
+#, c-format
+msgid " K - kill %s "
+msgstr " K - Cancelar %s"
+
+#: ../wireless.c:322
+msgid " I - disable WIFI Radio "
+msgstr " I - Desactivar la red WIFI"
+
+#: ../wifi-new.c:201
+msgid " P - Enable wireless power saving "
+msgstr " P - Activar el ahorro de energía para red inalámbrica"
+
+#: ../sata.c:104
+msgid " S - SATA Link Power Management "
+msgstr " S - Gestión energética del vínculo SATA"
+
+#: ../misctips.c:194
+msgid " T - enable noatime "
+msgstr " T - Activar noatime "
