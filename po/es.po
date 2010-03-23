@@ -104,19 +104,6 @@ msgstr ""
 "El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
 "CPU más veces de las necesarias."
 
-#: ../bluetooth.c:144
-#, fuzzy
-msgid ""
-"Suggestion: Disable the unused bluetooth interface with the following command:\n"
-"  hciconfig hci0 down ; rmmod hci_usb\n"
-"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
-msgstr ""
-"Sugerencia: desactive el controlador bluetooth que no está siendo utilizado\n"
-"con el siguiente comando:\n"
-"  hciconfig hci0 down\n"
-"Bluetooth es una radio y como tal consume bastante electricidad,\n"
-"además de mantener USB activo.\n"
-
 #: ../sata.c:101
 msgid ""
 "Suggestion: Enable SATA ALPM link power management via: \n"
@@ -644,3 +631,17 @@ msgstr ""
 "Sugerencia: desactive la red WIFI que no se está usando desactivando la interfaz:\n"
 "\r\n"
 " ifconfig %s down\n"
+
+#: ../bluetooth.c:144
+msgid ""
+"Suggestion: Disable the unused bluetooth interface with the following command:\n"
+"  hciconfig hci0 down ; rmmod hci_usb\n"
+"Bluetooth is a radio and consumes quite some power, and keeps USB busy as well.\n"
+msgstr ""
+"Sugerencia: desactive el bluetooth que no se está usando con este comando:\n"
+"\r\n"
+"  hciconfig hci0 down ; rmmod hci_usb\n"
+"\r\n"
+"Bluetooth es una transmisión de radio y como tal consume bastante electricidad,\n"
+"\r\n"
+"además de mantener al USB activo.\n"
