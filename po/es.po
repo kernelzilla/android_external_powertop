@@ -104,17 +104,6 @@ msgstr ""
 "El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
 "CPU más veces de las necesarias."
 
-#: ../wifi-new.c:194
-#, fuzzy, c-format
-msgid ""
-"Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
-" ifconfig %s down\n"
-msgstr ""
-"Sugerencia: active el modo portátil (laptop-mode) ejecutando el siguiente\n"
-"comando: \n"
-"   echo 5 > /proc/sys/vm/laptop_mode\n"
-"y/o incorpore esta invocación de comando en /etc/rc.local\n"
-
 #: ../bluetooth.c:144
 #, fuzzy
 msgid ""
@@ -645,3 +634,13 @@ msgstr ""
 "Sugerencia: desactive la red WIFI inactiva ejecutando el siguiente comando:\n"
 "\r\n"
 "  echo 1 > %s \n"
+
+#: ../wifi-new.c:194
+#, c-format
+msgid ""
+"Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
+" ifconfig %s down\n"
+msgstr ""
+"Sugerencia: desactive la red WIFI que no se está usando desactivando la interfaz:\n"
+"\r\n"
+" ifconfig %s down\n"
