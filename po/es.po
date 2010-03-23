@@ -47,11 +47,6 @@ msgstr " W - Activar el ahorro de energía para red inalámbrica "
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(que corresponde a CONFIG_DEBUG_KERNEL=y en el fichero de configuración)\n"
 
-#: ../powertop.c:960
-#, fuzzy, c-format
-msgid "< Detailed C-state information is not available.>\n"
-msgstr "< La información detallada sobre estados-C está sólo disponible en CPUs Móbiles (portátiles/latops) >\n"
-
 #: ../powertop.c:1040
 msgid "<kernel core>"
 msgstr "<núcleo>"
@@ -615,3 +610,8 @@ msgstr "%s\t%5.1fms (%4.1f%%)\n"
 #, c-format
 msgid "(long term: %3.1fW,/%3.1fh)"
 msgstr "(largo plazo: %3.1fW,/%3.1fh)"
+
+#: ../powertop.c:960
+#, c-format
+msgid "< Detailed C-state information is not available.>\n"
+msgstr "< No hay información detallada sobre los estados C.>\n"
