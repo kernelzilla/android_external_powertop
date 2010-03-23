@@ -104,10 +104,6 @@ msgstr ""
 "El nivelador de interrupciones del núcleo está obsoleto y activa la\n"
 "CPU más veces de las necesarias."
 
-#: ../usb.c:114
-msgid "Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
-msgstr ""
-
 #: ../powertop.c:1131
 #, fuzzy
 msgid ""
@@ -650,3 +646,10 @@ msgstr ""
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "\r\n"
 "o presionando la tecla S."
+
+#: ../usb.c:114
+msgid "Suggestion: Enable USB autosuspend for non-input devices by pressing the U key\n"
+msgstr ""
+"Sugerencia: active la autosuspensión de los dispositivos USB que no sean\n"
+"\r\n"
+"dispositivos de entrada presionando la tecla U.\n"
