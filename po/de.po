@@ -12,17 +12,16 @@ msgstr ""
 "POT-Creation-Date: 2009-08-12 15:39-0700\n"
 "PO-Revision-Date: 2010-03-28 04:22-0800\n"
 "Last-Translator: Andreas Machoy <amachoy@hotmail.com>\n"
-"Language-Team:  <de@li.org>\n"
+"Language-Team: <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.11.4\n"
 
-#: ../powertop.c:303
-#: ../powertop.c:306
+#: ../powertop.c:303 ../powertop.c:306
 #, c-format
 msgid "    <interrupt> : %s"
 msgstr "    <interrupt> : %s"
@@ -118,8 +117,7 @@ msgstr " S - SATA Link Stromsparfunktionen einschalten "
 msgid " T - enable noatime "
 msgstr " T - \"noatime\" aktivieren"
 
-#: ../urbnum.c:222
-#: ../usb.c:116
+#: ../urbnum.c:222 ../usb.c:116
 msgid " U - Enable USB suspend "
 msgstr " U - USB suspend einschalten"
 
@@ -127,8 +125,7 @@ msgstr " U - USB suspend einschalten"
 msgid " V - Disable TV out "
 msgstr " I - TV Ausgang ausschalten"
 
-#: ../wireless.c:311
-#: ../wireless.c:317
+#: ../wireless.c:311 ../wireless.c:317
 msgid " W - Enable wireless power saving "
 msgstr " W - WLAN Stromsparfunktionen aktivieren "
 
@@ -178,8 +175,7 @@ msgstr "<Detaillierte C-Status Informationen sind nur für Mobilprozessoren verf
 msgid "<kernel core>"
 msgstr "<Kernel Kern>"
 
-#: ../powertop.c:1036
-#: ../powertop.c:1038
+#: ../powertop.c:1036 ../powertop.c:1038
 msgid "<kernel module>"
 msgstr "<Kernel Modul>"
 
@@ -248,8 +244,7 @@ msgstr "Achtung: Das funktioniert erst ab Kernel 2.6.21\n"
 msgid "P-states (frequencies)\n"
 msgstr "P-States (Frequenzen)\n"
 
-#: ../powertop.c:170
-#: ../powertop.c:306
+#: ../powertop.c:170 ../powertop.c:306
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 keyboard/mouse/touchpad"
 
@@ -287,8 +282,7 @@ msgstr ""
 "hal daran das CD-Laufwerk abzufragen. hal startet nach dem Einlegen einer CD\n"
 "autom. einen Dateimanager. Die Abfragen verhindern den SATA Energiesparmodus."
 
-#: ../powertop.c:1155
-#: ../powertop.c:1159
+#: ../powertop.c:1155 ../powertop.c:1159
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -619,4 +613,3 @@ msgstr "zyklisches Abfragen"
 #, c-format
 msgid "powertop version %s\n"
 msgstr "powertop Version %s\n"
-
