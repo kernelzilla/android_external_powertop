@@ -209,11 +209,6 @@ msgstr "<interrupción> : interrupción del temporizador extra"
 msgid "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr "-d, --dump            Leer las activaciones una vez e imprimir la lista de los peores ofensores\n"
 
-#: ../powertop.c:301
-#, c-format
-msgid "   <kernel IPI> : %s"
-msgstr "<kernel IPI> : %s"
-
 #: ../powertop.c:823
 #, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
@@ -676,3 +671,8 @@ msgstr "espera activa"
 #, c-format
 msgid "no power usage estimate available"
 msgstr "No disponemos de ninguna estimación del uso de la energía"
+
+#: ../powertop.c:301
+#, c-format
+msgid "   <kernel IPI> : %s"
+msgstr ""
