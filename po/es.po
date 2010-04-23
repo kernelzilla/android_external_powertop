@@ -675,4 +675,4 @@ msgstr "No disponemos de ninguna estimación del uso de la energía"
 #: ../powertop.c:301
 #, c-format
 msgid "   <kernel IPI> : %s"
-msgstr ""
+msgstr "<kernel IPI> : %s"
