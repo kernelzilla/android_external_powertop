@@ -902,6 +902,8 @@ int main(int argc, char **argv)
 	do_cpufreq_stats();
 	count_usb_urbs();
 	count_usb_urbs();
+	count_device_pm();
+	count_device_pm();
 	do_alsa_stats();
 	do_alsa_stats();
 	do_ahci_stats();
@@ -1106,6 +1108,8 @@ int main(int argc, char **argv)
 			show_wakeups(wakeups_per_second, ticktime, c0 * 100.0 / (sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ) );
 		}
 		count_usb_urbs();
+		count_device_pm();
+		
 		do_alsa_stats();
 		do_ahci_stats();
 		print_battery_sysfs();
@@ -1244,12 +1248,14 @@ int main(int argc, char **argv)
 		suggest_runtime_suspend();
 
 		usb_activity_hint();
+		void devicepm_activity_hint();
 		alsa_activity_hint();
 		ahci_activity_hint();
 
 		if (dump) {
 			print_all_suggestions();
 			display_usb_activity();
+			display_runtime_activity();
 			display_alsa_activity();
 			display_ahci_activity();
 			exit(EXIT_SUCCESS);

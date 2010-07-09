@@ -66,6 +66,8 @@ void suggest_usb_autosuspend(void);
 void suggest_runtime_suspend(void);
 
 void usb_activity_hint(void);
+void devicepm_activity_hint(void);
+
 
 
 
@@ -128,6 +130,8 @@ void push_line_pid(char *string, int cpu_count, int disk_count, char *pid);
 
 void  do_cpufreq_stats(void);
 void count_usb_urbs(void);
+void count_device_pm(void);
+
 void alsa_activity_hint(void);
 void display_alsa_activity(void);
 void do_alsa_stats(void);
@@ -139,6 +143,8 @@ void do_ahci_stats(void);
 
 
 void display_usb_activity(void);
+void display_runtime_activity(void);
+
 void activate_usb_autosuspend(void);
 void print_intel_cstates(void);
 

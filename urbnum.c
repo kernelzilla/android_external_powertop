@@ -136,7 +136,6 @@ void count_usb_urbs(void)
 	char pathname[PATH_MAX];
 	char buffer[4096];
 	struct device_data *dev;
-	int len;
 	char linkto[PATH_MAX];
 
 	memset(linkto, 0, sizeof(linkto));
