@@ -150,12 +150,6 @@ void count_usb_urbs(void)
 		if (dirent->d_name[0]=='.')
 			continue;
 
-		/* skip usb input devices */
-		sprintf(filename, "/sys/bus/usb/devices/%s/driver", dirent->d_name);
-		len = readlink(filename, linkto, sizeof(link) - 1);
-		if (strstr(linkto, "usbhid"))
-			continue;
-
 		sprintf(pathname, "/sys/bus/usb/devices/%s", dirent->d_name);
 		sprintf(filename, "%s/urbnum", pathname);
 		file = fopen(filename, "r");
