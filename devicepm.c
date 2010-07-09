@@ -204,9 +204,10 @@ void count_device_pm(void)
 
 void display_runtime_activity(void)
 {
+	int displayed = 0;
 	struct device_data *dev;
 	printf("\n");
-	printf("%s\n", _("Recent runtime PM statistics"));
+	printf("%s\n", _("Runtime Device Power Management statistics"));
 	printf("%s\n", _("Active  Device name"));
 	dev = devices;
 	while (dev) {
@@ -221,10 +222,14 @@ void display_runtime_activity(void)
 	printf("%s\n", _("Devices without runtime PM"));
 	dev = devices;
 	while (dev) {
-		if (dev->active + dev->suspended == 0) 
-			printf("%s\n", dev->human_name);
+		if (dev->active + dev->suspended == 0)  {
+			if (displayed++ < 5)
+				printf("%s\n", dev->human_name);
+		}
 		dev = dev->next;
 	}
+	if (displayed > 5)
+		printf(_("%i more devices without runtime PM ommitted\n"), displayed - 5);
 
 }
 
