@@ -1,4 +1,4 @@
-;/*
+/*
  * Copyright 2007, Intel Corporation
  *
  * This file is part of PowerTOP
@@ -1241,6 +1241,8 @@ int main(int argc, char **argv)
 		suggest_WOL_off();
 		suggest_writeback_time();
 		suggest_usb_autosuspend();
+		suggest_runtime_suspend();
+
 		usb_activity_hint();
 		alsa_activity_hint();
 		ahci_activity_hint();
