@@ -38,8 +38,6 @@ void activate_runtime_suspend(void)
 	struct dirent *dirent;
 	FILE *file;
 	char filename[PATH_MAX];
-	int len;
-	char linkto[PATH_MAX];
 
 	dir = opendir("/sys/bus/pci/devices");
 	if (!dir)
@@ -67,11 +65,7 @@ void suggest_runtime_suspend(void)
 	FILE *file;
 	char filename[PATH_MAX];
 	char line[1024];
-	int len;
-	char linkto[PATH_MAX];
 	int need_hint = 0;
-
-	memset(linkto, 0, sizeof(linkto));
 
 	dir = opendir("/sys/bus/pci/devices");
 	if (!dir)
