@@ -1158,6 +1158,10 @@ int main(int argc, char **argv)
 
 		suggest_kernel_config("CONFIG_USB_SUSPEND", 1,
 				    _("Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\nThis option will automatically disable UHCI USB when not in use, and may\nsave approximately 1 Watt of power."), 20);
+		suggest_kernel_config("CONFIG_PM_ADVANCED_DEBUG", 1,
+				    _("Suggestion: Enable the CONFIG_PM_ADVANCED_DEBUG kernel configuration option.\nThis option will allow PowerTOP to collect runtime power management statistics."), 10);
+		suggest_kernel_config("CONFIG_PM_RUNTIME", 1,
+				    _("Suggestion: Enable the CONFIG_PM_RUNTIME kernel configuration option.\nThis option enables the kernel to manage power for various devices in your computer."), 40);
 		suggest_kernel_config("CONFIG_CPU_FREQ_GOV_ONDEMAND", 1,
 				    _("Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration option.\n"
 				      "The 'ondemand' CPU speed governor will minimize the CPU power usage while\n" "giving you performance when it is needed."), 5);
@@ -1167,6 +1171,9 @@ int main(int argc, char **argv)
 		suggest_kernel_config("CONFIG_HPET_TIMER", 1,
 				    _("Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 				      "Without HPET support the kernel needs to wake up every 20 milliseconds for \n" "some housekeeping tasks."), 10);
+		suggest_kernel_config("CONFIG_PCIEASPM", 1,
+				    _("Suggestion: Enable the CONFIG_PCIEASPM kernel configuration option.\n"
+				      "PCI Link Powermanagement (ASPM) allows the hardware to go to low power mode\n" "automatically when a PCI-E device is idle."), 10);
 		if (!access("/sys/module/snd_ac97_codec", F_OK) &&
 			access("/sys/module/snd_ac97_codec/parameters/power_save", F_OK))
 			suggest_kernel_config("CONFIG_SND_AC97_POWER_SAVE", 1,
