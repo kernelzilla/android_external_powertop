@@ -76,6 +76,19 @@ void suggest_runtime_suspend(void)
 		if (dirent->d_name[0]=='.')
 			continue;
 
+		sprintf(filename, "/sys/bus/pci/devices/%s/power/runtime_active_time", dirent->d_name);
+		file = fopen(filename, "r");
+		if (file) {
+			memset(line, 0, 1024);
+			if (fgets(line, 1023,file)==NULL)
+				memset(line, 0, 1024);
+			fclose(file);
+			/* this device does not support runtime pm */
+			if (strcmp(line, "0\n") == 0)
+				continue;
+		}
+
+
 		sprintf(filename, "/sys/bus/pci/devices/%s/power/control", dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
