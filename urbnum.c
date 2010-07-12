@@ -209,6 +209,7 @@ void usb_activity_hint(void)
 		if (dev->active-1 > dev->previous_active && !dev->controller) {
 			if (total_active == pick) {
 				char usb_hint[8000];
+				memset(usb_hint, 0, sizeof(usb_hint));
 				sprintf(usb_hint, _("A USB device is active %4.1f%% of the time:\n%s"),
 				 100.0*(dev->active - dev->previous_active) / 
 				(0.00001 + dev->connected - dev->previous_connected),

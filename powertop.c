@@ -249,6 +249,7 @@ static void do_proc_irq(void)
 		uint64_t count = 0;
 		int special = 0;
 		memset(line, 0, sizeof(line));
+		memset(line2, 0, sizeof(line));
 		if (fgets(line, 1024, file) == NULL)
 			break;
 		c = strchr(line, ':');
@@ -1015,9 +1016,10 @@ int main(int argc, char **argv)
 		while (file && !feof(file)) {
 			char *count, *pid, *process, *func;
 			char line2[1024];
-			int cnt;
+			int cnt = 0;
 			int deferrable = 0;
 			memset(line, 0, 1024);
+			memset(line2, 0, 1024);
 			if (fgets(line, 1024, file) == NULL)
 				break;
 			if (strstr(line, "total events"))
