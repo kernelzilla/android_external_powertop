@@ -299,6 +299,14 @@ static void do_proc_irq(void)
 		c = strchr(name, '\n');
 		if (c)
 			*c = 0;
+
+		/* deal with multi-queue NICs */
+		if (strncmp(name, "eth",3) == 0 && strchr(name,' ') == NULL) {
+			c = strchr(name, '-');
+			if (c)
+				*c = 0;
+		}
+
 		if (strcmp(name, "i8042")) { 
 			if (special) 
 				sprintf(line2, _("[%s] <kernel IPI>"), name);
