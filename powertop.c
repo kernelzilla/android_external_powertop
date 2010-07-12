@@ -62,7 +62,6 @@ struct irqdata {
 	int active;
 	int number;
 	uint64_t count;
-	char description[256];
 };
 
 struct irqdata interrupts[IRQCOUNT];
@@ -171,9 +170,6 @@ int update_irq(int irq, uint64_t count, char *name)
 	interrupts[firstfree].active = 1;
 	interrupts[firstfree].count = count;
 	interrupts[firstfree].number = irq;
-	strcpy(interrupts[firstfree].description, name);
-	if (strcmp(name,"i8042\n")==0)
-		strcpy(interrupts[firstfree].description, _("PS/2 keyboard/mouse/touchpad"));
 	return count;
 }
 
