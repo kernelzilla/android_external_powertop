@@ -195,6 +195,9 @@ static void parse_event(void *ptr, int verbose)
 	char pid[14];
 	int suggested = 0;
 	struct sample_event *event = ptr;
+
+	memset(line, 0, sizeof(line));
+
 	if (event->trace.type != this_trace)
 		return;
 

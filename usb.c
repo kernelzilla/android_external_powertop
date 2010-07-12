@@ -51,6 +51,7 @@ void activate_usb_autosuspend(void)
 
 		/* skip usb input devices */
 		sprintf(filename, "/sys/bus/usb/devices/%s/driver", dirent->d_name);
+		memset(linkto, 0, sizeof(linkto));
 		len = readlink(filename, linkto, sizeof(link) - 1);
 		if (strstr(linkto, "usbhid"))
 			continue;
