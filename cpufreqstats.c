@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -46,7 +46,7 @@ char cpufreqstrings[6][80];
 int topfreq = -1;
 
 static void zap(void)
-{	
+{
 	memset(freqs, 0, sizeof(freqs));
 }
 
@@ -54,13 +54,13 @@ int sort_by_count (const void *av, const void *bv)
 {
         const struct cpufreqdata       *a = av, *b = bv;
         return b->count - a->count;
-} 
+}
 
 int sort_by_freq (const void *av, const void *bv)
 {
         const struct cpufreqdata       *a = av, *b = bv;
         return b->frequency - a->frequency;
-} 
+}
 
 
 static unsigned long turbo_hz;
@@ -74,7 +74,7 @@ static int is_turbo(unsigned long hz)
 
 
 static char *HzToHuman(unsigned long hz)
-{	
+{
 	static char buffer[1024];
 	memset(buffer, 0, 1024);
 	unsigned long long Hz;

@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -179,7 +179,7 @@ static void update_devstats(char *path, char *shortname)
 	strcpy(ptr->pathname, path);
 
 	strcpy(ptr->human_name, shortname);
-	
+
 	sprintf(fullpath, "/sbin/lspci -s %s", shortname);
 	file = popen(fullpath, "r");
 	if (!file)
@@ -201,7 +201,7 @@ void count_device_pm(void)
 	dir = opendir("/sys/bus/pci/devices");
 	if (!dir)
 		return;
-		
+
 	cachunk_devs();
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
@@ -224,8 +224,8 @@ void display_runtime_activity(void)
 	printf("%s\n", _("Active  Device name"));
 	dev = devices;
 	while (dev) {
-		if (dev->active + dev->suspended > 0) 
-			printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) / 
+		if (dev->active + dev->suspended > 0)
+			printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) /
 				(0.00001 + dev->active - dev->previous_active + dev->suspended - dev->previous_suspended), dev->human_name);
 		dev = dev->next;
 	}
@@ -269,8 +269,8 @@ void devicepm_activity_hint(void)
 				char devicepm_hint[8000];
 
 				sprintf(devicepm_hint, _("A device is active %4.1f%% of the time:\n%s"),
-				 	100.0*(dev->active - dev->previous_active) / 
-    				    	(0.00001 + dev->active - dev->previous_active + dev->suspended - dev->previous_suspended),
+					100.0*(dev->active - dev->previous_active) /
+					(0.00001 + dev->active - dev->previous_active + dev->suspended - dev->previous_suspended),
 					dev->human_name);
 				add_suggestion(devicepm_hint,
 				1, 'P', _(" P - Enable device power management "), activate_runtime_suspend);

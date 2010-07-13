@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -35,9 +35,9 @@
 #include <sys/ioctl.h>
 
 /* work around a bug in debian -- it exposes kernel internal types to userspace */
-#define u64 __u64 
-#define u32 __u32  
-#define u16 __u16  
+#define u64 __u64
+#define u32 __u32
+#define u16 __u16
 #define u8 __u8
 #include <linux/ethtool.h>
 #undef u64
@@ -90,7 +90,7 @@ int check_unused_wiresless_up(void)
 	fclose(file);
 	if (val != '0') /* already rfkill'd */
 		return -1;
-	
+
 	sprintf(line,"iwconfig %s 2> /dev/null", wireless_nic);
 	file = popen(line, "r");
 	if (!file)
@@ -102,9 +102,9 @@ int check_unused_wiresless_up(void)
 		if (strstr(line, "Mode:Managed") && strstr(line,"Access Point: Not-Associated")) {
 			pclose(file);
 			return 1;
-		}		
+		}
 	}
-	pclose(file);	
+	pclose(file);
 	return 0;
 }
 
@@ -155,7 +155,7 @@ static int need_wireless_suggest_new(void)
 	fclose(file);
 	if (val <= '5' && val >= '0') /* already in powersave */
 		return 0;
-	
+
 	return 1;
 }
 
@@ -195,7 +195,7 @@ void find_4965(void)
 }
 
 
-void find_wireless_nic(void) 
+void find_wireless_nic(void)
 {
 	static int found = 0;
 	FILE *file;
@@ -233,7 +233,7 @@ void find_wireless_nic(void)
 	}
 	pclose(file);
 
-	
+
 	if (strlen(wireless_nic)==0)
 		return;
 
@@ -242,7 +242,7 @@ void find_wireless_nic(void)
 	memset(&ethtool, 0, sizeof(struct ethtool_value));
 
 	sock = socket(AF_INET, SOCK_DGRAM, 0);
-	if (sock<0) 
+	if (sock<0)
 		return;
 
 	strcpy(ifr.ifr_name, wireless_nic);
@@ -281,7 +281,7 @@ void activate_wireless_suggestion_new(void)
 }
 
 void activate_rfkill_suggestion(void)
-{	
+{
 	FILE *file;
 	file = fopen(rfkill_path, "w");
 	if (!file)
@@ -294,7 +294,7 @@ void suggest_wireless_powersave(void)
 	char sug[1024];
 	int ret;
 
-	if (strlen(wireless_nic)==0) 
+	if (strlen(wireless_nic)==0)
 		find_wireless_nic();
 	find_4965();
 	ret = check_unused_wiresless_up();
