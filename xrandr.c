@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -68,14 +68,14 @@ void suggest_xrandr_TV_off(void)
 			if (strchr(line,'*') && has_tv)
 				has_tv_active = 1;
 		}
-		
+
 	}
 	pclose(file);
 	if (has_tv_active)
 		add_suggestion(_("Suggestion: disable TV out via: \n"
 				 "  xrandr --output TV --off \n"
 				 "or press the V key."),
-				35, 'V', _(" V - Disable TV out "), activate_noTV);	
+				35, 'V', _(" V - Disable TV out "), activate_noTV);
 	/* check this only once if no suggestion needed */
 	else
 		has_no_xrandr = 1;

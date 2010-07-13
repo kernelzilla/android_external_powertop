@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -119,5 +119,3 @@ void suggest_usb_autosuspend(void)
 				45, 'U', _(" U - Enable USB suspend "), activate_usb_autosuspend);
 	}
 }
-
-

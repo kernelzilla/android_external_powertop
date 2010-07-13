@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 
@@ -34,12 +34,12 @@ struct line {
 	char	*string;
 	int	count;
 	int	disk_count;
-	char 	pid[12];
+	char	pid[12];
 };
 
 typedef void (suggestion_func)(void);
 
-extern struct line     *lines;  
+extern struct line     *lines;
 extern int             linehead;
 extern int             linesize;
 extern int             linectotal;
@@ -76,14 +76,14 @@ extern char cstate_lines[12][200];
 extern char cpufreqstrings[6][80];
 
 extern int topcstate;
-extern int topfreq;  
+extern int topfreq;
 extern int dump;
 
 extern int showpids;
 
 extern char status_bar_slots[10][40];
 extern char suggestion_key;
-extern suggestion_func *suggestion_activate; 
+extern suggestion_func *suggestion_activate;
 
 
 /* min definition borrowed from the Linux kernel */

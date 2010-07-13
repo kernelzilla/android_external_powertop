@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -35,7 +35,7 @@
 
 
 char suggestion_key;
-suggestion_func *suggestion_activate; 
+suggestion_func *suggestion_activate;
 
 struct suggestion;
 
@@ -46,7 +46,7 @@ struct suggestion {
 	int weight;
 
 	char key;
-	char *keystring;	
+	char *keystring;
 
 	suggestion_func *func;
 };
@@ -118,7 +118,7 @@ void pick_suggestion(void)
 		show_suggestion("");
 		return;
 	}
-	
+
 	weight = total_weight;
 	if (strlen(previous) && displaytime > 0.0)
 		weight+=50;

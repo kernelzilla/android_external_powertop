@@ -364,10 +364,10 @@ enum perf_event_type {
 
 	/*
 	 * struct {
-	 * 	struct perf_event_header	header;
-	 * 	u32				pid, tid;
+	 *	struct perf_event_header	header;
+	 *	u32				pid, tid;
 	 *
-	 * 	struct read_format		values;
+	 *	struct read_format		values;
 	 * };
 	 */
 	PERF_RECORD_READ			= 8,

@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -69,7 +69,7 @@ static void cpuid(      unsigned int *eax,
 
 void print_intel_cstates(void)
 {
-#ifdef __i386__ 
+#ifdef __i386__
 
         int bios_table[8];
         int bioscount = 0;
@@ -81,8 +81,8 @@ void print_intel_cstates(void)
 	char filename[128], *f;
 	int len, i;
 	unsigned int eax, ebx, ecx, edx;
-	
-	memset(bios_table, 0, sizeof(bios_table)); 
+
+	memset(bios_table, 0, sizeof(bios_table));
 
 
 	cpudir = opendir("/sys/devices/system/cpu");
@@ -118,7 +118,7 @@ void print_intel_cstates(void)
 				fclose(file);
 				if (f == NULL)
 					break;
-			
+
 				f = strstr(line, "MWAIT ");
 				if (f) {
 					f += 6;
@@ -139,7 +139,7 @@ void print_intel_cstates(void)
 	cpuid(&eax, &ebx, &ecx, &edx);
 	if (!edx || ((ecx&1) == 0))
 		return;
-	
+
 	printf(_("Your CPU supports the following C-states : "));
 	i = 0;
 	while (edx) {

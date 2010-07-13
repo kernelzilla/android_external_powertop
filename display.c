@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -89,11 +89,11 @@ int maxx, maxy;
 int maxtimerstats = 50;
 int maxwidth = 200;
 
-void setup_windows(void) 
+void setup_windows(void)
 {
 	getmaxyx(stdscr, maxy, maxx);
 
-	zap_windows();	
+	zap_windows();
 
 	title_bar_window = subwin(stdscr, 1, maxx, 0, 0);
 	cstate_window = subwin(stdscr, 7, maxx, 2, 0);
@@ -102,7 +102,7 @@ void setup_windows(void)
 	timerstat_window = subwin(stdscr, maxy-16, maxx, 12, 0);
 	maxtimerstats = maxy-16  -2;
 	maxwidth = maxx - 18;
-	suggestion_window = subwin(stdscr, 3, maxx, maxy-4, 0);	
+	suggestion_window = subwin(stdscr, 3, maxx, maxy-4, 0);
 	status_bar_window = subwin(stdscr, 1, maxx, maxy-1, 0);
 
 	strcpy(status_bar_slots[0], _(" Q - Quit "));
@@ -112,7 +112,7 @@ void setup_windows(void)
 	refresh();
 }
 
-void initialize_curses(void) 
+void initialize_curses(void)
 {
 	initscr();
 	start_color();
@@ -131,16 +131,16 @@ void initialize_curses(void)
 	init_pair(PT_COLOR_GREEN, COLOR_WHITE, COLOR_GREEN);
 	init_pair(PT_COLOR_BLUE, COLOR_WHITE, COLOR_BLUE);
 	init_pair(PT_COLOR_BRIGHT, COLOR_WHITE, COLOR_BLACK);
-	
+
 	atexit(cleanup_curses);
 }
 
-void show_title_bar(void) 
+void show_title_bar(void)
 {
 	int i;
 	int x;
 	wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
-	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));   
+	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
 	werase(title_bar_window);
 
 	print(title_bar_window, 0, 0,  "     PowerTOP version %s      (C) 2007 Intel Corporation", VERSION);
@@ -155,13 +155,13 @@ void show_title_bar(void)
 			continue;
 		wattron(status_bar_window, A_REVERSE);
 		print(status_bar_window, 0, x, "%s", status_bar_slots[i]);
-		wattroff(status_bar_window, A_REVERSE);			
+		wattroff(status_bar_window, A_REVERSE);
 		x+= strlen(status_bar_slots[i])+1;
 	}
 	wrefresh(status_bar_window);
 }
 
-void show_cstates(void) 
+void show_cstates(void)
 {
 	int i, count = 0;
 	werase(cstate_window);
@@ -170,7 +170,7 @@ void show_cstates(void)
 		if (i == topcstate+1)
 			wattron(cstate_window, A_BOLD);
 		else
-			wattroff(cstate_window, A_BOLD);			
+			wattroff(cstate_window, A_BOLD);
 		if (strlen(cstate_lines[i]) && count <= 6) {
 			print(cstate_window, count, 0, "%s", cstate_lines[i]);
 			count++;
@@ -181,7 +181,7 @@ void show_cstates(void)
 		if (i == topfreq+1)
 			wattron(cstate_window, A_BOLD);
 		else
-			wattroff(cstate_window, A_BOLD);			
+			wattroff(cstate_window, A_BOLD);
 		print(cstate_window, i, 38, "%s", cpufreqstrings[i]);
 	}
 
@@ -203,11 +203,11 @@ void show_acpi_power_line(double rate, double cap, double capdelta, time_t ti)
 		c = &buffer[strlen(buffer)];
 		if (ti>180 && capdelta > 0)
 			sprintf(c, _("(long term: %3.1fW,/%3.1fh)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
-	} 
+	}
 	else if (ti>120 && capdelta > 0.001)
 		sprintf(buffer, _("Power usage (5 minute ACPI estimate) : %5.1f W (%3.1f hours left)"), 3600*capdelta / ti, cap / (3600*capdelta/ti+0.01));
 
-	print(battery_power_window, 0, 0, "%s\n", buffer);	
+	print(battery_power_window, 0, 0, "%s\n", buffer);
 	wrefresh(battery_power_window);
 }
 
@@ -253,19 +253,19 @@ void show_wakeups(double d, double interval, double C0time)
 {
 	werase(wakeup_window);
 
-	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));   
+	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));
 	if (d <= 25.0)
-		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));   
+		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));
 	if (d <= 10.0)
-		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));   
+		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_GREEN));
 
-	/* 
+	/*
 	 * if the cpu is really busy.... then make it blue to indicate
-	 * that it's not the primary power consumer anymore 
+	 * that it's not the primary power consumer anymore
 	 */
 	if (C0time > 25.0)
-		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_BLUE));   
-		
+		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_BLUE));
+
 	wattron(wakeup_window, A_BOLD);
 	print(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"), d, interval);
 	wrefresh(wakeup_window);
