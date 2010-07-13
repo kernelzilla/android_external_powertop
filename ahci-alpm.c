@@ -147,7 +147,7 @@ static void update_ahci_device(char *path, char *shortname)
 
 	while (ptr) {
 		if (strcmp(ptr->pathname, path)==0) {
-			sprintf(fullpath, "%s/ata_alpm_active", path);
+			sprintf(fullpath, "%s/ahci_alpm_active", path);
 			file = fopen(fullpath, "r");
 			if (!file)
 				return;
@@ -155,7 +155,7 @@ static void update_ahci_device(char *path, char *shortname)
 			ptr->active = strtoull(name, NULL, 10);
 			fclose(file);
 
-			sprintf(fullpath, "%s/ata_alpm_partial", path);
+			sprintf(fullpath, "%s/ahci_alpm_partial", path);
 			file = fopen(fullpath, "r");
 			if (!file)
 				return;
@@ -163,7 +163,7 @@ static void update_ahci_device(char *path, char *shortname)
 			ptr->partial = strtoull(name, NULL, 10);
 			fclose(file);
 
-			sprintf(fullpath, "%s/ata_alpm_slumber", path);
+			sprintf(fullpath, "%s/ahci_alpm_slumber", path);
 			file = fopen(fullpath, "r");
 			if (!file)
 				return;
