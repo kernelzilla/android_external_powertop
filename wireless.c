@@ -203,7 +203,6 @@ void find_wireless_nic(void)
 	struct ifreq ifr;
 	struct ethtool_value ethtool;
 	struct ethtool_drvinfo driver;
-	int ifaceup = 0;
 	int ret;
 
 	if (found++)
@@ -254,10 +253,6 @@ void find_wireless_nic(void)
 		close(sock);
 		return;
 	}
-
-	ifaceup = 0;
-	if (ifr.ifr_flags & (IFF_UP | IFF_RUNNING))
-		ifaceup = 1;
 
 	memset(&driver, 0, sizeof(driver));
 	driver.cmd = ETHTOOL_GDRVINFO;
