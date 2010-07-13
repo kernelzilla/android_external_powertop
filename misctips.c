@@ -236,12 +236,11 @@ void suggest_powersched(void)
 		return;
 	while (!feof(file)) {
 		memset(buffer, 0, 1024);
-		char *c;
 		if (!fgets(buffer, 1023, file))
 			break;
 		if (strstr(buffer, "cpu cores")) {
-			c = strchr(buffer, ':');
-			if (!c) 
+			char *c = strchr(buffer, ':');
+			if (!c)
 				continue;
 			c++;
 			if (strtoll(c, NULL, 10) >= cpu)

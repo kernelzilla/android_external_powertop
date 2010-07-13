@@ -1,7 +1,7 @@
 BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
 MANDIR=/usr/share/man/man8
-WARNFLAGS=-Wall  -W -Wshadow
+WARNFLAGS=-Wall -Wshadow -W -Wformat -Wimplicit-function-declaration -Wimplicit-int
 CFLAGS?=-O1 -g ${WARNFLAGS}
 CC?=gcc
 
