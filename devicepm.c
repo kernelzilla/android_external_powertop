@@ -180,7 +180,14 @@ static void update_devstats(char *path, char *shortname)
 
 	strcpy(ptr->human_name, shortname);
 
-	sprintf(fullpath, "/sbin/lspci -s %s", shortname);
+	fullpath[0] = 0;
+	if (!access("/sbin/lspci", X_OK))
+		sprintf(fullpath, "/sbin/lspci -s %s", shortname);
+	if (!access("/usr/bin/lspci", X_OK))
+		sprintf(fullpath, "/usr/bin/lspci -s %s", shortname);
+
+	if (strlen(fullpath) < 4)
+		return;
 	file = popen(fullpath, "r");
 	if (!file)
 		return;
