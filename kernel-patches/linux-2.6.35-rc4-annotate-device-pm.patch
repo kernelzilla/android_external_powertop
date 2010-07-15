@@ -221,4 +221,3 @@ index 8e258c7..dca597f 100644
   * The PM_EVENT_ messages are also used by drivers implementing the legacy
   * suspend framework, based on the ->suspend() and ->resume() callbacks common
 
-  

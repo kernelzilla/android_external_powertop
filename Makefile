@@ -33,6 +33,9 @@ install: powertop powertop.8.gz
 	mkdir -p ${DESTDIR}${MANDIR}
 	cp powertop.8.gz ${DESTDIR}${MANDIR}
 	@(cd po/ && env LOCALESDIR=$(LOCALESDIR) DESTDIR=$(DESTDIR) $(MAKE) $@)
+	
+valgrind: powertop
+	 sudo valgrind ./powertop -d -t 5 1> /dev/null
 
 # This is for translators. To update your po with new strings, do :
 # svn up ; make uptrans LG=fr # or de, ru, hu, it, ...
