@@ -225,6 +225,8 @@ static void parse_event(void *ptr, int verbose)
 		return;
 	if (strcmp(event->inode.dev, "pipefs") == 0)
 		return;
+	if (strcmp(event->inode.dev, "sysfs") == 0)
+		return;
 	if (strcmp(event->inode.dev, "anon_inodefs") == 0)
 		return;
 
