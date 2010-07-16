@@ -56,7 +56,7 @@ void activate_usb_autosuspend(void)
 		if (strstr(linkto, "usbhid"))
 			continue;
 
-		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
+		sprintf(filename, "/sys/bus/usb/devices/%s/power/control", dirent->d_name);
 		file = fopen(filename, "w");
 		if (!file)
 			continue;
@@ -94,7 +94,7 @@ void suggest_usb_autosuspend(void)
 		if (strstr(linkto, "usbhid"))
 			continue;
 
-		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
+		sprintf(filename, "/sys/bus/usb/devices/%s/power/control", dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
 			continue;
