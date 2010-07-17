@@ -7,50 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 13:44-0700\n"
-"PO-Revision-Date: 2009-08-13 02:04+0900\n"
-"Last-Translator: MATSUU Takuto <matsuu@gmail.com>\n"
+"POT-Creation-Date: 2010-07-15 07:43+0900\n"
+"PO-Revision-Date: 2010-07-17 10:41+0900\n"
+"Last-Translator: MATSUU Takuto <matsuu@gentoo.org>\n"
 "Language-Team: Japanese <ja@li.org>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../powertop.c:303 ../powertop.c:306
-#, c-format
-msgid "    <interrupt> : %s"
-msgstr "     <割り込み> : %s"
-
-#: ../powertop.c:1072
-msgid "    <interrupt> : extra timer interrupt"
-msgstr "     <割り込み> : 外部タイマー割り込み"
-
-#: ../powertop.c:301
-#, c-format
-msgid "   <kernel IPI> : %s"
-msgstr "  <カーネルIPI> : %s"
-
-#: ../powertop.c:821
+#: ../powertop.c:832
 #, c-format
 msgid ""
 "  -d, --dump            read wakeups once and print list of top offenders\n"
 msgstr "  -d, --dump            CPU起床プロセス上位一覧を1回だけ表示する\n"
 
-#: ../powertop.c:824
+#: ../powertop.c:835
 #, c-format
 msgid "  -h, --help            Show this help message\n"
 msgstr "  -h, --help            このヘルプメッセージを表示する\n"
 
-#: ../powertop.c:823
+#: ../powertop.c:834
 #, c-format
 msgid "  -p, --pids            show pids in wakeups list\n"
-msgstr "  -p, --pids            CPU起床プロセス上位一覧にプロセスIDを表示する\n"
+msgstr ""
+"  -p, --pids            CPU起床プロセス上位一覧にプロセスIDを表示する\n"
 
-#: ../powertop.c:822
+#: ../powertop.c:833
 #, c-format
 msgid "  -t, --time=DOUBLE     default time to gather data in seconds\n"
 msgstr "  -t, --time=DOUBLE     データを取得する間隔を秒単位で指定する\n"
 
-#: ../powertop.c:825
+#: ../powertop.c:836
 #, c-format
 msgid "  -v, --version         Show version information and exit\n"
 msgstr "  -v, --version         バージョン情報を表示して終了する\n"
@@ -59,27 +47,27 @@ msgstr "  -v, --version         バージョン情報を表示して終了する
 msgid " A - Turn AC97 powersave on "
 msgstr " A - AC97省電力モード有効 "
 
-#: ../misctips.c:165
+#: ../alsa-power.c:195 ../misctips.c:165
 msgid " A - Turn HD audio powersave on "
 msgstr " A - HDオーディオ省電力モード有効 "
 
-#: ../bluetooth.c:146
+#: ../bluetooth.c:152
 msgid " B - Turn Bluetooth off "
 msgstr " B - Bluetooth無効 "
 
-#: ../misctips.c:257
+#: ../misctips.c:256
 msgid " C - Power aware CPU scheduler "
 msgstr " C - CPUスケジューラ省電力モード有効 "
 
-#: ../wifi-new.c:196
+#: ../wifi-new.c:198
 msgid " D - disable wireless "
 msgstr " D - 無線LAN無効 "
 
-#: ../wireless.c:322
+#: ../wireless.c:317
 msgid " I - disable WIFI Radio "
 msgstr " I - WiFi通信無効 "
 
-#: ../process.c:84
+#: ../process.c:86
 #, c-format
 msgid " K - kill %s "
 msgstr " K - %s強制終了 "
@@ -92,9 +80,13 @@ msgstr " N - NMI監視無効 "
 msgid " O - enable Ondemand governor "
 msgstr " O - オンデマンド周波数制御有効 "
 
-#: ../wifi-new.c:201
-msgid " P - Enable wireless power saving "
-msgstr " P - 無線省電力モード有効 "
+#: ../devicepm.c:114
+msgid " P - Enable Runtime PM"
+msgstr " T - ランタイム電源管理有効 "
+
+#: ../devicepm.c:276
+msgid " P - Enable device power management "
+msgstr " P - デバイスの省電力有効 "
 
 #: ../display.c:108
 msgid " Q - Quit "
@@ -104,15 +96,15 @@ msgstr " Q - 終了 "
 msgid " R - Refresh "
 msgstr " R - 更新 "
 
-#: ../sata.c:104
+#: ../ahci-alpm.c:259 ../sata.c:105
 msgid " S - SATA Link Power Management "
-msgstr " S - SATAリンクパワー制御有効 "
+msgstr " S - SATAリンク電源管理有効 "
 
 #: ../misctips.c:194
 msgid " T - enable noatime "
 msgstr " T - noatime有効 "
 
-#: ../urbnum.c:222 ../usb.c:116
+#: ../urbnum.c:218 ../usb.c:119
 msgid " U - Enable USB suspend "
 msgstr " U - USBサスペンド有効 "
 
@@ -120,11 +112,15 @@ msgstr " U - USBサスペンド有効 "
 msgid " V - Disable TV out "
 msgstr " V - TV出力無効 "
 
-#: ../wireless.c:311 ../wireless.c:317
+#: ../wifi-new.c:203
+msgid " W - Enable Wireless power saving "
+msgstr " W - 無線省電力モード有効 "
+
+#: ../wireless.c:306 ../wireless.c:312
 msgid " W - Enable wireless power saving "
 msgstr " W - 無線省電力モード有効 "
 
-#: ../misctips.c:292
+#: ../misctips.c:291
 msgid " W - Increase Writeback time "
 msgstr " W - 書き戻し間隔を延長 "
 
@@ -147,34 +143,45 @@ msgstr "%6lli MHz"
 msgid "%9lli"
 msgstr "%9lli"
 
-#: ../powertop.c:983
+#: ../devicepm.c:245
+#, c-format
+msgid "%i more devices without runtime PM ommitted\n"
+msgstr "他にも%i個以上の電源管理されていないデバイスがあります\n"
+
+#: ../powertop.c:1003
 #, c-format
 msgid "%s\t%5.1fms (%4.1f%%)\n"
 msgstr "%s\t%5.1fms (%4.1f%%)\n"
+
+#: ../powertop.c:317
+#, c-format
+msgid "%s interrupt"
+msgstr "%s 割り込み"
 
 #: ../display.c:205
 #, c-format
 msgid "(long term: %3.1fW,/%3.1fh)"
 msgstr "(長期: %3.1fW,/%3.1fh)"
 
-#: ../display.c:301
+#: ../display.c:304
 msgid "(which is CONFIG_DEBUG_KERNEL=y in the config file)\n"
 msgstr "(コンフィグファイルにおいてはCONFIG_DEBUG_KERNEL=yが該当します)\n"
 
-#: ../powertop.c:960
+#: ../powertop.c:980
 #, c-format
 msgid "< Detailed C-state information is not available.>\n"
 msgstr "< 詳細なCステート情報が取得できません >\n"
 
-#: ../powertop.c:1040
-msgid "<kernel core>"
-msgstr " <カーネルコア>"
+#: ../ahci-alpm.c:255
+#, c-format
+msgid ""
+"A SATA device is active %1.1f%% of the time:\n"
+"%s"
+msgstr ""
+"このSATAデバイスの活動率は時間あたり%1.1f%%です:\n"
+"%s"
 
-#: ../powertop.c:1036 ../powertop.c:1038
-msgid "<kernel module>"
-msgstr "   <モジュール>"
-
-#: ../urbnum.c:217
+#: ../urbnum.c:213
 #, c-format
 msgid ""
 "A USB device is active %4.1f%% of the time:\n"
@@ -183,24 +190,50 @@ msgstr ""
 "このUSBデバイスの活動率は時間あたり%4.1f%%です:\n"
 "%s"
 
-#: ../urbnum.c:186
+#: ../devicepm.c:271
+#, c-format
+msgid ""
+"A device is active %4.1f%% of the time:\n"
+"%s"
+msgstr ""
+"このデバイスの活動率は時間あたり%4.1f%%です:\n"
+"%s"
+
+#: ../ahci-alpm.c:220
+msgid "Active\tPartial\tSlumber\tDevice name"
+msgstr "活動率\t部分\t休止率\tデバイス名称"
+
+#: ../alsa-power.c:158 ../devicepm.c:224 ../urbnum.c:181
 msgid "Active  Device name"
 msgstr "活動率  デバイス名称"
 
-#: ../powertop.c:969
+#: ../alsa-power.c:190
+#, c-format
+msgid ""
+"An audio device is active %4.1f%% of the time:\n"
+"%s"
+msgstr ""
+"このオーディオデバイスの活動率は時間あたり%4.1f%%です:\n"
+"%s"
+
+#: ../powertop.c:989
 #, c-format
 msgid "C0 (cpu running)        (%4.1f%%)\n"
 msgstr "C0 (CPU動作状態)        (%4.1f%%)\n"
 
-#: ../powertop.c:966
+#: ../powertop.c:986
 #, c-format
 msgid "Cn\t          Avg residency\n"
 msgstr "Cステート\t  平均滞在時間\n"
 
-#: ../powertop.c:903
+#: ../powertop.c:923
 #, c-format
 msgid "Collecting data for %i seconds \n"
 msgstr "%i秒間データを取得します。\n"
+
+#: ../devicepm.c:235
+msgid "Devices without runtime PM"
+msgstr "電源管理されていないデバイス"
 
 #: ../ethernet.c:128
 msgid ""
@@ -212,7 +245,7 @@ msgstr ""
 "  ethtool -s eth0 wol d \n"
 "Wake-on-LAN設定ではPHYが常に動作するため、電力を消費します。"
 
-#: ../powertop.c:1187
+#: ../powertop.c:1234
 msgid ""
 "Disable the SE-Alert software by removing the 'setroubleshoot-server' rpm\n"
 "SE-Alert alerts you about SELinux policy violations, but also\n"
@@ -222,12 +255,21 @@ msgstr ""
 "SELinuxのポリシー違反について警告するSE-Alertは、\n"
 "1秒あたり10回割り込みが発生するバグを抱えています。"
 
-#: ../display.c:304
+#: ../perf.c:256
+#, c-format
+msgid "Disk accesses:\n"
+msgstr "ディスクアクセス:\n"
+
+#: ../powertop.c:1060
+msgid "Load balancing tick"
+msgstr "カーネルタイマー割り込み"
+
+#: ../display.c:307
 msgid ""
 "No detailed statistics available; PowerTOP needs root privileges for that\n"
 msgstr "統計情報を取得できません。取得するためにはroot権限が必要です。\n"
 
-#: ../display.c:299
+#: ../display.c:302
 msgid ""
 "No detailed statistics available; please enable the CONFIG_TIMER_STATS "
 "kernel option\n"
@@ -235,7 +277,7 @@ msgstr ""
 "統計情報を取得できません。カーネル設定でCONFIG_TIMER_STATSを有効にしてくださ"
 "い。\n"
 
-#: ../display.c:302
+#: ../display.c:305
 msgid "Note: this is only available in 2.6.21 and later kernels\n"
 msgstr "注意: この設定はバージョン2.6.21以降のカーネルでのみ有効です\n"
 
@@ -244,7 +286,7 @@ msgstr "注意: この設定はバージョン2.6.21以降のカーネルでの�
 msgid "P-states (frequencies)\n"
 msgstr "Pステート (周波数)\n"
 
-#: ../powertop.c:170 ../powertop.c:306
+#: ../powertop.c:317
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 キーボード/マウス/タッチパッド"
 
@@ -263,16 +305,28 @@ msgstr "消費電力(ACPI見積り): %3.1fW (%3.1f時間)"
 msgid "Power usage: %3.1fW (%3.1f hours)"
 msgstr "消費電力: %3.1fW (%3.1f時間)"
 
-#: ../powertop.c:902
+#: ../powertop.c:922
 #, c-format
 msgid "PowerTOP needs to be run as root to collect enough information\n"
 msgstr "十分な情報を得るにはroot権限で実行する必要があります。\n"
 
-#: ../urbnum.c:185
-msgid "Recent USB suspend statistics"
-msgstr "最近のUSBサスペンド状況"
+#: ../ahci-alpm.c:219
+msgid "Recent SATA AHCI link activity statistics"
+msgstr "直近のSATA AHCIリンク稼働状況"
 
-#: ../powertop.c:1181
+#: ../urbnum.c:180
+msgid "Recent USB suspend statistics"
+msgstr "直近のUSBサスペンド状況"
+
+#: ../alsa-power.c:157
+msgid "Recent audio activity statistics"
+msgstr "直近のオーディオデバイス稼働状況"
+
+#: ../devicepm.c:223
+msgid "Runtime Device Power Management statistics"
+msgstr "実行中のデバイス電源管理状況"
+
+#: ../powertop.c:1228
 msgid ""
 "Suggestion: Disable 'hal' from polling your cdrom with:  \n"
 "hal-disable-polling --device /dev/cdrom 'hal' is the component that auto-"
@@ -283,7 +337,7 @@ msgstr ""
 "hal-disable-polling --device /dev/cdrom\n"
 "halはCD挿入時の自動実行機能を提供しますが、SATAの省電力が無効になります。"
 
-#: ../powertop.c:1155 ../powertop.c:1159
+#: ../powertop.c:1202 ../powertop.c:1206
 msgid ""
 "Suggestion: Disable or remove 'beagle' from your system. \n"
 "Beagle is the program that indexes for easy desktop search, however it's \n"
@@ -293,17 +347,17 @@ msgstr ""
 "デスクトップ検索ツールであるBeagleは非常に効率が悪く、多くのバッテリーを\n"
 "消費します。"
 
-#: ../powertop.c:1168
+#: ../powertop.c:1215
 msgid ""
 "Suggestion: Disable or remove 'gnome-power-manager' from your system. \n"
 "Older versions of gnome-power-manager wake up far more often than \n"
 "needed costing you some power."
 msgstr ""
 "提案: gnome-power-managerを無効にするかアンインストールしてください。\n"
-"古いバージョンのgnome-power-managerはその名前に反して、抑えた消費電力\n"
-"以上に電力を消費します。"
+"古いバージョンのgnome-power-managerは、必要以上に頻繁に起動して電力を\n"
+"チェックし、逆に電力を消費します。"
 
-#: ../powertop.c:1174
+#: ../powertop.c:1221
 msgid ""
 "Suggestion: Disable or remove 'pcscd' from your system. \n"
 "pcscd tends to keep the USB subsystem out of power save mode\n"
@@ -313,7 +367,7 @@ msgstr ""
 "pcscdを使用している場合、USBサブシステムは省電力モードに移行せず、CPUは\n"
 "より効率的な省電力ステートに移行しません。"
 
-#: ../powertop.c:1143
+#: ../powertop.c:1190
 msgid ""
 "Suggestion: Disable the CONFIG_IRQBALANCE kernel configuration option.\n"
 "The in-kernel irq balancer is obsolete and wakes the CPU up far more than "
@@ -323,26 +377,26 @@ msgstr ""
 "カーネルによるIRQバランサは必要以上にCPU割り込みが発生するため推奨されませ"
 "ん。"
 
-#: ../wireless.c:320
+#: ../wireless.c:315
 #, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by executing the following "
 "command:\n"
 "  echo 1 > %s \n"
 msgstr ""
-"提案: 以下のコマンドで使用されていないWiFi通信が無効になります。\n"
+"提案: 以下のコマンドで使用していないWiFi通信が無効になります。\n"
 "  echo 1 > %s \n"
 
-#: ../wifi-new.c:194
+#: ../wifi-new.c:196
 #, c-format
 msgid ""
 "Suggestion: Disable the unused WIFI radio by setting the interface down:\n"
 " ifconfig %s down\n"
 msgstr ""
-"提案: 以下のコマンドで使用されていないWiFiインタフェースが無効になります。\n"
+"提案: 以下のコマンドで使用していないWiFiインタフェースが無効になります。\n"
 " ifconfig %s down\n"
 
-#: ../bluetooth.c:144
+#: ../bluetooth.c:150
 msgid ""
 "Suggestion: Disable the unused bluetooth interface with the following "
 "command:\n"
@@ -355,32 +409,38 @@ msgstr ""
 "  hciconfig hci0 down ; rmmod hci_usb\n"
 "Bluetoothは多くの電力を消費し、USBをビジー状態にします。\n"
 
-#: ../sata.c:101
+#: ../devicepm.c:112
+msgid "Suggestion: Enable Device Power Management by pressing the P key\n"
+msgstr ""
+"提案: Pキーを押すことでデバイスの電源管理が有効になります。\n"
+
+#: ../sata.c:102
 msgid ""
 "Suggestion: Enable SATA ALPM link power management via: \n"
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "or press the S key."
 msgstr ""
-"提案: 以下のコマンドでSATAリンクパワー制御が有効になります。\n"
+"提案: 以下のコマンドでSATAリンク電源管理が有効になります。\n"
 "  echo min_power > /sys/class/scsi_host/host0/link_power_management_policy\n"
 "またはSキーを押してください。"
 
-#: ../usb.c:114
+#: ../usb.c:117
 msgid ""
 "Suggestion: Enable USB autosuspend for non-input devices by pressing the U "
 "key\n"
 msgstr ""
-"提案: Uキーを押すことで入力デバイス以外のUSBデバイスの自動サスペンドが有効になります。\n"
+"提案: Uキーを押すことで入力デバイス以外のUSBデバイスの自動サスペンドが有効に"
+"なります。\n"
 
-#: ../powertop.c:1131
+#: ../powertop.c:1175
 msgid ""
 "Suggestion: Enable the CONFIG_ACPI_BATTERY kernel configuration option.\n"
 " This option is required to get power estimages from PowerTOP"
 msgstr ""
 "提案: カーネル設定でCONFIG_ACPI_BATTERYを有効にしてください。\n"
-"この設定は消費電力の見積りを得るために必要とされています。"
+"この設定は消費電力の見積りを得るために必要としています。"
 
-#: ../powertop.c:1128
+#: ../powertop.c:1172
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_GOV_ONDEMAND kernel configuration "
 "option.\n"
@@ -391,7 +451,7 @@ msgstr ""
 "オンデマンド周波数制御は必要なパフォーマンスに応じてCPUの消費電力を\n"
 "最小限に保つことができます。"
 
-#: ../powertop.c:1145
+#: ../powertop.c:1192
 msgid ""
 "Suggestion: Enable the CONFIG_CPU_FREQ_STAT kernel configuration option.\n"
 "This option allows PowerTOP to show P-state percentages \n"
@@ -401,17 +461,16 @@ msgstr ""
 "この設定により、PowerTOPでPステートが表示できるようになります。\n"
 "PステートはCPU周波数に相当します。"
 
-#: ../powertop.c:1134
+#: ../powertop.c:1178
 msgid ""
 "Suggestion: Enable the CONFIG_HPET_TIMER kernel configuration option.\n"
 "Without HPET support the kernel needs to wake up every 20 milliseconds for \n"
 "some housekeeping tasks."
 msgstr ""
 "提案: カーネル設定でCONFIG_HPET_TIMERを有効にしてください。\n"
-"HPETが無効の場合、タスクのハウスキーピング処理のために20ミリ秒毎に\n"
-"割り込みが発生します。"
+"HPETが無効の場合、タスク管理のために20ミリ秒毎に割り込みが発生します。"
 
-#: ../powertop.c:1148
+#: ../powertop.c:1195
 msgid ""
 "Suggestion: Enable the CONFIG_INOTIFY kernel configuration option.\n"
 "This option allows programs to wait for changes in files and directories\n"
@@ -419,17 +478,46 @@ msgid ""
 msgstr ""
 "提案: カーネル設定でCONFIG_INOTIFYを有効にしてください。\n"
 "この設定により、プログラムはファイルやディレクトリの変更を検出するために\n"
-"ポーリング処理をせず待機することが可能になります。"
+"ポーリング処理をせずイベント待ちすることが可能になります。"
 
-#: ../powertop.c:1130
+#: ../powertop.c:1174
 msgid ""
 "Suggestion: Enable the CONFIG_NO_HZ kernel configuration option.\n"
 "This option is required to get any kind of longer sleep times in the CPU."
 msgstr ""
 "提案: カーネル設定でCONFIG_NO_HZを有効にしてください。\n"
-"この設定はCPUにより長いスリープ時間を設定するために必要とされています。"
+"この設定はCPUにより長いスリープ時間を設定するために必要としています。"
 
-#: ../powertop.c:1139
+#: ../powertop.c:1181
+msgid ""
+"Suggestion: Enable the CONFIG_PCIEASPM kernel configuration option.\n"
+"PCI Link Powermanagement (ASPM) allows the hardware to go to low power mode\n"
+"automatically when a PCI-E device is idle."
+msgstr ""
+"提案: カーネル設定でCONFIG_PCIEASPMを有効にしてください。\n"
+"PCIリンク電源管理(ASPM)は、PCI-Eデバイスがアイドル時に、自動的に低電力に\n"
+"移行させることができます。"
+
+#: ../powertop.c:1168
+msgid ""
+"Suggestion: Enable the CONFIG_PM_ADVANCED_DEBUG kernel configuration "
+"option.\n"
+"This option will allow PowerTOP to collect runtime power management "
+"statistics."
+msgstr ""
+"提案: カーネル設定でCONFIG_PM_ADVANCED_DEBUGを有効にしてください。\n"
+"この設定により、PowerTOPは実行中の電源管理の統計情報を得ることができます。"
+
+#: ../powertop.c:1170
+msgid ""
+"Suggestion: Enable the CONFIG_PM_RUNTIME kernel configuration option.\n"
+"This option enables the kernel to manage power for various devices in your "
+"computer."
+msgstr ""
+"提案: カーネル設定でCONFIG_PM_RUNTIMEを有効にしてください。\n"
+"この設定により、カーネルは様々なデバイスの電源を管理できるようになります。"
+
+#: ../powertop.c:1186
 msgid ""
 "Suggestion: Enable the CONFIG_SND_AC97_POWER_SAVE kernel configuration "
 "option.\n"
@@ -437,10 +525,10 @@ msgid ""
 "and can save approximately half a Watt of power."
 msgstr ""
 "提案: カーネル設定でCONFIG_SND_AC97_POWER_SAVEを有効にしてください。\n"
-"この設定は音声コーデックが使用されていない場合に自動的に電源を切ることで、\n"
+"この設定は音声コーデックが使用していない場合に自動的に電源を切ることで、\n"
 "消費電力を約0.5ワット抑えることができます。"
 
-#: ../powertop.c:1126
+#: ../powertop.c:1166
 msgid ""
 "Suggestion: Enable the CONFIG_USB_SUSPEND kernel configuration option.\n"
 "This option will automatically disable UHCI USB when not in use, and may\n"
@@ -458,7 +546,7 @@ msgstr ""
 "提案: 以下のコマンドで全てのCPUのオンデマンド周波数制御が有効になります。\n"
 " echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor \n"
 
-#: ../wireless.c:314
+#: ../wireless.c:309
 #, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
@@ -470,7 +558,7 @@ msgstr ""
 "  echo 5 > %s \n"
 "この設定はネットワーク性能が若干低下します。"
 
-#: ../wifi-new.c:198
+#: ../wifi-new.c:200
 #, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
@@ -482,7 +570,7 @@ msgstr ""
 "  iwconfig %s power timeout 500ms\n"
 "この設定はネットワーク性能が若干低下します。"
 
-#: ../wireless.c:308
+#: ../wireless.c:303
 #, c-format
 msgid ""
 "Suggestion: Enable wireless power saving mode by executing the following "
@@ -559,7 +647,7 @@ msgstr ""
 "   mount -o remount,noatime /          またはTキーを押してください。\n"
 "noatimeでアクセス日時が記録されなくなり、ディスクI/Oの発生が抑えられます。"
 
-#: ../misctips.c:255
+#: ../misctips.c:254
 msgid ""
 "Suggestion: enable the power aware CPU scheduler with the following "
 "command:\n"
@@ -570,7 +658,7 @@ msgstr ""
 "  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 "またはCキーを押してください。"
 
-#: ../misctips.c:288
+#: ../misctips.c:287
 #, c-format
 msgid ""
 "Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds "
@@ -583,7 +671,31 @@ msgstr ""
 "この設定はVMのバックグラウンド動作によるディスクアクセスの頻度が低くなりま"
 "す。"
 
-#: ../display.c:300
+#: ../powertop.c:1239
+msgid ""
+"The Intel Integrated Graphics driver failed to enable Memory self refresh.\n"
+"Memory Self Refresh is important for good memory power savings.\n"
+"Please check your OS vendor for a kernel update and/or report a bug."
+msgstr ""
+"Intel製内蔵グラフィックスドライバのメモリのセルフリフレッシュに失敗しました。\n"
+"メモリのセルフリフリフレッシュはメモリの省電力において重要です。\n"
+"OSベンダーのカーネルアップデートを確認するか、バグ報告を行なってください。"
+
+#: ../perf.c:242
+#, c-format
+msgid "The application '%s' is writing to file '%s' on /dev/%s\n"
+msgstr "アプリケーション'%s'は'%s'に/dev/%s上で書き込んでいます\n"
+
+#: ../perf.c:237
+#, c-format
+msgid ""
+"The program '%s' is writing to file '%s' on /dev/%s.\n"
+"This prevents the disk from going to powersave mode."
+msgstr ""
+"アプリケーション'%s'は'%s'に/dev/%s上で書き込んでいます。\n"
+"これはディスクが省電力モードに移行するのを妨げています。"
+
+#: ../display.c:303
 msgid "This option is located in the Kernel Debugging section of menuconfig\n"
 msgstr "この設定はmenuconfigであればKernel Debuggingに存在します。\n"
 
@@ -593,14 +705,14 @@ msgstr "CPU起床プロセス上位一覧:\n"
 
 #: ../cpufreqstats.c:94
 msgid "Turbo Mode"
-msgstr "Turbo Mode"
+msgstr "ターボモード"
 
 #: ../urbnum.c:123
 #, c-format
 msgid "USB device %4s : %s (%s)"
 msgstr "USBデバイス%4s : %s (%s)"
 
-#: ../powertop.c:820
+#: ../powertop.c:831
 #, c-format
 msgid "Usage: powertop [OPTION...]\n"
 msgstr "使用法: powertop [オプション...]\n"
@@ -620,6 +732,32 @@ msgstr "以下はBIOSによるCステート情報です : "
 msgid "Your CPU supports the following C-states : "
 msgstr "CPUは以下のCステートをサポートしています : "
 
+#: ../powertop.c:314
+#, c-format
+msgid "[%s] <interrupt>"
+msgstr "[%s] <割り込み>"
+
+#: ../powertop.c:312
+#, c-format
+msgid "[%s] <kernel IPI>"
+msgstr "[%s] <カーネルIPI>"
+
+#: ../powertop.c:1108
+msgid "[extra timer interrupt]"
+msgstr "[外部タイマー割り込み]"
+
+#: ../powertop.c:1067
+msgid "[kernel core]"
+msgstr "[カーネルコア]"
+
+#: ../powertop.c:1063 ../powertop.c:1065
+msgid "[kernel module]"
+msgstr "[カーネルモジュール]"
+
+#: ../powertop.c:1059
+msgid "[kernel scheduler]"
+msgstr "[カーネルスケジューラ]"
+
 #: ../display.c:196
 #, c-format
 msgid "no ACPI power usage estimate available"
@@ -630,12 +768,11 @@ msgstr "ACPIの消費電力見積り機能が有効ではありません。"
 msgid "no power usage estimate available"
 msgstr "消費電力見積り機能が有効ではありません。"
 
-#: ../powertop.c:433
+#: ../powertop.c:444
 msgid "polling"
-msgstr "polling"
+msgstr "ポーリング"
 
-#: ../powertop.c:831
+#: ../powertop.c:842
 #, c-format
 msgid "powertop version %s\n"
 msgstr "powertop バージョン %s\n"
-
