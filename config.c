@@ -80,6 +80,8 @@ static void read_kernel_config(void)
 		char line[100];
 		if (fgets(line, 100, file) == NULL)
 			break;
+		if (configcount >= MAXCONFIGLINES)
+			break;
 		strcpy(configlines[configcount++], line);
 	}
 	fclose(file);
