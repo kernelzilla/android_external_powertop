@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -136,7 +136,7 @@ void do_alsa_stats(void)
 	dir = opendir("/sys/class/sound/card0");
 	if (!dir)
 		return;
-		
+
 	cachunk_data();
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
@@ -158,8 +158,8 @@ void display_alsa_activity(void)
 	printf("%s\n", _("Active  Device name"));
 	dev = devices;
 	while (dev) {
-		printf("%5.1f%%\t%s\n", 100.0*(dev->power_on - dev->previous_power_on) / 
-			(0.00001 + dev->power_on + dev->power_off - dev->previous_power_on - dev->previous_power_off), 
+		printf("%5.1f%%\t%s\n", 100.0*(dev->power_on - dev->previous_power_on) /
+			(0.00001 + dev->power_on + dev->power_off - dev->previous_power_on - dev->previous_power_off),
 			dev->human_name);
 		dev = dev->next;
 	}
@@ -188,7 +188,7 @@ void alsa_activity_hint(void)
 			if (total_active == pick) {
 				char alsa_hint[8000];
 				sprintf(alsa_hint, _("An audio device is active %4.1f%% of the time:\n%s"),
-				 100.0*(dev->power_on - dev->previous_power_on) / 
+				 100.0*(dev->power_on - dev->previous_power_on) /
 				(0.00001 + dev->power_on + dev->power_off - dev->previous_power_on - dev->previous_power_off),
 				dev->human_name);
 				add_suggestion(alsa_hint,

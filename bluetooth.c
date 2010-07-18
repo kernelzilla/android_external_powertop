@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -120,11 +120,11 @@ void suggest_bluetooth_off(void)
 
 	memset(&devinfo, 0, sizeof(devinfo));
 	strcpy(devinfo.name, "hci0");
-	ret = ioctl(fd, HCIGETDEVINFO, (void *) &devinfo);		
+	ret = ioctl(fd, HCIGETDEVINFO, (void *) &devinfo);
 	if (ret < 0)
 		goto out;
 
-	if ( (devinfo.flags & 1) == 0 && 
+	if ( (devinfo.flags & 1) == 0 &&
 		access("/sys/module/hci_usb",F_OK)) /* interface down already */
 		goto out;
 

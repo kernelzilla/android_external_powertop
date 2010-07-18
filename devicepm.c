@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -33,14 +33,16 @@
 
 #include "powertop.h"
 
-void activate_runtime_suspend(void)
+
+
+void activate_runtime_suspend_path(char *path)
 {
 	DIR *dir;
 	struct dirent *dirent;
 	FILE *file;
 	char filename[PATH_MAX];
 
-	dir = opendir("/sys/bus/pci/devices");
+	dir = opendir(path);
 	if (!dir)
 		return;
 
@@ -48,7 +50,7 @@ void activate_runtime_suspend(void)
 		if (dirent->d_name[0]=='.')
 			continue;
 
-		sprintf(filename, "/sys/bus/pci/devices/%s/power/control", dirent->d_name);
+		sprintf(filename, "%s/%s/power/control", path, dirent->d_name);
 		file = fopen(filename, "w");
 		if (!file)
 			continue;
@@ -59,7 +61,13 @@ void activate_runtime_suspend(void)
 	closedir(dir);
 }
 
-void suggest_runtime_suspend(void)
+void activate_runtime_suspend(void)
+{
+	activate_runtime_suspend_path("/sys/bus/pci/devices");
+	activate_runtime_suspend_path("/sys/bus/spi/devices");
+}
+
+void suggest_runtime_suspend_path(char *path)
 {
 	DIR *dir;
 	struct dirent *dirent;
@@ -68,7 +76,7 @@ void suggest_runtime_suspend(void)
 	char line[1024];
 	int need_hint = 0;
 
-	dir = opendir("/sys/bus/pci/devices");
+	dir = opendir(path);
 	if (!dir)
 		return;
 
@@ -76,7 +84,7 @@ void suggest_runtime_suspend(void)
 		if (dirent->d_name[0]=='.')
 			continue;
 
-		sprintf(filename, "/sys/bus/pci/devices/%s/power/runtime_active_time", dirent->d_name);
+		sprintf(filename, "%s/%s/power/runtime_active_time", path, dirent->d_name);
 		file = fopen(filename, "r");
 		if (file) {
 			memset(line, 0, 1024);
@@ -89,7 +97,7 @@ void suggest_runtime_suspend(void)
 		}
 
 
-		sprintf(filename, "/sys/bus/pci/devices/%s/power/control", dirent->d_name);
+		sprintf(filename, "%s/%s/power/control", path, dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
 			continue;
@@ -115,6 +123,11 @@ void suggest_runtime_suspend(void)
 	}
 }
 
+void suggest_runtime_suspend(void)
+{
+	suggest_runtime_suspend_path("/sys/bus/pci/devices");
+	suggest_runtime_suspend_path("/sys/bus/spi/devices");
+}
 
 
 struct device_data;
@@ -141,7 +154,7 @@ static void cachunk_devs(void)
 	}
 }
 
-static void update_devstats(char *path, char *shortname)
+static void update_devstats_pci(char *path, char *shortname)
 {
 	struct device_data *ptr;
 	FILE *file;
@@ -179,8 +192,15 @@ static void update_devstats(char *path, char *shortname)
 	strcpy(ptr->pathname, path);
 
 	strcpy(ptr->human_name, shortname);
-	
-	sprintf(fullpath, "/sbin/lspci -s %s", shortname);
+
+	fullpath[0] = 0;
+	if (!access("/sbin/lspci", X_OK))
+		sprintf(fullpath, "/sbin/lspci -s %s", shortname);
+	if (!access("/usr/bin/lspci", X_OK))
+		sprintf(fullpath, "/usr/bin/lspci -s %s", shortname);
+
+	if (strlen(fullpath) < 4)
+		return;
 	file = popen(fullpath, "r");
 	if (!file)
 		return;
@@ -189,6 +209,55 @@ static void update_devstats(char *path, char *shortname)
 	c = strchr(ptr->human_name, '\n');
 	if (c) *c = 0;
 	c = strstr(ptr->human_name, "(rev");
+	if (c) *c = 0;
+}
+
+static void update_devstats_spi(char *path, char *shortname)
+{
+	struct device_data *ptr;
+	FILE *file;
+	char fullpath[4096], name[4096];
+	ptr = devices;
+	char *c;
+
+	while (ptr) {
+		if (strcmp(ptr->pathname, path)==0) {
+			sprintf(fullpath, "%s/power/runtime_active_time", path);
+			file = fopen(fullpath, "r");
+			if (!file)
+				return;
+			fgets(name, 4096, file);
+			ptr->active = strtoull(name, NULL, 10);
+			fclose(file);
+			sprintf(fullpath, "%s/power/runtime_suspended_time", path);
+			file = fopen(fullpath, "r");
+			if (!file)
+				return;
+			fgets(name, 4096, file);
+			ptr->suspended = strtoull(name, NULL, 10);
+			fclose(file);
+
+			return;
+		}
+		ptr = ptr->next;
+	}
+	/* no luck, new one */
+	ptr = malloc(sizeof(struct device_data));
+	assert(ptr!=0);
+	memset(ptr, 0, sizeof(struct device_data));
+	ptr->next = devices;
+	devices = ptr;
+	strcpy(ptr->pathname, path);
+
+	sprintf(fullpath, "%s/modalias", path);
+	file = fopen(fullpath, "r");
+	if (file) {
+		fgets(ptr->human_name, sizeof(ptr->human_name), file);
+		fclose(file);
+	}
+	
+
+	c = strchr(ptr->human_name, '\n');
 	if (c) *c = 0;
 }
 
@@ -201,14 +270,30 @@ void count_device_pm(void)
 	dir = opendir("/sys/bus/pci/devices");
 	if (!dir)
 		return;
-		
+
 	cachunk_devs();
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
 			continue;
 		sprintf(pathname, "/sys/bus/pci/devices/%s", dirent->d_name);
 
-		update_devstats(pathname, dirent->d_name);
+		update_devstats_pci(pathname, dirent->d_name);
+	}
+
+	closedir(dir);
+
+
+	dir = opendir("/sys/bus/spi/devices");
+	if (!dir)
+		return;
+
+	cachunk_devs();
+	while ((dirent = readdir(dir))) {
+		if (dirent->d_name[0]=='.')
+			continue;
+		sprintf(pathname, "/sys/bus/spi/devices/%s", dirent->d_name);
+
+		update_devstats_spi(pathname, dirent->d_name);
 	}
 
 	closedir(dir);
@@ -224,8 +309,8 @@ void display_runtime_activity(void)
 	printf("%s\n", _("Active  Device name"));
 	dev = devices;
 	while (dev) {
-		if (dev->active + dev->suspended > 0) 
-			printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) / 
+		if (dev->active + dev->suspended > 0)
+			printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) /
 				(0.00001 + dev->active - dev->previous_active + dev->suspended - dev->previous_suspended), dev->human_name);
 		dev = dev->next;
 	}
@@ -269,8 +354,8 @@ void devicepm_activity_hint(void)
 				char devicepm_hint[8000];
 
 				sprintf(devicepm_hint, _("A device is active %4.1f%% of the time:\n%s"),
-				 	100.0*(dev->active - dev->previous_active) / 
-    				    	(0.00001 + dev->active - dev->previous_active + dev->suspended - dev->previous_suspended),
+					100.0*(dev->active - dev->previous_active) /
+					(0.00001 + dev->active - dev->previous_active + dev->suspended - dev->previous_suspended),
 					dev->human_name);
 				add_suggestion(devicepm_hint,
 				1, 'P', _(" P - Enable device power management "), activate_runtime_suspend);

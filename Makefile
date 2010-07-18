@@ -1,7 +1,7 @@
 BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
 MANDIR=/usr/share/man/man8
-WARNFLAGS=-Wall  -W -Wshadow
+WARNFLAGS=-Wall -Wshadow -W -Wformat -Wimplicit-function-declaration -Wimplicit-int
 CFLAGS?=-O1 -g ${WARNFLAGS}
 CC?=gcc
 
@@ -33,6 +33,9 @@ install: powertop powertop.8.gz
 	mkdir -p ${DESTDIR}${MANDIR}
 	cp powertop.8.gz ${DESTDIR}${MANDIR}
 	@(cd po/ && env LOCALESDIR=$(LOCALESDIR) DESTDIR=$(DESTDIR) $(MAKE) $@)
+	
+valgrind: powertop
+	 sudo valgrind ./powertop -d -t 5 1> /dev/null
 
 # This is for translators. To update your po with new strings, do :
 # svn up ; make uptrans LG=fr # or de, ru, hu, it, ...

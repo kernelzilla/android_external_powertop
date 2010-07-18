@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -51,11 +51,12 @@ void activate_usb_autosuspend(void)
 
 		/* skip usb input devices */
 		sprintf(filename, "/sys/bus/usb/devices/%s/driver", dirent->d_name);
+		memset(linkto, 0, sizeof(linkto));
 		len = readlink(filename, linkto, sizeof(link) - 1);
 		if (strstr(linkto, "usbhid"))
 			continue;
 
-		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
+		sprintf(filename, "/sys/bus/usb/devices/%s/power/control", dirent->d_name);
 		file = fopen(filename, "w");
 		if (!file)
 			continue;
@@ -93,7 +94,7 @@ void suggest_usb_autosuspend(void)
 		if (strstr(linkto, "usbhid"))
 			continue;
 
-		sprintf(filename, "/sys/bus/usb/devices/%s/power/level", dirent->d_name);
+		sprintf(filename, "/sys/bus/usb/devices/%s/power/control", dirent->d_name);
 		file = fopen(filename, "r");
 		if (!file)
 			continue;
@@ -118,5 +119,3 @@ void suggest_usb_autosuspend(void)
 				45, 'U', _(" U - Enable USB suspend "), activate_usb_autosuspend);
 	}
 }
-
-

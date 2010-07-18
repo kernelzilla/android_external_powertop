@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -57,7 +57,7 @@ void suggest_nmi_watchdog(void)
 	i = strtoul(buffer, NULL, 10);
 	if (i!=0) {
 		add_suggestion( _("Suggestion: disable the NMI watchdog by executing the following command:\n"
-		 	"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
+			"   echo 0 > /proc/sys/kernel/nmi_watchdog \n"
 			"The NMI watchdog is a kernel debug mechanism to detect deadlocks"), 25, 'N', _(" N - Turn NMI watchdog off "), nmi_watchdog_off);
 	}
 	fclose(file);
@@ -71,12 +71,12 @@ void suggest_hpet(void)
 	if (!file)
 		return;
 	memset(buffer, 0, 1024);
-	
+
 	if (!fgets(buffer, 1023, file)) {
 		fclose(file);
 		return;
 	}
-	
+
 	if (strstr(buffer, "hpet")) {
 		fclose(file);
 		return;
@@ -121,7 +121,7 @@ void suggest_ac97_powersave(void)
 	}
 	if (buffer[0]=='N') {
 		add_suggestion( _("Suggestion: enable AC97 powersave mode by executing the following command:\n"
-		 	"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
+			"   echo 1 > /sys/module/snd_ac97_codec/parameters/power_save \n"
 			"or by passing power_save=1 as module parameter."), 25, 'A', _(" A - Turn AC97 powersave on "), ac97_power_on);
 	}
 	fclose(file);
@@ -161,7 +161,7 @@ void suggest_hda_powersave(void)
 	}
 	if (buffer[0]=='0') {
 		add_suggestion( _("Suggestion: enable HD audio powersave mode by executing the following command:\n"
-		 	"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
+			"   echo 1 > /sys/module/snd_hda_intel/parameters/power_save \n"
 			"or by passing power_save=1 as module parameter."), 25, 'A', _(" A - Turn HD audio powersave on "), hda_power_on);
 	}
 	fclose(file);
@@ -190,7 +190,7 @@ void suggest_noatime(void)
 	}
 	if (suggest) {
 		add_suggestion( _("Suggestion: enable the noatime filesystem option by executing the following command:\n"
-		 	"   mount -o remount,noatime /          or by pressing the T key \n"
+			"   mount -o remount,noatime /          or by pressing the T key \n"
 			"noatime disables persistent access time of file accesses, which causes lots of disk IO."), 5, 'T', _(" T - enable noatime "), noatime_on);
 	}
 	fclose(file);
@@ -212,7 +212,7 @@ void suggest_powersched(void)
 	char buffer[1024];
 	int suggest = 0;
 	int cpu;
-	
+
 	file = fopen("/sys/devices/system/cpu/sched_mc_power_savings","r");
 	if (!file)
 		return;
@@ -236,12 +236,11 @@ void suggest_powersched(void)
 		return;
 	while (!feof(file)) {
 		memset(buffer, 0, 1024);
-		char *c;
 		if (!fgets(buffer, 1023, file))
 			break;
 		if (strstr(buffer, "cpu cores")) {
-			c = strchr(buffer, ':');
-			if (!c) 
+			char *c = strchr(buffer, ':');
+			if (!c)
 				continue;
 			c++;
 			if (strtoll(c, NULL, 10) >= cpu)
@@ -253,7 +252,7 @@ void suggest_powersched(void)
 
 	if (suggest) {
 		add_suggestion( _("Suggestion: enable the power aware CPU scheduler with the following command:\n"
-		 	"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
+			"  echo 1 > /sys/devices/system/cpu/sched_mc_power_savings\n"
 			"or by pressing the C key."), 5, 'C', _(" C - Power aware CPU scheduler "), powersched_on);
 	}
 }
@@ -286,7 +285,7 @@ void suggest_writeback_time(void)
 	if (i<1400) {
 		char line[1024];
 		sprintf(line,_("Suggestion: increase the VM dirty writeback time from %1.2f to 15 seconds with:\n"
-			 	"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
+				"  echo 1500 > /proc/sys/vm/dirty_writeback_centisecs \n"
 				"This wakes the disk up less frequently for background VM activity"),
 			i/100.0);
 		add_suggestion(line, 15, 'W', _(" W - Increase Writeback time "), writeback_long);

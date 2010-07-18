@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -70,7 +70,7 @@ static char *disk_name(char *path, char *target, char *shortname)
 	dir = opendir(pathname);
 	if (!dir)
 		return strdup(shortname);
-		
+
 	while ((dirent = readdir(dir))) {
 		char line[4096], *c;
 		FILE *file;
@@ -93,7 +93,7 @@ static char *disk_name(char *path, char *target, char *shortname)
 		}
 	}
 	closedir(dir);
-	
+
 	return strdup(shortname);
 }
 
@@ -109,7 +109,7 @@ static char *model_name(char *path, char *shortname)
 	dir = opendir(pathname);
 	if (!dir)
 		return strdup(shortname);
-		
+
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
 			continue;
@@ -121,7 +121,7 @@ static char *model_name(char *path, char *shortname)
 		return disk_name(pathname, dirent->d_name, shortname);
 	}
 	closedir(dir);
-	
+
 	return strdup(shortname);
 }
 
@@ -147,7 +147,7 @@ static void update_ahci_device(char *path, char *shortname)
 
 	while (ptr) {
 		if (strcmp(ptr->pathname, path)==0) {
-			sprintf(fullpath, "%s/ata_alpm_active", path);
+			sprintf(fullpath, "%s/ahci_alpm_active", path);
 			file = fopen(fullpath, "r");
 			if (!file)
 				return;
@@ -155,7 +155,7 @@ static void update_ahci_device(char *path, char *shortname)
 			ptr->active = strtoull(name, NULL, 10);
 			fclose(file);
 
-			sprintf(fullpath, "%s/ata_alpm_partial", path);
+			sprintf(fullpath, "%s/ahci_alpm_partial", path);
 			file = fopen(fullpath, "r");
 			if (!file)
 				return;
@@ -163,7 +163,7 @@ static void update_ahci_device(char *path, char *shortname)
 			ptr->partial = strtoull(name, NULL, 10);
 			fclose(file);
 
-			sprintf(fullpath, "%s/ata_alpm_slumber", path);
+			sprintf(fullpath, "%s/ahci_alpm_slumber", path);
 			file = fopen(fullpath, "r");
 			if (!file)
 				return;
@@ -197,7 +197,7 @@ void do_ahci_stats(void)
 	dir = opendir("/sys/class/scsi_host");
 	if (!dir)
 		return;
-		
+
 	cachunk_data();
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
@@ -221,7 +221,7 @@ void display_ahci_activity(void)
 	dev = devices;
 	while (dev) {
 		if (dev->total > 0)
-			printf("%5.1f%%\t%5.1f%%\t%5.1f%%\t%s\n", 
+			printf("%5.1f%%\t%5.1f%%\t%5.1f%%\t%s\n",
 				100.0*(dev->active - dev->previous_active) / (0.00001 + dev->total - dev->previous_total),
 				100.0*(dev->partial - dev->previous_partial) / (0.00001 + dev->total - dev->previous_total),
 				100.0*(dev->slumber - dev->previous_slumber) / (0.00001 + dev->total - dev->previous_total),

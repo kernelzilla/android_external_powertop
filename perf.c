@@ -21,7 +21,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #define _GNU_SOURCE        /* or _BSD_SOURCE or _SVID_SOURCE */
@@ -81,7 +81,7 @@ static int get_trace_type(void)
 
 	if (fgets(line, 4095, file) == NULL)
 		return 0;
-	
+
 	this_trace = strtoull(line, NULL, 10);
 	fclose(file);
 	return this_trace;
@@ -105,7 +105,7 @@ static void create_perf_event(void)
 				  PERF_FORMAT_TOTAL_TIME_RUNNING |
 				  PERF_FORMAT_ID;
 
-	attr.sample_freq 	= 0;
+	attr.sample_freq	= 0;
 	attr.sample_period	= 1;
 	attr.sample_type	|= PERF_SAMPLE_RAW;
 
@@ -174,7 +174,7 @@ struct trace_entry {
 };
 
 #define TASK_COMM_LEN 16
-struct dirty_inode { 
+struct dirty_inode {
 	char comm[TASK_COMM_LEN];
 	int  pid;
 	char dev[16];
@@ -195,10 +195,13 @@ static void parse_event(void *ptr, int verbose)
 	char pid[14];
 	int suggested = 0;
 	struct sample_event *event = ptr;
+
+	memset(line, 0, sizeof(line));
+
 	if (event->trace.type != this_trace)
 		return;
 
-	if (event->trace.size < sizeof(struct dirty_inode)) 
+	if (event->trace.size < sizeof(struct dirty_inode))
 		return;
 
 	if (event->inode.pid == 0)
@@ -222,6 +225,8 @@ static void parse_event(void *ptr, int verbose)
 		return;
 	if (strcmp(event->inode.dev, "pipefs") == 0)
 		return;
+	if (strcmp(event->inode.dev, "sysfs") == 0)
+		return;
 	if (strcmp(event->inode.dev, "anon_inodefs") == 0)
 		return;
 
@@ -235,7 +240,7 @@ static void parse_event(void *ptr, int verbose)
 			event->inode.comm, event->inode.file, event->inode.dev);
 		add_suggestion(line, 30, 0, NULL, NULL);
 	}
-	if (verbose) 
+	if (verbose)
 		printf(_("The application '%s' is writing to file '%s' on /dev/%s\n"),
 			event->inode.comm, event->inode.file, event->inode.dev);
 

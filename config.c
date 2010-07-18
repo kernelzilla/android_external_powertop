@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -89,7 +89,7 @@ static void read_kernel_config(void)
 
 /*
  * Suggest the user to turn on/off a kernel config option.
- * "comment" gets displayed if it's not already set to the right value 
+ * "comment" gets displayed if it's not already set to the right value
  */
 void suggest_kernel_config(char *string, int onoff, char *comment, int weight)
 {

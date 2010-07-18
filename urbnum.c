@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  *
  * Authors:
- * 	Arjan van de Ven <arjan@linux.intel.com>
+ *	Arjan van de Ven <arjan@linux.intel.com>
  */
 
 #include <unistd.h>
@@ -100,18 +100,18 @@ static void update_urbnum(char *path, uint64_t count, char *shortname)
 	sprintf(fullpath, "%s/product", path);
 	file = fopen(fullpath, "r");
 	memset(name, 0, 4096);
-	if (file) { 
+	if (file) {
 		fgets(name, 4096, file);
 		fclose(file);
 	}
 	sprintf(fullpath, "%s/manufacturer", path);
 	file = fopen(fullpath, "r");
 	memset(vendor, 0, 4096);
-	if (file) { 
+	if (file) {
 		fgets(vendor, 4096, file);
 		fclose(file);
 	}
-	
+
 	if (strlen(name)>0 && name[strlen(name)-1]=='\n')
 		name[strlen(name)-1]=0;
 	if (strlen(vendor)>0 && vendor[strlen(vendor)-1]=='\n')
@@ -124,7 +124,7 @@ static void update_urbnum(char *path, uint64_t count, char *shortname)
 
 	if (strstr(ptr->human_name, "Host Controller"))
 		ptr->controller = 1;
-	
+
 }
 
 void count_usb_urbs(void)
@@ -143,7 +143,7 @@ void count_usb_urbs(void)
 	dir = opendir("/sys/bus/usb/devices");
 	if (!dir)
 		return;
-		
+
 	cachunk_urbs();
 	while ((dirent = readdir(dir))) {
 		if (dirent->d_name[0]=='.')
@@ -162,7 +162,7 @@ void count_usb_urbs(void)
 	}
 
 	closedir(dir);
-	
+
 	dev = devices;
 	while (dev) {
 		if (dev->urbs != dev->previous_urbs) {
@@ -181,7 +181,7 @@ void display_usb_activity(void)
 	printf("%s\n", _("Active  Device name"));
 	dev = devices;
 	while (dev) {
-		printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) / 
+		printf("%5.1f%%\t%s\n", 100.0*(dev->active - dev->previous_active) /
 			(0.00001 + dev->connected - dev->previous_connected), dev->human_name);
 		dev = dev->next;
 	}
@@ -209,8 +209,9 @@ void usb_activity_hint(void)
 		if (dev->active-1 > dev->previous_active && !dev->controller) {
 			if (total_active == pick) {
 				char usb_hint[8000];
+				memset(usb_hint, 0, sizeof(usb_hint));
 				sprintf(usb_hint, _("A USB device is active %4.1f%% of the time:\n%s"),
-				 100.0*(dev->active - dev->previous_active) / 
+				 100.0*(dev->active - dev->previous_active) /
 				(0.00001 + dev->connected - dev->previous_connected),
 				dev->human_name);
 				add_suggestion(usb_hint,
