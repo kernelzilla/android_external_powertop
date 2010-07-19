@@ -65,6 +65,7 @@ void activate_runtime_suspend(void)
 {
 	activate_runtime_suspend_path("/sys/bus/pci/devices");
 	activate_runtime_suspend_path("/sys/bus/spi/devices");
+	activate_runtime_suspend_path("/sys/bus/i2c/devices");
 }
 
 void suggest_runtime_suspend_path(char *path)
@@ -127,6 +128,7 @@ void suggest_runtime_suspend(void)
 {
 	suggest_runtime_suspend_path("/sys/bus/pci/devices");
 	suggest_runtime_suspend_path("/sys/bus/spi/devices");
+	suggest_runtime_suspend_path("/sys/bus/i2c/devices");
 }
 
 
@@ -297,6 +299,21 @@ void count_device_pm(void)
 	}
 
 	closedir(dir);
+
+	dir = opendir("/sys/bus/i2c/devices");
+	if (!dir)
+		return;
+
+	cachunk_devs();
+	while ((dirent = readdir(dir))) {
+		if (dirent->d_name[0]=='.')
+			continue;
+		sprintf(pathname, "/sys/bus/i2c/devices/%s", dirent->d_name);
+
+		update_devstats_spi(pathname, dirent->d_name);
+	}
+
+	closedir(dir);
 }
 
 
@@ -321,13 +338,13 @@ void display_runtime_activity(void)
 	dev = devices;
 	while (dev) {
 		if (dev->active + dev->suspended == 0)  {
-			if (displayed++ < 5)
+			if (displayed++ < 20)
 				printf("%s\n", dev->human_name);
 		}
 		dev = dev->next;
 	}
-	if (displayed > 5)
-		printf(_("%i more devices without runtime PM ommitted\n"), displayed - 5);
+	if (displayed > 20)
+		printf(_("%i more devices without runtime PM ommitted\n"), displayed - 20);
 
 }
 
