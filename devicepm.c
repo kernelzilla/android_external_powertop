@@ -195,7 +195,7 @@ static void update_devstats_pci(char *path, char *shortname)
 
 	strcpy(ptr->human_name, shortname);
 
-	fullpath[0] = 0;
+	sprintf(fullpath, "lspci -s %s", shortname);
 	if (!access("/sbin/lspci", X_OK))
 		sprintf(fullpath, "/sbin/lspci -s %s", shortname);
 	if (!access("/usr/bin/lspci", X_OK))
