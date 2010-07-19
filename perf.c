@@ -193,10 +193,12 @@ static void parse_event(void *ptr, int verbose)
 {
 	char line[8192];
 	char pid[14];
+	char realcomm[17];
 	int suggested = 0;
 	struct sample_event *event = ptr;
 
 	memset(line, 0, sizeof(line));
+	memset(realcomm, 0, 17);
 
 	if (event->trace.type != this_trace)
 		return;
@@ -207,14 +209,16 @@ static void parse_event(void *ptr, int verbose)
 	if (event->inode.pid == 0)
 		return;
 
-	if (strcmp(event->inode.comm, "powertop") == 0)
+	memcpy(realcomm, event->inode.comm, 16);
+
+	if (strcmp(realcomm, "powertop") == 0)
 		return;
 	/*
 	 * btrfs kernel threads are internal and only
 	 * do IO on behalf of others that also got recorded
 	 */
 
-	if (strcmp(event->inode.comm, "btrfs-") == 0)
+	if (strcmp(realcomm, "btrfs-") == 0)
 		return;
 	/*
 	 * don't record "IO" to tmpfs or /proc
@@ -231,18 +235,18 @@ static void parse_event(void *ptr, int verbose)
 		return;
 
 	sprintf(pid, "%i", event->inode.pid);
-	sprintf(line, "%s", event->inode.comm);
+	sprintf(line, "%s", realcomm);
 	push_line_pid(line, 0, 1, pid);
 
 	if (!suggested && strcmp(event->inode.file, "?")) {
 		suggested = 1;
 		sprintf(line,_("The program '%s' is writing to file '%s' on /dev/%s.\nThis prevents the disk from going to powersave mode."),
-			event->inode.comm, event->inode.file, event->inode.dev);
+			realcomm, event->inode.file, event->inode.dev);
 		add_suggestion(line, 30, 0, NULL, NULL);
 	}
 	if (verbose)
 		printf(_("The application '%s' is writing to file '%s' on /dev/%s\n"),
-			event->inode.comm, event->inode.file, event->inode.dev);
+			realcomm, event->inode.file, event->inode.dev);
 
 }
 
