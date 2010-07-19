@@ -1,3 +1,5 @@
+VERSION = 1.13
+
 BINDIR=/usr/bin
 LOCALESDIR=/usr/share/locale
 MANDIR=/usr/share/man/man8
@@ -5,6 +7,7 @@ WARNFLAGS=-Wall -Wshadow -W -Wformat -Wimplicit-function-declaration -Wimplicit-
 CFLAGS?=-O1 -g ${WARNFLAGS}
 CC?=gcc
 
+CFLAGS+=-D VERSION=\"$(VERSION)\"
 
 # 
 # The w in -lncursesw is not a typo; it is the wide-character version
