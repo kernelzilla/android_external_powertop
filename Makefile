@@ -51,4 +51,6 @@ clean:
 
 
 dist:
-	rm -rf .svn po/.svn DEADJOE po/DEADJOE todo.txt Lindent svn-commit.* dogit.sh git/ *.rej *.orig
+	git tag v$(VERSION)
+	git archive --format=tar --prefix="powertop-$(VERSION)/" v$(VERSION) | \
+		gzip > powertop-$(VERSION).tar.gz
