@@ -36,8 +36,8 @@ provide feedback, problem reports or fixes!
 Website:      http://www.linuxpowertop.org
 IRC:          irc.oftc.net    #powertop channel
 Mailing list: http://www.bughost.org/mailman/listinfo/power
-Tags: intel, linux
-
+Tags:         intel, linux
+Git:          git://gitorious.org/meego-developer-tools/powertop.git
 
 
 If you have bugreports or patches, I prefer that you use the mailing list
