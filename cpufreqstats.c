@@ -42,7 +42,7 @@ struct cpufreqdata oldfreqs[16];
 
 struct cpufreqdata delta[16];
 
-char cpufreqstrings[6][80];
+char cpufreqstrings[MAX_NUM_PSTATES][80];
 int topfreq = -1;
 
 static void zap(void)

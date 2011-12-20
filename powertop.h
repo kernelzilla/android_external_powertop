@@ -26,7 +26,16 @@
 #ifndef __INCLUDE_GUARD_POWERTOP_H_
 #define __INCLUDE_GUARD_POWERTOP_H_
 
+#ifdef USE_LOCALE
 #include <libintl.h>
+#endif
+
+#define MAX_NUM_CSTATES 4
+#define MAX_NUM_PSTATES 6
+
+#define MAX_CSTATE_LINES (MAX_NUM_CSTATES + 3)
+
+#define VERSION "1.13"
 
 struct line {
 	char	*string;
@@ -57,7 +66,9 @@ void suggest_ondemand_governor(void);
 void suggest_noatime(void);
 void suggest_sata_alpm(void);
 void suggest_powersched(void);
+#ifndef IS_ANDROID
 void suggest_xrandr_TV_off(void);
+#endif
 void suggest_WOL_off(void);
 void suggest_writeback_time(void);
 void suggest_usb_autosuspend(void);
@@ -70,8 +81,8 @@ void devicepm_activity_hint(void);
 
 
 
-extern char cstate_lines[12][200];
-extern char cpufreqstrings[6][80];
+extern char cstate_lines[MAX_CSTATE_LINES][200];
+extern char cpufreqstrings[MAX_NUM_PSTATES][80];
 
 extern int topcstate;
 extern int topfreq;
@@ -92,7 +103,12 @@ extern suggestion_func *suggestion_activate;
         _x < _y ? _x : _y; })
 
 
-#define _(STRING)    gettext(STRING)
+#ifdef USE_LOCALE
+   #define _(STRING)    gettext(STRING)
+#else
+   #define _(STRING)    STRING
+#endif
+
 
 
 #define PT_COLOR_DEFAULT    1
@@ -144,7 +160,11 @@ void display_usb_activity(void);
 void display_runtime_activity(void);
 
 void activate_usb_autosuspend(void);
+#if defined (__I386__)
 void print_intel_cstates(void);
+#elif defined(__ARM__)
+void print_arm_cstates(void);
+#endif
 
 void start_data_dirty_capture(void);
 void end_data_dirty_capture(void);
