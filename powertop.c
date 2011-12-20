@@ -30,7 +30,11 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
+
+#ifdef USE_LOCALE
 #include <libintl.h>
+#endif
+
 #include <ctype.h>
 #include <assert.h>
 #include <locale.h>
@@ -824,7 +828,7 @@ void print_battery_sysfs(void)
 	show_acpi_power_line(rate, cap, prev_bat_cap - cap, time(NULL) - prev_bat_time);
 }
 
-char cstate_lines[12][200];
+char cstate_lines[MAX_CSTATE_LINES][200];
 
 void usage()
 {
@@ -851,9 +855,16 @@ int main(int argc, char **argv)
 	uint64_t cur_usage[8], cur_duration[8];
 	double wakeups_per_second = 0;
 
+#ifdef USE_LOCALE
 	setlocale (LC_ALL, "");
 	bindtextdomain ("powertop", "/usr/share/locale");
 	textdomain ("powertop");
+#endif
+
+#ifdef DEFAULT_TERM
+        if (!getenv("TERM"))
+          setenv("TERM", DEFAULT_TERM, 1);
+#endif
 
 	start_data_dirty_capture();
 
@@ -922,7 +933,11 @@ int main(int argc, char **argv)
 		printf(_("PowerTOP needs to be run as root to collect enough information\n"));
 	printf(_("Collecting data for %i seconds \n"), (int)ticktime);
 	printf("\n\n");
+#if defined (__I386__)
 	print_intel_cstates();
+#elif defined (__ARM__)
+	print_arm_cstates();
+#endif
 	stop_timerstats();
 
 	while (1) {
@@ -959,7 +974,7 @@ int main(int argc, char **argv)
 
 		totalticks = 0;
 		totalevents = 0;
-		for (i = 0; i < 8; i++)
+		for (i = 0; i < MAX_NUM_CSTATES; i++)
 			if (cur_usage[i]) {
 				totalticks += cur_duration[i] - last_duration[i];
 				totalevents += cur_usage[i] - last_usage[i];
@@ -975,9 +990,11 @@ int main(int argc, char **argv)
 		}
 
 		memset(&cstate_lines, 0, sizeof(cstate_lines));
-		topcstate = -4;
+		topcstate = -(MAX_NUM_CSTATES);
 		if (totalevents == 0 && maxcstate <= 1) {
-			sprintf(cstate_lines[5],_("< Detailed C-state information is not available.>\n"));
+#ifndef IS_ANDROID
+			sprintf(cstate_lines[5],_("Detailed C-state information is not available.\n"));
+#endif
 		} else {
 			double sleept, percentage;
 			c0 = sysconf(_SC_NPROCESSORS_ONLN) * ticktime * 1000 * FREQ - totalticks;
@@ -989,7 +1006,7 @@ int main(int argc, char **argv)
 			sprintf(cstate_lines[1], _("C0 (cpu running)        (%4.1f%%)\n"), percentage);
 			if (percentage > 50)
 				topcstate = 0;
-			for (i = 0; i < 8; i++)
+			for (i = 0; i < MAX_NUM_CSTATES; i++)
 				if (cur_usage[i]) {
 					sleept = (cur_duration[i] - last_duration[i]) / (cur_usage[i] - last_usage[i]
 											+ 0.1) / FREQ;
@@ -1254,7 +1271,9 @@ int main(int argc, char **argv)
 		suggest_noatime();
 		suggest_sata_alpm();
 		suggest_powersched();
+#ifndef IS_ANDROID
 		suggest_xrandr_TV_off();
+#endif
 		suggest_WOL_off();
 		suggest_writeback_time();
 		suggest_usb_autosuspend();

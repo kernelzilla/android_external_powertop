@@ -29,9 +29,19 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <dirent.h>
-#include <ncurses.h>
+
+
+#ifdef USE_SLANG
+  #include <slcurses.h>
+#else
+  #include <ncurses.h>
+#endif
+
 #include <time.h>
+
+#ifdef USE_LOCALE
 #include <wchar.h>
+#endif
 
 #include "powertop.h"
 
@@ -96,10 +106,10 @@ void setup_windows(void)
 	zap_windows();
 
 	title_bar_window = subwin(stdscr, 1, maxx, 0, 0);
-	cstate_window = subwin(stdscr, 7, maxx, 2, 0);
-	wakeup_window = subwin(stdscr, 1, maxx, 9, 0);
-	battery_power_window = subwin(stdscr, 2, maxx, 10, 0);
-	timerstat_window = subwin(stdscr, maxy-16, maxx, 12, 0);
+	cstate_window = subwin(stdscr, (MAX_NUM_CSTATES + 2), maxx, 2, 0);
+	wakeup_window = subwin(stdscr, 1, maxx, (MAX_NUM_CSTATES + 5), 0);
+	battery_power_window = subwin(stdscr, 2, maxx, (MAX_NUM_CSTATES + 6), 0);
+	timerstat_window = subwin(stdscr, maxy-16, maxx, (MAX_NUM_CSTATES + 8), 0);
 	maxtimerstats = maxy-16  -2;
 	maxwidth = maxx - 18;
 	suggestion_window = subwin(stdscr, 3, maxx, maxy-4, 0);
@@ -121,7 +131,9 @@ void initialize_curses(void)
 	cbreak();		/* take input chars one at a time, no wait for \n */
 	noecho();		/* dont echo input */
 	curs_set(0);		/* turn off cursor */
+#ifndef USE_SLANG
 	use_default_colors();
+#endif
 
 	init_pair(PT_COLOR_DEFAULT, COLOR_WHITE, COLOR_BLACK);
 	init_pair(PT_COLOR_HEADER_BAR, COLOR_BLACK, COLOR_WHITE);
@@ -140,7 +152,9 @@ void show_title_bar(void)
 	int i;
 	int x;
 	wattrset(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
+#ifndef USE_SLANG
 	wbkgd(title_bar_window, COLOR_PAIR(PT_COLOR_HEADER_BAR));
+#endif
 	werase(title_bar_window);
 
 	print(title_bar_window, 0, 0,  "     PowerTOP version %s      (C) 2007 Intel Corporation", VERSION);
@@ -166,18 +180,18 @@ void show_cstates(void)
 	int i, count = 0;
 	werase(cstate_window);
 
-	for (i=0; i < 10; i++) {
+	for (i=0; i < MAX_CSTATE_LINES; i++) {
 		if (i == topcstate+1)
 			wattron(cstate_window, A_BOLD);
 		else
 			wattroff(cstate_window, A_BOLD);
-		if (strlen(cstate_lines[i]) && count <= 6) {
+		if (strlen(cstate_lines[i]) && count <= MAX_CSTATE_LINES) {
 			print(cstate_window, count, 0, "%s", cstate_lines[i]);
 			count++;
 		}
 	}
 
-	for (i=0; i<6; i++) {
+	for (i=0; i < MAX_NUM_PSTATES; i++) {
 		if (i == topfreq+1)
 			wattron(cstate_window, A_BOLD);
 		else
@@ -252,7 +266,7 @@ void show_pmu_power_line(unsigned sum_voltage_mV,
 void show_wakeups(double d, double interval, double C0time)
 {
 	werase(wakeup_window);
-
+#ifndef USE_SLANG
 	wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_RED));
 	if (d <= 25.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_YELLOW));
@@ -265,8 +279,9 @@ void show_wakeups(double d, double interval, double C0time)
 	 */
 	if (C0time > 25.0)
 		wbkgd(wakeup_window, COLOR_PAIR(PT_COLOR_BLUE));
-
+#endif
 	wattron(wakeup_window, A_BOLD);
+	wattron(wakeup_window, COLOR_PAIR(PT_COLOR_RED));
 	print(wakeup_window, 0, 0, _("Wakeups-from-idle per second : %4.1f\tinterval: %0.1fs\n"), d, interval);
 	wrefresh(wakeup_window);
 }
